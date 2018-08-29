@@ -1,4 +1,4 @@
-class HomeController < ActionController::Base
+class HomeController < ApplicationController #ActionController::Base
 
   skip_before_filter :verify_authenticity_token, only: [:hot_muffins]
 

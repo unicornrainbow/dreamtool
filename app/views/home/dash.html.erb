@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<%= google_fonts 'Raleway' %>
+
+<style>
+
+body {
+  font-family: 'Raleway';
+}
+
+h2 {
+  color:  #f05ee3 ;
+  margin: 2px 0 20px 0;
+}
+
+chart[name=new-users] div {
+  display: inline-block;
+  background-color: /* purple */ #b929dc ;
+  color: pink;
+  width: 30px;
+  /* float: left; */
+  margin-right: 2px;
+  bottom: 0;
+  border-radius: 3px;
+  vertical-align: bottom;
+  transition: height .2s;
+  font-family: 'Raleway';
+}
+
+chart[name=new-users] {
+  clear: both;
+  background-color: /* pink */ #ff7be2;  ;
+  display: block;
+  padding: 10px;
+  margin: 11px;
+  border-radius: 7px;
+  /* float:left;
+  width: 100%; */
+}
+</style>
+
+<chart name=new-users>
+  <h2>New Users (Month over Month)</h2>
+</chart>
+
+<script>
+
+  // Polyfill @name query selector shorthand.
+  //   @bob becomes [name=bob]
+  //   div@jan becomes div[name=jan]
+  (function() {
+    var _select = d3.select;
+    d3.select = function(selector) {
+      // expand @name
+      selector = selector.replace(/(.*)@(.+)/, '$1[name=$2]' )
+
+      return _select(selector);
+    }
+  }());
+
+  var data = [2, 11, 5, 16, 23, 42, 10];
+
+  var chart = d3.select('chart@new-users')
+
+  var x = d3.scaleLinear()
+      .domain([0, d3.max(data)])
+      .range([0, 420]);
+
+  chart.selectAll("div")
+    .data(data)
+  .enter().append("div")
+    .style("height", function(d) { return x(d) + "px"; })
+    .text(function(d) { return d; });
+
+</script>
+
+
+<gauge>
+  New User Sign Ups today
+  0
+</gauge>
+
+<gauge>
+  Sign-ins today
+  0
+</gauge>
+
+New Users
+
+<!--
+References:
+
+Let’s Make a Bar Chart, https://bost.ocks.org/mike/bar/
+  November 5, 2013, Mike Bostock
+-->

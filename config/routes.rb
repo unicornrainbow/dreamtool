@@ -62,7 +62,8 @@ Press::Application.routes.draw do
   get '/hot-muffins' => 'home#hot_muffins'
   post '/hot-muffins' => 'home#hot_muffins'
   post '/workspace' => 'workspaces#save_workspace'
-
+  get '/dash' => 'home#dash'
+  
   resources :prints, except: 'show' do
     member do
       get :download
