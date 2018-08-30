@@ -10,8 +10,9 @@ body {
 }
 
 h2 {
-  color:  #f05ee3 ;
+  color: #fff4d2 ;
   margin: 2px 0 20px 0;
+  font-size: 1.7em;
 }
 
 chart[name=new-users] div {
@@ -25,23 +26,21 @@ chart[name=new-users] div {
   border-radius: 3px;
   vertical-align: bottom;
   transition: height .2s;
-  font-family: 'Raleway';
+  /* text-align: center; */
 }
 
 chart[name=new-users] {
   clear: both;
-  background-color: /* pink */ #ff7be2;  ;
+  background-color: /* pink */ #ff7be2;
   display: block;
   padding: 10px;
   margin: 11px;
   border-radius: 7px;
-  /* float:left;
-  width: 100%; */
 }
 </style>
 
 <chart name=new-users>
-  <h2>New Users (Month over Month)</h2>
+  <h2>New User Signups</h2>
 </chart>
 
 <script>
@@ -59,38 +58,27 @@ chart[name=new-users] {
     }
   }());
 
-  var data = [2, 11, 5, 16, 23, 42, 10];
+  var newUsers = <%= raw @new_users.to_json %>;
 
   var chart = d3.select('chart@new-users')
 
   var x = d3.scaleLinear()
-      .domain([0, d3.max(data)])
+      .domain([0, d3.max(newUsers, function(d) {return d.value})])
       .range([0, 420]);
 
   chart.selectAll("div")
-    .data(data)
+    .data(newUsers)
   .enter().append("div")
-    .style("height", function(d) { return x(d) + "px"; })
-    .text(function(d) { return d; });
+    .style("height", function(d) { return x(d.value) + "px"; })
+    // .text(function(d) { return d.value; });
+    // .text(function(d) { return d._id.month + "/" + d._id.year; });
 
 </script>
-
-
-<gauge>
-  New User Sign Ups today
-  0
-</gauge>
-
-<gauge>
-  Sign-ins today
-  0
-</gauge>
-
-New Users
 
 <!--
 References:
 
 Let’s Make a Bar Chart, https://bost.ocks.org/mike/bar/
   November 5, 2013, Mike Bostock
+  See also: https://bost.ocks.org/mike/bar/2/
 -->

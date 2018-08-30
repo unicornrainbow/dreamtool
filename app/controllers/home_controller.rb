@@ -58,5 +58,22 @@ class HomeController < ApplicationController #ActionController::Base
     end
   end
 
+  def dash
+    # group by created_at in Mongo
+    # see: https://stackoverflow.com/a/34677100
+    stages =  [{
+      "$group" => {
+        "_id" => {
+          "year"  => { "$year"  => "$created_at" },
+          "month" => { "$month" => "$created_at" }
+        },
+        "value" => { "$sum" => 1 }
+      }
+    }]
+    @new_users = User.collection.aggregate(stages)
+
+    render layout: false
+  end
+
 
 end
