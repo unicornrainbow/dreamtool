@@ -18,18 +18,6 @@ h2 {
   font-weight: 100;
 }
 
-h3.header {
-  background: #bafffd;
-  margin: 32px 12px 0;
-  padding: 2px;
-  border-radius: 8px;
-  font-family: Raleway;
-  color: #ff9efb;
-  font-size: 2em;
-  font-weight: 100;
-  text-align: center;
-}
-
 chart[name=new-users] {
   clear: both;
   background-color: /* pink */ #ff7be2;
@@ -63,7 +51,8 @@ chart[name=new-users] div {
   font-weight: bold;
   text-align: center;
   color: white;
-  float: left;
+  /* float: left; */
+  display: inline-block;
 }
 
 .guage label {
@@ -78,6 +67,31 @@ chart[name=new-users] div {
   font-size: 200px;
   font-weight: 200;
   line-height: .7em;
+}
+
+div.today {
+  background-color: #bafffd;
+  padding: 0px 15px 9px;
+  border-radius: 13px;
+  margin: 10px;
+}
+
+div.today h3 {
+  background: #bafffd;
+  margin: 32px 12px 0;
+  padding: 10px 0 0px;
+  border-radius: 8px;
+  font-family: Raleway;
+  color: #ff9efb;
+  font-size: 2em;
+  font-weight: 100;
+  text-align: center;
+}
+
+div.today .guage {
+  width: 289px;
+  margin: 20px 6px;
+  box-shadow: -2px 12px 0 #0aeff2;
 }
 
 a.ht {
@@ -95,24 +109,27 @@ text-decoration: underline;
 <BODY>
 
 
-<h3 class='header'>Today</h3>
+<div class='today' style='background-color: #bafffd;'>
+  <h3 class='header'>Today</h3>
 
-<div class='guage'
-     style='background-color: aqua;'>
-  <label>Visitors</label>
-  <i></i>
-</div>
+  <div class='guage'
+       style='background-color: aqua;'>
+    <label>Visitors</label>
+    <i></i>
+  </div>
 
-<div class='guage'
-     style='background-color: aqua;'>
-  <label>Sign-ups</label>
-  <i></i>
-</div>
+  <div class='guage'
+       style='background-color: aqua;'>
+    <label>Sign-ups</label>
+    <i></i>
+  </div>
 
-<div class='guage'
-     style='background-color: aqua;'>
-  <label>Hits</label>
-  <i></i>
+  <div class='guage'
+       style='background-color: aqua;'>
+    <label>Hits</label>
+    <i></i>
+  </div>
+
 </div>
 
 <chart name=new-users>
