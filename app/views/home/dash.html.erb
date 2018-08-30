@@ -1,18 +1,43 @@
 <!DOCTYPE html>
 
+<HEAD>
+<%= google_fonts 'Raleway:100,400,700' %>
 <script src="https://d3js.org/d3.v5.min.js"></script>
-<%= google_fonts 'Raleway' %>
 
 <style>
 
 body {
   font-family: 'Raleway';
+  background-color: aliceblue;
 }
 
 h2 {
-  color: #fff4d2 ;
+  color: aliceblue ;
   margin: 2px 0 20px 0;
   font-size: 1.7em;
+  font-weight: 100;
+}
+
+h3.header {
+  background: #bafffd;
+  margin: 32px 12px 0;
+  padding: 2px;
+  border-radius: 8px;
+  font-family: Raleway;
+  color: #ff9efb;
+  font-size: 2em;
+  font-weight: 100;
+  text-align: center;
+}
+
+chart[name=new-users] {
+  clear: both;
+  background-color: /* pink */ #ff7be2;
+  display: block;
+  padding: 10px;
+  margin: 20px 11px;
+  margin-bottom: 30px;
+  border-radius: 12px;
 }
 
 chart[name=new-users] div {
@@ -29,19 +54,78 @@ chart[name=new-users] div {
   /* text-align: center; */
 }
 
-chart[name=new-users] {
-  clear: both;
-  background-color: /* pink */ #ff7be2;
-  display: block;
-  padding: 10px;
-  margin: 11px;
-  border-radius: 7px;
+.guage {
+  width: 300px;
+  height: 300px;
+  border-radius: 22px;
+  margin: 10px;
+  margin-bottom: 40px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  float: left;
 }
+
+.guage label {
+  font-size: 2.2em;
+  line-height: 2.4em;
+  font-weight: 100;
+  display: block;
+}
+
+.guage i {
+  font-style: normal;
+  font-size: 200px;
+  font-weight: 200;
+  line-height: .7em;
+}
+
+a.ht {
+display: inline-block;
+background-color: fuchsia;
+padding: 4px;
+border-radius: 5px;
+text-decoration: underline;
+}
+
 </style>
+</HEAD>
+
+
+<BODY>
+
+
+<h3 class='header'>Today</h3>
+
+<div class='guage'
+     style='background-color: aqua;'>
+  <label>Visitors</label>
+  <i></i>
+</div>
+
+<div class='guage'
+     style='background-color: aqua;'>
+  <label>Sign-ups</label>
+  <i></i>
+</div>
+
+<div class='guage'
+     style='background-color: aqua;'>
+  <label>Hits</label>
+  <i></i>
+</div>
 
 <chart name=new-users>
-  <h2>New User Signups</h2>
+  <h2>New Users <a class='ht'>#bymonth</a></h2>
 </chart>
+
+
+<div class='guage'
+    style="color: darkturquoise; bg-color: aquamarine; "
+    color="darkturquoise/aquamarine">
+  <label>Total Users</label>
+  <i>3</i>
+</div>
 
 <script>
 
@@ -74,6 +158,8 @@ chart[name=new-users] {
     // .text(function(d) { return d._id.month + "/" + d._id.year; });
 
 </script>
+
+</BODY>
 
 <!--
 References:
