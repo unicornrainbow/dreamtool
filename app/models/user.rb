@@ -6,6 +6,7 @@ class User
 
   field :screenname,         type: String, default: ""
   field :encrypted_password, type: String, default: ""
+  field :email
 
   # field :screenname_casing,  type: Integer, default: 0 # Bitmask applied to screenname to get user desired casing.
 

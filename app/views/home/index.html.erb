@@ -230,6 +230,7 @@ form#sign-in {
   <input name='password' type="password" onkeypress="enterSubmit(this, event)"></input>
   <br><br>
   <button class="zing-sang">Sign In</button>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 </form>
 
 <div class="free-account">
