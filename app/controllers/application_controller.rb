@@ -1,7 +1,11 @@
+require 'extensions/date'
+
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+
+  before_filter :track_hit
 
   def not_found
     raise ActionController::RoutingError.new('Not Found')
@@ -24,6 +28,23 @@ class ApplicationController < ActionController::Base
         @current_user = User.find_by(screenname: @screenname)
       end
     end
+  end
+
+  def track_hit
+    # request[]
+    # render text: request.ip + request.fullpath
+    Hit.create(
+      ip: request.ip,
+      url: request.original_url,
+      date: Today.date
+    )
+    # $redis.incr "Hits: #{today}"
+    # Visit.create ip: ip, url: url
+  end
+
+  # Returns today's date as an mdy string.
+  def today
+    Date.today % '%m/%d/%Y'
   end
 
 protected

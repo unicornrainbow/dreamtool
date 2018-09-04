@@ -1,5 +1,7 @@
 class User
   include Mongoid::Document
+  include Mongoid::Timestamps
+
   devise :database_authenticatable, :rememberable, :authentication_keys => [:screenname]
 
   field :screenname,         type: String, default: ""
@@ -9,6 +11,7 @@ class User
 
   field :reset_password_token,  type: String
   field :reset_password_sent_at,  type: Time
+  field :signup_date
 
   belongs_to :organization
 

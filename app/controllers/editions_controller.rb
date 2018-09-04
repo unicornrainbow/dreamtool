@@ -4,6 +4,8 @@ class EditionsController < ApplicationController
   before_filter :find_edition, only: [:compose, :preview, :compile, :download, :edit, :update, :show, :wip, :tearout]
   before_filter :detect_mobile, only: :compose
 
+  skip_before_filter :track_hit, only: [:wip]
+
   respond_to :html, :json
 
   def index
