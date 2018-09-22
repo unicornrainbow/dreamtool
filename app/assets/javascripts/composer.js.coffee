@@ -1081,7 +1081,7 @@ class Newstime.Composer extends App.View
 
     @multiSelectionMode = false
 
-    if @mobile?
+    if @mobile
       # @softKeysView.hideKey('delete')
       @softKeysView.hideKeys()
 
