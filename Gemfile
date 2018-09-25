@@ -12,7 +12,7 @@ gem 'oj'
 gem 'dotenv-rails', group: [:test, :development, :production]
 gem "redcarpet"
 gem "wikicloth", git: "https://github.com/nricciar/wikicloth.git"
-gem 'mongoid', '~> 5.2.1' #, '~> 4.0.0.alpha1', github: 'mongoid/mongoid', tag: 'v4.0.0.alpha1'
+gem 'mongoid'
 gem "angularjs-rails"
 gem 'unicorn'
 gem 'simple_form'
