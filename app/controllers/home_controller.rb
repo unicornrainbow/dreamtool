@@ -67,6 +67,8 @@ class HomeController < ApplicationController #ActionController::Base
       else
         redirect_to '/'
       end
+    else
+      render layout: false
     end
   end
 
