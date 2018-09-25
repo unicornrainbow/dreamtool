@@ -211,6 +211,10 @@ class Newstime.Composer extends App.View
 
       workspaceJSON = JSON.parse(window.localStorage['workspaceJSON'] || null) || []
 
+      # Ensure all panels are in view.
+      _.each workspaceJSON, (setting) ->
+        setting.top = 20 if setting.top < 20
+
       @applyWorkspaceJSON(workspaceJSON)
 
       @colors = @edition.get('colors')
