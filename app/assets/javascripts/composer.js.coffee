@@ -982,7 +982,7 @@ class Newstime.Composer extends App.View
     else
       @pagesPanelView?.render()
 
-    if @mobile?
+    if @mobile
       @softKeysView.showKey('delete')
 
       if @selection.contentItemView instanceof Newstime.GroupView
