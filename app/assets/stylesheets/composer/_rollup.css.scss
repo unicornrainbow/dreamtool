@@ -7,9 +7,5 @@
     transition: top .07s ease-in-out;
   }
 
-  &.unhooked {
-    .title-bar {
-      background-color: limegreen;
-    }
-  }
+  &.unhooked .title-bar {  }
 }
