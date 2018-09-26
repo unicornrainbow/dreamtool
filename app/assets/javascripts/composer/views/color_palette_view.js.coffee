@@ -19,7 +19,7 @@ class @Newstime.ColorPalatteView extends Dreamtool.Rollup
 
     # Set default size and position if required.
     @model.set(width: 200, height: 250)
-    @setPosition(470, 70)
+    @setPosition(120, 230) # 🌸
 
     @$body.html """
       <li class="page-color" style='display:none'><swatch color="#{@composer.edition.get('page_color')}"></swatch>Page Color</li>
