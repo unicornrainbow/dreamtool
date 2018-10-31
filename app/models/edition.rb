@@ -65,6 +65,9 @@ class Edition
   belongs_to :user
   belongs_to :publication, inverse_of: :editions
 
+
+  scope :nouser, -> { where(user: nil) }
+
   # Methods
 
   # Resolves and returns all images referenced in the edition.

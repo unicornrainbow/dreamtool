@@ -12,8 +12,9 @@ class EditionsController < ApplicationController
     if current_user
       @editions = current_user.editions.desc(:updated_at)
     else
-      @editions = []
-      @editions = Edition.all.desc(:updated_at)
+      @editions =
+        Edition.nouser
+          .desc(:updated_at)
     end
   end
 
