@@ -20,10 +20,14 @@ class HomeController < ApplicationController #ActionController::Base
     #  redirect_to '/editions' and return
     #end
 
-    screenname = params[:screenname] #.downcase
+    gibberish = params[:screenname] #.downcase
 
     #user = User.find_by({screenname})
-    user = User.find_by(screenname: screenname)
+    user = User.find_by(screenname: gibberish)
+
+    unless user
+      user = User.find_by(email: gibberish)
+    end
 
     # user = User.first(conditions: { screenname: /^#{screenname}$/i })
     # user = User.find_by(screenname: screenname, 'i')
