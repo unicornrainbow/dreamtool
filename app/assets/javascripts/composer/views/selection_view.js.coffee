@@ -180,16 +180,77 @@ class @Newstime.SelectionView extends Newstime.View
         y -= @group.getOffsetTop()
 
       if @resizing
+        c = @contentItemView
+        g = c.getGeometry()
 
         switch @resizeMode
-          when 'top'          then @dragTop(x, y)
-          when 'right'        then @dragRight(x, y)
-          when 'bottom'       then @dragBottom(x, y)
-          when 'left'         then @dragLeft(x, y)
-          when 'top-left'     then @dragTopLeft(x, y)
-          when 'top-right'    then @dragTopRight(x, y)
-          when 'bottom-left'  then @dragBottomLeft(x, y)
-          when 'bottom-right' then @dragBottomRight(x, y)
+          when 'top'
+            if y > g.top + g.height
+              @switchResizeMode 'bottom'
+            else
+              @dragTop(x, y)
+          when 'right'
+            if x < g.left
+              @switchResizeMode 'left'
+            else
+             @dragRight(x, y)
+          when 'bottom'
+            if y < g.top
+              @switchResizeMode 'top'
+            else
+              @dragBottom(x, y)
+          when 'left'
+            if x > g.left + g.width
+              @switchResizeMode 'right'
+            else
+              @dragLeft(x, y)
+          when 'top-left'
+            if x > g.left + g.width
+              if y > g.top + g.height
+                @switchResizeMode('bottom-right')
+              else
+                @switchResizeMode('top-right')
+            else
+              if y > g.top + g.height
+                @switchResizeMode('bottom-left')
+              else
+                @dragTopLeft(x, y)
+          when 'top-right'
+            if x < g.left
+              if y > g.top + g.height #bottom
+                @switchResizeMode('bottom-left')
+              else
+                @switchResizeMode('top-left')
+            else
+              if y > g.top + g.height
+                @switchResizeMode('bottom-right')
+              else
+                @dragTopRight(x, y)
+          when 'bottom-left'
+            if x > g.left + g.width
+              if y < g.top
+                @switchResizeMode('top-right')
+              else
+                # @swremo 'bottom-right'
+                @switchResizeMode('bottom-right')
+            else
+              if y < g.top
+                @switchResizeMode('top-left')
+              else
+                @dragBottomLeft(x, y)
+          when 'bottom-right'
+            if x < @contentItemView.model.get('left')
+              if y < @contentItemView.model.get('top')
+                @switchResizeMode('top-left')
+                @dragTopLeft(x, y)
+              else
+                @switchResizeMode('bottom-left')
+                @dragBottomLeft(x, y)
+            else
+              if y < @contentItemView.model.get('top')
+                @switchResizeMode('top-right')
+              else
+                @dragBottomRight(x, y)
       else if @moving
         # @moved = true
         @move(x, y)
@@ -372,6 +433,19 @@ class @Newstime.SelectionView extends Newstime.View
     @moveOffsetY = offsetY
     @trigger 'tracking', this
 
+  switchResizeMode: (mode) ->
+    # @composer.clearVerticalSnapLines() # Ensure vertical snaps aren't showing.
+
+    _.find(@dragHandles,
+      (h) => h.type == @resizeMode)
+    .reset()
+
+    @resizeMode = mode
+
+    # Highlight the drag handle
+    _.find(@dragHandles,
+      (h) -> h.type == mode)
+    .selected()
 
   hitsDragHandle: (x, y) ->
     geometry = @getGeometry()
