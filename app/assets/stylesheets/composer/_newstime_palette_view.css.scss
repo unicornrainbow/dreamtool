@@ -2,7 +2,7 @@
   -webkit-user-select: none;
   /*left: 0;*/
   /*top: 200px;*/
-  background-color: #501d7d;
+  background-color: #18d4f3;
   border-radius: 4px 4px 2px 2px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
   color: #eee;
@@ -18,7 +18,7 @@
 
   &.hovered {
     .title-bar {
-      background-color: #62329e;
+      background-color: #bf61e9;
     }
   }
 
@@ -71,7 +71,7 @@
   .title-bar {
     padding: 2px;
     border-radius: 4px 4px 0 0;
-    background-color: #583288;
+    background-color: #cf7eed;
     cursor: -webkit-grab;
     height: 22px;
   }
