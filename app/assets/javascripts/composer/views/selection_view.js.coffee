@@ -92,15 +92,78 @@ class @Newstime.SelectionView extends Newstime.View
 
     mousemove: (e) ->
       if @resizing
+        {x, y} = e
+        c = @contentItemView
+        g = c.getGeometry()
+
         switch @resizeMode
-          when 'top'          then @dragTop(e.x, e.y)
-          when 'right'        then @dragRight(e.x, e.y)
-          when 'bottom'       then @dragBottom(e.x, e.y)
-          when 'left'         then @dragLeft(e.x, e.y)
-          when 'top-left'     then @dragTopLeft(e.x, e.y)
-          when 'top-right'    then @dragTopRight(e.x, e.y)
-          when 'bottom-left'  then @dragBottomLeft(e.x, e.y)
-          when 'bottom-right' then @dragBottomRight(e.x, e.y)
+          when 'top'
+            if y > g.top + g.height
+              @switchResizeMode 'bottom'
+            else
+              @dragTop(x, y)
+          when 'right'
+            if x < g.left
+              @switchResizeMode 'left'
+            else
+             @dragRight(x, y)
+          when 'bottom'
+            if y < g.top
+              @switchResizeMode 'top'
+            else
+              @dragBottom(x, y)
+          when 'left'
+            if x > g.left + g.width
+              @switchResizeMode 'right'
+            else
+              @dragLeft(x, y)
+          when 'top-left'
+            if x > g.left + g.width
+              if y > g.top + g.height
+                @switchResizeMode('bottom-right')
+              else
+                @switchResizeMode('top-right')
+            else
+              if y > g.top + g.height
+                @switchResizeMode('bottom-left')
+              else
+                @dragTopLeft(x, y)
+          when 'top-right'
+            if x < g.left
+              if y > g.top + g.height #bottom
+                @switchResizeMode('bottom-left')
+              else
+                @switchResizeMode('top-left')
+            else
+              if y > g.top + g.height
+                @switchResizeMode('bottom-right')
+              else
+                @dragTopRight(x, y)
+          when 'bottom-left'
+            if x > g.left + g.width
+              if y < g.top
+                @switchResizeMode('top-right')
+              else
+                # @swremo 'bottom-right'
+                @switchResizeMode('bottom-right')
+            else
+              if y < g.top
+                @switchResizeMode('top-left')
+              else
+                @dragBottomLeft(x, y)
+          when 'bottom-right'
+            if x < @contentItemView.model.get('left')
+              if y < @contentItemView.model.get('top')
+                @switchResizeMode('top-left')
+                @dragTopLeft(x, y)
+              else
+                @switchResizeMode('bottom-left')
+                @dragBottomLeft(x, y)
+            else
+              if y < @contentItemView.model.get('top')
+                @switchResizeMode('top-right')
+              else
+                @dragBottomRight(x, y)
 
       else if @moving
         @move(e.x, e.y, e.shiftKey)
