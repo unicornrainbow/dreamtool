@@ -2,6 +2,7 @@
   background-color: #fff;
   width: 100%;
   height: 61px;
+  overflow: hidden;
 
   // Ensure nothing can be highlighted with a user drag (Which breaks the
   // solidness of the ui)

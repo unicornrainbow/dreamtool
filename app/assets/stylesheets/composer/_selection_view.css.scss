@@ -20,14 +20,14 @@
 }
 
 .selection-view {
-  $bubble-size: 24px;
+  $bubble-size: 18px;
 
   border: 1px dotted #ae05db;
   position: absolute;
 
   &.multi-select {
     .drag-handle {
-      background-color: rgba(45, 25, 75, .7) !important;
+      background-color: rgba(113, 240, 186, 0.7) !important;
     }
   }
 
@@ -43,28 +43,32 @@
 
     .drag-handle {
       border: 1px solid rgba(128, 128, 128, .7);
-      width: $bubble-size; height: $bubble-size;
+      width, height: $bubble-size;
       border-radius: 50%;
       position: absolute;
       background-color: rgba(255, 255, 255, .3);
       box-shadow: 0 0 1px #ccc;
+
+      transition:
+        top .2s,
+        bottom .2s,
+        right .2s,
+        left .2s,
+        margin-left .2s,
+        margin-top .2s,
+        width .2s,
+        height .2s,
+        background-color .2s,
+        border-color .2s;
 
       &.hovered {
         background-color: rgba(255, 255, 255, .7);
         border-color: rgba(119, 119, 119, .7);
       }
 
-      &.selected {
-        background-color: rgba(221, 221, 221, .7);
-        border-color: rgba(119, 119, 119, .7);
-      }
-
-
-
       &.top {
-        top: -$bubble-size/2;
+        top, margin-left: -$bubble-size/2;
         left: 50%;
-        margin-left: -$bubble-size/2;
       }
 
       &.bottom {
@@ -86,13 +90,11 @@
       }
 
       &.top-left {
-        top: -$bubble-size/2;
-        left: -$bubble-size/2;
+        top, left: -$bubble-size/2;
       }
 
       &.top-right {
-        top: -$bubble-size/2;
-        right: -$bubble-size/2;
+        top, right: -$bubble-size/2;
       }
 
       &.bottom-left {
@@ -103,6 +105,53 @@
       &.bottom-right {
         bottom: -$bubble-size/2;
         right: -$bubble-size/2;
+      }
+
+      &.selected {
+        $bubble-size: $bubble-size * 2.9;
+        background-color: rgba(221, 221, 221, .3);
+        border-color: rgba(239, 252, 249, .5);
+        width: $bubble-size; height: $bubble-size;
+
+        &.top {
+          top: -$bubble-size/2;
+          margin-left: -$bubble-size/2;
+        }
+
+        &.bottom {
+          bottom: -$bubble-size/2;
+          margin-left: -$bubble-size/2;
+        }
+
+        &.left {
+          left: -$bubble-size/2;
+          margin-top: -$bubble-size/2;
+        }
+
+        &.right {
+          right: -$bubble-size/2;
+          margin-top: -$bubble-size/2;
+        }
+
+        &.top-left {
+          top: -$bubble-size/2;
+          left: -$bubble-size/2;
+        }
+
+        &.top-right {
+          top: -$bubble-size/2;
+          right: -$bubble-size/2;
+        }
+
+        &.bottom-left {
+          bottom: -$bubble-size/2;
+          left: -$bubble-size/2;
+        }
+
+        &.bottom-right {
+          bottom: -$bubble-size/2;
+          right: -$bubble-size/2;
+        }
 
       }
     }
