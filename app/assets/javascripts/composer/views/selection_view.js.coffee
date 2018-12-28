@@ -412,23 +412,6 @@ class @Newstime.SelectionView extends Newstime.View
   getHeight: ->
     @contentItem.get('height')
 
-  # Detects a hit of the selection
-  hit: (x, y) ->
-    geometry = @getGeometry()
-
-    ## Expand the geometry by buffer distance in each direction to extend
-    ## clickable area.
-    buffer = 24 # 2px
-    geometry.top -= buffer
-    geometry.left -= buffer
-    geometry.width += buffer*2
-    geometry.height += buffer*2
-
-    ## Detect if corrds lie within the geometry
-    geometry.left <= x <= geometry.left + geometry.width &&
-      geometry.top <= y <= geometry.top + geometry.height
-
-
   getGeometry: ->
     @contentItem.pick('top', 'left', 'height', 'width')
 
@@ -510,6 +493,18 @@ class @Newstime.SelectionView extends Newstime.View
       (h) -> h.type == mode)
     .selected()
 
+  # Detects a hit of the selection
+  hit: (x, y) ->
+    geometry = @getGeometry()
+    geometry = new Newstime.Boundry(geometry)
+
+    outerBoundry = geometry.dup().expandBy(12)
+
+    if outerBoundry.hit(x,y)
+      geometry.hit(x,y) || @hitsDragHandle(x,y)
+
+
+
   hitsDragHandle: (x, y) ->
     geometry = @getGeometry()
 
@@ -521,8 +516,8 @@ class @Newstime.SelectionView extends Newstime.View
 
     right   = left + width
     bottom  = top + height
-    centerX = left + width/2
-    centerY = top + height/2
+    centerX = left + width/2 + 1
+    centerY = top + height/2 + 1
 
     boxSize = 18
 

@@ -80,3 +80,15 @@ class @Newstime.Boundry
     height = @height + buffer*2
 
     left <= x <= left + width && top <= y <= top + height
+
+  dup: ->
+    new Newstime.Boundry(this)
+
+  expandBy: (x) ->
+    # @top, @left -= x
+    # @width, @height += x*2
+    @top    -= x
+    @left   -= x
+    @width  += x*2
+    @height += x*2
+    this

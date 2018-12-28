@@ -182,7 +182,7 @@ class @Newstime.PageView extends @Newstime.View
     if y >= @boundingBox.top && y <= @boundingBox.bottom
       # If x,y hits the bounding box, check hit against contentItemsArray
       _.find @contentItemViewsArray, (contentItemView) ->
-        contentItemView.hit(x, y, buffer: 24)
+        contentItemView.hit(x, y)
 
   # Inserts view before referenceView.
   insertBefore: (view, referenceView) ->
