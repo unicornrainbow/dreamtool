@@ -1,7 +1,6 @@
 class @Newstime.PanelView extends @Newstime.View
 
   events:
-    # 'mousedown .title-bar': 'beginDrag'
     'mousedown .title-bar': 'titleBarMousedown'
     'mouseup .title-bar': 'titleBarMouseup'
     'mousemove .title-bar': 'titleBarMousemove'
@@ -52,7 +51,9 @@ class @Newstime.PanelView extends @Newstime.View
     @hidden = @model.get('hidden')
 
   render: ->
-    @$el.css @model.pick('width', 'height', 'top', 'left')
+    @$el.css @model.pick('width', 'height')
+    @$el.css @model.pick('right', 'left', 'bottom', 'top')
+
     @$el.css 'z-index': @model.get('z_index')
     @$el.toggle !@hidden
     @renderPanel() if @renderPanel
@@ -83,7 +84,6 @@ class @Newstime.PanelView extends @Newstime.View
 
   paste: (e) ->
     e.stopPropagation()
-
 
   mouseover: (e) =>
     @hovered = true
@@ -125,7 +125,6 @@ class @Newstime.PanelView extends @Newstime.View
   toggle: ->
     if @hidden then @show() else @hide()
 
-
   mousemove: (e) ->
     x = e.x || e.clientX
     y = e.y || e.clientY
@@ -138,26 +137,28 @@ class @Newstime.PanelView extends @Newstime.View
 
       if @resizing
         @resize(x, y)
-        ## Calculate correct resize values
-        ##@$el.css('bottom', $(window).height() - e.y - @bottomMouseOffset)
-        ##@$el.css('right', $(window).width() - e.x - @rightMouseOffset)
-
-        ##console.log e.y - @topOffset  + @bottomMouseOffset
-        #console.log @topOffset
-        #@model.set
-          #height: e.y - @topOffset  + @topMouseOffset
-          #width:  e.x - @leftOffset + @leftMouseOffset
-
-
 
   move: (x, y) ->
-    x -= @leftMouseOffset
+    # x -= @leftMouseOffset
     y -= @topMouseOffset
 
-    @model.set
-      left: x
-      top: y
+    positionBy = @model.get('positionBy') || ['right', 'top']
 
+    if x - @leftMouseOffset + @model.get('width')/2 < $(window).width()/2
+      # Position left
+      positionBy[0] = 'left'
+      x -= @leftMouseOffset
+    else
+      # Position right
+      positionBy[0] = 'right'
+      x = $(window).width() - x - @rightMouseOffset
+
+    if positionBy[1] == 'bottom'
+      y = $(window).height() - y - @bottomMouseOffset
+    position = _.object positionBy, [x, y]
+    _.defaults position, { top: null, bottom: null, left: null, right: null }
+    console.log position
+    @model.set position
 
   resize: (x, y) ->
     @model.set
@@ -197,8 +198,10 @@ class @Newstime.PanelView extends @Newstime.View
       @dragging = true
       @$titleBar.addClass('grabbing')
 
-      @leftMouseOffset = x - @model.get('left')
+      @leftMouseOffset = x - @x() #@model.get('left')
       @topMouseOffset = y - @model.get('top')
+      @rightMouseOffset = @model.get('width') - @leftMouseOffset
+      @bottomMouseOffset = @model.get('height') - @topMouseOffset
 
       # Engage and begin tracking here.
 
@@ -258,7 +261,10 @@ class @Newstime.PanelView extends @Newstime.View
     parseInt(@$el.css('height'))
 
   x: ->
-    @model.get('left')
+    if @model.get('left')
+      @model.get('left')
+    else
+      $(window).width() - @model.get('right') - @model.get('width')
 
   y: ->
     @model.get('top')
@@ -285,7 +291,9 @@ class @Newstime.PanelView extends @Newstime.View
     @$el.removeClass 'hovered'
 
   getSettings: ->
-    @model.pick('top', 'left', 'height', 'width')
+    @model.pick('top', 'left', 'bottom', 'right'
+      'positionBy',
+      'height', 'width')
 
   setSettings: (settings) ->
     @model.set(settings)
