@@ -3,6 +3,7 @@ ruby '2.3.5'
 
 gem 'rails', '4.0.2'
 gem 'sass-rails', '~> 4.0.0'
+gem 'sass', '~> 3.2.19', git: "http://github.com/unicornrainbow/sass", branch: "multi-prop"
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'coffee-rails', '~> 4.0.0'
 

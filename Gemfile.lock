@@ -7,6 +7,13 @@ GIT
       sprockets-rails
 
 GIT
+  remote: http://github.com/unicornrainbow/sass
+  revision: 14d8793fbaa3f903dcca9498de9aaf2bdac125d8
+  branch: multi-prop
+  specs:
+    sass (3.2.19)
+
+GIT
   remote: https://github.com/nricciar/wikicloth.git
   revision: 16a3c2565f469809c690dc6c125d2aa4b709e328
   specs:
@@ -212,7 +219,6 @@ GEM
       redis (>= 3.0.4)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
-    sass (3.2.19)
     sass-rails (4.0.5)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.2.2)
@@ -310,6 +316,7 @@ DEPENDENCIES
   rails_12factor
   redcarpet
   redis-namespace
+  sass (~> 3.2.19)!
   sass-rails (~> 4.0.0)
   sdoc
   sidekiq (~> 4.2.10)
