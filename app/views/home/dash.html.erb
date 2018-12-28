@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <HEAD>
-<%= google_fonts 'Raleway:100,400,700' %>
+<%= google_fonts 'Raleway:100,300,400,700' %>
 <script src="https://d3js.org/d3.v5.min.js"></script>
 
 <style>
@@ -15,7 +15,7 @@ h2 {
   color: aliceblue ;
   margin: 2px 0 20px 0;
   font-size: 1.7em;
-  font-weight: 100;
+  font-weight: 300;
 }
 
 chart[name=new-users] {
@@ -58,7 +58,7 @@ chart[name=new-users] div {
 .guage label {
   font-size: 2.2em;
   line-height: 2.4em;
-  font-weight: 100;
+  font-weight: 300;
   display: block;
 }
 
@@ -84,7 +84,7 @@ div.today h3 {
   font-family: Raleway;
   color: #ff9efb;
   font-size: 2em;
-  font-weight: 100;
+  font-weight: 400;
   text-align: center;
 }
 
@@ -141,7 +141,7 @@ text-decoration: underline;
     style="color: darkturquoise; bg-color: aquamarine; "
     color="darkturquoise/aquamarine">
   <label>Total Users</label>
-  <i>3</i>
+  <i><%= @total_users %></i>
 </div>
 
 <script>

@@ -102,6 +102,8 @@ class HomeController < ApplicationController #ActionController::Base
     # ("Hits: #{Today.date}") || 0
     @visits = @hits.distinct(:ip)
 
+    @total_users = User.count
+
     render layout: false
   end
 
