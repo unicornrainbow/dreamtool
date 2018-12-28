@@ -113,7 +113,14 @@ class EditionsController < ApplicationController
     redirect_to (send("#{params[:action]}_edition_path".to_sym, @edition.slug || @edition) + '/main.html') and return unless params['path']
 
     # Only respond to requests with an explict .html extension.
-    # not_found unless request.original_url.match(/\.html$/)
+    not_found unless request.original_url.match(/\.html$/)
+
+    unless current_user
+      redirect_to signin_url and return
+    end
+    unless current_user == @edition.user
+      not_authorized and return
+    end
 
     # Set composing flag as indication to layout_module.
     @composing = params[:action] == 'compose'
