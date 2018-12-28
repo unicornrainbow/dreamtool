@@ -418,34 +418,39 @@ class Newstime.Composer extends App.View
             @save()
 
   save: (depth=1)->
-    if depth == 1
-      @trigger 'before-save'
-      @saveWorkspace() unless @mobile
+    try
+      if depth == 1
+        @trigger 'before-save'
+        @saveWorkspace() unless @mobile
 
-    @statusIndicator.showMessage "Saving"
+      @statusIndicator.showMessage "Saving"
 
-    # Flush delete queue
-    if @deleteQueue.length > 0
-      model = @deleteQueue.shift()
-      model.destroy
-        success: =>
-          @save(depth+1)
-        error: =>
-          @deleteQueue.unshift(model)
-          @save(depth+1)
-    else
-      # Find unsaved group
-      newGroup = @edition.get('groups').find (g) -> g.isNew()
-
-      if newGroup
-        # Save the group, and call us back on success
-        newGroup.save {},
-          success: (model) =>
+      # Flush delete queue
+      if @deleteQueue.length > 0
+        model = @deleteQueue.shift()
+        model.destroy
+          success: =>
+            @save(depth+1)
+          error: =>
+            @deleteQueue.unshift(model)
             @save(depth+1)
       else
-        @edition.save {},
-          error: =>
-            @statusIndicator.showMessage "Error Saving", 1000
+        # Find unsaved group
+        newGroup = @edition.get('groups').find (g) -> g.isNew()
+
+        if newGroup
+          # Save the group, and call us back on success
+          newGroup.save {},
+            success: (model) =>
+              @save(depth+1)
+        else
+          @edition.save {},
+            error: =>
+              @statusIndicator.showMessage "Error Saving", 1000
+    catch error
+      console.log error
+      @statusIndicator.showMessage "Error Saving", 1000
+      throw error
 
   saveWorkspace: ->
     workspaceJSON['color_palatte'] = @colorPalatteView.getSettings()
