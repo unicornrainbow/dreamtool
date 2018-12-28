@@ -502,27 +502,7 @@ class @Newstime.CanvasView extends @Newstime.View
 
     selection = null
 
-    # if @touching
-    #   unless @touching.hit(x, y)
-    #     @touching = null
-
-    if @composer.selection # Check active selection first.
-      if @composer.selection.group # react differently if the selection is inside of a group
-        group = @composer.selection.group
-        selection = @composer.selection if @composer.selection.hit(x - group.get('left'), y - group.get('top'))
-      else
-        selection = @composer.selection if @composer.selection.hit(x, y)
-
-    # unless selection
-    #   _.find @pageViewsArray, (pageView) ->
-    #     selection = pageView.getHitContentItem(x, y)
-
-    @touching = selection
-
-    if @touching
-      @touching.trigger 'touchstart', e
-
-    else
+    if @toolsSpinner.get('selectedTool')
       switch @toolsSpinner.get('selectedTool')
         when 'story-tool'
           @draw(Newstime.TextAreaView, x, y)
@@ -533,6 +513,27 @@ class @Newstime.CanvasView extends @Newstime.View
         when 'photo-tool'
           @draw(Newstime.PhotoView, x, y)
           @toolsSpinner.set('selectedTool', null)
+    else
+      # if @touching
+      #   unless @touching.hit(x, y)
+      #     @touching = null
+
+      if @composer.selection # Check active selection first.
+        if @composer.selection.group # react differently if the selection is inside of a group
+          group = @composer.selection.group
+          selection = @composer.selection if @composer.selection.hit(x - group.get('left'), y - group.get('top'))
+        else
+          selection = @composer.selection if @composer.selection.hit(x, y)
+
+      # unless selection
+      #   _.find @pageViewsArray, (pageView) ->
+      #     selection = pageView.getHitContentItem(x, y)
+
+      @touching = selection
+
+      if @touching
+        @touching.trigger 'touchstart', e
+
 
     # else
     #   @composer.clearSelection()
