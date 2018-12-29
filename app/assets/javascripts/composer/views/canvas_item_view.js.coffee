@@ -118,7 +118,7 @@ class @Newstime.CanvasItemView extends @Newstime.View
       if @composer.multiSelectionMode
         @composer.addToSelection(this)
       else
-        if @selected
+        if @selected and e.pointers.length == 2
           @composer.multiSelect()
 
 

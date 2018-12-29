@@ -1877,7 +1877,6 @@ inherit(PressRecognizer, Recognizer, {
      */
     defaults: {
         event: 'press',
-        pointers: 1,
         time: 251, // minimal time of the pointer to be pressed
         threshold: 9 // a minimal movement is ok, but keep it low
     },
@@ -1888,7 +1887,6 @@ inherit(PressRecognizer, Recognizer, {
 
     process: function(input) {
         var options = this.options;
-        var validPointers = input.pointers.length === options.pointers;
         var validMovement = input.distance < options.threshold;
         var validTime = input.deltaTime > options.time;
 
@@ -1896,7 +1894,7 @@ inherit(PressRecognizer, Recognizer, {
 
         // we only allow little movement
         // and we've reached an end event, so a tap is possible
-        if (!validMovement || !validPointers || (input.eventType & (INPUT_END | INPUT_CANCEL) && !validTime)) {
+        if (!validMovement || (input.eventType & (INPUT_END | INPUT_CANCEL) && !validTime)) {
             this.reset();
         } else if (input.eventType & INPUT_START) {
             this.reset();
