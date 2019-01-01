@@ -159,6 +159,11 @@ class Newstime.Composer extends App.View
       # @forkUs = new App.ForkUs
       # @$body.append @forkUs.el
 
+      @flickrWindow = new App.FlickrWindow
+        composer: this
+        hidden: true
+      @$body.append @flickrWindow.el
+
     else
 
       @toolboxView = new Newstime.ToolboxView
@@ -313,6 +318,7 @@ class Newstime.Composer extends App.View
     @vent.trigger 'ready'
 
 
+  @delegate ['append'], '$body'
   applyWorkspaceJSON: (workspaceJSON) ->
     @pagesPanelView.setSettings(workspaceJSON["pages_panel"])
     @colorPalatteView.setSettings(workspaceJSON["color_palatte"])

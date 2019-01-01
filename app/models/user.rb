@@ -14,6 +14,13 @@ class User
   field :reset_password_sent_at,  type: Time
   field :signup_date
 
+  # Flickr
+  field :flickr_id
+  field :flickr_username
+  field :flickr_access_token
+  field :flickr_access_secret, type: Mongoid::EncryptedString
+  # field :flickr_access_secret, encrypt: true, key: FLICKR_KEY
+
   belongs_to :organization
 
   has_many :editions

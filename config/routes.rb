@@ -57,13 +57,18 @@ Press::Application.routes.draw do
     end
   end
 
-  post '/' => 'home#sign_in'
+  post '/' => 'home#sign_in', as: 'signin'
   get '/sign-out' => 'home#sign_out'
   get '/hot-muffins' => 'home#hot_muffins'
   post '/hot-muffins' => 'home#hot_muffins'
   post '/workspace' => 'workspaces#save_workspace'
   get '/dash' => 'home#dash'
   
+
+  get 'flickr/authorize'
+  get 'flickr/auth_callback'
+  get 'flickr/photos'
+
   resources :prints, except: 'show' do
     member do
       get :download

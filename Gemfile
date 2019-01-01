@@ -40,6 +40,9 @@ gem 'eco'
 gem 'foreman'
 gem 'rails_12factor', group: :production
 gem 'mongoid_rails_migrations'
+gem 'flickraw'
+gem 'mongoid-encrypted-fields'
+gem 'gibberish'
 
 
 gem 'compass-rails'

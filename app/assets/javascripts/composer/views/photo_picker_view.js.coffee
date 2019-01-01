@@ -13,15 +13,15 @@ class @Newstime.PhotoPickerView extends Backbone.View
     # Need to query server for list of photos
     $.ajax
       method: 'GET'
-      url: "/photos.json"
+      url: "/flickr/photos.json"
       success: (response) =>
         i = 0
         _.each response, (photo) =>
           @$el.append """
             <div class="photo-thumbnail"
                  data-photo-id="#{photo._id}"
-                 data-edition-relative-url-path="#{photo.edition_relative_url_path}"
-                 style="background-image: url('#{photo.edition_relative_url_path}')"></div>
+                 data-edition-relative-url-path="#{photo.url}"
+                 style="background-image: url('#{photo.url}')"></div>
           """
           if i == 3
             @$el.append "<br>"
