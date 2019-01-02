@@ -34,8 +34,8 @@ class FlickrController < ApplicationController
       flickr.access_token
 
     secret = flickr.access_secret
-    current_user.flickr_access_secret =
-      secret.to_s
+    current_user.flickr_access_secret = nil
+    current_user.flickr_access_secret = secret.to_s
 
     login = flickr.test.login
     c = current_user
