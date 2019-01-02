@@ -18,7 +18,7 @@ class User
   field :flickr_id
   field :flickr_username
   field :flickr_access_token
-  field :flickr_access_secret, type: Mongoid::EncryptedString
+  field :flickr_access_secret #, type: Mongoid::EncryptedString
   # field :flickr_access_secret, encrypt: true, key: FLICKR_KEY
 
   belongs_to :organization
