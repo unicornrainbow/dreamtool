@@ -7,9 +7,10 @@ class @Newstime.PhotoPickerView extends Backbone.View
     @window = options.window
     @composer = Newstime.composer
     @$el.addClass "photo-picker"
-    @loadPhotos()
+    @loadPhotos =>
+      @addConnectFlickrBtn()
 
-  loadPhotos: ->
+  loadPhotos: (callme) ->
     # Need to query server for list of photos
     $.ajax
       method: 'GET'
@@ -28,6 +29,13 @@ class @Newstime.PhotoPickerView extends Backbone.View
             i = 0
           else
             i++
+        callme()
+
+  addConnectFlickrBtn: ->
+    @$el.append """
+      <BR>
+      <button onclick="window.open('/flickr/authorize');">Connect Flickr</button>
+    """
 
   selectPhoto: (e) =>
     photoId = $(e.target).data('photo-id')
