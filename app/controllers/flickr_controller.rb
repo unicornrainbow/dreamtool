@@ -21,6 +21,7 @@ class FlickrController < ApplicationController
   end
 
   def auth_callback
+    flickr = FlickRaw::Flickr.new
     oauth_token = params["oauth_token"]
     verify    =    params["oauth_verifier"]
 
