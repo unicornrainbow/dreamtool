@@ -1,0 +1,668 @@
+<meta charset="utf-8"/>
+<meta name="viewport"
+      content="width=device-width,
+        initial-scale=1.0,user-scalable=no">
+<style>
+  body {
+    --hotpink: #ff00f3;
+    /* margin: 0; */
+    background: #ffc7f8;
+    cursor: text;
+    /* transform: rotateY(180deg); */
+    /* text-align: left; */
+    /* direction: rtl; */
+  }
+
+  body, textarea, textview, button {
+    color: #f958f6;
+    font-size: 24px;
+    font-family: Menlo,
+      Consolas, DejaVu Sans Mono, monospace;
+    line-height: 1.5;
+  }
+
+  textview {
+    display: block;
+  }
+
+  badge {
+    z-index: 2;
+    position: relative;
+  }
+
+  a, a:hover {
+    color: #f958f6;
+  }
+
+  c, char {
+    display: inline-block;
+    /* transform: rotateY(180deg); */
+
+  }
+
+  textarea {
+    padding: 10px;
+    margin: 0;
+    border: none;
+    background: transparent;
+    width: 100%; height: 100%;
+  }
+
+  cursor {
+    display: inline;
+    border-right: 1px solid #f958f6;
+    border-left: 1px solid #f958f6;
+    margin-right: -2px;
+    animation:
+      blink 1s step-start .5s infinite;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0.0;
+    }
+  }
+
+  button {
+    border: 1px solid #f958f6;
+    border-radius: 5px;
+    background: #fcd2ff;
+  }
+
+  word {white-space:nowrap;}
+  treeview, textview {
+    display: block;
+    float: left;
+    border: 1px solid var(--hotpink);
+    /* position: absolute; */
+    /* width: 300px; */
+    /* top: 0;
+    left: 0;
+    bottom: 0; */
+    background: #ffc7f8;
+    padding: 10px;
+    margin: 2px;
+  }
+
+  keyboard {
+    width: 700px;
+    height: 250px;
+    border: 1px solid var(--hotpink);
+    display: block;
+    position: relative;
+  }
+
+  svg {
+    border: 1px solid var(--hotpink);
+    position: absolute;
+    top: -1px;
+    right: -1px;
+  }
+
+  svg path {
+    stroke: var(--hotpink);
+    fill: none;
+    stroke-width: 3;
+  }
+</style>
+<badge>
+<%= render 'dreamtool_logo' %>
+</badge>
+<treeview>
+<list>
+<li><a onclick='loadFile(this);'>candikeys.html</a></li>
+<li><a onclick='loadFile(this);'>color_model_for_web</a></li>
+</list>
+</treeview>
+
+<textview>
+<char>N</char><char>o</char><char>w</char>
+<char>t</char><char>h</char><char>a</char><char>t</char><char>'</char><char>s</char>
+<char>w</char><char>h</char><char>a</char><char>t</char>
+<char>i</char>
+<char>c</char><char>a</char><char>l</char><char>l</char>
+<word>
+<char>p</char><char>e</char><char>p</char><char>p</char><char>e</char><char>r</char><char>o</char><char>n</char><char>i</char><char>!</char>
+</word>
+<br><char>Q</char><char>m</char><char>a</char><char>s</char><char>&nbsp;</char><char>c</char><char>h</char><char>e</char><char>e</char><char>r</char><cursor></cursor><char>$</char><char>$</char><br><char>N</char><char>o</char><char>&nbsp;</char><char>n</char><char>o</char><char>n</char><char>s</char><char>e</char><char>n</char><char>s</char><char>e</char><char>.</char><char>&nbsp;</char><char>X</char><char>t</char><char>r</char><char>a</char><char>&nbsp;</char><char>x</char><char>h</char><char>e</char><char>e</char><char>s</char><char>e</char><char>&nbsp;</char><char>b</char><char>l</char><char>e</char><char>a</char><char>s</char><char>e</char><char>.</char>
+</textview>
+
+
+<memo color=pink>
+Working on a new idea.
+A fully functioning text editor
+for mobile and desktop.
+Supporting rtl and ltr editing
+and reading modes.
+Also supporting rendering in a
+square or circular viewport.
+To include a touch keyboard
+with swype and project navigator.
+
+</memo>
+
+<list>
+- Edition
+  - Controller
+  - Model
+  - Views
+    - Show
+    - Edit
+</list>
+
+{
+  shape: 'circle',
+  shape: 'square'
+}
+
+<keyboard id='keyboard'>
+  epahs a warD.
+  <svg height="250" width="700">
+    <path d="M170 20 L75 200 L225 200" />
+  </svg>
+  <br>
+  <button>Q</button>
+  <button>W</button>
+  <button>E</button>
+  <button>R</button>
+  <button>T</button>
+  <button>Y</button>
+  <button>U</button>
+  <button>I</button>
+  <button>O</button>
+  <button>P</button>
+  <button>[</button>
+  <button>]</button>
+  <button>\</button>
+  <br>
+  <button>A</button>
+  <button>S</button>
+  <button>D</button>
+  <button>F</button>
+  <button>G</button>
+  <button>H</button>
+  <button>J</button>
+  <button>K</button>
+  <button>L</button>
+  <button>;</button>
+  <button>'</button>
+  <br>
+  <button>Z</button>
+  <button>X</button>
+  <button>C</button>
+  <button>V</button>
+  <button>B</button>
+  <button>N</button>
+  <button>M</button>
+  <button>,</button>
+  <button>.</button>
+  <button>/</button>
+</keyboard>
+<!-- https://www.w3schools.com/graphics/svg_path.asp -->
+<button></button>
+<script type='text/javascript'>
+
+var align = 'right';
+// var align = 'left';
+var wd = 'left'; // writing direction
+// var wd = 'right';
+
+var input, cursor, xoxo;
+var direction = 'rtl';
+
+function initialize() {
+  document.body.style.direction = direction;
+  cursor = document.getElementsByTagName('cursor')[0];
+  xoxo  = cursor.parentNode;
+  // xoxo.style.direction = direction;
+  input = document.getElementById('input');
+
+  input.oninput = function() {
+    typeChar(this.value);
+    this.value = '';
+  }
+  input.focus();
+}
+
+// console.log(input);
+// input.onkeypress = function(event){
+//   if (event.metaKey) {
+//     return true;
+//   }
+//
+//   switch (event.key) {
+//     case 'ArrowLeft':
+//       moveLeft();
+//       break;
+//     case 'ArrowRight':
+//       moveRight();
+//       break;
+//     case 'Backspace':
+//       backspace();
+//       event.cancleBubble();
+//       break;
+//     case ' ':
+//       typeChar('\u00A0');
+//       event.preventDefault();
+//       break;
+//     case 'Enter':
+//       newline();
+//       break;
+//     default:
+//       console.log(event);
+//       typeChar(event.key);
+//   }
+//   // if (event.key == 'ArrowLeft') {
+//   // } else
+// }
+// document.body.addEventListener('touchmove', function(e) {
+//   console.log('strong');
+//    e.preventDefault();
+//  });
+
+
+window.onkeydown = function(event) {
+  switch (event.key) {
+    case 'ArrowLeft':
+      switch (direction) {
+        case 'ltr':
+          moveLeft();
+          break;
+        case 'rtl':
+          moveRight();
+      }
+      break;
+    case 'ArrowRight':
+      switch (direction) {
+        case 'ltr':
+          moveRight();
+          break;
+        case 'rtl':
+          moveLeft();
+      }
+      break;
+    case 'ArrowUp':
+      arrowUp();
+      event.preventDefault();
+      break;
+    case 'ArrowDown':
+      arrowDown();
+      event.preventDefault();
+      break;
+    case 'Backspace':
+      event.preventDefault();
+      backspace();
+      console.log('tuff');
+      break;
+
+  }
+}
+window.onkeypress = function(event){
+  if (event.metaKey) {
+    return true;
+  }
+
+  switch (event.key) {
+    case ' ':
+      typeChar('\u00A0');
+      event.preventDefault();
+      break;
+    case 'Enter':
+      newline();
+      // reverseNewline();
+      break;
+    default:
+      event.preventDefault();
+      if (document.activeElement != input) {
+        typeChar(event.key);
+      }
+  }
+  // if (event.key == 'ArrowLeft') {
+  // } else
+}
+
+document.onpaste = function(event) {
+  typeChar(event.clipboardData.getData('text'));
+  // console.log(event);
+}
+
+function moveLeft() {
+  xoxo.insertBefore(cursor, cursor.previousSibling);
+}
+function moveRight() {
+  xoxo.insertBefore(cursor.nextSibling, cursor);
+  xoxo.replaceChild(cursor, cursor);
+}
+function arrowUp() {
+  var x = cursor.previousSibling;
+  while (x != null && x.tagName != 'BR') {
+    x = x.previousSibling;
+  }
+  x = x.previousSibling;
+  while (x != null && x.tagName != 'BR') {
+    x = x.previousSibling;
+  }
+  if (x) {
+    xoxo.insertBefore(cursor, x.nextSibling);
+  }
+
+  // moveLeft();
+
+}
+function arrowDown() {
+
+  var x = cursor.nextSibling;
+  while (x != null && x.tagName != 'BR') {
+    x = x.nextSibling
+  }
+  if (x) {
+    xoxo.insertBefore(cursor, x);
+  }
+  moveRight();
+
+}
+function backspace() {
+  xoxo.removeChild(cursor.previousSibling); // l2r
+  // xoxo.removeChild(cursor.nextSibling); // r2l
+}
+function typeChar(character) {
+  // var n = document.createTextNode(character);
+  var c = document.createElement('char');
+  c.innerHTML = character;
+  xoxo.insertBefore(c, cursor);
+  // xoxo.insertBefore(cursor, n);
+
+}
+// ⎛love go do⎠
+function newline(){
+  // ⩐⩌⧬𝐅ⓕ⒡𝓕ℑ𝕯𝕏𝖮𝛙𝞝𝞓➫→☛Ỗ
+  var br = document.createElement('br');
+  xoxo.insertBefore(br, cursor);
+  // xoxo.insertBefore(cursor, br);
+}
+// (defn newline []
+//   (let [br (send document :createElement 'br')]
+//     ))
+function reverseNewline() {
+  // put br at other end of line.
+  var br = document.createElement('br');
+  // Find the first br element to the right.
+
+  var x = cursor.nextSibling;
+  while (x != null && x.tagName != 'BR') {
+    x = x.nextSibling
+  }
+  console.log(x);
+  if (x) {
+    xoxo.insertBefore(cursor, x);
+    xoxo.insertBefore(br, cursor);
+  }
+}
+//console.log(window.keypress);
+
+function toggleDirection() {
+  switch(direction) {
+    case 'ltr':
+      direction='rtl';
+      initialize();
+      break;
+    case 'rtl':
+      direction='ltr';
+      initialize();
+      break;
+  }
+}
+
+function save() {
+  var ls = window.localStorage;
+  ls['doc'] = xoxo.innerHTML
+}
+
+function load() {
+  var localStorage = window.localStorage;
+  if (localStorage['doc'] !== undefined) {
+    xoxo.innerHTML = localStorage['doc'];
+    initialize();
+  }
+}
+
+function loadFile(target) {
+  filename = target.innerText
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+         xoxo.innerHTML += xhttp.responseText;
+      }
+  };
+  xhttp.open("GET", "/dev/tree/" + filename, true);
+  xhttp.send();
+  // alert(target.innerText)
+
+}
+
+(function(){
+  var drawing = false;
+  var keyboard = document.getElementById('keyboard');
+  var path =
+    keyboard.getElementsByTagName('path')[0];
+  var raw; // The raw path points
+  keyboard.onmousedown = function(e){
+    drawing = true;
+    console.log(path);
+
+    // Create a new path element.
+    // path = document.createElement('path')
+    // path.setAttribute('stroke', '')
+    // path.setAttribute('stroke-width', '')
+
+    var y = e.y - this.offsetTop;
+    var x = e.x - this.offsetLeft;
+    var d = path.getAttribute('d');
+    d += " M" + x + " " + y;
+    path.setAttribute('d', d);
+
+    raw = [[x,y]];
+  }
+  keyboard.onmousemove = function(e){
+    if(drawing==true) {
+      // console.log(
+      // console.log(
+      var y = e.y - this.offsetTop;
+      var x = e.x - this.offsetLeft;
+      var d = path.getAttribute('d');
+      d += " L" + x + " " + y;
+      path.setAttribute('d', d);
+      // this.offsetRight
+      // console.log(e.x, e.y)
+
+      raw.push([x,y]);
+    }
+  }
+  keyboard.onmouseup = function(){
+    drawing = false;
+    // Find edges and points
+    var i=0, d;
+    while(i<raw.length-1){
+      d = findDirection(raw[i], raw[i+1]);
+      console.log(d);
+      i++;
+    }
+    console.log(raw);
+  }
+
+  // (def find-direction
+  //   [[x1 y1] [x2 y2]]
+  //   (let [deltaX (- x2 x1)
+  //         deltaY (- y2 y1)
+  //         rad (.atan2 Math deltaY deltaX)]
+  //         rad))
+
+
+  function findDirection([x1,y1], [x2,y2]) {
+    var deltaX = x2 - x1;
+    var deltaY = y2 - y1;
+    var rad = Math.atan2(deltaY, deltaX); // In radians
+    // var deg = rad * (180 / Math.PI);
+    //
+    // if (deg < 0) {
+    //   // up
+    //         deg = Math.abs(deg);
+    //   if (deg < 22.5)
+    //     return 'e';
+    //   if (deg < 67.5)
+    //     return 'ne';
+    //   if (deg > 157.5)
+    //     return 'w';
+    //   if (deg > 112.5)
+    //     return 'nw';
+    //   else
+    //     return 'n';
+    // } else {
+    //   // down
+    //   if (deg < 22.5)
+    //     return 'e';
+    //   if (deg < 67.5)
+    //     return 'se';
+    //   if (deg > 157.5)
+    //     return 'w';
+    //   if (deg > 112.5)
+    //     return 'sw';
+    //   else
+    //     return 's';
+    // }
+
+    return rad;
+  }
+  function plot(input) {
+  }
+
+  console.log('Lobster');
+})();
+
+initialize();
+// load();
+
+function addCheckbox() {
+  var checkbox = document.createElement('input');
+  checkbox.setAttribute('type', 'checkbox');
+  checkbox.onclick = toggleDirection;
+  document.body.insertBefore(checkbox, document.body.firstChild);
+}
+addCheckbox();
+
+
+
+
+</script>
+
+<script src="/bubblescript.js?7"></script>
+<script type="text/bubblescript">
+(println "Hello World!")
+
+;(document.body.addEventListener
+;  'click
+;   (jsfn [e] (window.alert "love")))
+
+
+;(send document.body
+;  'addEventListener
+;  'touchmove
+;  (jsfn [event]
+;    (event.preventDefault))
+;  false)
+
+(def log
+  (fn [msg]
+  (window.console.log msg)))
+
+(log "Miracles")
+
+(log
+  "Christmas")
+  ;"Candy")
+
+(def defmacro
+  (macro [name args body]
+    (list 'def name
+      (list 'macro args body))))
+
+;(def onclick
+;  (macro
+;    [a b c]
+;    (list 'send a
+;      ''addEventListener
+;      ''click
+;      (list 'jsfn b c))))
+
+
+(defmacro onclick
+  [a b c]
+  (list 'send a
+    ''addEventListener
+    ''click
+    (list 'jsfn b c)))
+
+(defmacro ontouchmove
+  [a b c d]
+  (list 'send a
+    ''addEventListener
+    ''touchmove
+    (list 'jsfn b c d)))
+
+;(defmacro defevent
+;   [name]
+;   (list 'defmacro ))
+
+;(defevent touchstart)
+;(defevent touchend)
+
+(onclick document.body
+  [event]
+  (window.alert
+    "Candy is my favorite!"))
+
+(ontouchmove document.body
+  [event]
+  (log "Woopie")
+  (event.preventDefault))
+
+(log document.body.innerText)
+
+  ;(get
+  ;  document.body
+  ;  'innerText))
+
+;(defmacro expandmacro
+;  [m] )
+
+;(expandmacro
+;  onclick document.body
+;  [event]
+;  (window.alert
+;    "Candy is my favorite!"))
+
+
+</script>
+
+  (document.body.addEventListener
+    'click
+     (jsfn [e] (window.console.log fn)))
+
+  (document.body.addEventListener
+    'touchmove'
+     (fn [event]
+       (event.preventDefault)))
+
+    ;(send event 'preventDefault)))
+
+    (defmacro onclick
+      [a & b]
+      (list 'send a
+        'addEventListner
+        'click
+        (list 'jsfn & b)))
+
+    (onclick document.body
+      [event]
+      (window.alert
+        "Yes yes yes!"))

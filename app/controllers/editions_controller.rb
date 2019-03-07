@@ -112,11 +112,19 @@ class EditionsController < ApplicationController
     # Redirect to main if no path specified.
     redirect_to (send("#{params[:action]}_edition_path".to_sym, @edition.slug || @edition) + '/main.html') and return unless params['path']
 
-    if @edition.user
-      unless current_user == @edition.user
-        not_authorized and return
-      end
-    end
+    # if @edition.user
+    #   unless current_user == @edition.user
+    #     not_authorized and return
+    #   end
+    # end
+    #
+    # def 🍬
+    #   puts "Yummy"
+    # end
+    #
+    # ⚠️ 🍷 ☕️ 🍩
+    #
+    # 🍵
 
     # Set composing flag as indication to layout_module.
     @composing = params[:action] == 'compose'

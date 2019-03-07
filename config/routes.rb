@@ -63,7 +63,7 @@ Press::Application.routes.draw do
   post '/hot-muffins' => 'home#hot_muffins'
   post '/workspace' => 'workspaces#save_workspace'
   get '/dash' => 'home#dash'
-  
+
 
   get 'flickr/authorize'
   get 'flickr/auth_callback'
@@ -128,6 +128,9 @@ Press::Application.routes.draw do
     resources :users
     resources :organizations
   end
+
+  get 'dev/edit'
+  get 'dev/tree/*path' => 'dev#tree'
 
   get '/logo' => 'application#logo'
 
