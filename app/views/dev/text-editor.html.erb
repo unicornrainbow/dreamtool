@@ -437,9 +437,22 @@ function loadFile(target) {
   xhttp.open("GET", "/dev/tree/" + filename, true);
   xhttp.send();
   // alert(target.innerText)
-
 }
+/*
+(let
+  [drawing false
+   id (fn [id] (document.getElementById id)
+   keyboard (id 'keyboard')
+   ]
 
+  (onmousedown
+    (fn [e]
+      (let [
+        drawing true
+        y (- e.y this.offsetTop)]
+        (log path)
+         )
+*/
 (function(){
   var drawing = false;
   var keyboard = document.getElementById('keyboard');
@@ -573,7 +586,16 @@ addCheckbox();
 
 (def log
   (fn [msg]
-  (window.console.log msg)))
+    (window.console.log msg)))
+
+(def first (fn [a] a.first))
+(def rest (fn [a] a.rest))
+(def last (fn [a] a.last))
+
+(def blank (fn [a & b]
+  (log a)
+  (log (first b))
+  (log (last b))))
 
 (log "Miracles")
 
@@ -585,6 +607,22 @@ addCheckbox();
   (macro [name args body]
     (list 'def name
       (list 'macro args body))))
+
+;(def defn
+;  (macro [name args & body]
+;    (list 'def name
+;      (conj (list 'fn args) body))))
+
+
+;(def new (fn [class & xyz] ()))
+(def push (fn [k m] (k.push m)))
+
+(def defn
+  (macro [name args & body]
+    (list 'def name
+       (push (push body args) 'fn))))
+
+;()
 
 ;(def onclick
 ;  (macro
@@ -602,12 +640,32 @@ addCheckbox();
     ''click
     (list 'jsfn b c)))
 
+;(defn pop  [k] (rest k))
+;(defn push [k m] (new List m k))
+
+(defn peek [k] (k.peek))
+(defn pop [k] (k.pop))
+(defn push [k m] (k.push m))
+
+(defn 🐥 [msg] (print msg))
+
+(🐥 "Rubber ducky wants to play")
+
+(defn 🦄🌈 [msg]
+  (print "Believe in yourself!" msg))
+
+(🦄🌈 "Candi")
+
+(🦄🌈 "Emily")
+
+☺️
+
 (defmacro ontouchmove
-  [a b c d]
-  (list 'send a
+  [😃 😋 😛]
+  (list 'send 😃
     ''addEventListener
     ''touchmove
-    (list 'jsfn b c d)))
+    (list (push (pop 😋) 'jsfn) 😛)))
 
 ;(defmacro defevent
 ;   [name]
@@ -616,15 +674,16 @@ addCheckbox();
 ;(defevent touchstart)
 ;(defevent touchend)
 
-(onclick document.body
+'(onclick document.body
   [event]
   (window.alert
     "Candy is my favorite!"))
 
 (ontouchmove document.body
-  [event]
-  (log "Woopie")
-  (event.preventDefault))
+  (fn [event]
+    (log "Woopie")
+    (event.preventDefault))
+  false)
 
 (log document.body.innerText)
 
@@ -633,7 +692,8 @@ addCheckbox();
   ;  'innerText))
 
 ;(defmacro expandmacro
-;  [m] )
+;    [x] (expand (first x) (rest x))
+;  [x] (send (first x) 'expand this (rest x))
 
 ;(expandmacro
 ;  onclick document.body
@@ -641,6 +701,31 @@ addCheckbox();
 ;  (window.alert
 ;    "Candy is my favorite!"))
 
+;(defn concat
+;  list
+;  (reduce (fn [a b] ()) list))
+
+(defn html-tag [tag-name]
+  ;(document.createElement tag-name))
+  (+ "<" tag-name "></" tag-name "> "))
+
+(defn input-tag [attributes value]
+  (html-tag 'input' attributes value))
+
+;(append document.body
+;  (input-tag {type "text"}))
+
+;(defmacro let [b & 💋]
+;  (evl (create-binding (even b) (odd b))
+;    (each (fn [💅] (evl 💄 💅) 💋))
+
+
+;(each q )
+
+(let [candy "delicious"]
+  (🐥 candy))
+
+(print (html-tag :li))
 
 </script>
 

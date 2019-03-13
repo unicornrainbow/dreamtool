@@ -1,8 +1,6 @@
 
-class BubbleScript {
-  parse() {}
-}
-// Todoit
+
+/* Todoit
 // *Parse comments (lines)
 // *Add jsfn
 // *String formatting in toString
@@ -17,6 +15,18 @@ class BubbleScript {
 // & vardic
 // destructing
 // ns
+// vector
+// if
+// do
+*/
+
+class BubbleScript {
+  parse() {}
+}
+
+var bubl = {};
+(function() {
+
 
 class List {
   constructor(head, tail=null) {
@@ -113,31 +123,11 @@ class List {
     return c.push(memo).reduce(fn);
   }
 
-  // reduce(fn, memo) {
-  //   if (memo) {
-  //     return this._reduce(fn, memo);
-  //   } else {
-  //     if (this.tail) {
-  //       return this.tail._reduce(fn, this.head)
-  //     } else {
-  //       return this.head;
-  //     }
-  //   }
-  // }
-  //
-  // _reduce(fn, memo='endlesslove') {
-  //   memo = fn(memo, this.head);
-  //   if (this.tail) {
-  //     return this.tail._reduce(fn, memo);
-  //   } else {
-  //     return memo;
-  //   }
-  // }
-
   each (fn) {
-    if (this.tail)
-      this.tail.each(fn);
-    return fn(this.head);
+    var result = fn(this.first);
+    if (this.rest)
+      return this.rest.each(fn);
+    return result;
   }
 
 }
@@ -165,14 +155,6 @@ class Glider {
     } else {
       return this.head
     }
-
-    // if (this._first == null)
-    //   if (this.tail)
-    //     this._first = this.tail.first
-    //   else
-    //     this._first = this.head
-    //
-    // return this._first;
   }
 
   get rest() {
@@ -181,6 +163,10 @@ class Glider {
         this._rest = new Glider(this.head, this.tail.rest);
 
     return this._rest;
+  }
+
+  get second() {
+    return this.rest.first;
   }
 
   join(delimiter=' ') {
@@ -205,11 +191,61 @@ class Glider {
     "[" + this.map(function(q){q.inspect()}).join() + "]";
   }
 
+
   map(fn) {
     var q=null;
     if(this.tail)
       q = this.tail.map(fn);
     return new Glider(fn(this.head), q);
+  }
+
+  map(fn, ...aux) {
+    var tail=null;
+
+
+
+    var result = new Glider(fn(this.first,
+      ...aux.map(function(q) {
+        return q ? q.first : q})));
+
+    if(!this.rest)
+      return result;
+
+    function into(a, b) {
+
+      var c = new Glider(b.peek()); //b.peek());
+      b = b.pop();
+
+      while(b) {
+        c = c.push(b.peek());
+        b = b.pop();
+      }
+      while(c) {
+        a = a.push(c.peek());
+        c = c.pop();
+      }
+
+      return a;
+    }
+
+    return into(result, this.rest.map(fn,
+      ...aux.map(function(q) {
+        return q.rest})));
+
+  }
+
+  mapp(fn, ...aux) {
+    var tail=null;
+
+    var result = new Glider(fn(this.first,
+      ...aux.map(function(q) {
+        return q ? q.first : q})));
+
+    return this.rest.map(function(...args) {
+      return new Glider(fn(...args), result);
+    }, ...aux.map(function(q) {
+      return q.rest}));
+
   }
 
   reduce(fn, memo=null) {
@@ -226,7 +262,6 @@ class Glider {
 
 }
 
-
 class Symbol {
   constructor(value) {
     this.value = value;
@@ -236,16 +271,6 @@ class Symbol {
     return this.value;
   }
 }
-
-// class String {
-//   constructor(value) {
-//     this.value = value;
-//   }
-//
-//   toString() {
-//     return this.value;
-//   }
-// }
 
 class Keyword {
   constructor(value) {
@@ -297,8 +322,11 @@ class Macro {
   }
 
   call(bnd, args) {
-    // console.log(invoke(bnd,this,args).toString());
     return evl(this.bnd, invoke(bnd,this,args));
+  }
+
+  expand(bnd, args) {
+    return invoke(bnd,this,args);
   }
 }
 
@@ -319,14 +347,7 @@ if (Array.prototype.peek == undefined) {
   Array.prototype.peek = function() {
     return this[this.length-1];
   }
-
-  // Object.defineProperty(Array.prototype, 'last', {
-  //   get: function() {
-  //     return this[this.length-1];
-  //   }
-  // });
 }
-
 
 function bubbleParse(s, stack=[]) {
   var word = null,
@@ -342,7 +363,6 @@ function bubbleParse(s, stack=[]) {
       word += c;
       if (c == '"') {
         stropen = false;
-        // word = new String(word);
         stack.push(word);
         word = null;
       }
@@ -366,7 +386,6 @@ function bubbleParse(s, stack=[]) {
       case '"':
         stropen = true;
         word = c;
-        // stack.push(DoubleQ);
         break;
       case ')':
         if (!word) word = stack.pop();
@@ -398,7 +417,6 @@ function bubbleParse(s, stack=[]) {
 
         word = buildGetSend(stack, word);
 
-        // console.log(stack.last);
         while (stack.peek() == SingleQ) {
           stack.pop()
           word = new Quoted(word);
@@ -409,10 +427,9 @@ function bubbleParse(s, stack=[]) {
         word = stack.pop();
         while(word != LParen) {
           list = list.push(word);
-          // skip spaces
-          // if(stack.peek() == Space)
-          //   stack.pop()
           word = stack.pop();
+          if (word == undefined)
+            throw("That ain't right");
         }
 
         while (stack.peek() == SingleQ) {
@@ -458,9 +475,6 @@ function bubbleParse(s, stack=[]) {
         tmp = [];
         while(word != LBrack) {
           tmp.push(word);
-          // skip spaces
-          // if(stack.peek() == Space)
-          //   stack.pop()
           word = stack.pop();
         }
         word = null;
@@ -480,6 +494,7 @@ function bubbleParse(s, stack=[]) {
         break;
       case ' ':
       case "\n":
+        console.log(word, 'xoxo')
         if (word) {
           switch (true) {
             case number.test(word):
@@ -490,6 +505,10 @@ function bubbleParse(s, stack=[]) {
               break;
             case keyword.test(word):
               word = new Keyword(word.substr(1));
+              break;
+            case /^\"(.*)\"$/.test(word):
+              // strip quotes
+              word = /^\"(.*)\"$/.exec(word)[1];
               break;
             case /^.+$/.test(word):
               word = new Symbol(word);
@@ -504,7 +523,6 @@ function bubbleParse(s, stack=[]) {
 
           stack.push(word);
           word = null;
-          // stack.push(Space);
         }
         break;
       case ".":
@@ -601,18 +619,9 @@ function buildGetSend(stack, word) {
     list = list.pop();
     list = list.push(word.unquote());
 
-    // save-a-space
-    // var space = null;
-    // if(stack.peek() == Space) {
-    //   space = stack.pop();
-    // }
-
-    // console.log(stack.peek())
     if(stack.peek() == LParen
               &&  d == Dot) {
-      // if (space) stack.push(Space);
       stack.push(send);
-      // stack.push(Space);
       var length = list.count();
       if (length == 2) {
         stack.push(list.head);
@@ -624,7 +633,6 @@ function buildGetSend(stack, word) {
       }
       word = list.last;
     } else {
-      // if (space) stack.push(Space);
       list = list.push(get);
       word = list;
     }
@@ -636,16 +644,13 @@ function buildGetSend(stack, word) {
 function evl(bnd, exp) {
   switch (exp.constructor) {
     case Symbol:
-      // console.log(exp, 'it');
-      // console.log(exp.toString(), 'i');
-      // console.log(exp)
       return bnd[exp];
     case List:
       var q, args;
       if (exp.first instanceof Symbol) {
         q = evl(bnd, exp.first);
         if (q==undefined) {
-          throw("Could not find fn or macro named \"" + exp.first + "\"");
+          throw("No such function or macro: " + exp.first);
         }
         args = exp.rest;
         return q.call(bnd, args);
@@ -654,10 +659,11 @@ function evl(bnd, exp) {
       }
       break;
     case Glider:
-      return exp.map(function(a) {evl(bnd,a)});
+      // console.log(exp);
+      // console.log(exp.map(function(a) {evl(bnd,a)}));
+      return exp.map(function(a) {return evl(bnd,a)});
     case Fn:
     case Macro:
-      // console.log(exp)
       return exp.body.each(function(exp){
         return evl(bnd,exp);
       });
@@ -668,39 +674,63 @@ function evl(bnd, exp) {
   }
 };
 
+
 function invoke(bnd, fn, args) {
   var bnd = Object.create(bnd);
+
+  // var q = map(glider, fn.args, args)
+  // console.log(q.toString());
 
   var x,y;
   x = fn.args; y = args;
   while (x) {
-    // console.log(args);
-    // console.log('=', x.peek(), y.peek());
+    if(x.first == '&'){
+      x = x.rest;
+      bnd[x.first] = y
+      x = null; y = null;
+      break;
+    }
+    // console.log(x)
     bnd[x.first] = y.first;
     x = x.rest; y = y.rest;
   }
-  /*
-  // set = curry(set, bnd)
-  // fn.args.zip(args).each(curry(set,bnd));
-  // fn.args.zip(args).each(bnd.set);
-  // fn.args.zip(args).each(function(k,v){
-  //   bnd[k] = v;
-  // });
-  //
-  // fn.args.each(function(key) {
-  //   bnd[key] = args.peek();
-  //   args = args.pop();
-  // });
-  //
-  // for(var i=0; )
-  // k.args.zip(args)
-  // bnd = new Binding(bnd, k.args, args);
-  */
+
+
+  //bnd = createBinding(bnd, args);
+
   return evl(bnd,fn);
 }
 
+function map(fn, list, ...lists) {
+  return list.map(fn, ...lists);
+}
+
+function push(a, b) {
+  return a.push(b);
+}
+
+function glider(...args) {
+  var head = args.pop(), tail = args ;
+  if(tail.length > 0)
+    return new Glider(head, glider(...tail));
+  return new Glider(head);
+
+}
+
+bubl.glider = glider;
+bubl.bubbleParse = bubbleParse;
+bubl.evl = evl
+bubl.Fn = Fn;
+bubl.Macro = Macro;
+
+
+bubbleParse = bubl.bubbleParse;
+evl = bubl.evl;
+Fn = bubl.Fn;
+Macro = bubl.Macro;
+
+
 function bubbleSCRiPT(bnd, s=null) {
-  // console.log(s);
   return bubbleParse(s.trim()).map(function(exp){
     return evl(bnd,exp);
   }).pop();
@@ -715,7 +745,6 @@ var bnd = {
     a = args.first;
     b = args.rest.first;
     bnd[a.toString()] = evl(bnd, b);
-    // bnd[a] = evl(this,b);
   },
 
   send: function(args) {
@@ -724,19 +753,17 @@ var bnd = {
     msg = args.rest.map(function(a){return evl(bnd,a)});
 
     // if(a==undefined)
-    //   throw(a + " didn't respond to " + b.first);
+    //   throw(reciever + " didn't respond to " + msg.first);
 
     if (msg.rest) {
       return target[msg.first](...msg.rest.toArray());
     } else {
-      // console.log(a[b.first.toString()]());
       return target[msg.first]();
     }
   },
 
   get: function(args) {
     var bnd=this
-    // console.log(args);
     return args.map(function(a){
               return evl(bnd,a);})
     .reduce(function(a,b) {
@@ -746,19 +773,6 @@ var bnd = {
         return b;
       }
     });
-    // console.log(args.map(function(a){
-    //               return evl(bnd,a);
-    //             })
-    //            .reduce(function(a,b) {
-    //               console.log(a, b);
-    //               return b[a.toString()];
-    //             }, bnd));
-    // return args.map(function(a){
-    //               return evl(bnd,a);
-    //             })
-    //            .reduce(function(a,b) {
-    //               return b[a.toString()];
-    //             }, bnd);
   },
 
   fn: function(args) {
@@ -785,21 +799,40 @@ var bnd = {
     }
   },
 
+  let: function(hamburgers) {
+    var icecream = hamburgers.first,
+        pineapple = Object.create(this),
+        splash, sunshine,
+        elves=evl;
+
+    while (icecream) {
+      splash = icecream.first;
+      sunshine = icecream.rest;
+      pineapple[splash] = elves(pineapple, sunshine.first);
+      icecream = sunshine.rest;
+    }
+
+    hamburgers.rest.each(function (xoxo){
+      return elves(pineapple, xoxo);
+    })
+  },
+
+  expandmacro: function (args) {
+    var bnd = this,
+        l = args.first,
+        m = l.first;
+
+    m = evl(bnd, m);
+    return m.expand(bnd, l.rest);
+  },
+
   print: function(vals) {
     var bnd = this;
-    // q =
-    // console.log(this[a])
-    // console.log(this);
+
     vals.
       map(function(a){return evl(bnd,a)}).
       each(function(value){
         document.body.append(value)});
-
-    // console.log.apply(this,q);
-    // vals.each(document.write)
-    // function(val) {
-    //   document.write(val);
-    // });
   },
 
   list: function(args) {
@@ -810,14 +843,15 @@ var bnd = {
   },
 
   "+": function(args){
-    // return args.first+args.next;
+    var bnd = this;
+    args = args.map(function(x) {return evl(bnd, x);});
+    console.log(args);
     return args.reduce(function(a, b){return a+b;});
   },
   "-": function(args){
     return args.reduce(function(a, b){return a-b;});
   },
   "*": function(args){
-    // return args.first*args.last;
     return args.rest.reduce(function(a, b){return a*b;}, args.first);
   },
   "/": function(args){
@@ -832,19 +866,35 @@ var bnd = {
   // }
 }
 
-// bnz = Object.create(window);
-
-// bnd["/"] = function(args){
-//   console.log(args);
-//   return args.first/args.next; }
-//
-
 
 bubbleSCRiPT(bnd, "\
   (def println\n\
     (fn [a] (print a \"\\n\")))\n\
 \n\
+  (def blank [a & b]\n\
+    (log a)\n\
+    (log b))\n\
+\n\
 ");
+
+
+// (def vector
+//   (fn [first & rest]
+//    (reduce (fn [a b]
+//      (new Vector a b))
+//      rest
+//      (new Vector first))))
+//
+// (def vector
+//   (fn [first & rest]
+//     (reduce conj rest
+//       (new Vector first))))
+//
+// (def vector
+//   (fn [first & rest]
+//     (conj (new Vector first) & rest)))
+//
+// (def map ())
 
 // (fn [frag] (send document :append "xyz"))
 
@@ -853,9 +903,6 @@ bubbleSCRiPT(bnd, "\
 
 // export { BubbleScript, List };
 
-var w = function(s) { return bubbleSCRiPT(bnd, s) };
-var m = function(s) { return bubbleParse(s); };
-
 window.addEventListener('load', function () {
   frosty = document.querySelectorAll(
     "script[type='text/bubblescript']")
@@ -863,3 +910,16 @@ window.addEventListener('load', function () {
     bubbleSCRiPT(bnd,ice.innerText);
   })
 });
+
+
+bubl.bubbleSCRiPT = bubbleSCRiPT;
+bubl.bubbleParse = bubbleParse;
+bubl.bnd = bnd;
+
+bubl.w = function(s) { return bubbleSCRiPT(bnd, s) };
+bubl.m = function(s) { return bubbleParse(s); };
+
+})();
+
+var w = bubl.w;
+var m = bubl.m;
