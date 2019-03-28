@@ -568,9 +568,60 @@ addCheckbox();
 
 </script>
 
-<script src="/bubblescript.js?7"></script>
+<script src="/bubblescript.js?7🐾"></script>
+<script type="text/bubblescript"
+        src="/bubblescript.core.bubls"></script>
 <script type="text/bubblescript">
-(println "Hello World!")
+
+(defn truth [🍒]
+  (or (= 🍒 true)
+    (and
+      (!= 🍒 false)
+      (!= 🍒 null)
+      (!= 🍒 undefined))))
+
+(defn != [🍏 🍋]
+  (not (= 🍏 🍋)))
+
+(defn nor [xx x]
+  (or (not xx) (not x)))
+
+;(ns dreamtool.text-editor)
+
+(defn id [%]
+  (send document
+    'getElementById %))
+
+(defn tagname [%]
+  (send document
+    'getElementsByTagName %))
+
+(def input (id "input"))
+
+(let
+  [cursor (tagname "cursor")
+  input (id "input")
+  xoxo cursor.parentNode]
+  (export document.body.style
+     'direction direction)
+  (oninput input [event]
+    (type-char input.value)
+    (clear input))
+  (focus input))
+
+    ;(export input 'oninput
+      ;(jsfn [event]
+        ;(type-char input.value)
+        ;(clear input))
+    ;document.body.style.direction
+      ;= direction
+    ;input.oninput = (jsfn
+      ;[event]
+      ;(type-char input.value)
+      ;(clear input))
+    //🍦🍦))
+
+(println "Hell-o World!")
 
 ;(document.body.addEventListener
 ;  'click
@@ -681,9 +732,8 @@ addCheckbox();
 
 (ontouchmove document.body
   (fn [event]
-    (log "Woopie")
     (event.preventDefault))
-  false)
+  {passive false})
 
 (log document.body.innerText)
 
@@ -707,7 +757,7 @@ addCheckbox();
 
 (defn html-tag [tag-name]
   ;(document.createElement tag-name))
-  (+ "<" tag-name "></" tag-name "> "))
+  (+ "<" tag-name "></" tag-name ">"))
 
 (defn input-tag [attributes value]
   (html-tag 'input' attributes value))
@@ -716,7 +766,7 @@ addCheckbox();
 ;  (input-tag {type "text"}))
 
 ;(defmacro let [b & 💋]
-;  (evl (create-binding (even b) (odd b))
+;  (evl (create-binding (unzip b))
 ;    (each (fn [💅] (evl 💄 💅) 💋))
 
 
