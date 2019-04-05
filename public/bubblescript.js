@@ -1215,6 +1215,170 @@ bubbleSCRiPT("\
 
 // export { BubbleScript, List };
 
+// todo
+// [x] ensure callback order
+// [x] handle inline scripts
+// var fetch = scriptFetcher();
+// for(script in scripts) {
+//   fetch(script, function(text) { evl(...)})
+// }
+function scriptFetcher() {
+  var open =  0, // how many downloads are currently "open"
+    counter = 0,
+    fetchQ = [],
+    flash  =  1;
+
+  function fetch(script, callback) {
+    counter++;
+    if(script.src=='') {
+      // scriptReady(counter,callback,{text: script.innerHTML});
+      // setTimeout(scriptReady,0,counter,callback, {text: script.innerHTML});
+      async(scriptReady,counter,callback, {text: script.innerHTML});
+    } else {
+      if (open<3) {
+        download(script.src, getAtMe(counter, callback));
+        open++;
+      } else {
+        fetchQ.push([script,counter,callback]);
+      }
+    }
+  }
+
+  function async(fn, ...params) {
+    setTimeout(fn,0,...params);
+  }
+
+  function getAtMe(order,callback) {
+    return (response) -> {
+      if (fetchQ.length>0) {
+        let script,order,callback;
+        [script,order,callback] = fetchQ.shift();
+        download(script, getAtMe(order,callback));
+      } else {
+        open-- ;
+      }
+
+      scriptReady(order,callback,response);
+    }
+  }
+
+  function scriptReady(order,callback,response) {
+    var cmp=getComplete(order);
+
+    if(order==flash){
+      if callback(response.text,cmp)
+        cmp();
+    } else if (order>flash) {
+      wait[order]=[callback,response,cmp];
+    } else {
+      throw "that is some weird wild stuff";
+    }
+  }
+
+  function getComplete(order) {
+    return function() {
+      if (order!=flash)
+        return;
+      flash++;
+      setTimeout(clearWait, 0);
+    }
+  }
+
+  function clearWait () {
+    var cb,r,cmp;
+    if(wait[flash]) {
+      [cb,r,cmp]=wait[flash];
+      delete wait[flash];
+      if cb(r.text,cmp) cmp();
+    }
+  }
+
+  return fetch;
+}
+
+
+// Loads scripts asyncronously, 3 at a time.
+// Calls when first script is ready, and with
+// each script there after in succession.
+function ScriptLoader(scripts, callme) {
+  var loadList =
+    scripts.map(fn(s){return s.src});
+  var limit=3, // simultanious downloads
+      open=0, // downloads open
+      l=loadList.length,
+      evlCursor=0;
+
+  for(var i=0; open<limit && i<l; i++) {
+    if(loadList[i]) {
+      let ii=i; // capture i
+      download(loadList[i], fn(t) {
+        loadList[ii]=t;
+        open--;
+        if(i<l) continue;
+      });
+      open++;
+    } else {
+      loadList[i] = scripts[i].innerHTML;
+      if(= i evlCursor)
+    }
+  }
+  ['',
+   '',
+   '']
+
+  var loadList = (pick scripts 'src);
+  // var loadList = bubl.invoke('pick', scripts, bubl.quote(bubl.symbol('src')));
+
+}
+
+class NetworkFileLoader() {
+  constructor() {
+
+  }
+  load(f./…≥÷, fn) {
+
+  }
+  ["bubl/love"
+   "bubl/spankings"
+   "bubl/butt"]
+
+   [{src "bubl/love"}
+    {src "bubl/spankings"}
+    {source "la la la"}
+    {src "bubl/butt"}]
+}
+class NamespaceLoader() {
+
+}
+
+(defn load-scripts
+  [scripts callback]
+  (let
+    [script (first scripts)]
+    (if script.src
+      (download script.src
+        (fn [response]
+          ))
+    :else
+      balls)
+    (load-scripts (rest scripts)))
+  (first scripts)
+  (loop))
+
+(defn sodipodi)
+
+function lodipodi(scripts, callme){
+  const downloadLimit=3;
+  let i=0;
+  while(i<scripts.length){
+    download(scripts[i].src,
+      function() {
+
+      });
+    i++;
+  }
+}
+
 window.addEventListener('load', function () {
   frosty = document.querySelectorAll(
     "script[type='text/bubblescript']")
@@ -1246,6 +1410,8 @@ window.addEventListener('load', function () {
   // frosty.forEach(function(ice) {
   // })
 });
+
+
 
 
 bubl.bubbleSCRiPT = bubbleSCRiPT;
