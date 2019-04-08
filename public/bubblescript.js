@@ -1215,45 +1215,40 @@ bubbleSCRiPT("\
 
 // export { BubbleScript, List };
 
-// todo
-// [x] ensure callback order
-// [x] handle inline scripts
-// var fetch = scriptFetcher();
-// for(script in scripts) {
-//   fetch(script, function(text) { evl(...)})
-// }
-function scriptFetcher() {
-  var open =  0, // how many downloads are currently "open"
-    counter = 0,
-    fetchQ = [],
-    flash  =  1;
 
-  function fetch(script, callback) {
-    counter++;
-    if(script.src=='') {
-      // scriptReady(counter,callback,{text: script.innerHTML});
-      // setTimeout(scriptReady,0,counter,callback, {text: script.innerHTML});
-      async(scriptReady,counter,callback, {text: script.innerHTML});
-    } else {
-      if (open<3) {
-        download(script.src, getAtMe(counter, callback));
-        open++;
+function async(fn, ...params) {
+  setTimeout(fn,0,...params);
+}
+
+function fetchScript(url, callback) {
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4) {
+      if (this.status == 200) {
+        callback(xhttp.responseText);
       } else {
-        fetchQ.push([script,counter,callback]);
+        error(url + " returned " + this.status);
       }
     }
   }
+  xhttp.open('GET', url);
+}
 
-  function async(fn, ...params) {
-    setTimeout(fn,0,...params);
-  }
+// Fetches each script and invokes
+// callback on each one in succession
+function fetchScripts1(scripts, cbk) {
+  var open =  0, // how many downloads are currently "open"
+        counter = 0,
+            fetchQ = [],
+              wait = [],
+                 flash  =  1;
 
   function getAtMe(order,callback) {
     return (response) -> {
       if (fetchQ.length>0) {
         let script,order,callback;
         [script,order,callback] = fetchQ.shift();
-        download(script, getAtMe(order,callback));
+        fetchScript(script, getAtMe(order,callback));
       } else {
         open-- ;
       }
@@ -1293,8 +1288,53 @@ function scriptFetcher() {
     }
   }
 
-  return fetch;
+  while(scripts) {
+    let script = scripts.head;
+    counter++;
+    if(script.src=='') {
+      // scriptReady(counter,callback,{text: script.innerHTML});
+      // setTimeout(scriptReady,0,counter,callback, {text: script.innerHTML});
+      async(scriptReady,counter,callback, {text: script.innerHTML});
+    } else {
+      if (open<3) {
+        fetchScript(script.src, getAtMe(counter, callback));
+        open++;
+      } else {
+        fetchQ.push([script,counter,callback]);
+      }
+    }
+    scripts=scripts.rest;
+  }
+
+  return {};
 }
+
+
+function fetchScripts2(scripts, callback, fin) {
+  var open = 0; // how many downloads are currently "open"
+
+  function happyMeal(response) {
+    if (scripts) {
+      fetchScript(scripts.head, happyMeal);
+      scripts=scripts.rest;
+    } else
+      open--;
+
+    callback(response.text);
+
+    if (= open 0)
+      fin();
+  }
+
+  while(scripts && open<3) {
+    fetchScript(scripts.head, happyMeal);
+    open++;
+    scripts=scripts.rest;
+  }
+
+  return {};
+}
+
 
 
 // Loads scripts asyncronously, 3 at a time.
