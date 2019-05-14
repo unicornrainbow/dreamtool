@@ -145,6 +145,6 @@ Press::Application.routes.draw do
   get '/breakdance/off' => 'breakdance#off'
 
   # Active 404
-  match "*a", :to => "application#routing_error", via: [:get, :post]
+  # match "*a", :to => "application#routing_error", via: [:get, :post]
 
 end
