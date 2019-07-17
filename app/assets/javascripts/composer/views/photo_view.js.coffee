@@ -55,7 +55,35 @@ class @Newstime.PhotoView extends Newstime.ContentItemView
     photoSize =  @model.pick('height', 'width')
     photoSize.height -=  @model.get('caption_height')
 
+    if @model.get('shape') == 'triangle()'
+      rotate = @model.get('shape-rotate')
+      rotate %= 120
+      s = rotate/30%1* 50
+      switch
+        when rotate < 30
+          #clipPath = 'polygon(50% 0, 100% 100%, 0 100%)'
+          a = 50 + s
+          b = 100 - s
+          clipPath = "polygon(#{a}% 0, 100% 100%, 0 #{b}%)"
+        when rotate < 60
+          #clipPath = 'polygon(100% 0, 100% 100%, 0 50%)'
+          a = 100 - s
+          b = 50 - s
+          clipPath = "polygon(100% 0, #{a}% 100%, 0 #{b}%)"
+        when rotate < 90
+          #clipPath = 'polygon(100% 0%, 50% 100%, 0 0%)'
+          clipPath = "polygon(100% #{0+s}%, #{50-s}% 100%, 0 0%)"
+        when rotate < 120
+          #clipPath = 'polygon(100% 50%, 0% 100%, 0% 0)'
+          # clipPath = "polygon(100% #{50+s}%, #{0+s}% 100%, 0% 0)"
+          clipPath = "polygon(100% #{50+s}%, 0% 100%, #{0+s}% 0)"
+
+      @$img.css 'clip-path', clipPath
+    else
+      @$img.css 'clip-path', @model.get('shape')
+
     @$img.css photoSize
+
 
   dblclick: (e) =>
     @composer.photoPicker.selectPhoto(this)

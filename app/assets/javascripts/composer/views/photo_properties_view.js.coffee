@@ -7,6 +7,11 @@ class @Newstime.PhotoPropertiesView extends Backbone.View
   events:
     'change .show-caption-field': 'changeShowCaption'
     'change .caption-field': 'changeCaption'
+    'change .shape-field': 'changeShape'
+    'change .shape-rotate-field': 'changeShapeRotate'
+    'keydown .shape-rotate-field': 'keydownShapeRotate'
+    'change .height-field': 'changeHeight'
+    'change .width-field': 'changeWidth'
 
   initialize: ->
 
@@ -39,13 +44,35 @@ class @Newstime.PhotoPropertiesView extends Backbone.View
       </li>
 
       <li class="property">
+        <label>Shape</label>
+        <span class="field">
+          <select class="shape-field">
+            <option></option>
+            <option value="circle()">Circle</option>
+            <option value="ellipse()">Ellispse</option>
+            <option value="triangle()">Triangle</option>
+          </select>
+        </span>
+      </li>
+
+      <li class="field">
+        <label>Shape Rotate</labeL>
+        <span class="field"><input class="shape-rotate-field"></input></span>
+      </li>
+
+      <li class="property" style='display: none;'>
         <label>Height</label>
-        <span class="field"><input></input></span>
+        <span class="field"><input class="height-field"></input></span>
+      </li>
+
+      <li class="property" style='display: none;'>
+        <label>Width</label>
+        <span class="field"><input class="width-field"></input></span>
       </li>
 
       <li class="property">
-        <label>Width</label>
-        <span class="field"><input></input></span>
+        <label>URL</label>
+        <span class="field"><input class="url-field"></input></span>
       </li>
 
     """
@@ -53,18 +80,59 @@ class @Newstime.PhotoPropertiesView extends Backbone.View
     @$captionField = @$('.caption-field')
     @$showCaptionField = @$('.show-caption-field')
     @$effectsField = @$('.effects-field')
+    @$shapeField = @$('.shape-field')
+    @$shapeRotateField = @$('.shape-rotate-field')
+    @$urlField = @$('.url-field')
+    @$heightField = @$('.height-field')
+    @$widthField = @$('.width-field')
 
   render: ->
     @$showCaptionField.prop('checked', @model.get('show_caption'))
     @$captionField.val(@model.get('caption') || '')
+    @$urlField.val(@model.get('url'))
+    @$shapeField.val(@model.get('shape'))
+    @$shapeRotateField.val(@model.get('shape-rotate'))
+    @$heightField.val(@model.get('height'))
+    @$widthField.val(@model.get('width'))
 
     this
 
   changeShowCaption: ->
     @model.set 'show_caption', @$showCaptionField.prop('checked')
+    @render()
 
   changeCaption: ->
     @model.set 'caption', @$captionField.val()
+    @render()
+
+  changeShape: ->
+    unless @model.get('shape-rotate')
+      @model.set('shape-rotate', 0)
+    @model.set 'shape', @$shapeField.val()
+    @render()
+
+
+  changeShapeRotate: ->
+    @model.set 'shape-rotate', @$shapeRotateField.val()
+    @render()
+
+  keydownShapeRotate: (e) ->
+    if e.key == "ArrowUp"
+      r = @$shapeRotateField.val()
+      r = parseInt(r)+1
+      @model.set('shape-rotate', r)
+      @render()
+    else if e.key == "ArrowDown"
+      @$shapeRotateField.val(@$shapeRotateField.val()*1 - 1)
+      @changeShapeRotate()
+
+  changeHeight: ->
+    @model.set 'height', @$heightField.val()
+    @render()
+
+  changeWidth: ->
+    @model.set 'width', @$widthField.val()
+    @render()
 
   changeEffect: ->
     alert 'K3'
