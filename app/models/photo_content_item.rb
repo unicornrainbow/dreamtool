@@ -6,7 +6,6 @@ class PhotoContentItem < ContentItem
   field :clip_path, type: String
   belongs_to :photo
 
-
   #def attribute_names
     #super + [:edition_relative_url_path]
   #end

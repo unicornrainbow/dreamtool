@@ -3,6 +3,8 @@ class @Newstime.HeadlineView extends Newstime.ContentItemView
 
   contentItemClassName: 'headline-view'
 
+  inject: ['composer', 'colors']
+
   initializeContentItem: ->
     @placeholder = "Type Headline" # Text to show when there is no headline
     @fontWeights = Newstime.config.headlineFontWeights

@@ -97,14 +97,14 @@ class SideMenu extends App.View
       opacity: 1-offset/@menuWidth
 
   trackSlide: ->
-    @removeClass 'slide'
-    $composer.tracking(this)
+    this.removeClass 'slide'
+    composer.tracking(this)
 
-    @listenTo $composer, 'tracking-release', @close
+    this.listenTo $composer, 'tracking-release', @close
 
   touchstart: ->
-    # unless @model.get('open')
-      # @trackSlide()
+    unless @m odel.get('open')
+      @trackSlide()
 
   touchmove: (e) ->
     # if @model.get('open')

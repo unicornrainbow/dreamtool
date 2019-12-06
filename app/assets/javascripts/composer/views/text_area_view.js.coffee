@@ -18,7 +18,6 @@ class @Newstime.TextAreaView extends Newstime.ContentItemView
 
     @render()
 
-
   setElement: (el) ->
     super
     @$el.addClass 'text-area-view'
@@ -38,7 +37,6 @@ class @Newstime.TextAreaView extends Newstime.ContentItemView
     pastedText = e.originalEvent.clipboardData.getData('text/plain')
 
     @model.set 'text', pastedText
-
 
     # Update edit text area window if there is one.
     if @editTextAreaWindow

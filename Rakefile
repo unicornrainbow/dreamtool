@@ -38,6 +38,10 @@ rule %r{tmp/cljs/src/dreamtool/.+\.cljs$} =>
   cp t.source, t.name
 end
 
+task :cljs do
+
+end
+
 task :cljs =>
   ["public/assets/cljs/dreamtool/text_editor.js",
    "public/assets/cljs/dreamtool/text_editor.cljs.js",

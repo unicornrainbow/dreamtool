@@ -1,0 +1,13 @@
+(defmacro ns [n]
+  (if (is-list? n)
+    (inits & (pop n))
+    (pop n))
+
+// {love 5}
+(if (love) 'true)
+(defmacro if [tf t f]
+  (or (and tf 't) 'f))
+(defmacro and [b c]
+  (truth b)
+  (truth (truth b) c))
+  (and (and b) c))

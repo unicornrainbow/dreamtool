@@ -1,7 +1,14 @@
 #= require composer/models/content_item
 
 class @Newstime.TextAreaContentItem extends Newstime.ContentItem
-  
+
+  calculateLineWidths : ->
+    # Returns an array of line widths to be used for type setting.
+    @model.get('shape')
+
+    [@model.get('width')]
+
+
   reflow: (options={}) ->
     callDepth = options.callDepth || 0
 
