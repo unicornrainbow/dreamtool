@@ -1,0 +1,7 @@
+
+let s = (shape
+  0 0, 2 2, 5 5, 8 8)
+
+How wide is the column (known)
+crop shape to column
+How wide is each line in the column (compute)

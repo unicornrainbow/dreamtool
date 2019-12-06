@@ -78,6 +78,7 @@ class @Newstime.PhotoView extends Newstime.ContentItemView
           # clipPath = "polygon(100% #{50+s}%, #{0+s}% 100%, 0% 0)"
           clipPath = "polygon(100% #{50+s}%, 0% 100%, #{0+s}% 0)"
 
+      @model.set 'clip_path', clipPath
       @$img.css 'clip-path', clipPath
     else
       @$img.css 'clip-path', @model.get('shape')

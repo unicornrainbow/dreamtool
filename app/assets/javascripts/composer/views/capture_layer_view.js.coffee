@@ -30,7 +30,11 @@ class @Newstime.CaptureLayerView extends Backbone.View
     $(window).mouseup @mouseup
     $(document).mouseout @documentMouseout
 
-    document.body.addEventListener 'touchmove', null, false;
+    # document.body.addEventListener 'touchmove', null, false;
+
+    document.body.addEventListener 'touchmove',
+      (e)->e.preventDefault(),
+      {passive: false};
 
     @$el.css top: "#{@topOffset}px"
 

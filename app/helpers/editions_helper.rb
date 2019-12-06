@@ -102,6 +102,7 @@ module EditionsHelper
       options[:text] = content_item.text
       options[:anchor] = "#{content_item.page.page_ref}/#{content_item.story_title}"
       options[:rendered_html] = content_item.rendered_html
+      options[:shape] = content_item.shape
 
       render "content/text_area", options
     when PhotoContentItem then
@@ -112,6 +113,7 @@ module EditionsHelper
       #options[:photo_height]  = content_region.width / content_item.photo.aspect_ratio
       options[:photo_height]  = content_item.height - content_item.caption_height.to_i
       options[:show_caption]  = content_item.show_caption
+      options[:clip_path] = content_item.clip_path
       render "content/photo", options
     when VideoContentItem then
 

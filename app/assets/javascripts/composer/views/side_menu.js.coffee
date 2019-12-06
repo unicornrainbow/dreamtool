@@ -16,33 +16,18 @@ class SideMenu extends App.View
     'touchstart': 'touchstart'
     'touchmove':  'touchmove'
     'touchend':   'touchend'
+    'click li[action=set-bg]': 'setBackground'
+    'click li[action=set-fg]': 'setForeground'
 
-
-  template: """
-    <ul class='menu'>
-      <li>
-          <label class='edition-settings'>Edition Settings</label>
-          <ul class="edition-settings">
-            <li>
-              Page Width
-              <ul class="page-width">
-                <li><label><input type='checkbox'>240px</input></label></li>
-                <li><label><input type='checkbox'>480px</input></label></li>
-                <li><label><input type='checkbox'>960px</input></label></li>
-                <li><label><input type='checkbox'>1080px</input></label></li>
-              </ul>
-            </li>
-          </ul>
-          <film></film>
-      </li>
-    </ul>
-    <overlay></overlay>
-  """
+  # template: JST['composer/templates/side_menu']
 
   initialize: (options)->
-    @$html @template
+    # @$html @template(this)
+    @$html JST['composer/templates/side_menu'](this)
     @model     = new Backbone.Model
     @menuWidth = 320#px
+
+    { @composer } = options
 
     # Duplicate el
     # console.log @$el[0].ownerDocument
@@ -54,6 +39,12 @@ class SideMenu extends App.View
     # @setElement [@$el, @$clone].reduce($.merge)
     # @setElement $([@$el[0], @$clone[0]]) # Doesn't work, how strange
     # @$el.hide() # right: '75px'
+
+    # Ok, this is cool. Working on somthing new.
+    # WE will have to see how it goes.
+    # Using the sugar candy font for code. This should
+    # make things a lot more fun.
+    # Yum yum bubblegum.
 
     @$left = @$('ul.menu')
     @$right = @$left.clone(true)
@@ -113,17 +104,20 @@ class SideMenu extends App.View
 
   touchstart: ->
     # unless @model.get('open')
-    @trackSlide()
+      # @trackSlide()
 
   touchmove: (e) ->
-    ww = $composer.windowWidth
-    x = e.touches[0].clientX
-    right = ww - x - @menuWidth # From right
+    # if @model.get('open')
+      # alert 'fame'
+    unless @model.get('open')
+      ww = $composer.windowWidth
+      x = e.touches[0].clientX
+      right = ww - x - @menuWidth # From right
 
-    @right = minmax right, -@menuWidth, 0
-    # console.log {@right}
+      @right = minmax right, -@menuWidth, 0
+      # console.log {@right}
 
-    @model.set {@right}
+      @model.set {@right}
 
   touchend: (e)->
     if @menuWidth+@right > @menuWidth/2.2
@@ -132,6 +126,27 @@ class SideMenu extends App.View
       @close()
 
     setTimeout (=> @removeClass 'slide'), 300
+
+  setBackground: ->
+    @close()
+    setTimeout (=>
+      @composer.mColorChooser
+        .background()
+        .show()
+      # alert @composer.mColorChooser
+      ), 200
+    # alert 'set background'
+
+  setForeground: ->
+    @close()
+    setTimeout (=>
+      # alert @composer.mColorChooser.foreground()
+      @composer.mColorChooser
+        .foreground()
+        .show()
+      # @composer.showForegroundColorChooser()
+      # alert 'set foreground'
+    ), 200
 
   tap: =>
     @model.set 'open', false

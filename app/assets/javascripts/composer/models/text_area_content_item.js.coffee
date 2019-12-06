@@ -1,9 +1,7 @@
 #= require composer/models/content_item
 
 class @Newstime.TextAreaContentItem extends Newstime.ContentItem
-  # TODO: Implement Subtypes and break this class apart. (Mostly a concern of
-  # instantiation. Need more flexibility than BackboneRelational allows to get
-  # the subtypes intialized
+  
   reflow: (options={}) ->
     callDepth = options.callDepth || 0
 

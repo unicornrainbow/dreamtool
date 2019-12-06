@@ -290,6 +290,7 @@ class Keyword {
     return this.value;
   }
 }
+
 class Quoted {
   constructor(value) {
     this.value = value;
@@ -391,7 +392,6 @@ function macro(ns, bnd, argsk, body) {
   macro.body=body;
   return macro;
 }
-
 
 class Syntax {};
 class LParen  extends Syntax {};
@@ -518,6 +518,8 @@ function bubbleParse(s, stack=[]) {
         while(word != LParen) {
           list = list.push(word);
           word = stack.pop();
+          console.log(stack)
+          console.log(word)
           if (word == undefined)
             throw("That ain't right");
         }
@@ -795,7 +797,8 @@ function evl(exp, ns={}, bnd) {
           return value;
       }
 
-      value = bubls.core[exp];
+      // value = bubls.core[exp];
+      value = bubblescript.core[exp];
       if(value)
         return value;
 
@@ -818,8 +821,10 @@ function evl(exp, ns={}, bnd) {
       if (quack.macro) {
         return evl(quack(exp.rest), ns, bnd);
       } else {
-        let k = function(a) { return evl(a, ns, bnd);}).toArray()),
+        // let k = function(a) { return evl(a, ns, bnd);}).toArray()),
+        let k = function(a) { return evl(a, ns, bnd);}, //).toArray()),
             s = exp.rest.map(k);
+        // let s = exp.rest.map(k);
         return quack(...s.toArray());
         // return quack(s);
       }
@@ -974,15 +979,25 @@ Macro = bubl.Macro;
 
 function bubbleSCRiPT(s) {
   return bubbleParse(s.trim()).map(function(exp){
-    return evl(bnd,exp);
+    // return evl(bnd,exp);
+    // return evl(bubblescript,exp);
+    return evl(exp);
   }).pop();
 }
+
+// function bubbleSCRiPT(bnd, s=null) {
+  // return bubbleParse(s.trim()).map(function(exp){
+    // return evl(bnd,exp);
+  // }).pop();
+// }
+
 
 // var bnd =
 var bubblescript={
   window: window,
   document: document
 }
+var bnd = bubblescript;
 bubblescript.bubblescript=bubblescript;
 bubblescript.core = {
 
@@ -1134,12 +1149,13 @@ bubblescript.core = {
     // imports and requires
   },
 
-  print: function(vals) {
+  print: function(...vals) {
     var bnd = this;
 
+    console.log('vals?', vals)
     vals.
-      map(function(a){return evl(bnd,a)}).
-      each(function(value){
+      map(function(a){return evl(a,bnd)}).
+      forEach(function(value){
         document.body.append(value)});
   },
 
@@ -1179,16 +1195,20 @@ bubblescript.core = {
 }
 
 
-bubbleSCRiPT("\
-  (def println\n\
-    (fn [a] (print a \"\\n\")))\n\
-\n\
-  (def blank [a & b]\n\
-    (log a)\n\
-    (log b))\n\
-\n\
-");
+//bubbleSCRiPT("\
+  //(def println\n\
+    //(fn [a] (print a \"\\n\")))\n\
+//\n\
+  //(def blank [a & b]\n\
+    //(log a)\n\
+    //(log b))\n\
+//\n\
+//");
 
+// bubbleSCRiPT("\
+//   (def println\n\
+//     (fn [a] (print a \"\\n\")))\n\
+// ");
 
 // (def vector
 //   (fn [first & rest]
@@ -1220,6 +1240,9 @@ function async(fn, ...params) {
   setTimeout(fn,0,...params);
 }
 
+// Fecthes a script from the URL
+// and passes it to the callback.
+// Asyncronous, does not block.
 function fetchScript(url, callback) {
   xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -1244,7 +1267,7 @@ function fetchScripts1(scripts, cbk) {
                  flash  =  1;
 
   function getAtMe(order,callback) {
-    return (response) -> {
+    return function (response) {
       if (fetchQ.length>0) {
         let script,order,callback;
         [script,order,callback] = fetchQ.shift();
@@ -1261,7 +1284,7 @@ function fetchScripts1(scripts, cbk) {
     var cmp=getComplete(order);
 
     if(order==flash){
-      if callback(response.text,cmp)
+      if (callback(response.text,cmp))
         cmp();
     } else if (order>flash) {
       wait[order]=[callback,response,cmp];
@@ -1284,7 +1307,7 @@ function fetchScripts1(scripts, cbk) {
     if(wait[flash]) {
       [cb,r,cmp]=wait[flash];
       delete wait[flash];
-      if cb(r.text,cmp) cmp();
+      if (cb(r.text,cmp)) cmp();
     }
   }
 
@@ -1309,7 +1332,10 @@ function fetchScripts1(scripts, cbk) {
   return {};
 }
 
-
+// TODO: Please document
+// To confirm: downloads each script in scripts
+//  invoking callback with response and finally calling
+//  fin when the final script returns. No order guarnteed.
 function fetchScripts2(scripts, callback, fin) {
   var open = 0; // how many downloads are currently "open"
 
@@ -1322,7 +1348,8 @@ function fetchScripts2(scripts, callback, fin) {
 
     callback(response.text);
 
-    if (= open 0)
+    // if (= open 0)
+    if (open == 0)
       fin();
   }
 
@@ -1336,96 +1363,15 @@ function fetchScripts2(scripts, callback, fin) {
 }
 
 
-
-// Loads scripts asyncronously, 3 at a time.
-// Calls when first script is ready, and with
-// each script there after in succession.
-function ScriptLoader(scripts, callme) {
-  var loadList =
-    scripts.map(fn(s){return s.src});
-  var limit=3, // simultanious downloads
-      open=0, // downloads open
-      l=loadList.length,
-      evlCursor=0;
-
-  for(var i=0; open<limit && i<l; i++) {
-    if(loadList[i]) {
-      let ii=i; // capture i
-      download(loadList[i], fn(t) {
-        loadList[ii]=t;
-        open--;
-        if(i<l) continue;
-      });
-      open++;
-    } else {
-      loadList[i] = scripts[i].innerHTML;
-      if(= i evlCursor)
-    }
-  }
-  ['',
-   '',
-   '']
-
-  var loadList = (pick scripts 'src);
-  // var loadList = bubl.invoke('pick', scripts, bubl.quote(bubl.symbol('src')));
-
-}
-
-class NetworkFileLoader() {
-  constructor() {
-
-  }
-  load(f./…≥÷, fn) {
-
-  }
-  ["bubl/love"
-   "bubl/spankings"
-   "bubl/butt"]
-
-   [{src "bubl/love"}
-    {src "bubl/spankings"}
-    {source "la la la"}
-    {src "bubl/butt"}]
-}
-class NamespaceLoader() {
-
-}
-
-(defn load-scripts
-  [scripts callback]
-  (let
-    [script (first scripts)]
-    (if script.src
-      (download script.src
-        (fn [response]
-          ))
-    :else
-      balls)
-    (load-scripts (rest scripts)))
-  (first scripts)
-  (loop))
-
-(defn sodipodi)
-
-function lodipodi(scripts, callme){
-  const downloadLimit=3;
-  let i=0;
-  while(i<scripts.length){
-    download(scripts[i].src,
-      function() {
-
-      });
-    i++;
-  }
-}
-
 window.addEventListener('load', function () {
   frosty = document.querySelectorAll(
     "script[type='text/bubblescript']")
   var shiverMeTimbers =
     function(meTimbers) {
+      meTimbers = [...meTimbers];
       if (meTimbers.length == 0)
         return 'blarney';
+
       var icepop = meTimbers.pop(),
           recur = this.prototype;
       if(icepop.src!='') {
@@ -1442,7 +1388,9 @@ window.addEventListener('load', function () {
         }
         xhttp.open('GET', icepop.src);
       } else {
-        bubbleSCRiPT(bnd,icepop.innerText);
+        // bubbleSCRiPT(bnd,icepop.innerText);
+        console.log(icepop.innerText);
+        bubbleSCRiPT(icepop.innerText);
         return recur(meTimbers);
       }
     }
@@ -1458,7 +1406,8 @@ bubl.bubbleSCRiPT = bubbleSCRiPT;
 bubl.bubbleParse = bubbleParse;
 bubl.bnd = bnd;
 
-bubl.w = function(s) { return bubbleSCRiPT(bnd, s) };
+// bubl.w = function(s) { return bubbleSCRiPT(bnd, s) };
+bubl.w = function(s) { return bubbleSCRiPT(s) };
 bubl.m = function(s) { return bubbleParse(s); };
 
 })();
@@ -1470,3 +1419,4 @@ var m = bubl.m;
 
 (defmacro if [m & q]
   (new If m q))
+*/

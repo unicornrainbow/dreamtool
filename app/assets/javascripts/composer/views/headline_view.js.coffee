@@ -46,6 +46,11 @@ class @Newstime.HeadlineView extends Newstime.ContentItemView
     @$el.css 'font-style': @model.get('font_style')
     @$el.css 'font-weight': @model.get('font_weight')
 
+    # color = @model.get('color')
+    # color
+    @$el.css 'color': @model.get('color')
+
+
     #@$el.css _.pick @model.changedAttributes()
     @$textarea.val(@model.get('text') || '')
     if !!@model.get('text')

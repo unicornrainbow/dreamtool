@@ -5,6 +5,9 @@ class Photo
   field :width, type: Integer
   field :height, type: Integer
   field :aspect_ratio, type: Float
+  field :shape, type: String
+  field :shape_rotate, type: String
+  field :clip_path, type: String
 
   belongs_to :user
 

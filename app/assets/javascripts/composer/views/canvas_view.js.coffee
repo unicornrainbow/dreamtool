@@ -444,7 +444,7 @@ class @Newstime.CanvasView extends @Newstime.View
     @listenTo @contentItemCollection, 'remove', @removeContentItem
     @listenTo @groupCollection, 'add', @addGroup
 
-    @listenTo @edition, 'change:page_color', @changeEditionPageColor
+    # @listenTo @edition, 'change:page_color', @changeEditionPageColor
 
 
     _.each @groupViews, (groupView) ->

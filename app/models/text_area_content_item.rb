@@ -8,6 +8,7 @@ class TextAreaContentItem < ContentItem
   field :show_by_line,  type: Boolean, default: false
   field :story_title,   type: String  # String key used for lacing text areas together
   field :overflow_input_text, type: String
+  field :shape, type: String
 
   field :offset_leader, type: Integer
 
@@ -35,9 +36,16 @@ class TextAreaContentItem < ContentItem
     @follow_text_area ||= follow_text_area_id && edition.content_items.find(follow_text_area_id)
   end
 
-  def gutter_width
-    page.gutter_width # Derived from page
-  end
+  # def gutter_width
+  #   page.gutter_width # Derived from page
+  # end
+  delegate :gutter_width, :to => :page
+
+  # def line_height
+    # See etc.default_layout/config.yml
+
+    # 28
+  # end
 
   def typeset!(layout_module)
     TextAreaTypesetter.new(self, layout_module).typeset!

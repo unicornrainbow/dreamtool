@@ -16,19 +16,12 @@ class @Newstime.ContentItemOutlineView extends Backbone.View
     @$el.css _.pick @model.attributes, 'width', 'height'
 
     @listenTo @model, 'change', @render
-    @listenTo @model, 'destroy', @remove
 
   show: ->
     @$el.addClass 'outline'
 
   hide: ->
     @$el.removeClass 'outline'
-
-  attach: (outlineView) ->
-    @$el.append(outlineView.el)
-
-  remove: (outlineView) ->
-    outlineView.$el.detach()
 
   render: ->
     position = _.pick @model.attributes, 'width', 'height'

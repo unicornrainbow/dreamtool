@@ -3,6 +3,7 @@ class PhotoContentItem < ContentItem
   field :show_caption, type: Boolean
   field :caption_height, type: Integer
   field :edition_relative_url_path, type: String
+  field :clip_path, type: String
   belongs_to :photo
 
 

@@ -1,0 +1,5 @@
+Mobile Color Choosers
+<input type='range' min=1 max=100 x='hue'></input>
+<input></input>
+<input type='range' x='saturation'></input>
+<input type='range' x='brightness'></input>

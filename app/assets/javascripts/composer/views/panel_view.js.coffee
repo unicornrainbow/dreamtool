@@ -157,7 +157,7 @@ class @Newstime.PanelView extends @Newstime.View
       y = $(window).height() - y - @bottomMouseOffset
     position = _.object positionBy, [x, y]
     _.defaults position, { top: null, bottom: null, left: null, right: null }
-    console.log position
+    # console.log position
     @model.set position
 
   resize: (x, y) ->

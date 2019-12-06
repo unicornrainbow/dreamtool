@@ -138,7 +138,7 @@ private
     photo_params = [:photo_id, :caption_height]
     text_area_params = [:show_by_line, :by_line, :overflow_input_text,
       :lead_text_area_id, :follow_text_area_id, :continuation_text,
-      :precedent_text, :continuation_path, :precedent_path, :offset_leader]
+      :precedent_text, :continuation_path, :precedent_path, :offset_leader, :shape]
     horizontal_rule_params = [:style_class]
 
     params.fetch(:content_item, {}).permit(*(shared_params + video_params + photo_params + horizontal_rule_params + text_area_params))

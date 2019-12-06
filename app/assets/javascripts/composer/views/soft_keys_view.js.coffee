@@ -9,6 +9,7 @@ class App.SoftKeysView extends App.View
     'click .group-key': 'group'
     'click .ungroup-key': 'ungroup'
     'click .delete-key': 'delete'
+    'click .properties-key': 'properties'
 
   initialize: (options) ->
 
@@ -23,6 +24,7 @@ class App.SoftKeysView extends App.View
     @createKey('group')
     @createKey('ungroup')
     @createKey('delete')
+    @createKey('properties', '✏︎')
 
 
   escape: ->
@@ -38,6 +40,9 @@ class App.SoftKeysView extends App.View
     if confirm "Are you sure you wish to delete this item?"
       @composer.selection.contentItemView.delete()
 
+  properties: ->
+    console.log "cheeze cake"
+    @composer.toggleProperties()
 
   # Creates a key
   createKey: (name, text) ->

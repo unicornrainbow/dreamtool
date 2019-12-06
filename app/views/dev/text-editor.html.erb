@@ -573,41 +573,42 @@ addCheckbox();
         src="/bubblescript.core.bubls"></script>
 <script type="text/bubblescript">
 
-(defn truth [🍒]
-  (or (= 🍒 true)
-    (and
-      (!= 🍒 false)
-      (!= 🍒 null)
-      (!= 🍒 undefined))))
+(println "Hell-o World!")
+;(defn truth [🍒]
+;  (or (= 🍒 true)
+;    (and
+;      (!= 🍒 false)
+;      (!= 🍒 null)
+;      (!= 🍒 undefined))))
 
-(defn != [🍏 🍋]
-  (not (= 🍏 🍋)))
+;(defn != [🍏 🍋]
+;  (not (= 🍏 🍋)))
 
-(defn nor [xx x]
-  (or (not xx) (not x)))
+;(defn nor [xx x]
+;  (or (not xx) (not x)))
 
 ;(ns dreamtool.text-editor)
 
-(defn id [%]
-  (send document
-    'getElementById %))
+;(defn id [%]
+;  (send document
+;    'getElementById %))
 
-(defn tagname [%]
-  (send document
-    'getElementsByTagName %))
+;(defn tagname [%]
+;  (send document
+;    'getElementsByTagName %))
 
-(def input (id "input"))
+;(def input (id "input"))
 
-(let
-  [cursor (tagname "cursor")
-  input (id "input")
-  xoxo cursor.parentNode]
-  (export document.body.style
-     'direction direction)
-  (oninput input [event]
-    (type-char input.value)
-    (clear input))
-  (focus input))
+;(let
+;  [cursor (tagname "cursor")
+;  input (id "input")
+;  xoxo cursor.parentNode]
+;  (export document.body.style
+;     'direction direction)
+;  (oninput input [event]
+;    (type-char input.value)
+;    (clear input))
+;  (focus input))
 
     ;(export input 'oninput
       ;(jsfn [event]

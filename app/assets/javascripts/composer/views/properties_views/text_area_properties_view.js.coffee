@@ -9,6 +9,7 @@ class @Newstime.TextAreaPropertiesView extends Backbone.View
     'change .show-by-line': 'changeShowByLine'
     'change .story-title-input': 'changeStoryTitle'
     'change .offset-leader-input': 'changeOffsetLeader'
+    'change .shape': 'changeShape'
 
   initialize: (options) ->
     @$el.addClass 'text-area-properties'
@@ -46,6 +47,11 @@ class @Newstime.TextAreaPropertiesView extends Backbone.View
       </li>
 
       <li class="property">
+        <label>Shape</label>
+        <span class="field"><input class="shape"></input></span>
+      </li>
+
+      <li class="property">
         <label>Font Size</label>
         <span class="field"><input class="font-size"></input></span>
       </li>
@@ -78,6 +84,7 @@ class @Newstime.TextAreaPropertiesView extends Backbone.View
     @$showByLine = @$('.show-by-line')
     @$byLineInput = @$('.by-line-input')
     @$storyTitleInput = @$('.story-title-input')
+    @$shape = @$('.shape')
 
     @listenTo @model, 'change', @render
     @listenTo @model, 'destroy', @remove
@@ -92,6 +99,7 @@ class @Newstime.TextAreaPropertiesView extends Backbone.View
     @$showByLine.prop('checked', @model.get('show_by_line'))
     @$byLineInput.val(@model.get('by_line') || '')
     @$storyTitleInput.val(@model.get('story_title') || '')
+    @$shape.val(@model.get('shape'))
 
   changeColumns: ->
     @model.set 'columns', @$columns.val()
@@ -112,4 +120,9 @@ class @Newstime.TextAreaPropertiesView extends Backbone.View
   changeOffsetLeader: ->
     @model.set 'offset_leader', parseInt(@$offsetLeaderInput.val())
     @textAreaView.reflow()
+    @render()
+
+  changeShape: ->
+    @model.set 'shape', @$shape.val()
+    # @textAreaView.reflow()
     @render()

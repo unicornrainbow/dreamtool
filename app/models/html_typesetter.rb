@@ -17,8 +17,9 @@ class HtmlTypesetter
   # Invokes service
   def typeset
     # Shortcut
+    Rails.logger.debug "w #{width}"
     response = Net::HTTP.post_form(LINEBREAK_SERVICE_URI, {
-      "width" => width,
+      "width" => width.to_json, #width.to_json, #width,
       "height" => height,
       "line_height" => line_height,
       "font_size" =>     font_size,

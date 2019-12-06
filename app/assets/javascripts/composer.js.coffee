@@ -141,6 +141,7 @@ class Newstime.Composer extends App.View
       @panelLayerView.attachPanel(@toolsSpinnerView)
 
       @sideMenu = new App.SideMenu
+        composer: this
       # @$body.append @sideMenu.$el[0]
       # @$body.append @sideMenu.$el[1]
       @sideMenu.appendTo(@$body.get())
@@ -159,10 +160,19 @@ class Newstime.Composer extends App.View
       # @forkUs = new App.ForkUs
       # @$body.append @forkUs.el
 
+      # @mppv, @mPropPanel, = new App.MobilePropertiesPanelView
+      # @mobilePropertiesPanelView
+
+      # @mPropPanel = new App.MobilePropertiesPanelView
+      # @$body.append @mPropPanel.el
+
       @flickrWindow = new App.FlickrWindow
         composer: this
         hidden: true
       @$body.append @flickrWindow.el
+
+      @mColorChooser = new App.MobileColorChooserView
+      @$body.append @mColorChooser.el
 
     else
 
@@ -222,11 +232,8 @@ class Newstime.Composer extends App.View
 
       @applyWorkspaceJSON(workspaceJSON)
 
-      @colors = @edition.get('colors')
-
-      @editionColorsStylesheetEl = document.getElementById('edition-colors')
-
-
+    @colors = @edition.get('colors')
+    @editionColorsStylesheetEl = document.getElementById('edition-colors')
 
     #photoPicker = @photoPicker
     #photoPanelMenuItem = new Newstime.MenuItemView
@@ -295,7 +302,7 @@ class Newstime.Composer extends App.View
       @listenTo layer, 'focus',            @handleLayerFocus
 
     @listenTo @edition, 'sync', @editionSync
-    @listenTo @edition, 'change', @editionChange
+    # @listenTo @edition, 'change', @editionChange
 
     @listenTo @edition, 'change:page_color', @editionChangeColor
     @listenTo @edition, 'change:ink_color',  @editionChangeColor
@@ -333,11 +340,14 @@ class Newstime.Composer extends App.View
   editionChange: ->
     @statusIndicator.unsavedChanged(true)
 
+  resolveColor: (color) ->
+    return @colors.resolve(color)
 
   editionChangeColor: ->
     pageColor = @edition.get('page_color')
     inkColor  = @edition.get('ink_color')
     linksColor = @edition.get('links_color')
+    # alert @colors
 
     pageColor = @colors.resolve(pageColor)
     inkColor  = @colors.resolve(inkColor)
@@ -999,6 +1009,7 @@ class Newstime.Composer extends App.View
 
     if @mobile
       @softKeysView.showKey('delete')
+      @softKeysView.showKey('properties')
 
       if @selection.contentItemView instanceof Newstime.GroupView
         @softKeysView.showKey 'ungroup'
@@ -1090,6 +1101,7 @@ class Newstime.Composer extends App.View
       @activeSelectionView?.remove()
       #@propertiesPanelView.clear()
       @propertiesPanelView?.mount(@editionPropertiesView)
+      # @mPropPanel?.hide()
       @activeSelectionView = null
       @selection = null
     @pagesPanelView?.render()
@@ -1120,10 +1132,29 @@ class Newstime.Composer extends App.View
     @canvasLayerView.listenTo @activeSelectionView, 'tracking-release', @canvasLayerView.resizeSelectionRelease
     @listenTo @activeSelectionView, 'destroy', @clearSelection
 
+  updatePropertiesPanel:
+    if MOBILE?
+      (target) ->
+        if @mPropPanel
+          @mPropPanel.position(target)
+          propertiesView = target.getPropertiesView()
+          @mPropPanel.mount(propertiesView)
+          @mPropPanel.show()
+          target.on 'destroy', =>
+             @mPropPanel?.hide()
 
-  updatePropertiesPanel: (target) ->
-    propertiesView = target.getPropertiesView()
-    @propertiesPanelView?.mount(propertiesView)
+          target.on 'touchstart', =>
+            @mPropPanel.hide()
+
+          target.on 'touchend', =>
+            @mPropPanel.position(target)
+            @mPropPanel.show()
+
+          # console.log target
+    else
+      (target) ->
+        propertiesView = target.getPropertiesView()
+        @propertiesPanelView?.mount(propertiesView)
 
   togglePanelLayer: ->
     @panelLayerView.toggle()
@@ -1137,6 +1168,21 @@ class Newstime.Composer extends App.View
 
 
     menuItem.render()
+
+  toggleProperties: ->
+    unless @mPropPanel
+      @mPropPanel = new App.MobilePropertiesPanelView
+      @$body.append @mPropPanel.el
+    else
+      if @mPropPanel.enabled
+        @mPropPanel.disable()
+      else
+        @mPropPanel.enable()
+
+    # @mPropPanel.el.remove()
+    # @mPropPanel.destroy()
+    # @mPropPanel = null
+
 
   # Returns array of pages which intersect with the bounding box.
   getIntersectingPages: (top, left, bottom, right) ->

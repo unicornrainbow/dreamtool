@@ -24,7 +24,7 @@ class @Newstime.PhotoPickerView extends Backbone.View
         _.each response, (photo) =>
           @$photos.append """
             <div class="photo-thumbnail"
-                 data-photo-id="#{photo._id}"
+                 data-photo-id="#{photo.id}"
                  data-edition-relative-url-path="#{photo.url}"
                  style="background-image: url('#{photo.url}')"></div>
           """

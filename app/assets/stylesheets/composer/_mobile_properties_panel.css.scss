@@ -1,0 +1,10 @@
+.mobile-properties-panel {
+  position: fixed;
+  top, left: 78px, 200px;
+  width, height: 150px, 250px;
+  background-color: #ef43ec;
+  z-index: 7777;
+  border-radius: 9px;
+  transition: opacity 1s;
+  opacity: 0;
+}

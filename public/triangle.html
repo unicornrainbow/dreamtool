@@ -1,0 +1,36 @@
+<meta http-equiv="content-type"
+content="text/html; charset=utf-8">
+<style>
+  body {
+    text-align: center;
+    margin-top: 27%;
+  }
+span.tri {
+  display: block;
+  font-size: 172pt;
+  /*transform: rotate(72deg);*/
+  animation-name: spin;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  position: absolute;
+  margin: 0 35%;
+}
+span.tri:first-child {
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+}
+span.tri:nth-child(2) {
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(90deg); }
+  50% { transform: rotate(180deg); }
+  75% { transform: rotate(270deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+
+<span class='tri'>△</span>
+<span class='tri'>△</span>
