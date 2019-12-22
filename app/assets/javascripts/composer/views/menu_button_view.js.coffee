@@ -6,6 +6,7 @@ class @Dreamtool.MenuButtonView extends Newstime.View
 
   initialize: (options={}) ->
     @$el.addClass "menu-button"
+    @$el.addClass options["class"]
 
     @$el.html(options['text'])
     @click = options['click'] if options['click']

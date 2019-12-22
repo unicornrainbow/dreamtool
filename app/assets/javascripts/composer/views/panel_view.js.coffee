@@ -1,3 +1,4 @@
+
 class @Newstime.PanelView extends @Newstime.View
 
   events:
@@ -22,7 +23,8 @@ class @Newstime.PanelView extends @Newstime.View
 
     @$el.html """
       <div class="title-bar">
-        <span class="dismiss"></span>
+        <span class="tu dismiss"></span>
+        <span class="tu mini-maxi"></span>
       </div>
       <div class="palette-body">
       </div>
@@ -86,6 +88,18 @@ class @Newstime.PanelView extends @Newstime.View
     e.stopPropagation()
 
   mouseover: (e) =>
+
+    # alert @model.get('height')
+    # alert @$body.children().first().height()
+    #mini maxi mode
+    # @model.get('mini/height')
+    # @model.get('mini/width')
+    # @model.get('maxi/height')
+    # @model.get('maxi/width')
+    # h = @$body.children().first().height()
+    # # (get model.height)
+    # @model.set(height: h + 30)
+
     @hovered = true
     @$el.addClass 'hovered'
 

@@ -62,7 +62,16 @@
       border-width: 2px;
       transition: border 200ms, margin 200ms;
     }
+     &.publish {
+       opacity: 30%;
+       transition: opacity .7s;
+       &.hover {
+         opacity: 100%;
+       }
+     }
+
   }
+
 
   .menu-body {
     position: absolute;

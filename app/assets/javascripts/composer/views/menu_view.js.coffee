@@ -16,11 +16,12 @@ class @Newstime.MenuView extends Newstime.View
     @menuSaveButtonView = new Dreamtool.MenuSaveButtonView
     @attachMenuButton(@menuSaveButtonView)
 
-    @menuPreviewButtonView = new Dreamtool.MenuButtonView
-      text: "Preview"
+    @menuPublishButtonView = new Dreamtool.MenuButtonView
+      text: "Publish"
+      class: 'publish'
       click: ->
-        @composer.launchPreview()
-    @attachMenuButton(@menuPreviewButtonView)
+        @composer.publish()
+    @attachMenuButton(@menuPublishButtonView)
 
     # @editionTitleView = new Newstime.EditionMenuView
     # @attachMenuTitle(@editionTitleView)
