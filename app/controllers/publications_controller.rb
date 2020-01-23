@@ -1,3 +1,4 @@
+
 class PublicationsController < ApplicationController
 
   respond_to :html
@@ -36,6 +37,12 @@ class PublicationsController < ApplicationController
 
   def show
     @publication = Publication.find(params[:id])
+  end
+
+  def show_by_name
+    @publication = Publication.
+      find_by(name: params[:name])
+    render :show      
   end
 
   def destroy

@@ -47,7 +47,7 @@ class @Newstime.GroupView extends @Newstime.CanvasItemView
           left: viewBoundry.left - newBoundry.left
 
     @contentItemViewsArray.push(view)
-    @outlineView.attach(view.outlineView)
+    # @outlineView.attach(view.outlineView)
     @$el.append(view.el)
     view.groupView = this
     view.setPageView @pageView

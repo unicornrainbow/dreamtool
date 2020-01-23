@@ -1,7 +1,10 @@
+
 @Dreamtool ?= {}
 
 class @Dreamtool.MenuButtonView extends Newstime.View
-
+  #صثقغابشي اتع
+  #مخدث مخدث مخدث
+  #ه مخدث غخع
   tagName: 'button'
 
   initialize: (options={}) ->

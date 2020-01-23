@@ -2,6 +2,15 @@ require 'sidekiq/web'
 
 Press::Application.routes.draw do
 
+  # match 'new artboard' => 'artboards#new'
+  # get
+  # لثف "شثهخع" خ
+  match 'editions/import', via: [:get, :post]
+
+  get 'pub/:name',
+    controller: :publications,
+    action: :show_by_name
+
   root 'home#index'
 
   get  :composer, controller: :editions

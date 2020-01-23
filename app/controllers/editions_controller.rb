@@ -5,6 +5,7 @@ class EditionsController < ApplicationController
   before_filter :detect_mobile, only: :compose
 
   skip_before_filter :track_hit, only: [:wip]
+  skip_before_filter :verify_authenticity_token, only: :import
 
   respond_to :html, :json
 
@@ -110,7 +111,10 @@ class EditionsController < ApplicationController
     flash[:notice] # Clear flash, since it's not currently displayed anywhere
 
     # Redirect to main if no path specified.
-    redirect_to (send("#{params[:action]}_edition_path".to_sym, @edition.slug || @edition) + '/main.html') and return unless params['path']
+    # redirect_to (send("#{params[:action]}_edition_path".to_sym, @edition.slug || @edition) + '/main.html') and return unless params['path']
+    unless params['path']
+      redirect_to request.url + '/main.html' and return
+    end
 
     # if @edition.user
     #   unless current_user == @edition.user
@@ -220,6 +224,128 @@ class EditionsController < ApplicationController
     screenname = @edition.user.screenname
     id = @edition.id.to_s[0..7]
     send_file "#{Rails.root}/share/#{screenname}/#{id}/wip.png"
+  end
+
+  def import
+    if request.method == "POST"
+
+      edp = JSON.parse(params[:edition])
+      ats = edp.slice(*Edition.attribute_names)
+
+      edition = Edition.find(edp['_id'])
+
+      if edition
+        edition.update(ats)
+        # edition.sections.delete_all
+        # edition.pages.delete_all
+        edition.colors.delete_all
+        # edition.sections_attributes = edp["sections_attributes"]
+        # edition.pages_attributes = edp["pages_attributes"]
+        # edition.pages
+        # edition.update(edp)
+      else
+        edition = Edition.new(ats)
+      end
+
+      # Sections
+      edp["sections_attributes"].each do |moo|
+        section = edition.sections.find(moo["_id"])
+        if section
+          section.update(moo)
+        else
+          section = edition.sections.new(moo)
+        end
+      end
+
+      # Pages
+      edp["pages_attributes"].each do |pat|
+        page = edition.pages.find(pat["_id"])
+        pat.delete('page_ref')
+        if page
+          page.update(pat)
+        else
+          page = edition.pages.new(pat)
+        end
+      end
+
+      # Groups
+      edp["groups_attributes"].each do |gats|
+        group =
+        edition.groups.
+        find(gats["_id"])
+
+        if group
+          group.update(gats)
+        else
+          group = edition.groups.
+                 new(gats)
+        end
+      end
+
+      # Content Items
+      edp["content_items_attributes"].each do |cats|
+        content_item =
+        edition.content_items.
+        find(cats["_id"])
+
+        if content_item
+          content_item.update(cats)
+        else
+          content_item=
+          edition.content_items.
+          new(cats)
+        end
+      end
+
+      # Colors
+      edp["colors_attributes"].each do |kat|
+        kolor =
+        edition.colors.
+        find(kat["_id"])
+
+        if kolor
+          kolor.update(kat)
+        else
+          kolor = edition.colors.
+                 new(kat)
+        end
+      end
+
+      # edition.groups_attributes =
+      # edp["groups_attributes"]
+      # edition.colors.build(edp["colors_attributes"])
+      # edition.colors_attributes =
+      # edp["colors_attributes"]
+      edition.save
+
+      redirect_to edition
+      return
+
+
+      edition = Edition.new(ats)
+      edition.reload
+      edition.save
+      redirect_to edition
+      # render text: edp.slice(*Edition.attribute_names)
+      return
+      # render text: edp
+      # edition = Edition.find(edp["_id"])
+      # render text: edition.name
+      # render text: edp["_id"]
+      edition = Edition.new(edp)
+      edition.save
+      return
+      edition = Edition.create(edp)
+      redirect_to edition
+
+
+      m = JSON.parse(params[:edition])
+
+      m[]
+
+    end
+
+
   end
 
 private

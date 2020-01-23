@@ -1,3 +1,6 @@
+- Auto resize panel view to a max height when
+  the content overflows and requires scroll on hover.
+  
 - HTML Text editor
 - Font size for text area
 - Fix Timestamps for Groups, ContentItems, Editions Etc.

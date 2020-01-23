@@ -52,7 +52,7 @@ class Page
   end
 
   def page_ref
-    "#{section.letter}#{number}"
+    # "#{section.letter}#{number}"
   end
 
   def grid_composition
