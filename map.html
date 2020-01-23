@@ -27,7 +27,7 @@ Properties Panel View
   Routes
   </a>
   </div>
-  <div><h>Models</h>
+  <div class="scroll"><h>Models</h>
 
     <a href="file:///Users/rashiki/projext/dreamtool/app/models/admin_user.rb">admin_user.rb</a><br>
     <a href="file:///Users/rashiki/projext/dreamtool/app/models/asset_recorder.rb">asset_recorder.rb</a><br>
@@ -113,8 +113,18 @@ border-radius: .05in;
 min-height: 2cm;
 margin-bottom: 5pt;
 margin-left: 12pt;
-min-width: 2cm;}</style>
+min-width: 2cm;}
 
+div.collaspe {
+  min-height: 0;
+  min-width:0;
+height: 20pt; overflow:hidden;
+}
+div.collaspe a { display: none; }
+div.scroll { max-height: 200pt; overflow-y: scroll; position: relative;}
+div.scroll h { position: fixed; width: 172pt; margin-top: -25pt; }
+div.scroll { padding-top: 25pt; overflow-x: hidden; }
+ </style>
 <BR >
 
 <BR>
