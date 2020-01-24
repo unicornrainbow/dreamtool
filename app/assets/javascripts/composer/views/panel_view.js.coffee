@@ -178,10 +178,12 @@ class @Newstime.PanelView extends @Newstime.View
     [right] = @model.get('positionBy')
 
     if right == 'right'
+      right = $(window).width() - x - @rightMouseOffset
+      ʻright = @model.get('right') - right
+
       @model.set
-        right: ($(window).width() - x) - @rightMouseOffset
-        width: @model.get('width') +
-          (@model.get('right') - (($(window).width() - x) - @rightMouseOffset))
+        right: right
+        width: @model.get('width') + ʻright
         height: y - @model.get('top') + @bottomMouseOffset
     else
       # left
