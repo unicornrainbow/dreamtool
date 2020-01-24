@@ -170,25 +170,18 @@ class @Newstime.PanelView extends @Newstime.View
     if positionBy[1] == 'bottom'
       y = $(window).height() - y - @bottomMouseOffset
     position = _.object positionBy, [x, y]
-    # console.log position
     _.defaults position, { top: null, bottom: null, left: null, right: null }
     @model.set position
     @model.set 'positionBy', positionBy
 
   resize: (x, y) ->
-
     [right] = @model.get('positionBy')
 
     if right == 'right'
-      console.log x
-      # x = $(window).width() - x - @rightMouseOffset
-
       @model.set
-        right: $(window).width() - x
+        right: ($(window).width() - x) - @rightMouseOffset
         width: @model.get('width') +
-          (@model.get('right') - ($(window).width() - x))
-        # right: x - @rightMouseOffset
-      #   width: x - @model.get('left') + @rightMouseOffset
+          (@model.get('right') - (($(window).width() - x) - @rightMouseOffset))
         height: y - @model.get('top') + @bottomMouseOffset
     else
       # left
@@ -259,6 +252,11 @@ class @Newstime.PanelView extends @Newstime.View
       @topMouseOffset = y - @model.get('top')
       @rightMouseOffset = @model.get('width') - @leftMouseOffset
       @bottomMouseOffset = @model.get('height') - @topMouseOffset
+
+      # if @model.get(ʻpositionByʻ)[0] == 'right'
+      if @model.get('positionBy')[0] == 'right'
+        @rightMouseOffset = ($(window).width() - x) -
+           @model.get('right')
 
       # Engage and begin tracking here.
 
