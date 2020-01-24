@@ -1,0 +1,5 @@
+
+January 24, 2020
+
+* Fix resize drag panel when the panel is positioned from
+   the right side of the screen.
