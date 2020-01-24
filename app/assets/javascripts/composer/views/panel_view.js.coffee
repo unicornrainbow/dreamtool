@@ -170,14 +170,32 @@ class @Newstime.PanelView extends @Newstime.View
     if positionBy[1] == 'bottom'
       y = $(window).height() - y - @bottomMouseOffset
     position = _.object positionBy, [x, y]
-    _.defaults position, { top: null, bottom: null, left: null, right: null }
     # console.log position
+    _.defaults position, { top: null, bottom: null, left: null, right: null }
     @model.set position
+    @model.set 'positionBy', positionBy
 
   resize: (x, y) ->
-    @model.set
-      width: x - @model.get('left') + @rightMouseOffset
-      height: y - @model.get('top') + @bottomMouseOffset
+
+    [right] = @model.get('positionBy')
+
+    if right == 'right'
+      console.log x
+      # x = $(window).width() - x - @rightMouseOffset
+
+      @model.set
+        right: $(window).width() - x
+        width: @model.get('width') +
+          (@model.get('right') - ($(window).width() - x))
+        # right: x - @rightMouseOffset
+      #   width: x - @model.get('left') + @rightMouseOffset
+        height: y - @model.get('top') + @bottomMouseOffset
+    else
+      # left
+      @model.set
+        width: x - @model.get('left') + @rightMouseOffset
+        height: y - @model.get('top') + @bottomMouseOffset
+
 
   mouseup: (e) ->
     if @tracking
