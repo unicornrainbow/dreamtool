@@ -1,6 +1,6 @@
 
     <% @files.each do | filename| %>
-      <%= link_tag filename, filename %><BR>
+      <a href="<%= filename %>"><%= filename %></a><BR>
     <% end %>
     <BR>
     <% @files.each do |file| %>
