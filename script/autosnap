@@ -2,11 +2,15 @@
 
 print 'Auto snapping'
  loop do
-   msg = File.read('.git/ATOM_COMMIT_EDITMSG')
-   if msg == ""
-     `script/snapshot "autosnapped"`
+   if File.exist '.git/ATOM_COMMIT_EDITMSG'
+     msg = File.read('.git/ATOM_COMMIT_EDITMSG')
+     if msg == ""
+       `script/snapshot "autosnapped"`
+     else
+       `script/snapshot "autosnapped\n\n#{msg}"`
+     end
    else
-     `script/snapshot "autosnapped\n\n#{msg}"`
+    `script/snapshot "autosnapped"`
    end
    print '.'
    sleep 20
