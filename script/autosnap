@@ -2,7 +2,7 @@
 
 print 'Auto snapping'
  loop do
-   if File.exist '.git/ATOM_COMMIT_EDITMSG'
+   if File.exists? '.git/ATOM_COMMIT_EDITMSG'
      msg = File.read('.git/ATOM_COMMIT_EDITMSG')
      if msg == ""
        `script/snapshot "autosnapped"`
