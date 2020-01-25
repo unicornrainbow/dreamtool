@@ -13,6 +13,10 @@ class DevController < ApplicationController
     render 'text-editor', layout: false
   end
 
+  def map
+    render :map, layout: false
+  end
+
   def tree
     path = params[:path]
 
