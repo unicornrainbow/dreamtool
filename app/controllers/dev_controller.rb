@@ -18,11 +18,10 @@ class DevController < ApplicationController
     @controllers = Dir.glob('**/*.*')
     @controllers = @controllers.map { |c| [c, File.join("app/controllers", c)]}
 
-    @helpers = 'app/helpers'.tap do |path|
-      Dir.chdir(File.join(Rails.root, path))
-      Dir.glob('**/*.*')
+    path = 'app/helpers'
+    Dir.chdir(File.join(Rails.root, path))
+    @helpers = Dir.glob('**/*.*')
         .map { |c| [c, File.join(path, c)]}
-    end
     render :map, layout: false
   end
 
