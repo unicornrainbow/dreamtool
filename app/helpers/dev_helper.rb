@@ -3,7 +3,8 @@ module DevHelper
     sauce = html_escape File.read path
     # sauce = File.read File.join(Rails.root, 'app/assets/javascripts', k.last)
     sauce = sauce.lines.map do |line|
-      if line =~ /(^.*)new ([\w\.]*)(.*)$/
+      case line
+      when /(^.*)new ([\w\.]*)(.*)$/
         s,a,v = $1,$2,$3
         href = $2
         href = "/dev/browse/" + href
