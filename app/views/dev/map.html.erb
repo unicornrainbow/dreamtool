@@ -158,6 +158,9 @@ TODO
 
 </div>
   <div><h onclick="this.parentNode.classList.toggle('collaspe');">Controllers</h>
+    <%= @controllers.each do |controller| %>
+      <%= link_to controller, controller %><BR>
+    <% end %>
     <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/admin">admin</a><br>
   <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/admin_controller.rb">admin_controller.rb</a><br>
   <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/api_controller.rb">api_controller.rb</a><br>
