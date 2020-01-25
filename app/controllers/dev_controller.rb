@@ -41,8 +41,22 @@ class DevController < ApplicationController
 
     fullpath = File.join(Rails.root, path)
 
-    # send_file fullpath
     sauce = File.read fullpath
+    sauce = sauce.lines.map do |line|
+      if line =~ /(^.*)new ([\w\.]*)(.*)$/
+        s,a,v = $1,$2,$3
+        href = $2
+        # href.sub!("Newstime.","")
+        # href = href.underscore
+        # href = ""
+
+        "->" + [s,"new ",
+          "<a href=\"",href,"\">",
+          a,"</a>",v,"\n"].join
+      else
+        line
+      end
+    end.join
     render text: "<pre>#{sauce}</pre>"
   end
 end
