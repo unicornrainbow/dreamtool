@@ -104,7 +104,7 @@ class DevController < ApplicationController
 
 
     @files = k.map do |filepath|
-      [filepath.split("/").last, filepath]
+      [FileUtils.filename(filepath), filepath]
     end
     @sauce = sauce
     render :browse, layout: false
