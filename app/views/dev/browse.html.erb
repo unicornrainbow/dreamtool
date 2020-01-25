@@ -1,9 +1,10 @@
 
-    <% @files.each do | filename| %>
-    <% end %>
+
     <BR>
-    <% @files.each do |file| %>
+    <% @files.each do |filename| %>
+      <div>
       <h><a href="/dev/tree/app/assets/javascripts/<%= filename %>"><%= filename %></a><BR></h>
-      <%= render 'browse_file', file: file %>
+      <%= render 'browse_file', file: filename %>
       <BR>
+      </div>
     <% end %>
