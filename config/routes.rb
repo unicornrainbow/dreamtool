@@ -139,6 +139,7 @@ Press::Application.routes.draw do
   end
 
   get 'dev/edit'
+  get 'dev/map'
   get 'dev/tree/*path' => 'dev#tree'
   get 'dev/browse/*path' => 'dev#browse'
 
