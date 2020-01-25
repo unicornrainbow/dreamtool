@@ -1,5 +1,7 @@
 
-    <%= @files %>
+    <%= @files.each do | filename| %>
+      <%= filename %><BR>
+    <% end %>
     <BR>
     <% @files.each do |file| %>
       <%= render 'browse_file', file: file %>
