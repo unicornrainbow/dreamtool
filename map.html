@@ -22,12 +22,12 @@ div.collaspe {
 height: 20pt; overflow:hidden;
 }
 div.collaspe a,
-div.collaspe div { display: none; }
+div.collaspe div,
+div.collaspe pre{ display: none; }
 div.scroll { max-height: 200pt; overflow-y: scroll; position: relative;}
 div.scroll h { position: fixed; width: 172pt; margin-top: -25pt; }
 div.scroll { padding-top: 25pt; overflow-x: hidden; }
  </style>
-
 <a href="file:///Users/rashiki/projext/dreamtool/app/assets/javascripts/composer/views/panel_view.js.coffee">
 Panel View
 </a>
@@ -201,8 +201,11 @@ TODO
 
 <div><h onclick="this.parentNode.classList.toggle('collaspe');">Composer</h>
 
-<a href="file:///Users/rashiki/projext/dreamtool/app/assets/javascripts/composer.js.coffee">
+<a href="http://localhost:9494/dev/tree/app/assets/javascripts/composer.js.coffee">
 composer.js.coffee
+</a>
+<a href="file:///Users/rashiki/projext/dreamtool/app/assets/javascripts/composer.js.coffee.html">
+ [html]
 </a><BR>
 <a href="file:///Users/rashiki/projext/dreamtool/app/assets/javascripts/mobile-composer.js.coffee">
 mobile-composer.js.coffee
@@ -224,6 +227,45 @@ Properties Panel View
 </a>
   </div>
 </div>
+
+<div><h   onclick="this.parentNode.classList.toggle('collaspe');">Layers</h>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/assets/javascripts/composer/views/capture_layer_view.js.coffee">
+    Capture Layer</a><BR>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/assets/javascripts/composer/views/menu_layer_view.js.coffee">
+    Menu Layer</a><BR>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/assets/javascripts/composer/views/panel_layer_view.js.coffee">
+    Panel Layer</a><BR>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/assets/javascripts/composer/views/canvas_view.js.coffee">
+    Canvas Layer</a><BR>
+
+
+  </div>
+
+<BR>
+  <div>
+    <h>🐩</h>
+    <pre>
+      <a id="@canvasLayerView">@canvasLayerView</a> = new <a href="file:///Users/rashiki/projext/dreamtool/app/assets/javascripts/composer/views/canvas_view.js.coffee">Dreamtool.CanvasLayerView</a>
+        el: @canvas
+        topOffset: @topOffset + @menuHeight
+        edition: @edition
+        toolbox: @toolbox
+        toolsSpinner: @toolsSpinner
+        contentItemViews: @contentItemViews
+        groupViews: @groupViews
+        pageViews: @pageViews
+      @$body.append(@canvasLayerView.el)
+
+      # Layers of app, in order from top to bottom
+      @layers = [
+        @textEditor
+        @menuLayerView
+        @sideMenu # Only on mobile
+        @panelLayerView
+        <a href="#@canvasLayerView">@canvasLayerView</a>
+      ]
+      </pre>
+      </div>
 </div>
 
 <!-- some awk cmds for grabbing listing
