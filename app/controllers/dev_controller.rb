@@ -71,15 +71,15 @@ class DevController < ApplicationController
   def browse
     path = params[:path] + "." + params[:format]
     d = path.split('.').last.underscore
-    render text: d
-    return
+    # render text: d
+    # return
     # href.sub!("Newstime.","")
     # href = href.underscore
     # href = ""
 
     # render text: `ls -R #{File.join(Rails.root, 'app/assets/javascripts')}`
     Dir.chdir(File.join(Rails.root, 'app/assets/javascripts'))
-    Dir.glob('*').select {|f| /path/.match f }
+    render text: Dir.glob('*').select {|f| /d/.match f }
 
   end
 
