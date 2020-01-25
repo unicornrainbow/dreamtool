@@ -1,6 +1,6 @@
 module DevHelper
   def read_file(path)
-    sauce = File.read path
+    sauce = escape File.read path
     # sauce = File.read File.join(Rails.root, 'app/assets/javascripts', k.last)
     sauce = sauce.lines.map do |line|
       if line =~ /(^.*)new ([\w\.]*)(.*)$/
