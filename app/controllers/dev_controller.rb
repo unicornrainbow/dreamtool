@@ -71,7 +71,7 @@ class DevController < ApplicationController
   def browse
     path = params[:path] + "." + params[:format]
 
-    render text: path.split('.')
+    render text: path.split('.').last
     return
     # href.sub!("Newstime.","")
     # href = href.underscore
