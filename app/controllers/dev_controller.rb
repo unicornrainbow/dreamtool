@@ -106,7 +106,6 @@ class DevController < ApplicationController
     @files = k.map do |filepath|
       [filepath.split("/").last, filepath]
     end
-    @sauce = sauce
     render :browse, layout: false
     # render text: "#{k}<BR><pre>#{sauce}</pre>"
 
