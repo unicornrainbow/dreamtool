@@ -79,7 +79,7 @@ class DevController < ApplicationController
 
     # render text: `ls -R #{File.join(Rails.root, 'app/assets/javascripts')}`
     Dir.chdir(File.join(Rails.root, 'app/assets/javascripts'))
-    render text: Dir.glob('*').select {|f| true }
+    render text: Dir.glob('**/*').select {|f| true }
        # /d/.match f }
 
   end
