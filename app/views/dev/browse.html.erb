@@ -29,9 +29,8 @@ div.collaspe pre{ display: none; }
     <BR>
     <% @files.each do |filename| %>
       <div>
-      <h  onclick="this.parentNode.classList.toggle('collaspe');">
+      <h onclick="this.parentNode.classList.toggle('collaspe');">
         * <%= filename %><BR></h>
-        <%# * <a href="/dev/tree/app/assets/javascripts/<%= filename %>"><%= filename %></a><BR></h> %>
       <%= render 'browse_file', file: filename %>
       <BR>
       </div>
