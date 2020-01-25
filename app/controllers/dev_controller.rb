@@ -24,7 +24,8 @@ class DevController < ApplicationController
     # render text: `cat #{fullpath}`
   end
 
-  def tree
+  def browse
+    # dev only
     unless Rails.env.development?
       render "404", status: 404
       return nil
@@ -39,6 +40,7 @@ class DevController < ApplicationController
 
     path = path.gsub('..', '')
 
+
     fullpath = File.join(Rails.root, path)
 
     sauce = File.read fullpath
@@ -46,6 +48,7 @@ class DevController < ApplicationController
       if line =~ /(^.*)new ([\w\.]*)(.*)$/
         s,a,v = $1,$2,$3
         href = $2
+        href = "/dev/browse/" + href
         # href.sub!("Newstime.","")
         # href = href.underscore
         # href = ""

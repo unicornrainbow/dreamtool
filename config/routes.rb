@@ -140,7 +140,7 @@ Press::Application.routes.draw do
 
   get 'dev/edit'
   get 'dev/tree/*path' => 'dev#tree'
-  get 'dev/browse'
+  get 'dev/browse/*path' => 'dev#browse'
 
   get '/logo' => 'application#logo'
 
