@@ -1,6 +1,6 @@
 
     <% @files.each do | filename| %>
-      <%= filename %><BR>
+      <%= tag :a, filename, filename %><BR>
     <% end %>
     <BR>
     <% @files.each do |file| %>
