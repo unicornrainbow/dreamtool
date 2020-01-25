@@ -102,7 +102,9 @@ class DevController < ApplicationController
       end
     end.join
 
-    render text: "#{k}<BR><pre>#{sauce}</pre>"
+    @filenames = k
+    render :browse
+    # render text: "#{k}<BR><pre>#{sauce}</pre>"
 
   end
 
