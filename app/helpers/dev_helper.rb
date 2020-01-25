@@ -15,6 +15,17 @@ module DevHelper
         "->" + [s,"new ",
           "<a href=\"",href,"\">",
           a,"</a>",v,"\n"].join
+      when /(^.*)extends ([\w\.]*)(.*)$/
+        s,a,v = $1,$2,$3
+        href = $2
+        href = "/dev/browse/" + href
+        # href.sub!("Newstime.","")
+        # href = href.underscore
+        # href = ""
+
+        "->" + [s,"new ",
+          "<a href=\"",href,"\">",
+          a,"</a>",v,"\n"].join
       else
         line
       end
