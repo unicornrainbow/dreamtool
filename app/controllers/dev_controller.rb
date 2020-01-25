@@ -102,7 +102,10 @@ class DevController < ApplicationController
       end
     end.join
 
-    @files = k
+
+    @files = k.map do |filepath|
+      [File.name(filepath), filepath]
+    end
     @sauce = sauce
     render :browse, layout: false
     # render text: "#{k}<BR><pre>#{sauce}</pre>"
