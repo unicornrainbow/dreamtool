@@ -23,7 +23,7 @@ module DevHelper
         # href = href.underscore
         # href = ""
 
-        "->" + [s,"new ",
+        "->" + [s,"extends ",
           "<a href=\"",href,"\">",
           a,"</a>",v,"\n"].join
       else
