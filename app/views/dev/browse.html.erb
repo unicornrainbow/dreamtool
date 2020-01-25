@@ -1,3 +1,7 @@
 
-    <%= @filenames %>
-    # render text: "#{k}<BR><pre>#{sauce}</pre>"
+    <%= @files %>
+    <BR>
+    <% @files.each do |file| %>
+      <%= render 'browse_file', file: file %>
+      <BR>
+    <% end %>
