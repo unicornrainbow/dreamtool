@@ -22,7 +22,8 @@ div.collaspe pre{ display: none; }
     <% @files.each do |filename, filepath| %>
       <div  <%= raw (t-=1).zero? || 'class="collaspe"' %>>
       <h onclick="this.parentNode.classList.toggle('collaspe');">
-        <%= filename %>
+        <a href="file:///Users/rashiki/projext/dreamtool/app/assets/javascripts/<%= filepath %>">
+          <%= filename %></a>
         <a href="/dev/tree/app/assets/javascripts/<%= filepath %>">
           🌮
         </a>
