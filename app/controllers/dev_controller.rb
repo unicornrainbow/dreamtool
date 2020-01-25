@@ -1,6 +1,8 @@
 class DevController < ApplicationController
 
-  before_filter :dev
+
+  if Rails.env.development?
+    # before_filter :localhost
 
   def edit
     # @tree = (getdirtree)
@@ -81,14 +83,28 @@ class DevController < ApplicationController
 
   end
 
-
   private
 
+  def localhost
+    return request.host == 'localhost'
+    # unless
+      # Rails.env.development?
+      # render "404", status: 404
+      # return false
+    # end
+  end
 
-  def dev
-    unless request.host == 'localhost' &&
-      Rails.env.development?
-      render "404", status: 404
-      return nil
-    end
+  # def filter_out test
+  #   before_filter do
+  #     unless send(test)
+  #       render "404", status: 404
+  #       return false
+  #     end
+  #   end
+  # end
+  #
+  # before_filter :localhost
+
+  end
+
 end

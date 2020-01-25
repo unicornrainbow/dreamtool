@@ -8,7 +8,11 @@ if [ -z "$(git diff --cached)" ]; then
   # Staged changes?
   if [ -n "$(git diff --cached)" ]; then
     # Make a git commit with "snapshot" if we found any.
-    git commit -m "snapshot"
+    if [ -z "$1" ]; then
+      git commit -m "snapshot"
+    else
+      git commit -m "$1"
+    fi
   fi
 fi
 

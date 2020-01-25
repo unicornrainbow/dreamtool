@@ -2,7 +2,7 @@
 
 print 'Auto snapping'
  loop do
-   `script/snapshot`
+   `script/snapshot "autosnapped"`
    print '.'
-   sleep 15*60
+   sleep 5*60
  end
