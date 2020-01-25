@@ -1,0 +1,8 @@
+#! /usr/bin/env ruby
+
+print 'Auto snapping'
+ loop do
+   `script/snapshot`
+   print '.'
+   sleep 15*60
+ end
