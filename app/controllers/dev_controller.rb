@@ -25,6 +25,11 @@ class DevController < ApplicationController
   end
 
   def tree
+    unless Rails.env.development?
+      render "404", status: 404
+      return nil
+    end
+
     path = params[:path]
 
     if params[:format]
@@ -37,10 +42,7 @@ class DevController < ApplicationController
     fullpath = File.join(Rails.root, path)
 
     # send_file fullpath
-    sauce = `cat #{fullpath}`
+    sauce = File.read fullpath
     render text: "<pre>#{sauce}</pre>"
-  end
-
-  def browse
   end
 end
