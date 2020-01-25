@@ -81,7 +81,8 @@ class DevController < ApplicationController
     Dir.chdir(File.join(Rails.root, 'app/assets/javascripts'))
     k = Dir.glob('**/*').select {|f| /#{d}/.match f }
 
-    render text: k.last 
+    r = File.read File.join(Rails.root, 'app/assets/javascripts', k.last)
+    render text: r
        # true }
 
   end
