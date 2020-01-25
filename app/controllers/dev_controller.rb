@@ -16,7 +16,7 @@ class DevController < ApplicationController
   def map
     Dir.chdir(File.join(Rails.root, 'app/controllers'))
     @controllers = Dir.glob('**/*.*')
-    @controllers = @controllers.map { |c| [c, "app/controllers" + c]}
+    @controllers = @controllers.map { |c| [c, File.join("app/controllers", c)]}
     render :map, layout: false
   end
 
