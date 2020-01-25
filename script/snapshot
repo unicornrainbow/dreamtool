@@ -2,8 +2,7 @@
 # If there are no staged changes
 if [ -z "$(git diff --cached)" ]; then
          
-  # Stage changes to any already tracked file (-u)
-  git add -u
+  git add .
   
   # Staged changes?
   if [ -n "$(git diff --cached)" ]; then

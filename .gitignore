@@ -21,6 +21,7 @@ dump.zip
 public/assets
 .env
 .swp
+*.swp
 share
 layouts/blank
 config/media_modules.yml
