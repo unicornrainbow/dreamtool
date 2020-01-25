@@ -27,11 +27,12 @@ div.collaspe pre{ display: none; }
 
 </style>
     <BR>
-    <% @files.each do |filename| %>
+    <% @files.each do |[filename, filepath]| %>
       <div>
       <h onclick="this.parentNode.classList.toggle('collaspe');">
-        * <%= filename %><BR></h>
-      <%= render 'browse_file', file: filename %>
+        <%= filename %>
+      </h><BR>
+      <%= render 'browse_file', file: filepath %>
       <BR>
       </div>
     <% end %>
