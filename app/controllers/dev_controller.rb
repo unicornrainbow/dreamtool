@@ -94,7 +94,7 @@ class DevController < ApplicationController
 
     # render text: `ls -R #{File.join(Rails.root, 'app/assets/javascripts')}`
     Dir.chdir(File.join(Rails.root, 'app/assets/javascripts'))
-    k = Dir.glob('**/*.*').select {|f| /#{d}/.match f }
+    k = Dir.glob('**/*.*').select {|f| /#{d}/.match File.basename(f) }
 
     @files = k.map do |filepath|
       [filepath.split("/").last, filepath]
