@@ -13,5 +13,5 @@ print 'Auto snapping'
     `script/snapshot "autosnapped"`
    end
    print '.'
-   sleep 20
+   sleep 77
  end
