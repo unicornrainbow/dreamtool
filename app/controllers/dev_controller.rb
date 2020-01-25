@@ -82,26 +82,7 @@ class DevController < ApplicationController
 
     # render text: `ls -R #{File.join(Rails.root, 'app/assets/javascripts')}`
     Dir.chdir(File.join(Rails.root, 'app/assets/javascripts'))
-    k = Dir.glob('**/*').select {|f| /#{d}/.match f }
-
-    sauce = File.read File.join(Rails.root, 'app/assets/javascripts', k.last)
-    sauce = sauce.lines.map do |line|
-      if line =~ /(^.*)new ([\w\.]*)(.*)$/
-        s,a,v = $1,$2,$3
-        href = $2
-        href = "/dev/browse/" + href
-        # href.sub!("Newstime.","")
-        # href = href.underscore
-        # href = ""
-
-        "->" + [s,"new ",
-          "<a href=\"",href,"\">",
-          a,"</a>",v,"\n"].join
-      else
-        line
-      end
-    end.join
-
+    k = Dir.glob('**/*.*').select {|f| /#{d}/.match f }
 
     @files = k.map do |filepath|
       [filepath.split("/").last, filepath]
