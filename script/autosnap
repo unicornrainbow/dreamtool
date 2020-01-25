@@ -4,5 +4,5 @@ print 'Auto snapping'
  loop do
    `script/snapshot "autosnapped"`
    print '.'
-   sleep 5*60
+   sleep 30
  end
