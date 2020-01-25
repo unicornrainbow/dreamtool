@@ -27,8 +27,7 @@ div.collaspe pre{ display: none; }
 
 </style>
     <BR>
-    <% @files.each do |m| %>
-      <% [filename, filepath] = m %>
+    <% @files.each do |filename, filepath| %>
       <div>
       <h onclick="this.parentNode.classList.toggle('collaspe');">
         <%= filename %>
