@@ -101,7 +101,8 @@ class DevController < ApplicationController
         line
       end
     end.join
-    render text: "#{filename}<BR><pre>#{sauce}</pre>"
+
+    render text: "#{k}<BR><pre>#{sauce}</pre>"
 
   end
 
