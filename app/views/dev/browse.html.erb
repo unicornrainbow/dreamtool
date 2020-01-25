@@ -1,6 +1,6 @@
 
     <% @files.each do | filename| %>
-      <a href="/<%= File.join(Rails.root, 'app/assets/javascripts', filename) %>"><%= filename %></a><BR>
+      <a href="file://<%= File.join(Rails.root, 'app/assets/javascripts', filename) %>"><%= filename %></a><BR>
     <% end %>
     <BR>
     <% @files.each do |file| %>
