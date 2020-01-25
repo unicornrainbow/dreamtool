@@ -158,46 +158,14 @@ TODO
 
 </div>
   <div><h onclick="this.parentNode.classList.toggle('collaspe');">Controllers</h>
-    <%= @controllers.each do |filename, filepath| %>
+    <% @controllers.each do |filename, filepath| %>
       <%= link_to  filename, "/dev/tree/" + filepath %><BR>
     <% end %>
-    <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/admin">admin</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/admin_controller.rb">admin_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/api_controller.rb">api_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/application_controller.rb">application_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/attachments_controller.rb">attachments_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/breakdance_controller.rb">breakdance_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/concerns">concerns</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/content_items_controller.rb">content_items_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/content_regions_controller.rb">content_regions_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/dev">dev</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/dev_controller.rb">dev_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/edition_assets_controller.rb">edition_assets_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/edition_masthead_artworks_controller.rb">edition_masthead_artworks_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/editions_controller.rb">editions_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/flickr_controller.rb">flickr_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/fonts_controller.rb">fonts_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/groups_controller.rb">groups_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/home_controller.rb">home_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/inlets_controller.rb">inlets_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/javascripts_controller.rb">javascripts_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/layouts_controller.rb">layouts_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/mastheads_controller.rb">mastheads_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/pages_controller.rb">pages_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/partials_controller.rb">partials_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/photos_controller.rb">photos_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/prints_controller.rb">prints_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/publications_controller.rb">publications_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/sections_controller.rb">sections_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/sessions_controller.rb">sessions_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/stories_controller.rb">stories_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/story_text_content_items_controller.rb">story_text_content_items_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/stylesheets_controller.rb">stylesheets_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/videos_controller.rb">videos_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/webpages_controller.rb">webpages_controller.rb</a><br>
-  <a href="file:///Users/rashiki/projext/dreamtool/app/controllers/workspaces_controller.rb">workspaces_controller.rb</a><br>
 </div>
 <div><h onclick="this.parentNode.classList.toggle('collaspe');">Helpers</h>
+    <% @helpers.each do |filename, filepath| %>
+      <%= link_to  filename, "/dev/tree/" + filepath %><BR>
+    <% end %>
   <a href="file:///Users/rashiki/projext/dreamtool/app/helpers/application_helper.rb">application_helper.rb</a><br>
   <a href="file:///Users/rashiki/projext/dreamtool/app/helpers/content_items_helper.rb">content_items_helper.rb</a><br>
   <a href="file:///Users/rashiki/projext/dreamtool/app/helpers/edition_assets_helper.rb">edition_assets_helper.rb</a><br>
