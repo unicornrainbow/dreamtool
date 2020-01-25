@@ -19,7 +19,7 @@ div.collaspe pre{ display: none; }
 </style>
     <BR>
     <% @files.each do |filename, filepath| %>
-      <div>
+      <div class="collaspe">
       <h onclick="this.parentNode.classList.toggle('collaspe');">
         <a href="/dev/tree/app/assets/javascripts/<%= filepath %>">
         <%= filename %>
