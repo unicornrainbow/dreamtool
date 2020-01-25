@@ -82,7 +82,7 @@ class DevController < ApplicationController
     k = Dir.glob('**/*').select {|f| /#{d}/.match f }
 
     r = File.read File.join(Rails.root, 'app/assets/javascripts', k.last)
-    render text: "<pre>r</pre>"
+    render text: "<pre>#{r}</pre>"
        # true }
 
   end
