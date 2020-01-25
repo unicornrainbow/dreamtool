@@ -69,7 +69,9 @@ class DevController < ApplicationController
   end
 
   def browse
-    path = params[:path] + "." + params[:format]
+    if params[:format]
+      path = params[:path] + "." + params[:format]
+    end
     d = path.split('.').last.underscore
     # render text: d
     # return
