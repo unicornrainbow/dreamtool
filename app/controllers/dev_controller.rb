@@ -49,9 +49,9 @@ class DevController < ApplicationController
         s,a,v = $1,$2,$3
         href = $2
         href = "/dev/browse/" + href
-        # href.sub!("Newstime.","")
-        # href = href.underscore
-        # href = ""
+        href.sub!("Newstime.","")
+        href = href.underscore
+        href = ""
 
         "->" + [s,"new ",
           "<a href=\"",href,"\">",
@@ -71,7 +71,10 @@ class DevController < ApplicationController
     end
 
     path = params[:path]
-    
+
+    # render text: `ls -R #{File.join(Rails.root, 'app/assets/javascripts')}`
+    Dir.chdir(File.join(Rails.root, 'app/assets/javascripts'))
+    Dir.glob('*').select {|f| //.match f }
 
   end
 end
