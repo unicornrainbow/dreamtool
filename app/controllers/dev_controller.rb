@@ -1,4 +1,7 @@
 class DevController < ApplicationController
+
+  before_filter :dev
+
   def edit
     # @tree = (getdirtree)
 
@@ -24,9 +27,9 @@ class DevController < ApplicationController
     # render text: `cat #{fullpath}`
   end
 
-  def browse
-    # local only
-    unless Rails.env.development?
+  def tree
+    unless request.host == 'localhost' &&
+      Rails.env.development?
       render "404", status: 404
       return nil
     end
@@ -49,9 +52,9 @@ class DevController < ApplicationController
         s,a,v = $1,$2,$3
         href = $2
         href = "/dev/browse/" + href
-        href.sub!("Newstime.","")
-        href = href.underscore
-        href = ""
+        # href.sub!("Newstime.","")
+        # href = href.underscore
+        # href = ""
 
         "->" + [s,"new ",
           "<a href=\"",href,"\">",
@@ -64,17 +67,28 @@ class DevController < ApplicationController
   end
 
   def browse
-    # local only
-    unless request.host == 'localhost'
-      render "404", status: 404
-      return nil
-    end
-
     path = params[:path]
+
+    render text: path.split('.')
+    return
+    # href.sub!("Newstime.","")
+    # href = href.underscore
+    # href = ""
 
     # render text: `ls -R #{File.join(Rails.root, 'app/assets/javascripts')}`
     Dir.chdir(File.join(Rails.root, 'app/assets/javascripts'))
-    Dir.glob('*').select {|f| //.match f }
+    Dir.glob('*').select {|f| /path/.match f }
 
   end
+
+
+  private
+
+
+  def dev
+    unless request.host == 'localhost' &&
+      Rails.env.development?
+      render "404", status: 404
+      return nil
+    end
 end
