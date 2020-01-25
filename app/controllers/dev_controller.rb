@@ -25,7 +25,7 @@ class DevController < ApplicationController
   end
 
   def browse
-    # dev only
+    # local only
     unless Rails.env.development?
       render "404", status: 404
       return nil
@@ -61,5 +61,17 @@ class DevController < ApplicationController
       end
     end.join
     render text: "<pre>#{sauce}</pre>"
+  end
+
+  def browse
+    # local only
+    unless request.host == 'localhost'
+      render "404", status: 404
+      return nil
+    end
+
+    path = params[:path]
+    
+
   end
 end
