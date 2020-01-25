@@ -4,7 +4,7 @@ module DevHelper
     # sauce = File.read File.join(Rails.root, 'app/assets/javascripts', k.last)
     sauce = sauce.lines.map do |line|
       case line
-      when /(^.*)new ([\w\.]*)(.*)$/
+      when /(^.*)new ([@\w\.]*)(.*)$/
         s,a,v = $1,$2,$3
         href = $2
         href = "/dev/browse/" + href
@@ -12,7 +12,7 @@ module DevHelper
         # href = href.underscore
         # href = ""
 
-        "->" + [s,"new ",
+        [s,"new ",
           "<a href=\"",href,"\">",
           a,"</a>",v,"\n"].join
       when /(^.*)extends ([\w\.]*)(.*)$/
@@ -23,7 +23,7 @@ module DevHelper
         # href = href.underscore
         # href = ""
 
-        "->" + [s,"extends ",
+        [s,"extends ",
           "<a href=\"",href,"\">",
           a,"</a>",v,"\n"].join
       else
