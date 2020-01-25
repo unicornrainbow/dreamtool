@@ -17,6 +17,7 @@
 /out
 public/system
 dump
+dump.zip
 public/assets
 .env
 .swp
