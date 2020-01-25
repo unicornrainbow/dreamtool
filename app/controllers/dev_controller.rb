@@ -69,8 +69,9 @@ class DevController < ApplicationController
   end
 
   def browse
+    path = params[:path]
     if params[:format]
-      path = params[:format]  
+      path = params[:format]
     end
     d = path.underscore
     # render text: d
