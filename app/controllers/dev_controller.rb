@@ -42,11 +42,11 @@ class DevController < ApplicationController
   end
 
   def tree
-    unless request.host == 'localhost' &&
-      Rails.env.development?
-      render "404", status: 404
-      return nil
-    end
+    # unless request.host == 'localhost' &&
+    #   Rails.env.development?
+    #   render "404", status: 404
+    #   return nil
+    # end
 
     path = params[:path]
 
