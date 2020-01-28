@@ -93,7 +93,6 @@ class DevController < ApplicationController
           qrp = $2
 
           pqs = qrp.split('.')
-
           tmr = pqs.last
           udc = tmr.underscore
           m = mm.select { |f|
