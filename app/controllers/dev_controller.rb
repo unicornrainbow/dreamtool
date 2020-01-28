@@ -62,17 +62,17 @@ class DevController < ApplicationController
           tmr = pqs.last
           udc = tmr.underscore
           m = mm.select { |f|
-            /#{udc}\.js(\.coffee)/.match File.basename(f) }
+            /^#{udc}\.js(\.coffee)/.match File.basename(f) }
 
           if m.count > 1
             # next line
-            # render text: m
-            # return
+            render text: m
+            return
             raise "#{udc} had more than one matching file"
           end
 
           if m.count == 0
-            next line
+            # next line
             # render text: mm
             # return
             raise "%s had no matches" % udc
