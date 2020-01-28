@@ -58,7 +58,7 @@ class DevController < ApplicationController
           s,a,v = $1,$2,$3
           qrp = $2
 
-          resolve_coffee_class_file($2)
+          path = coffeeclass2path($2)
 
           pqs = qrp.split('.')
           tmr = pqs.last
