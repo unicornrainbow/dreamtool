@@ -71,7 +71,7 @@ class DevController < ApplicationController
           end
 
           if m.count == 0
-            raise "%1 had no matches" % tmr
+            raise "%s had no matches" % tmr
           end
 
           # href = "/dev/browse/" + href
