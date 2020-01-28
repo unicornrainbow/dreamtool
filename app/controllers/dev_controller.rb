@@ -115,7 +115,8 @@ class DevController < ApplicationController
 
           if m.count == 0
             if pqs.first == "Backbone"
-              m = ["lib/backbone.js"]
+              # m = ["lib/backbone.js"]
+              href = "http://www.backbonejs.org/"
             else
               next line
               # render text: mm
@@ -125,7 +126,7 @@ class DevController < ApplicationController
           end
 
           # href = "/dev/browse/" + href
-          href = "/dev/tree/" + "app/assets/javascripts/" + m[0]
+          href ||= "/dev/tree/" + "app/assets/javascripts/" + m[0]
 
           [s,"extends ",
             "<a href=\"",href,"\">",
