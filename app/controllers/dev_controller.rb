@@ -70,6 +70,10 @@ class DevController < ApplicationController
             raise "#{tmr} had more than one matching file"
           end
 
+          if m.count == 0
+            raise "%1 had no matches" % tmr
+          end
+
           # href = "/dev/browse/" + href
           href = "/dev/tree/" + m[0]
           # href.sub!("Newstime.","")
