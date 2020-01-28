@@ -33,19 +33,20 @@ class DevController < ApplicationController
     # end
 
     path = params[:path]
-
     if params[:format]
       path << '.'
       path << params[:format]
     end
 
     path = path.gsub('..', '')
-
-
     fullpath = File.join(Rails.root, path)
 
     sauce = ERB::Util.html_escape \
       File.read fullpath
+
+    render text: params[:format]
+    return
+
     sauce = sauce.lines.map do |line|
       case line
       when /(^.*)new ([\w\.]*)(.*)$/
