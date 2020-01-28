@@ -92,9 +92,9 @@ class DevController < ApplicationController
           s,a,v = $1,$2,$3
           qrp = $2
 
-          if qrp == "Backbone.View"
-            next line
-          end
+          # if qrp == "Backbone.View"
+            # next line
+          # end
 
           pqs = qrp.split('.')
           tmr = pqs.last
