@@ -98,7 +98,7 @@ class DevController < ApplicationController
           qrp = $2
 
           pqs = qrp.split('.')
-          if ["Dreamtool", /Newstime/].include?(pqs.first)
+          if /(@)(Dreamtool|Newstime)$/.match pqs.first
             pqs.pop
           end
           tmr = pqs.join("/")
