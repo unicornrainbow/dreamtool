@@ -66,7 +66,8 @@ class DevController < ApplicationController
 
           if m.count > 1
             raise "#{qrp} had more than one matching file"
-
+          end
+          
           # href = "/dev/browse/" + href
           href = "/dev/tree/" + m[0]
           # href.sub!("Newstime.","")
