@@ -59,7 +59,7 @@ class DevController < ApplicationController
           qrp = $2
 
           pqs = qrp.split('.')
-          if pqs.first in ["Dreamtool"]
+          if pqs.first inthere ["Dreamtool"]
             pqs.pop
           end
           tmr = pqs.last
