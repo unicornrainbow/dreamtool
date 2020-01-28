@@ -90,11 +90,30 @@ class DevController < ApplicationController
 
         when /(^.*)extends ([\w\.\@]*)(.*)$/
           s,a,v = $1,$2,$3
-          href = $2
-          href = "/dev/browse/" + href
-          # href.sub!("Newstime.","")
-          # href = href.underscore
-          # href = ""
+          qrp = $2
+
+          pqs = qrp.split('.')
+          tmr = pqs.last
+          udc = tmr.underscore
+          m = mm.select { |f|
+            /^#{udc}\.js(\.coffee)/.match File.basename(f) }
+
+          if m.count > 1
+            # next line
+            render text: m
+            return
+            raise "#{udc} had more than one matching file"
+          end
+
+          if m.count == 0
+            next line
+            # render text: mm
+            # return
+            raise "%s had no matches" % udc
+          end
+
+          # href = "/dev/browse/" + href
+          href = "/dev/tree/" + "app/assets/javascripts/" + m[0]
 
           [s,"extends ",
             "<a href=\"",href,"\">",
