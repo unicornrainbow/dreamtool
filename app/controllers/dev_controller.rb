@@ -44,37 +44,42 @@ class DevController < ApplicationController
     sauce = ERB::Util.html_escape \
       File.read fullpath
 
-    render text: params[:format]
-    return
+    # render text: params[:format]
+    case params[:format]
+    when 'js', 'coffee'
+      sauce = sauce.lines.map do |line|
+        case line
+        when /(^.*)new ([\w\.]*)(.*)$/
+          s,a,v = $1,$2,$3
+          href = $2
+          href = "/dev/browse/" + href
+          # href.sub!("Newstime.","")
+          # href = href.underscore
+          # href = ""
 
-    sauce = sauce.lines.map do |line|
-      case line
-      when /(^.*)new ([\w\.]*)(.*)$/
-        s,a,v = $1,$2,$3
-        href = $2
-        href = "/dev/browse/" + href
-        # href.sub!("Newstime.","")
-        # href = href.underscore
-        # href = ""
+          [s,"new ",
+            "<a href=\"",href,"\">",
+            a,"</a>",v,"\n"].join
+        when /(^.*)extends ([\w\.\@]*)(.*)$/
+          s,a,v = $1,$2,$3
+          href = $2
+          href = "/dev/browse/" + href
+          # href.sub!("Newstime.","")
+          # href = href.underscore
+          # href = ""
 
-        [s,"new ",
-          "<a href=\"",href,"\">",
-          a,"</a>",v,"\n"].join
-      when /(^.*)extends ([\w\.\@]*)(.*)$/
-        s,a,v = $1,$2,$3
-        href = $2
-        href = "/dev/browse/" + href
-        # href.sub!("Newstime.","")
-        # href = href.underscore
-        # href = ""
+          [s,"extends ",
+            "<a href=\"",href,"\">",
+            a,"</a>",v,"\n"].join
+        else
+          line
+        end
+      end.join
+    when 'rb'
 
-        [s,"extends ",
-          "<a href=\"",href,"\">",
-          a,"</a>",v,"\n"].join
-      else
-        line
-      end
-    end.join
+    end
+
+
     render text: "<pre>#{sauce}</pre>"
   end
 
