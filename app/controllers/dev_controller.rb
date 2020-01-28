@@ -49,7 +49,7 @@ class DevController < ApplicationController
     when 'js', 'coffee'
 
       Dir.chdir File.join(Rails.root,
-                          'app/assests/javascripts')
+                          'app/assets/javascripts')
       mm = Dir.glob('**/*.*')
 
       sauce = sauce.lines.map do |line|
@@ -65,9 +65,9 @@ class DevController < ApplicationController
             /#{udc}/.match File.basename(f) }
 
           if m.count > 1
-            raise "#{qrp} had more than one matching file"
+            raise "#{tmr} had more than one matching file"
           end
-          
+
           # href = "/dev/browse/" + href
           href = "/dev/tree/" + m[0]
           # href.sub!("Newstime.","")
