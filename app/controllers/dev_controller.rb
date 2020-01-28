@@ -98,8 +98,8 @@ class DevController < ApplicationController
           qrp = $2
 
           pqs = qrp.split('.')
-          if /(@)(Dreamtool|Newstime)$/.match pqs.first
-            pqs.pop
+          if /Dreamtool|Newstime/.match pqs.first
+            pqs.shift
           end
           tmr = pqs.join("/")
           udc = tmr.underscore
