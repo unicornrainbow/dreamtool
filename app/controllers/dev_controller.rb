@@ -26,22 +26,6 @@ class DevController < ApplicationController
   end
 
   def tree
-    path = params[:path]
-
-    if params[:format]
-      path << '.'
-      path << params[:format]
-    end
-
-    path = path.gsub('..', '')
-
-    fullpath = File.join(Rails.root, path)
-
-    send_file fullpath
-    # render text: `cat #{fullpath}`
-  end
-
-  def tree
     # unless request.host == 'localhost' &&
     #   Rails.env.development?
     #   render "404", status: 404
