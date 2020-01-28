@@ -116,7 +116,7 @@ class DevController < ApplicationController
           if m.count == 0
             if pqs.first == "Backbone"
               # m = ["lib/backbone.js"]
-              href = "http://www.backbonejs.org/"
+              href = "http://www.backbonejs.org/#View"
             else
               next line
               # render text: mm
