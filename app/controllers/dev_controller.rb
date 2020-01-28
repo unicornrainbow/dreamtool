@@ -60,8 +60,8 @@ class DevController < ApplicationController
 
           pqs = qrp.split('.')
           # if pqs.first in ["Dreamtool"]
-          if ["Dreamtool"].include?(pqs.first)
-            pqs.pop
+          if /^@?(Dreamtool|Newstime|App)/.match pqs.first
+            pqs.shift
           end
           tmr = pqs.join("/")
           udc = tmr.underscore
@@ -98,7 +98,7 @@ class DevController < ApplicationController
           qrp = $2
 
           pqs = qrp.split('.')
-          if /Dreamtool|Newstime/.match pqs.first
+          if /^@?(Dreamtool|Newstime|App)/.match pqs.first
             pqs.shift
           end
           tmr = pqs.join("/")
