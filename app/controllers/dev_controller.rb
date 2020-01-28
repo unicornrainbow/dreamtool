@@ -98,7 +98,10 @@ class DevController < ApplicationController
           qrp = $2
 
           pqs = qrp.split('.')
-          tmr = pqs.last
+          if ["Dreamtool", "Newstime"].include?(pqs.first)
+            pqs.pop
+          end
+          tmr = pqs.join("/")
           udc = tmr.underscore
           m = mm.select { |f|
             /^#{udc}\.js(\.coffee)/.match File.basename(f) }
