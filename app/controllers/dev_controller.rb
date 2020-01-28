@@ -114,10 +114,14 @@ class DevController < ApplicationController
           end
 
           if m.count == 0
-            next line
-            # render text: mm
-            # return
-            raise "%s had no matches" % udc
+            if pqs.first == "Backbone"
+              m = ["lib/backbone.js"]
+            else
+              next line
+              # render text: mm
+              # return
+              raise "%s had no matches" % udc
+            end
           end
 
           # href = "/dev/browse/" + href
