@@ -62,20 +62,24 @@ class DevController < ApplicationController
           tmr = pqs.last
           udc = tmr.underscore
           m = mm.select { |f|
-            /\/#{udc}\./.match File.basename(f) }
+            /#{udc}\.js(\.coffee)/.match File.basename(f) }
 
           if m.count > 1
-            render text: m
-            return
-            raise "#{tmr} had more than one matching file"
+            # next line
+            # render text: m
+            # return
+            raise "#{udc} had more than one matching file"
           end
 
           if m.count == 0
-            raise "%s had no matches" % tmr
+            next line
+            # render text: mm
+            # return
+            raise "%s had no matches" % udc
           end
 
           # href = "/dev/browse/" + href
-          href = "/dev/tree/" + m[0]
+          href = "/dev/tree/" + "app/assets/javascripts/" + m[0]
           # href.sub!("Newstime.","")
           # href = href.underscore
           # href = ""
