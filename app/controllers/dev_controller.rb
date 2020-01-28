@@ -58,9 +58,8 @@ class DevController < ApplicationController
           s,a,v = $1,$2,$3
           qrp = $2
 
-          path = coffeeclass2path($2)
-
           pqs = qrp.split('.')
+          
           tmr = pqs.last
           udc = tmr.underscore
           m = mm.select { |f|
@@ -79,6 +78,7 @@ class DevController < ApplicationController
             # return
             raise "%s had no matches" % udc
           end
+
 
           # href = "/dev/browse/" + href
           href = "/dev/tree/" + "app/assets/javascripts/" + m[0]
@@ -157,6 +157,7 @@ class DevController < ApplicationController
   end
 
   private
+
 
   def localhost
     return request.host == 'localhost'
