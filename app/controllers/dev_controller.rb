@@ -65,6 +65,8 @@ class DevController < ApplicationController
             /#{udc}/.match File.basename(f) }
 
           if m.count > 1
+            render text: m
+            return
             raise "#{tmr} had more than one matching file"
           end
 
