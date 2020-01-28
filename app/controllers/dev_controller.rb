@@ -62,7 +62,7 @@ class DevController < ApplicationController
           tmr = pqs.last
           udc = tmr.underscore
           m = mm.select { |f|
-            /#{udc}/.match File.basename(f) }
+            /\/#{udc}\./.match File.basename(f) }
 
           if m.count > 1
             render text: m
