@@ -47,12 +47,28 @@ class DevController < ApplicationController
     # render text: params[:format]
     case params[:format]
     when 'js', 'coffee'
+
+      Dir.chdir File.join(Rails.root,
+                          'app/assests/javascripts')
+      mm = Dir.glob('**/*.*')
+
       sauce = sauce.lines.map do |line|
         case line
         when /(^.*)new ([\w\.]*)(.*)$/
           s,a,v = $1,$2,$3
-          href = $2
-          href = "/dev/browse/" + href
+          qrp = $2
+
+          pqs = qrp.split('.')
+          tmr = pqs.last
+          udc = tmr.underscore
+          m = mm.select { |f|
+            /#{udc}/.match File.basename(f) }
+
+          if m.count > 1
+            raise "#{qrp} had more than one matching file"
+
+          # href = "/dev/browse/" + href
+          href = "/dev/tree/" + m[0]
           # href.sub!("Newstime.","")
           # href = href.underscore
           # href = ""
@@ -60,6 +76,7 @@ class DevController < ApplicationController
           [s,"new ",
             "<a href=\"",href,"\">",
             a,"</a>",v,"\n"].join
+
         when /(^.*)extends ([\w\.\@]*)(.*)$/
           s,a,v = $1,$2,$3
           href = $2
