@@ -44,7 +44,7 @@ class DevController < ApplicationController
 
     fullpath = File.join(Rails.root, path)
 
-    sauce = File.read fullpath
+    sauce = ERB::Util.html_escape File.read fullpath
     sauce = sauce.lines.map do |line|
       case line
       when /(^.*)new ([\w\.]*)(.*)$/
