@@ -58,6 +58,8 @@ class DevController < ApplicationController
           s,a,v = $1,$2,$3
           qrp = $2
 
+          # class2path $2, '.rb'
+
           pqs = qrp.split('.')
           # if pqs.first in ["Dreamtool"]
           if /^@?(Dreamtool|Newstime|App)/.match pqs.first
