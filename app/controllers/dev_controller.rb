@@ -76,6 +76,18 @@ class DevController < ApplicationController
           s,a,v = $1,$2,$3
           qrp = $2
 
+          if mqp=class2path($2, '.js.coffee')
+            href ||= "/dev/tree/" + "app/assets/javascripts/" + mqp
+
+            [s,"extends ",
+              "<a href=\"",href,"\">",
+              a,"</a>",v,"\n"].join
+            else
+              next line
+            end
+          end
+          next line unless mqp
+
           pqs = qrp.split('.')
           if /^@?(Dreamtool|Newstime|App)/.match pqs.first
             pqs.shift
@@ -161,7 +173,7 @@ class DevController < ApplicationController
     tmr = pqs.join("/")
     udc = tmr.underscore
     m = @mm.select { |f|
-      /^#{udc}\.js(\.coffee)/.match File.basename(f) }
+      /^#{udc}\.js(\.coffee)?/.match File.basename(f) }
 
     if m.count > 1
       # next line
@@ -172,11 +184,18 @@ class DevController < ApplicationController
     end
 
     if m.count == 0
-      return false
-      # next line
-      # render text: mm
-      # return
-      raise "%s had no matches" % udc
+      if pqs.first == "Backbone"
+        # m = ["lib/backbone.js"]
+        href = "http://www.backbonejs.org/"
+        if pqs[1]
+          href += "#" +pqs[1]
+        end
+      else
+        # return false
+        # render text: mm
+        # return
+        raise "%s had no matches" % udc
+      end
     end
 
     return m[0]
