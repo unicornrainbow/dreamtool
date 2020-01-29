@@ -134,7 +134,7 @@ class DevController < ApplicationController
     tmr = pqs.join("/")
     udc = tmr.underscore
     m = @mm.select { |f|
-      /^#{udc}\.js(\.coffee)?/.match File.basename(f) }
+      /^#{udc}\.js(\.coffee)?$/.match File.basename(f) }
 
     if m.count > 1
       # next line
