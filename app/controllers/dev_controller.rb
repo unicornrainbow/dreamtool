@@ -82,49 +82,9 @@ class DevController < ApplicationController
             [s,"extends ",
               "<a href=\"",href,"\">",
               a,"</a>",v,"\n"].join
-            else
-              next line
-            end
+          else
+            next line
           end
-          next line unless mqp
-
-          pqs = qrp.split('.')
-          if /^@?(Dreamtool|Newstime|App)/.match pqs.first
-            pqs.shift
-          end
-          tmr = pqs.join("/")
-          udc = tmr.underscore
-          m = @mm.select { |f|
-            /^#{udc}\.js(\.coffee)?/.match File.basename(f) }
-
-          if m.count > 1
-            # next line
-            render text: m
-            return
-            raise "#{udc} had more than one matching file"
-          end
-
-          if m.count == 0
-            if pqs.first == "Backbone"
-              # m = ["lib/backbone.js"]
-              href = "http://www.backbonejs.org/"
-              if pqs[1]
-                href += "#" +pqs[1]
-              end
-            else
-              # next line
-              # render text: mm
-              # return
-              raise "%s had no matches" % udc
-            end
-          end
-
-          # href = "/dev/browse/" + href
-          href ||= "/dev/tree/" + "app/assets/javascripts/" + m[0]
-
-          [s,"extends ",
-            "<a href=\"",href,"\">",
-            a,"</a>",v,"\n"].join
         else
           line
         end
