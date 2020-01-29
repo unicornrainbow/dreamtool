@@ -50,7 +50,7 @@ class DevController < ApplicationController
 
       Dir.chdir File.join(Rails.root,
                           'app/assets/javascripts')
-      mm = Dir.glob('**/*.*')
+      @mm = Dir.glob('**/*.*')
 
       sauce = sauce.lines.map do |line|
         case line
@@ -82,7 +82,7 @@ class DevController < ApplicationController
           end
           tmr = pqs.join("/")
           udc = tmr.underscore
-          m = mm.select { |f|
+          m = @mm.select { |f|
             /^#{udc}\.js(\.coffee)/.match File.basename(f) }
 
           if m.count > 1
@@ -160,7 +160,7 @@ class DevController < ApplicationController
     end
     tmr = pqs.join("/")
     udc = tmr.underscore
-    m = mm.select { |f|
+    m = @mm.select { |f|
       /^#{udc}\.js(\.coffee)/.match File.basename(f) }
 
     if m.count > 1
