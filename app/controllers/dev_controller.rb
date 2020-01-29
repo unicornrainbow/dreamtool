@@ -1,6 +1,6 @@
 class DevController < ApplicationController
 
-  # protect_from_forgery except: :tree
+  protect_from_forgery except: :tree
 
   if Rails.env.development?
     # before_filter :localhost
@@ -139,6 +139,7 @@ class DevController < ApplicationController
     if m.count > 1
       # next line
       # return false
+      throw m
       render text: m
       return
       raise "#{udc} had more than one matching file"
