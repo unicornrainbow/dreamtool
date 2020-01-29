@@ -1,6 +1,6 @@
 class DevController < ApplicationController
 
-  skip_forgery_protection
+  protect_from_forgery except: :tree
 
   if Rails.env.development?
     # before_filter :localhost
