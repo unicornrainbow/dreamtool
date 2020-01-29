@@ -58,35 +58,12 @@ class DevController < ApplicationController
           s,a,v = $1,$2,$3
           qrp = $2
 
-          # class2path $2, '.rb'
-
-          pqs = qrp.split('.')
-          # if pqs.first in ["Dreamtool"]
-          if /^@?(Dreamtool|Newstime|App)/.match pqs.first
-            pqs.shift
-          end
-          tmr = pqs.join("/")
-          udc = tmr.underscore
-          m = mm.select { |f|
-            /^#{udc}\.js(\.coffee)/.match File.basename(f) }
-
-          if m.count > 1
-            # next line
-            render text: m
-            return
-            raise "#{udc} had more than one matching file"
-          end
-
-          if m.count == 0
-            next line
-            # render text: mm
-            # return
-            raise "%s had no matches" % udc
-          end
-
+          mqp = class2path $2, '.js.coffee'
+          next line unless mqp
 
           # href = "/dev/browse/" + href
-          href = "/dev/tree/" + "app/assets/javascripts/" + m[0]
+          # href = "/dev/tree/" + "app/assets/javascripts/" + m[0]
+          href = "/dev/tree/" + "app/assets/javascripts/" + mqp
           # href.sub!("Newstime.","")
           # href = href.underscore
           # href = ""
@@ -174,6 +151,36 @@ class DevController < ApplicationController
 
   private
 
+  def class2path kls, ext
+
+    pqs = kls.split('.')
+
+    if /^@?(Dreamtool|Newstime|App)/.match pqs.first
+      pqs.shift
+    end
+    tmr = pqs.join("/")
+    udc = tmr.underscore
+    m = mm.select { |f|
+      /^#{udc}\.js(\.coffee)/.match File.basename(f) }
+
+    if m.count > 1
+      # next line
+      # return false
+      render text: m
+      return
+      raise "#{udc} had more than one matching file"
+    end
+
+    if m.count == 0
+      return false
+      # next line
+      # render text: mm
+      # return
+      raise "%s had no matches" % udc
+    end
+
+    return m[0]
+  end
 
   def localhost
     return request.host == 'localhost'
