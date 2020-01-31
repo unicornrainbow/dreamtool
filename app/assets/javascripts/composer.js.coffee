@@ -521,9 +521,13 @@ class Newstime.Composer extends App.View
 
   lockScroll: ->
     $('body').css({'overflow':'hidden'})
+    $('body').addClass "scroll-locked"
+    @trigger 'scroll-locked'
 
   unlockScroll: ->
     $('body').css({'overflow':''})
+    $('body').removeClass "scroll-locked"
+    @trigger 'scroll-unlocked'
 
   pushCursor: (cursor) ->
     @cursorStack.push @currentCursor
@@ -1409,6 +1413,9 @@ class Newstime.Composer extends App.View
         $('body').addClass "chrome"
       else
         $('body').addClass "safari"
+    if /Firefox/.test(userAgent)
+      @firefox = true
+      $('body').addClass "firefox"
 
 
 

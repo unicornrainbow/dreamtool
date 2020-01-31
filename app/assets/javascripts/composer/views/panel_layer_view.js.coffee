@@ -7,7 +7,7 @@ class @Newstime.PanelLayerView extends @Newstime.View
 
   initialize: (options) ->
     @$el.addClass 'panel-layer-view'
-    @composer = Newstime.composer
+    @composer = options.composer
     @panels ?= []
 
     # Until we have a better means of containg all the application layer, just

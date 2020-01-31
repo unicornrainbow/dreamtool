@@ -6,3 +6,8 @@
   -webkit-user-select: none;
 
 }
+
+.firefox.scroll-locked
+  .canvas-view {
+    padding-right: 15px;
+  }

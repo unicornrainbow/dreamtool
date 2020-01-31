@@ -5,3 +5,8 @@
   right: 0;
   z-index: 100;
 }
+
+.firefox.scroll-locked
+  .panel-layer-view {
+    margin-right: 15px;
+  }
