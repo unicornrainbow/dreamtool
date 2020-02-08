@@ -33,6 +33,7 @@
 
   &.resizable {
     border: 1px dashed #ae05db;
+    border-image: url('/images/ants-b80aea.gif') 1 repeat repeat;
 
     &.edit-mode {
       .drag-handle {
