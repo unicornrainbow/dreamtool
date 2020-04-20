@@ -1,6 +1,6 @@
 class StylesheetsController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def index
     @stylesheets = current_user.organization.stylesheets.asc(:path)

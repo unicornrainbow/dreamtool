@@ -1,5 +1,5 @@
 # Make a global copy of the dalli client available by convention.
-$dalli = Rails.cache.dalli
+# $dalli = Rails.cache.dalli
 
 # Usage:
 #

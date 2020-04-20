@@ -1,4 +1,4 @@
-Press::Application.configure do
+Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -9,12 +9,29 @@ Press::Application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
-  # Show full error reports and disable caching.
-  config.consider_all_requests_local       = true
-  config.action_controller.perform_caching = false
+  # Show full error reports.
+  config.consider_all_requests_local = true
+
+  # Enable/disable caching. By default caching is disabled.
+  # Run rails dev:cache to toggle caching.
+  if Rails.root.join('tmp', 'caching-dev.txt').exist?
+    config.action_controller.perform_caching = true
+    config.action_controller.enable_fragment_cache_logging = true
+
+    config.cache_store = :memory_store
+    config.public_file_server.headers = {
+      'Cache-Control' => "public, max-age=#{2.days.to_i}"
+    }
+  else
+    config.action_controller.perform_caching = false
+
+    config.cache_store = :null_store
+  end
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
+
+  config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -24,12 +41,13 @@ Press::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  # For developing in concert with nginx, no static assest handled by app.
-  config.serve_static_assets = true
+  # Suppress logger output for asset requests.
+  config.assets.quiet = true
 
-  # Configure default host for action mailer.
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  # Raises error for missing translations.
+  # config.action_view.raise_on_missing_translations = true
 
-  # Memcache
-  config.cache_store = :dalli_store, { namespace: "press_development", compress: true }
+  # Use an evented file watcher to asynchronously detect changes in source code,
+  # routes, locales, etc. This feature depends on the listen gem.
+  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end

@@ -1,5 +1,5 @@
 class PrintsController < ApplicationController
-  before_filter :find_edition, only: [:index, :create]
+  before_action :find_edition, only: [:index, :create]
 
   def index
     @prints = @edition.prints

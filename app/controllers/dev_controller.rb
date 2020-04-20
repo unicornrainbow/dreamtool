@@ -3,7 +3,7 @@ class DevController < ApplicationController
   protect_from_forgery except: :tree
 
   if Rails.env.development?
-    # before_filter :localhost
+    # before_action :localhost
 
   def edit
     # @tree = (getdirtree)
@@ -173,7 +173,7 @@ class DevController < ApplicationController
   end
 
   # def filter_out test
-  #   before_filter do
+  #   before_action do
   #     unless send(test)
   #       render "404", status: 404
   #       return false
@@ -181,7 +181,7 @@ class DevController < ApplicationController
   #   end
   # end
   #
-  # before_filter :localhost
+  # before_action :localhost
 
   end
 

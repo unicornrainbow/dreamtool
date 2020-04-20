@@ -1,7 +1,7 @@
 class HomeController < ApplicationController #ActionController::Base
 
-  skip_before_filter :verify_authenticity_token, only: [:hot_muffins]
-  skip_before_filter :track_hit, :only => 'dash'
+  skip_before_action :verify_authenticity_token, only: [:hot_muffins]
+  skip_before_action :track_hit, :only => 'dash'
 
   def index
     if session[:screenname]

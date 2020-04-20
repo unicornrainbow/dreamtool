@@ -1,6 +1,6 @@
 class JavascriptsController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def index
     @javascripts = current_user.organization.javascripts.asc(:path)

@@ -1,7 +1,7 @@
 class EditionMastheadArtworksController < ApplicationController
   respond_to :json, :html
 
-  before_filter :find_edition
+  before_action :find_edition
 
   def new
     @masthead_artwork = MastheadArtwork.new

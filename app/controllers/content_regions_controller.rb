@@ -1,7 +1,7 @@
 class ContentRegionsController < ApplicationController
 
-  before_filter :authenticate_user!
-  skip_before_filter :verify_authenticity_token
+  before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
 
   def index
     @content_regions = ContentRegion.asc(:path)

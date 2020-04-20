@@ -2,7 +2,7 @@ require 'wiki_parser'
 
 class AttachmentsController < ApplicationController
 
-  before_filter :sanitize_path
+  before_action :sanitize_path
 
   def sanitize_path
     if params[:path]
