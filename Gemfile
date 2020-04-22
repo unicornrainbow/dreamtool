@@ -2,9 +2,11 @@ source 'https://rubygems.org'
 ruby '2.6.5'
 
 gem 'rails'
-gem 'sass-rails'
-gem 'sass'#, '~> 3.2.19', git: "http://github.com/unicornrainbow/sass", branch: "multi-prop"
-gem 'bootstrap-sass'
+gem 'sass-rails', '~> 5'
+# gem 'sass-rails', '~> 4.0.5'
+gem 'sass', '~> 3.2.19', git: "http://github.com/unicornrainbow/sass", branch: "multi-prop"
+# gem 'sass',  git: "http://github.com/unicornrainbow/sass", branch: "multi-prop"
+gem 'bootstrap-sass', '~> 3.1.1.1'
 gem 'coffee-rails'
 gem "nokogiri"
 gem "dalli"
@@ -13,7 +15,8 @@ gem 'sidekiq'
 gem 'sprockets'
 gem 'sprockets-rails'
 # gem "wikicloth"
-gem 'angular-rails-templates' #, github: 'luckyjazzbo/angular-rails-templates' # Including for support in templates, should not have to be loaded up here.
+ gem 'angular-rails-templates',  github: 'luckyjazzbo/angular-rails-templates' # Including for support in templates, should not have to be loaded up here.
+gem 'slim', '3'
 
 gem 'jquery-rails'
 gem 'rabl'
@@ -30,12 +33,11 @@ gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem "devise"
 gem "liquid"
 gem "tilt"
-gem "slim"
 # gem "simple-form-datepicker"  #, "~> 0.1.3"
 #gem "crawdad", git: "https://github.com/blakefrost/crawdad.git", branch: "newstime"
 gem 'cljs-rails'
 gem 'redis-namespace'
-gem 'sinatra'
+# gem 'sinatra'
 gem 'faye'
 gem 'thin', require: false
 gem 'curb'

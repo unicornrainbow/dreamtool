@@ -28,5 +28,17 @@ module Press
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+
+    config.autoload_paths += %W(#{config.root}/app/models/notebox)
+
+    # http://stackoverflow.com/questions/20361428/rails-i18n-validation-deprecation-warning
+    config.i18n.enforce_available_locales = true
+
+    # Use Accel-Redirect for serving files with nginx
+    config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
+
+    config.action_controller.include_all_helpers = false
+    
   end
 end
