@@ -3,6 +3,7 @@
       content="width=device-width,
         initial-scale=1.0,user-scalable=no">
 <style>
+<%= style :scss do %>
   body {
     --hotpink: #ff00f3;
     /* margin: 0; */
@@ -84,6 +85,11 @@
     margin: 2px;
   }
 
+   treeview {
+     height: 93%;
+     li { unicode-bidi: bidi-override; }
+   }
+
   keyboard {
     width: 700px;
     height: 250px;
@@ -104,6 +110,7 @@
     fill: none;
     stroke-width: 3;
   }
+<% end %>
 </style>
 <badge>
 <%= render 'dreamtool_logo' %>
@@ -491,6 +498,7 @@ function loadFile(target) {
       raw.push([x,y]);
     }
   }
+
   keyboard.onmouseup = function(){
     drawing = false;
     // Find edges and points
