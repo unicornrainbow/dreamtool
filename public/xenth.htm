@@ -143,6 +143,8 @@ pre pre h1 {
    padding: 0.5em;
  }
 </style>
+<button name="flip" onclick="flip()">🍄</button>
+<br>
 <textarea id='t'>define style yield</textarea>
 <textarea></textarea>
 <script>
@@ -186,6 +188,7 @@ pre pre h1 {
 
      }
      // console.log(c);
+     console.log(5)
    }
    function getToEndOfLine(text, position) {
      // Returns remainder of line from cursor position
@@ -211,6 +214,7 @@ pre pre h1 {
      }
      d=position-1;
      l=text.length
+
      while(text[d]!="\n") {
        if (d>=l)
          break;
@@ -218,6 +222,39 @@ pre pre h1 {
      }
 
      return text.substring(b, d);
+   }
+
+   function flip() {
+     let n = t.value.split("\n");
+     let i = 0
+     while(n[i]!=undefined) {
+       let r = n[i];
+       let x = r.length - r.trimRight().length
+       let y;
+       if(x<r.length)
+         y = r.length - r.trimLeft().length
+       else
+         y=0
+
+       n[i] = " ".repeat(x) + r.trim() + " ".repeat(y)
+       console.log(i);
+       i++;
+       // let m = r.match(/^( *)(.*\w)( *)$/)
+     }
+
+     let s = t.selectionStart;
+     let e = t.selectionEnd;
+     t.value = n.join("\n");
+    if (t.style.textAlign == "left") {
+      t.style.textAlign = "right";
+    } else {
+      t.style.textAlign = "left";
+    }
+    t.selectionStart = s;
+      t.selectionEnd = e;
+     console.log("love")
+     t.focus();
+
    }
 
 </script>
