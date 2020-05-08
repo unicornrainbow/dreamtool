@@ -154,9 +154,9 @@ pre pre h1 {
      // t.selectionStart = 117;
      // t.selectionEnd = 117;
      // console.log(getLine(t.value, t.selectionStart));
-     line = getLine(t.value, t.selectionStart)
      // if line is just spaces
      if (c.key == " ") {
+       line = getLine(t.value, t.selectionStart)
        if (line.trim() == "") {
          // insert space to right
          let s = t.selectionStart
@@ -168,7 +168,36 @@ pre pre h1 {
          return false;
        }
      }
+     if (c.key == "Enter") {
+       line = getLine(t.value, t.selectionStart)
+       let l = line.length
+       let p = line.trimRight().length
+       console.log(p,l)
+       let leader = line.substring(p, l);
+
+       let s = t.selectionStart + leader.length
+       t.value = [t.value.substring(0, s),
+       "\n", leader,
+       t.value.substring(s, t.length)].join("");
+       s++;
+       t.selectionStart = s;
+       t.selectionEnd = s;
+       return false;
+
+     }
      // console.log(c);
+   }
+   function getToEndOfLine(text, position) {
+     // Returns remainder of line from cursor position
+     d=position;
+     l=text.length
+     while(text[d]!="\n") {
+       if (d>=l)
+         break;
+       d++;
+     }
+
+     return text.substring(position, d);
    }
    function getLine(text, position) {
      // Returns text of the current line based on
@@ -180,7 +209,7 @@ pre pre h1 {
          break;
        b--;
      }
-     d=position;
+     d=position-1;
      l=text.length
      while(text[d]!="\n") {
        if (d>=l)
