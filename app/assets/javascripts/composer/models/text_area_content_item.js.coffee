@@ -82,6 +82,9 @@ class @Newstime.TextAreaContentItem extends Newstime.ContentItem
       if previousContentItem
         @set 'overflow_input_text', previousContentItem.get('overrun_html')
 
+    AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
+    # alert AUTH_TOKEN
+
     $.ajax
       type: 'POST'
       url: "#{@get('edition').url()}/render_text_area.json"
@@ -90,6 +93,7 @@ class @Newstime.TextAreaContentItem extends Newstime.ContentItem
       data:
         JSON.stringify
           composing: true
+          authenticity_token: AUTH_TOKEN
           content_item: @toJSON()
       success: (response) =>
         @set _.pick(response, 'rendered_html', 'overrun_html')
