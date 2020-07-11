@@ -17,7 +17,7 @@
 /out
 public/system
 dump
-dump.zip
+dump.*
 public/assets
 .env
 .swp
@@ -27,3 +27,4 @@ layouts/blank
 config/media_modules.yml
 .DS_Store
 backup/
+vendor/
