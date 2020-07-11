@@ -15,7 +15,8 @@ class Print
 
   # TODO: These should be copied at print time. (The object graph should be
   # serialized into a tree and stored for future reinstantiation)
-  delegate :publish_date, :fmt_price, :store_link, :volume_label, :publication, to: :edition
+  delegate [:publish_date, :fmt_price,
+    :store_link, :volume_label, :publication] => :edition
 
   before_create :set_version
   before_save :check_for_signature
