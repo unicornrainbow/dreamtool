@@ -36,10 +36,7 @@ class TextAreaContentItem < ContentItem
     @follow_text_area ||= follow_text_area_id && edition.content_items.find(follow_text_area_id)
   end
 
-  # def gutter_width
-  #   page.gutter_width # Derived from page
-  # end
-  delegate :gutter_width, :to => :page
+  delegate :gutter_width => :page
 
   # def line_height
     # See etc.default_layout/config.yml
