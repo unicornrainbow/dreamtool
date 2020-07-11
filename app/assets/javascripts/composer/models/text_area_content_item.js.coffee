@@ -83,7 +83,7 @@ class @Newstime.TextAreaContentItem extends Newstime.ContentItem
         @set 'overflow_input_text', previousContentItem.get('overrun_html')
 
     $.ajax
-      method: 'POST'
+      type: 'POST'
       url: "#{@get('edition').url()}/render_text_area.json"
       contentType: 'application/json'
       dataType: 'json'
