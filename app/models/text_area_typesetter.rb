@@ -34,7 +34,6 @@ class TextAreaTypesetter
     include_continuation = !!@text_area.continuation_text
 
     column_count.times do |column_index|
-    # 1.times do |column_index|
       render_by_line        = include_by_line && column_index.zero?
       render_continuation   = include_continuation && column_index + 1 == column_count
       render_precedent_link = include_precedent_link && column_index.zero?
@@ -74,24 +73,7 @@ class TextAreaTypesetter
 
       column_height = [column_height, 0].max # Ensure column height is not negative.
 
-      q = freddy(column_index)
-      # w = q.map{|[w,p]| w} # Collect just the width
-      positions, widths = q.transpose
-      Rails.logger.debug widths
-
-      # ℷ≷(≭)
-      # rg(o)
-      # (😎)
-      # typesetter_service = HtmlTypesetter.new(html, width: text_column_width, height: column_height, line_height: '28px', font_size: '16pt')
-      # typesetter_service = HtmlTypesetter.new(html, width: widths, height: column_height, line_height: '28px', font_size: '16pt')
-      if column_index == 0
-        typesetter_service = HtmlTypesetter.new(html, width: [78, 184, 284], height: column_height, line_height: '28px', font_size: '16pt')
-      else
-        # Need to expand typesetter algorytm to skip lines that exhaust the typesetter algorythm
-        # typesetter_service = HtmlTypesetter.new(html, width: [0, 0, 284, 284], height: column_height, line_height: '28px', font_size: '16pt')
-        typesetter_service = HtmlTypesetter.new(html, width: [284, 284], height: column_height, line_height: '28px', font_size: '16pt')
-      end
-      # [77, 150, 284]
+      typesetter_service = HtmlTypesetter.new(html, width: text_column_width, height: column_height, line_height: '28px', font_size: '16pt')
       typesetter_service.typeset # Invoke Service
       content = typesetter_service.typeset_html
       html    = typesetter_service.overrun_html
@@ -117,106 +99,6 @@ class TextAreaTypesetter
 
     text_area.rendered_html = result
     text_area.overrun_html  = html
-  end
-
-  # Returns an array of the left x position and width
-  # of every successive line.
-  def freddy(ci)
-    t = text_area
-    w = t.width
-    h = t.height
-    cw = t.text_column_width
-    gw = t.gutter_width
-    # lh = t.line_height
-    lh = @layout_module.config['story_text_line_height'].to_i
-    # Rails.logger.debug lh
-
-    column_offset = cw*ci + gw*ci
-    s = t.shape
-    # Rails.logger.debug t.shape
-    if s
-      "polygon(0 0, 6% 0, 100% 40%, 100% 100%, 0 100%);"
-      points = /polygon\((.*)\)/.match(s)[0]
-      points = points.split(',')
-      points = points.map do |p|
-        x,y = p.split(' ')
-        x = if /(\d+)%/.match x
-          $1.to_i*w/100 else x.to_i end
-        y = if /(\d+)%/.match y
-          $1.to_i*h/100 else y.to_i end
-        [x,y]
-      end
-      Rails.logger.debug s
-      Rails.logger.debug points
-
-      # get list of shape successive sides
-      sides = []
-      points.each_cons(2) do |r, b|
-        sides.push [r, b]
-      end
-      if points.length > 2
-        sides.push [points[-1], points[0]]
-      end
-
-      # Collect non-horizontal sides of shape.
-      nhs = sides.select {|points| points[0][1]!=points[1][1] }
-      # Compute slope functions
-      slopefns = nhs.map do |coords|
-        p1,p2 = coords
-        x1,y1 = p1
-        x2,y2 = p2
-        # [x1,y1],[x2,y2] = coords
-        rise = y2-y1 # ∆y
-        run = x2-x1 # ∆x
-        -> (y) {
-          # Only return value if y is between y1 and y2
-          # # # # Rails.logger.debug y2
-          # # # Rails.logger.debug rise
-          # Rails.logger.debug "run #{run}"
-          # Rails.logger.debug (rise/run.to_f)
-          if y.between?(y1, y2) || y.between?(y2,y1)
-            if run == 0
-              x1
-            else
-              y/(rise/run.to_f)
-            end
-          end }
-            # y/(rise/run.to_f) if y.between?(y1, y2) || y.between?(y2,y1) }
-      end
-      total_lines = h/lh
-      result = []
-      total_lines.times do |i|
-        top = i*lh
-        bottom = top+lh
-        y = top
-        width = w
-        r = [] # track beginning x position and width for every y value of the line
-        Rails.logger.debug "y=#{y}"
-        while y<bottom
-          left = column_offset
-          right = left+cw
-          # Rails.logger.debug "right #{right}"
-          boundries = slopefns.map{|fn| fn.call(y)}.compact.sort
-          # Rails.logger.debug boundries
-          left = [boundries[0],left].max
-          right = [boundries[1],right].min
-          r << [left-column_offset, right]
-          y+=1
-        end
-        result << r.reduce { |a, m|
-                    [[a[0], m[0]].max,
-                     [a[1],m[1]].min]}
-      end
-      Rails.logger.debug w
-      result = result.map{|w,left|[w.to_i, left.to_i]}
-      Rails.logger.debug result
-      result
-      # if result.uniq == 1 && result[0][0].zero?
-      #   result[0][1]
-      # else
-      #   result
-      # end
-    end
   end
 
 private
