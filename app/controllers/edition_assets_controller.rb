@@ -4,6 +4,7 @@ class EditionAssetsController < ApplicationController
 
   before_action :find_edition
 
+  protect_from_forgery except: :javascripts
   def javascripts
 
     $sprocket_js_environments ||= {}
