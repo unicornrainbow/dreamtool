@@ -2,10 +2,12 @@ source 'https://rubygems.org'
 ruby '2.6.5'
 
 gem 'rails'
-gem 'sass-rails', '~> 5'
-# gem 'sass-rails', '~> 4.0.5'
-gem 'sass', '~> 3.2.19', git: "http://github.com/unicornrainbow/sass", branch: "multi-prop"
-# gem 'sass',  git: "http://github.com/unicornrainbow/sass", branch: "multi-prop"
+ gem 'sass-rails', '~> 5'
+#gem 'sass-rails', '~> 4.0.5'
+ gem 'sass', '~> 3.2.19', git: "http://github.com/unicornrainbow/sass", branch: "multi-prop"
+ # gem 'sass', '~> 3.3.13'
+# gem "sass"
+#gem 'sass',  git: "http://github.com/unicornrainbow/sass", branch: "multi-prop"
 gem 'bootstrap-sass', '~> 3.1.1.1'
 gem 'coffee-rails'
 gem "nokogiri"
@@ -49,18 +51,22 @@ gem 'flickraw'
 gem 'mongoid-encrypted-fields'
 gem 'gibberish'
 
-# gem 'compass-rails'
+ # gem 'compass-rails', '~> 4.0'
+ gem 'compass-rails'
+ # gem 'compass', '~> 0.12'
 
-gem 'bson'
-gem 'bson_ext'
-gem 'nprogress-rails'
-gem 'listen'
+         gem    'bson'
+       gem   'bson_ext'
+       gem   'nprogress-rails'
+         gem   'listen'
 
+                # \; 'nosb'  meg
 
+                                      gem 'treetop'
 
 group :development, :test do
   gem 'byebug'
-  gem 'better_errors'
+  # gem 'better_errors'
 end
 
 group :doc do
