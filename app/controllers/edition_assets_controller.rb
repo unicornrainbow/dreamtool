@@ -22,7 +22,7 @@ class EditionAssetsController < ApplicationController
 
     result = environment["#{params[:path]}"]
 
-    render text: result, content_type: "text/javascript"
+    render body: result, content_type: "text/javascript"
   end
 
   def stylesheets
@@ -44,7 +44,7 @@ class EditionAssetsController < ApplicationController
     end
 
     result = environment["#{params[:path]}.css"]
-    render text: result, content_type: "text/css"
+    render body: result, content_type: "text/css"
   end
 
   def fonts
