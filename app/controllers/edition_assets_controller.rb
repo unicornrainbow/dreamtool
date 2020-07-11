@@ -33,6 +33,7 @@ class EditionAssetsController < ApplicationController
       # Load environment into global cache.
       environment = Sprockets::Environment.new
       environment.append_path File.join(@edition.layout_module_root, "stylesheets")
+      environment.append_path Gem.loaded_specs['compass'].full_gem_path + "/frameworks/compass/stylesheets"
 
       environment.context_class.class_eval do
         def asset_path(path, options = {})
