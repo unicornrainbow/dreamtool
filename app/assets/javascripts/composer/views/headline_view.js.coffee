@@ -9,7 +9,7 @@ class @Newstime.HeadlineView extends Newstime.ContentItemView
     @placeholder = "Type Headline" # Text to show when there is no headline
     @fontWeights = Newstime.config.headlineFontWeights
 
-    @listenTo @model, 'change:height change:width change:text change:font_weight change:font_style change:font_family', @fitToBorderBox
+    @listenTo @model, 'change:height change:width change:text change:font_weight change:font_style change:font_family change:text_align', @fitToBorderBox
 
     # Using invisible textarea as hacky way to get keyboard on mobile.
     @template = """
@@ -47,6 +47,7 @@ class @Newstime.HeadlineView extends Newstime.ContentItemView
     @$el.css 'font-size': @model.get('font_size')
     @$el.css 'font-style': @model.get('font_style')
     @$el.css 'font-weight': @model.get('font_weight')
+    @$el.css 'text-align': @model.get('text_align')
 
     # color = @model.get('color')
     # color
@@ -334,6 +335,15 @@ class @Newstime.HeadlineView extends Newstime.ContentItemView
       'margin-right': horizontalMargin
       'margin-bottom': verticalMargin
       'margin-left': horizontalMargin
+
+    switch @model.get('text_align')
+      when 'left'
+        margins['margin-left'] = 0
+        margins['margin-right'] = parseInt(horizontalMargin)*2+ 'px'
+      when 'right'
+        margins['margin-left'] = parseInt(horizontalMargin)*2+ 'px'
+        margins['margin-right'] = 0
+
 
     @model.set(margins, silent: true)
     @renderMargins()
