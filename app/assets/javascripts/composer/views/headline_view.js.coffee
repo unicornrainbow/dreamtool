@@ -327,21 +327,21 @@ class @Newstime.HeadlineView extends Newstime.ContentItemView
       headlineWidth  /= zoomLevel
       headlineHeight /= zoomLevel
 
-    verticalMargin = (height - headlineHeight)/2 + 'px'
-    horizontalMargin = (width - headlineWidth)/2 + 'px'
+    verticalMargin = (height - headlineHeight)/2
+    horizontalMargin = (width - headlineWidth)/2
 
     margins =
-      'margin-top': verticalMargin
-      'margin-right': horizontalMargin
-      'margin-bottom': verticalMargin
-      'margin-left': horizontalMargin
+      'margin-top': verticalMargin + 'px'
+      'margin-right': horizontalMargin + 'px'
+      'margin-bottom': verticalMargin + 'px'
+      'margin-left': horizontalMargin + 'px'
 
     switch @model.get('text_align')
       when 'left'
         margins['margin-left'] = 0
-        margins['margin-right'] = parseInt(horizontalMargin)*2+ 'px'
+        margins['margin-right'] = horizontalMargin*2 +'px'
       when 'right'
-        margins['margin-left'] = parseInt(horizontalMargin)*2+ 'px'
+        margins['margin-left'] = horizontalMargin*2 +'px'
         margins['margin-right'] = 0
 
 
