@@ -1,0 +1,1 @@
+../../models/photo.rb

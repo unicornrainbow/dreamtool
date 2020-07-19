@@ -1,0 +1,1 @@
+../../../assets/javascripts/composer/plugins/headline_control.js.coffee
