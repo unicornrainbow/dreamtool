@@ -1,0 +1,1 @@
+../../models/content_item.rb

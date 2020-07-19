@@ -1,0 +1,1 @@
+../../helpers/content_items_helper.rb
