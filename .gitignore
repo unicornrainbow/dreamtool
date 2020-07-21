@@ -27,4 +27,3 @@ layouts/blank
 config/media_modules.yml
 .DS_Store
 backup/
-vendor/
