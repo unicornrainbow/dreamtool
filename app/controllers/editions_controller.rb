@@ -20,8 +20,12 @@ class EditionsController < ApplicationController
   end
 
   def new
-    # @publications = current_user.publications
-    # @publication = params[:publication_id] ? Publication.find(params[:publication_id]) : Publication.first
+    if current_user
+      @publications = current_user.publications
+    else
+      @publications = Publication.where(user: nil)
+    end
+    @publication = params[:publication_id] ? Publication.find(params[:publication_id]) : Publication.first
     @publication = Publication.new
     @edition = @publication.build_edition
   end
