@@ -21,8 +21,6 @@ class User
   field :flickr_access_secret #, type: Mongoid::EncryptedString
   # field :flickr_access_secret, encrypt: true, key: FLICKR_KEY
 
-  belongs_to :organization
-
   has_many :editions
   has_many :publications
   has_many :photos
