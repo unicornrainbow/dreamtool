@@ -43,8 +43,12 @@ input {
   font-family: 'Dancing Script', cursive;
 }
 
-input[type=text] {
+#screenname {
   border-radius: 7pt 7pt 0 0;
+}
+
+input[type=text] {
+  border-radius: 7pt;
   margin: 0;
   color: #b914e3;
   width: 90%;
@@ -228,6 +232,30 @@ form#sign-in {
 <p>Dreamtool is a revolution in digital publishing.</p>
 
 
+<a href="/tryme">Try it Now!</a>
+<%# <%= link_to "Try it Now", tryme_path, method: :post %> %>
+<%= button_to "Try Me!", "/tryme", class: "zing-sang" %>
+<form method="POST" >
+  <input id='screenname' name='screenname' type="hidden" autocomplete=off onkeypress="enterSubmit(this, event)" value="<%= @remember_me %>"></input>
+  <button sign-in class="zing-sang">Try it now!</button>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+</form>
+
+
+<form id="sign-in" method="POST" >
+  <%if @remember_me.present? %>
+  <div id='clear-remember-me'>
+    <span onclick='clearRememberMe()'>+</span>
+  </div>
+  <% end %>
+  <input placeholder="Screen name" name='screenname' type="text" autocomplete=off onkeypress="enterSubmit(this, event)" value="<%= @remember_me %>"></input>
+  <br><br>
+  <button sign-in class="zing-sang">Sign in</button>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+</form>
+
+
+
 <form id="sign-in" method="POST" >
   <%if @remember_me.present? %>
   <div id='clear-remember-me'>
@@ -246,16 +274,6 @@ form#sign-in {
   <a href="/hot-muffins">Sign up for free</a>
 </div>
 
-
-
-<a href="/tryme">Try it Now!</a>
-<%# <%= link_to "Try it Now", tryme_path, method: :post %> %>
-<%= button_to "Try Me!", "/tryme", class: "zing-sang" %>
-<form method="POST" >
-  <input id='screenname' name='screenname' type="hidden" autocomplete=off onkeypress="enterSubmit(this, event)" value="<%= @remember_me %>"></input>
-  <button sign-in class="zing-sang">Try it now!</button>
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-</form>
 
 <%= form_tag do %>
 <fieldset>
