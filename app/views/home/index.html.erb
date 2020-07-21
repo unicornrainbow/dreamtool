@@ -15,6 +15,7 @@ body {
   background-image: url(dots.png);
   text-align: center;
   background-image: url(/pink%20flower.png);
+  background-position: center;
 }
 
 .newstime-love {
@@ -73,6 +74,7 @@ input[type=password] {
 
 .free-account a {
   color: #A05BDE;
+  color: rgb(255, 106, 249);
 }
 
 .zing-sang {
@@ -227,33 +229,6 @@ form#sign-in {
        inkscape:connector-curvature="0" />
   </g>
 </svg>
-<br>
-<br>
-<p>Dreamtool is a revolution in digital publishing.</p>
-
-
-<a href="/tryme">Try it Now!</a>
-<%# <%= link_to "Try it Now", tryme_path, method: :post %> %>
-<%= button_to "Try Me!", "/tryme", class: "zing-sang" %>
-<form method="POST" >
-  <input id='screenname' name='screenname' type="hidden" autocomplete=off onkeypress="enterSubmit(this, event)" value="<%= @remember_me %>"></input>
-  <button sign-in class="zing-sang">Try it now!</button>
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-</form>
-
-
-<form id="sign-in" method="POST" >
-  <%if @remember_me.present? %>
-  <div id='clear-remember-me'>
-    <span onclick='clearRememberMe()'>+</span>
-  </div>
-  <% end %>
-  <input placeholder="Screen name" name='screenname' type="text" autocomplete=off onkeypress="enterSubmit(this, event)" value="<%= @remember_me %>"></input>
-  <br><br>
-  <button sign-in class="zing-sang">Sign in</button>
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-</form>
-
 
 
 <form id="sign-in" method="POST" >
@@ -273,29 +248,6 @@ form#sign-in {
   Don't have an account?<br>
   <a href="/hot-muffins">Sign up for free</a>
 </div>
-
-
-<%= form_tag do %>
-<fieldset>
-  <legend>Sign in</legend>
-  <%if @remember_me.present? %>
-  <div id='clear-remember-me'>
-    <span onclick='clearRememberMe()'>+</span>
-  </div>
-  <% end %>
-  <input id='screenname' placeholder="Screen name" name='screenname' type="text" autocomplete=off onkeypress="enterSubmit(this, event)" value="<%= @remember_me %>"></input>
-  <br><br>
-  <button sign-in class="zing-sang">Sign in</button>
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-</fieldset>
-<% end %>
-
-
-<style>signin-panel {display: block ;}
- signin-panel { width: 300px; height: 270px;
-  background: linear-gradient(blue, pink);
-  border-radius: 7pt;}</style>
-<signin-panel><b>Sign in</b></signin-panel>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110938574-1"></script>
