@@ -16,9 +16,9 @@ class HomeController < ApplicationController #ActionController::Base
   end
 
   def sign_in
-    #if params[:screenname].empty?
-    #  redirect_to '/editions' and return
-    #end
+    if params[:screenname].empty?
+        redirect_to '/editions' and return
+    end
 
     gibberish = params[:screenname] #.downcase
 
