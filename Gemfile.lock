@@ -6,13 +6,6 @@ GIT
       railties (>= 3.1)
       sprockets-rails
 
-GIT
-  remote: http://github.com/unicornrainbow/sass
-  revision: 14d8793fbaa3f903dcca9498de9aaf2bdac125d8
-  branch: multi-prop
-  specs:
-    sass (3.2.19)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -94,10 +87,18 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    compass (0.12.7)
+    compass (1.0.3)
       chunky_png (~> 1.2)
-      fssm (>= 0.2.7)
-      sass (~> 3.2.19)
+      compass-core (~> 1.0.2)
+      compass-import-once (~> 1.0.5)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9)
+      sass (>= 3.3.13, < 3.5)
+    compass-core (1.0.3)
+      multi_json (~> 1.0)
+      sass (>= 3.3.0, < 3.5)
+    compass-import-once (1.0.5)
+      sass (>= 3.2, < 3.5)
     compass-rails (2.0.0)
       compass (>= 0.12.2)
     concurrent-ruby (1.1.6)
@@ -148,7 +149,6 @@ GEM
     ffi (1.12.2)
     flickraw (0.9.10)
     foreman (0.87.1)
-    fssm (0.2.10)
     gibberish (2.1.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -255,6 +255,7 @@ GEM
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    sass (3.3.14)
     sass-rails (5.1.0)
       railties (>= 5.2.0)
       sass (~> 3.1)
@@ -344,7 +345,7 @@ DEPENDENCIES
   rails_12factor
   redcarpet
   redis-namespace
-  sass (~> 3.2.19)!
+  sass (~> 3.3.13)
   sass-rails (~> 5)
   sdoc
   sidekiq

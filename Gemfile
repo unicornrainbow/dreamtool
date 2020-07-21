@@ -4,8 +4,8 @@ ruby '2.6.5'
 gem 'rails'
  gem 'sass-rails', '~> 5'
 #gem 'sass-rails', '~> 4.0.5'
- gem 'sass', '~> 3.2.19', git: "http://github.com/unicornrainbow/sass", branch: "multi-prop"
- # gem 'sass', '~> 3.3.13'
+ # gem 'sass', '~> 3.2.19', git: "http://github.com/unicornrainbow/sass", branch: "multi-prop"
+ gem 'sass', '~> 3.3.13'
 # gem "sass"
 #gem 'sass',  git: "http://github.com/unicornrainbow/sass", branch: "multi-prop"
 gem 'bootstrap-sass', '~> 3.1.1.1'
