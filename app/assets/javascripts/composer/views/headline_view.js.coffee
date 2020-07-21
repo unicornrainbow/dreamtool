@@ -61,6 +61,11 @@ class @Newstime.HeadlineView extends Newstime.ContentItemView
         if char == '\n'
           char = "<br>"
         "<span>#{char}</span>"
+
+      #spanWrapped.push "<span class='cursor'></span>"
+      spanWrapped.splice @model.get('cursorPosition'), 0,
+        "<span class='cursor'></span>"
+
       spanWrapped= spanWrapped.join('')
       @$div.html(spanWrapped)
       @$el.removeClass 'placeholder'
@@ -219,6 +224,7 @@ class @Newstime.HeadlineView extends Newstime.ContentItemView
 
   startEditMode: ->
     @selectionView.addClass 'edit-mode'
+    @addClass 'edit-mode'
     @editMode = true
 
     @$textarea.focus()
@@ -228,6 +234,7 @@ class @Newstime.HeadlineView extends Newstime.ContentItemView
     if @editMode
       @editMode = false
       @selectionView.removeClass 'edit-mode'
+      @removeClass 'edit-mode'
 
       @$textarea.blur()
 
