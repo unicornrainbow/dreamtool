@@ -16,7 +16,6 @@ gem 'state_machine'
 gem 'sidekiq'
 gem 'sprockets'
 gem 'sprockets-rails'
-# gem "wikicloth"
  gem 'angular-rails-templates',  github: 'luckyjazzbo/angular-rails-templates' # Including for support in templates, should not have to be loaded up here.
 gem 'slim', '3'
 
