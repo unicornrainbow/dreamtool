@@ -73,8 +73,8 @@
     .data(newUsers)
   .enter().append("div")
     .style("height", function(d) { return x(d.value) + "px"; })
-    // .text(function(d) { return d.value; })
-    .text(function(d) { return d._id.month + "/" + d._id.year; });
+    .text(function(d) { return d.value + " signup | " +
+                              d._id.month + "/" + d._id.year; });
 
 </script>
 
