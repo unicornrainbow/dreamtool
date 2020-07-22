@@ -52,6 +52,8 @@
   //   @bob becomes [name=bob]
   //   div@jan becomes div[name=jan]
   (function() {
+
+
     var _select = d3.select;
     d3.select = function(selector) {
       // expand @name
@@ -60,6 +62,10 @@
       return _select(selector);
     }
   }());
+
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+  ];
 
   var newUsers = <%= raw @new_users.to_json %>;
 
@@ -74,7 +80,7 @@
   .enter().append("div")
     .style("height", function(d) { return x(d.value) + "px"; })
     .text(function(d) { return d.value + " signup | " +
-                              d._id.month + "/" + d._id.year; });
+                              monthNames[d._id.month-1] + " " + d._id.year; });
 
 </script>
 
