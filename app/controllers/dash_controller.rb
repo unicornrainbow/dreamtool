@@ -21,7 +21,7 @@ class DashController < ApplicationController
 
     @new_users = JSON.parse(@new_users.to_json)
 
-    @new_users[4] = {"_id"=>{"year"=>2020, "month"=>6}, "value"=>0}
+    # @new_users[4] = {"_id"=>{"year"=>2020, "month"=>6}, "value"=>0}
 
 
     w = {}
@@ -42,7 +42,7 @@ class DashController < ApplicationController
     end
 
     @new_users = []
-    [2017, 2018, 2019, 2020].each do |year|
+    (2017..Date.current.year).each do |year|
       if year == Date.current.year
         (1..Date.current.month).each do |month|
             @new_users <<  {"_id"=>{"year"=>year, "month"=>month},
