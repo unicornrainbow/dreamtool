@@ -1,6 +1,6 @@
 
 Dash:
-  [ ] Show gaps for months with no sign ups.
+  [x] Show gaps for months with no sign ups.
   [ ] Show current month day over day in signups
 
 ---
