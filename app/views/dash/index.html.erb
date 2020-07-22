@@ -79,7 +79,7 @@
     .data(newUsers)
   .enter().append("div")
     .style("height", function(d) { return x(d.value) + "px"; })
-    .text(function(d) { return d.value + " signup | " +
+    .text(function(d) { return d.value + " signup / " +
                               monthNames[d._id.month-1] + " " + d._id.year; });
 
 </script>

@@ -19,6 +19,46 @@ class DashController < ApplicationController
 
     @new_users = User.collection.aggregate(stages)
 
+    @new_users = JSON.parse(@new_users.to_json)
+
+    @new_users[4] = {"_id"=>{"year"=>2020, "month"=>6}, "value"=>0}
+
+
+    w = {}
+
+    (2017..Date.current.year).each do |year|
+      w[year] = {}
+      (1..12).each do |month|
+        w[year][month] = 0
+      end
+    end
+
+    @new_users.each do |m|
+      year = m["_id"]["year"]
+      month = m["_id"]["month"]
+      if w[year]
+        w[year][month] = m["value"]
+      end
+    end
+
+    @new_users = []
+    [2017, 2018, 2019, 2020].each do |year|
+      if year == Date.current.year
+        (1..Date.current.month).each do |month|
+            @new_users <<  {"_id"=>{"year"=>year, "month"=>month},
+              "value"=> w[year][month]}
+          end
+      else
+        (1..12).each do |month|
+          @new_users <<  {"_id"=>{"year"=>year, "month"=>month},
+            "value"=> w[year][month]}
+        end
+      end
+
+
+    end
+
+
     # @hits = $redis.get("Hits: #{Today.date}") || 0
     # @hits = Hit.get("Hits: #{Today.date}") || 0
     todays_date = Today.date
