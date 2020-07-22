@@ -72,7 +72,7 @@ Press::Application.routes.draw do
   post '/hot-muffins' => 'home#hot_muffins'
   # post '/tryme' => '
   post '/workspace' => 'workspaces#save_workspace'
-  get '/dash' => 'home#dash'
+  get '/dash' => 'dash#index'
 
 
   get 'flickr/authorize'
