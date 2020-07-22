@@ -31,6 +31,9 @@
           vertical-align: bottom;
           transition: height .2s;
           /* text-align: center; */
+          writing-mode: sideways-lr;
+          padding: 1em 0;
+          text-align: right;
         }
 
         .guage {
