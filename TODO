@@ -1,3 +1,10 @@
+
+Dash:
+  [ ] Show gaps for months with no sign ups.
+  [ ] Show current month day over day in signups
+
+---
+
 - [FiX] Firefox scrollbar pushing panels right on hover when panels
    are positioned right.
 
