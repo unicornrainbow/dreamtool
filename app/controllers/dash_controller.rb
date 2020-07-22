@@ -13,7 +13,7 @@ class DashController < ApplicationController
         },
         "value": { "$sum": 1 }
       }
-    }]
+    }, { "$sort": {"_id.year": 1, "_id.month": 1 } }]
 
     #User.all.group_by([:year, :month] => "created_at")
 
