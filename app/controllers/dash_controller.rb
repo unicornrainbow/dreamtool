@@ -58,6 +58,8 @@ class DashController < ApplicationController
 
     end
 
+    @new_users = @new_users.reverse
+
 
     # @hits = $redis.get("Hits: #{Today.date}") || 0
     # @hits = Hit.get("Hits: #{Today.date}") || 0

@@ -7,8 +7,8 @@
               margin: 2px 0 20px 0;
               font-size: 1.7em;
               font-weight: 300;
-              float: right;
-              margin-top: -2em;
+              // float: right;
+              // margin-top: -2em;
             }
 
       chart[name=new-users] {
@@ -16,13 +16,14 @@
         background-color: /* pink */ #ff7be2;
         display: block;
         padding: 10px;
-        margin: 20px 11px;
+        margin: 20px 11px 20px -8px;
         margin-bottom: 30px;
-        border-radius: 12px;
+        border-radius: 0 12px 12px 0;
         white-space: nowrap;
-        // overflow-x: scroll;
-        float: right;
-        padding-top: 4em;
+        overflow-x: scroll;
+        direction: rtl;
+        // float: right;
+        // padding-top: 4em;
       }
 
         chart[name=new-users] div {
@@ -41,6 +42,7 @@
           padding: 1em 0;
           text-align: right;
           white-space: nowrap;
+          direction: ltr;
         }
 
         .guage {
