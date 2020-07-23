@@ -70,6 +70,8 @@ Press::Application.routes.draw do
   get '/sign-out' => 'home#sign_out'
   get '/hot-muffins' => 'home#hot_muffins'
   post '/hot-muffins' => 'home#hot_muffins'
+  get '/signup' => 'signups#new', as: 'signup'
+  post '/signup' => 'signups#create'
   # post '/tryme' => '
   post '/workspace' => 'workspaces#save_workspace'
   get '/dash' => 'dash#index'

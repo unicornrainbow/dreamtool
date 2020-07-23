@@ -57,22 +57,4 @@ class HomeController < ApplicationController #ActionController::Base
     redirect_to '/'
   end
 
-
-  def hot_muffins
-    if request.post?
-      user = User.new(params.permit(:screenname, :password, :email))
-      user.signup_date = Today.date
-      if user.save
-        session[:screenname] = user.screenname
-        cookies[:remember_me] = user.screenname
-
-        redirect_to '/editions'
-      else
-        redirect_to '/'
-      end
-    else
-      render layout: false
-    end
-  end
-
 end
