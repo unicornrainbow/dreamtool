@@ -99,8 +99,4 @@ module ApplicationHelper
     raw "<style>\n" + capture(&block) + "\n</style>"
   end
 
-  def title
-    @title
-  end
-
 end
