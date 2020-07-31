@@ -100,7 +100,7 @@ module ApplicationHelper
   end
 
   def markdown(&block)
-    @markdown ||= Markdown.new
+    @markdown ||= Markdown.new(Redcarpet::Render::HTML)
     @markdown.render capture(&block)
   end
 
