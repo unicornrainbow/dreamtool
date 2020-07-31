@@ -100,8 +100,8 @@ module ApplicationHelper
   end
 
   def markdown(&block)
-    @markdown ||= Markdown.new(Redcarpet::Render::HTML)
-    @markdown.render capture(&block)
+    @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
+    raw @markdown.render capture(&block)
   end
 
 end
