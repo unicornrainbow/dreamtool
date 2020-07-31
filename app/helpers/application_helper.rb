@@ -99,8 +99,9 @@ module ApplicationHelper
     raw "<style>\n" + capture(&block) + "\n</style>"
   end
 
-  def markdown
-    # TODO: implement
+  def markdown(&block)
+    Markdown
+    capture(&block)
   end
 
 end
