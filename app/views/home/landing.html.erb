@@ -6,7 +6,7 @@
 
 <%= stylesheet_link_tag "welcome" %>
 
-<%= img "logo.svg", style: "margin: 8vh auto;"%>
+<%= img "logo.svg", style: ""%>
 <%= render "flash" %>
 <form id="sign-in" method="POST" action="<%= user_session_path %>">
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
