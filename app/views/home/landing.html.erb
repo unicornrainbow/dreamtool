@@ -5,12 +5,16 @@
 <link href="https://fonts.googleapis.com/css?family=Allura|Dancing+Script|Parisienne|Sacramento|Special+Elite" rel="stylesheet">
 
 <%= stylesheet_link_tag "landing" %>
+<style media="screen">
+  body { margin: 19vh 0; text-align: center; }
+  img { display: block; }
+  form { margin: 5vh 0; }
+  .free-account { margin: 6vh 0; }
+  input { margin: 2pt; }
+</style>
 
-<br><br><br>
-<%= img "logo.svg"%>
-<br>
+<%= img "logo.svg", style: "margin: 11vh auto;"%>
 <%= render "flash" %>
-<br><br><br>
 <form id="sign-in" method="POST" action="<%= user_session_path %>">
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <%if @remember_me.present? %>
@@ -19,7 +23,9 @@
   </div>
   <% end %>
   <input id='screenname' placeholder="Screenname" name='user[screenname]' type="text" autocomplete=off onkeypress="enterSubmit(this, event)" value="<%= @remember_me %>"></input>
+  <br>
   <input placeholder="Secret Password" name='user[password]' type="password" autocomplete=off onkeypress="enterSubmit(this, event)"></input>
+  <br>
   <button sign-in class="zing-sang"> <%= t "Sign in" %></button>
 </form>
 
