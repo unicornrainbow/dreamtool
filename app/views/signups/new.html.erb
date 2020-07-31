@@ -4,7 +4,7 @@
 <% end %>
 
 <%= img "logo.svg" %>
-
+<% capture do %>
 Dreamtool is currently invite only in beta.
 
 Please check back soon. Thank You!
@@ -35,7 +35,7 @@ An account let's you:
 <p>So what are you waiting for?<br>
   Sign up for your free account today.</p>
 
-
+<% end %>
 <% if @user.errors.any? %>
   <div id="error_explanation">
     <h2>Oops, there was <%= pluralize(@user.errors.count, "error") %>:</h2>
