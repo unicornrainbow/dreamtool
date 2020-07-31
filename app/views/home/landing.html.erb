@@ -6,14 +6,44 @@
 
 <%= stylesheet_link_tag "landing" %>
 <style media="screen">
-  body { margin: 19vh 0; text-align: center; }
+  body { margin: 19vh 0; text-align: center;
+      font-size: 19pt;
+      font-family: 'Dancing Script', cursive;
+   }
   img { display: block; }
   form { margin: 5vh 0; }
   .free-account { margin: 6vh 0; }
   input { margin: 2pt; }
+
+  input, button {
+    margin: .2em;
+    color: #b914e3;
+    border: 2pt solid white;
+    font-size: 1em;
+    padding: .4em .7em;
+    border-radius: .4em;
+    outline: none;
+    text-align: center;
+    opacity: .7;
+    font-weight: 100;
+    font-family: 'Dancing Script', cursive; */
+    /* border-radius: 7pt;
+    outline: none;
+    padding: 7pt 10pt;
+    text-align: center;
+    opacity: .7;
+    margin-bottom: .5em;
+
+    font-size: 27pt;
+    font-size: 2em;
+    font-weight: 100;
+    font-family: 'Dancing Script', cursive; */
+  }
+
+
 </style>
 
-<%= img "logo.svg", style: "margin: 11vh auto;"%>
+<%= img "logo.svg", style: "margin: 8vh auto;"%>
 <%= render "flash" %>
 <form id="sign-in" method="POST" action="<%= user_session_path %>">
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
@@ -26,6 +56,7 @@
   <br>
   <input placeholder="Secret Password" name='user[password]' type="password" autocomplete=off onkeypress="enterSubmit(this, event)"></input>
   <br>
+
   <button sign-in class="zing-sang"> <%= t "Sign in" %></button>
 </form>
 
