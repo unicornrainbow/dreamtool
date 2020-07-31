@@ -1,0 +1,44 @@
+<% @authentication_key = User.authentication_keys.first %>
+<% content_for :head do %>
+  <title></title>
+  <%= stylesheet_link_tag "home" %>
+
+  <style media="screen">
+     .alert { margin-bottom: -1.4em; }
+     .alert .col {font-size: 1.4em;
+color: dodgerblue;}
+  </style>
+<% end %>
+
+
+
+<br><br><br>
+<%= link_to root_url do %>
+  <%= img "logo.svg" %>
+<% end %>
+
+
+<br><br><br>
+<%= render "flash" %>
+<br><br><br>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.text_field @authentication_key, autofocus: true, placeholder: t("Screenname") %>
+  </div>
+
+  <div class="field">
+    <%= f.password_field :password, autocomplete: "current-password", placeholder: t("Secret Password") %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t("Sign on"), class: 'zing-sang' %>
+  </div>
+<% end %>
+
+<div class="free-account">
+  <%= t :no_tienes_cuenta %><br>
+  <%= link_to t(:registrate_gratis), signup_path %>
+  <!-- <a href="/hot-muffins">Sign up for free!</a> -->
+</div>
+
+<%= render "devise/shared/links" %>

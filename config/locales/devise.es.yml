@@ -1,6 +1,6 @@
 # Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 
-en:
+es:
   devise:
     confirmations:
       confirmed: "Your account was successfully confirmed."
@@ -9,12 +9,12 @@ en:
     failure:
       already_authenticated: "You are already signed in."
       inactive: "Your account is not activated yet."
-      invalid: "Invalid screenname or password."
+      invalid: "Pantallanombre o contraseña no válidos."
       locked: "Your account is locked."
       last_attempt: "You have one more attempt before your account will be locked."
-      not_found_in_database: "Invalid email or password."
+      not_found_in_database: "Pantallanombre o contraseña no válidos."
       timeout: "Your session expired. Please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
+      unauthenticated: "Debe iniciar sesión o registrarse antes de continuar."
       unconfirmed: "You have to confirm your account before continuing."
     mailer:
       confirmation_instructions:

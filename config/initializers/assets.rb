@@ -31,6 +31,7 @@ Rails.application.config.assets.version = '1.0'
   "composer.css",
   "composer/font-awesome.css",
   "dash.css",
+  "home.css",
   "composer.js",
   "mobile-composer.js",
   "jquery.js"

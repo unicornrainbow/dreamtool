@@ -1,0 +1,134 @@
+
+body {
+  /* background-color: #86d7d2; */
+  /* background-image: url(dots.png); */
+  text-align: center;
+  // background-image: url(assets/pink%20flower.png);
+  background-position: center;
+  font-family: 'Dancing Script', cursive;
+}
+
+.newstime-love {
+  font-family: 'Dosis';
+  font-weight: 200;
+  font-size: 72;
+  color: black;
+  margin: 50pt;
+}
+
+#sign-in {
+  text-align: center;
+  margin-top: 30pt;
+  margin-bottom: 30pt;
+  position: relative;
+}
+
+input {
+  border: 2pt solid white;
+  outline: none;
+  padding: 7pt 10pt;
+  text-align: center;
+  opacity: .7;
+  margin-bottom: .5em;
+
+  font-size: 27pt;
+  font-size: 2em;
+  font-weight: 100;
+  font-family: 'Dancing Script', cursive;
+}
+
+#screenname {
+  border-radius: 7pt 7pt 0 0;
+  border-radius: 7pt;
+}
+
+input[type=text] {
+  border-radius: 7pt;
+  color: #b914e3;
+  width: 90%;
+  max-width: 370px;
+}
+
+input[type=password] {
+  border-radius: 0 0 7pt 7pt;
+  border-radius: 7pt;
+  color: #e919e6;
+  width: 90%;
+  max-width: 370px;
+  font-size: 2em;
+}
+
+.free-account {
+  font-family: 'Dancing Script', cursive;;
+  font-size: 19pt;
+  text-align: center;
+  color: white;
+  margin: 50pt;
+}
+
+.free-account a {
+  color: #A05BDE;
+  color: rgb(255, 106, 249);
+}
+
+.zing-sang {
+  color: #B8E9EF;
+  background-color: #A05BDE;
+  background: linear-gradient(to bottom, #A05BDE 0%, #A156AD 100%);
+  border-radius: 14pt;
+  padding: 11px 17px;
+  border-color: #D3ADE2;
+  border-style: solid;
+  border-width: 2px 4px 4px 2px;
+  cursor: pointer;
+  font-weight: 500;
+  font-family: 'Dancing Script', cursive;
+  font-size: 22pt;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-width .2s, margin .2s;
+  height: 77px;
+  opacity: 1;
+}
+
+.zing-sang:active, .zing-sang:focus {
+  /*background: linear-gradient(to bottom, #A156AD 0%, #A05BDE 100%);*/
+  border-width: 2px;
+  margin: 2px 0 0 2px;
+  outline: none;
+}
+
+.zing-sang:active {
+}
+
+form#sign-in {
+  /* border: 1px solid red; */
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#clear-remember-me {
+  display: block;
+  width: 400px;
+  position: absolute;
+  z-index: 2;
+}
+
+#clear-remember-me span {
+  background-color: hotpink;
+  border-radius: 50%;
+  transform: rotate(45deg);
+  color: white;
+  font-size: 16pt;
+  border: none;
+  height: 27px;
+  width: 27px;
+  height: 1.5em;
+  width: 1.5em;
+  opacity: .4;
+  display: inline-block;
+  float: right;
+  margin: .7em 40px 0 0;
+  line-height: 1.5em;
+}

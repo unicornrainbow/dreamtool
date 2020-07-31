@@ -15,7 +15,19 @@ Press::Application.routes.draw do
 
   get  :composer, controller: :editions
 
-  devise_for :users, controllers: { sessions: "sessions" }
+  # devise_for :users, controllers: { sessions: "devise/sessions" },
+  #   path_names: { sign_in: 'sign-on', sign_out: 'sign-off' }
+  # resources :sessions
+
+  devise_scope :user do
+    # get 'sign-on' => 'devise/sessions#new', as: :user_session
+    # post 'sign-on' => 'devise/sessions#create'
+    # delete 'sign-off' => 'devise/sessions#destroy', as: :destroy_user_session
+
+    get 'sign-on' => 'users/sessions#new', as: :user_session
+    post 'sign-on' => 'users/sessions#create'
+    delete 'sign-off' => 'users/sessions#destroy', as: :destroy_user_session
+  end
 
   resources :editions do
     resources :sections
@@ -66,12 +78,12 @@ Press::Application.routes.draw do
     end
   end
 
-  post '/' => 'home#sign_in', as: 'signin'
+  # post '/' => 'home#sign_in', as: 'signin'
   get '/sign-out' => 'home#sign_out'
   get '/hot-muffins' => 'home#hot_muffins'
   post '/hot-muffins' => 'home#hot_muffins'
-  get '/signup' => 'signups#new', as: 'signup'
-  post '/signup' => 'signups#create'
+  get '/sign-up' => 'signups#new', as: 'signup'
+  post '/sign-up' => 'signups#create'
   # post '/tryme' => '
   post '/workspace' => 'workspaces#save_workspace'
   get '/dash' => 'dash#index'

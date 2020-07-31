@@ -1,0 +1,26 @@
+
+
+
+
+  <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
+  <hr>
+  <%= f.select :prefix,
+      options_for_select(["Mrs.", "Mr.", "Ms.", "Dr."].shuffle.unshift("")) %>
+  <%= f.text_field :first_name, placeholder: "First Name" %>
+  <%= f.text_field :last_name, placeholder: "Last Name" %>
+  <%= f.text_field :suffix, placeholder: "Suffix" %>
+  <br>
+  <br>
+  <br><br>
+
+  <form method="POST" >
+    <input placeholder='Screenname' name='screenname' type="text" onkeypress="enterSubmit(this, event)"></input>
+  	<br>
+    <input placeholder='Password' name='password' type="password" onkeypress="enterSubmit(this, event)"></input>
+  	<br>
+  	<br>
+    <input placeholder='Email' name='email' type="text" onkeypress="enterSubmit(this, event)"></input>
+  	<br>
+  	<br>
+    <button class="zing-sang">Make my Fabulous Account</button>
+  </form>

@@ -2,8 +2,6 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  devise :database_authenticatable, :rememberable, :authentication_keys => [:screenname]
-
   field :screenname,         type: String, default: ""
   field :encrypted_password, type: String, default: ""
   field :email
@@ -14,6 +12,11 @@ class User
   field :reset_password_sent_at,  type: Time
   field :signup_date
 
+  field :first_name
+  field :last_name
+  field :prefix
+  field :suffix
+
   # Flickr
   field :flickr_id
   field :flickr_username
@@ -21,6 +24,8 @@ class User
   field :flickr_access_secret #, type: Mongoid::EncryptedString
   # field :flickr_access_secret, encrypt: true, key: FLICKR_KEY
 
+  field :remember_created_at, type: Date
+  
   has_many :editions
   has_many :publications
   has_many :photos
@@ -28,6 +33,13 @@ class User
   has_many :stories
 
   embeds_one :workspace
+
+  devise :database_authenticatable,
+   :rememberable,
+   :authentication_keys => [:screenname]
+
+  # Validations
+  validates :screenname, presence: true
 
   index({ screenname: 1 }, { unique: true, name: "screenname_index" })
 

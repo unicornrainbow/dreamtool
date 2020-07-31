@@ -30,4 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  Sign in: Sign in
+  registrate_gratis: "Sign up free!"
+  no_tienes_cuenta: Don't have an account?
   hello: "Hello world"

@@ -76,7 +76,8 @@ module ApplicationHelper
   end
 
   def screenname
-    @screenname ||= session[:screenname]
+    # @screenname ||= session[:screenname]
+    @screenname ||= current_user.try :screenname
   end
 
   def google_fonts(fonts)
@@ -87,6 +88,18 @@ module ApplicationHelper
     fonts = fonts.join '|'
     url = "https://fonts.googleapis.com/css"
     tag 'link', href: "#{url}?family=#{fonts}", rel: "stylesheet"
+  end
+
+  def img(*a)
+    image_tag(*a)
+  end
+
+  def stylesheet(&block)
+    raw "<style>\n" + capture(&block) + "\n</style>"
+  end
+
+  def title
+    @title
   end
 
 end

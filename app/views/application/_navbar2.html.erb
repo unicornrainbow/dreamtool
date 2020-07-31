@@ -2,7 +2,7 @@
 <div class="compose-toolbar">
   <div class="container">
     <div class="dreamtool-logo">
-      <a href="/"><%= render 'dreamtool_logo' %></a>
+      <a href="/"><%= img "logo.svg" %></a>
     </div>
     <nav>
       <ul>
@@ -13,7 +13,9 @@
       </ul>
       <ul class="pull-right">
         <li class="screenname"><a><%= screenname %></a></li>
-        <li><a class="sign-out" title="Sign Out" href="/sign-out"><i class="fa fa-sign-out"></i></a></li>
+        <!-- <li><a class="sign-out" title="Sign Out" href="/sign-out"><i class="fa fa-sign-out"></i></a></li> -->
+        <li><%= button_to destroy_user_session_path, method: :delete do %><i class="fa fa-sign-out"></i><% end %></li>
+        <%# <li><a class="sign-out" title="Sign Out" href="/sign-out"><i class="fa fa-sign-out"></i></a></li> %>
       </ul>
     </nav>
   </div>

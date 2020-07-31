@@ -1,20 +1,39 @@
 class SignupsController < ApplicationController
 
   def new
-    render layout: false
+    # @signup = Signup.new
+    @user = User.new
+    render
   end
 
-  def create
-    user = User.new(params.permit(:screenname, :password, :email))
-    user.signup_date = Today.date
-    if user.save
-      session[:screenname] = user.screenname
-      cookies[:remember_me] = user.screenname
+  # delete me
+  # def create
+  #   user = User.new(params.permit(:screenname, :password, :email))
+  #   user.signup_date = Today.date
+  #   if user.save
+  #     session[:screenname] = user.screenname
+  #     cookies[:remember_me] = user.screenname
+  #
+  #     redirect_to '/editions'
+  #   else
+  #     redirect_to '/'
+  #   end
+  # end
 
-      redirect_to '/editions'
+  def create
+    @user = User.create(user_params)
+    unless @user.errors
+      redirect_to :signup_success
     else
-      redirect_to '/'
+      render :new
     end
+
+  end
+
+private
+
+  def user_params
+    params.require(:user).permit(:screenname)
   end
 
 end

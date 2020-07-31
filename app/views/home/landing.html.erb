@@ -1,0 +1,52 @@
+<title>Dreamtool</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="tagline" content="Create your online publication with Dreamtool.">
+<link href='https://fonts.googleapis.com/css?family=Dosis:200|Exo:100,400,900|Raleway:300' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Allura|Dancing+Script|Parisienne|Sacramento|Special+Elite" rel="stylesheet">
+
+<%= stylesheet_link_tag "landing" %>
+
+<br><br><br>
+<%= img "logo.svg"%>
+<br>
+<%= render "flash" %>
+<br><br><br>
+<form id="sign-in" method="POST" action="<%= user_session_path %>">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%if @remember_me.present? %>
+  <div id='clear-remember-me'>
+    <span onclick='clearRememberMe()'>＋</span>
+  </div>
+  <% end %>
+  <input id='screenname' placeholder="Screenname" name='user[screenname]' type="text" autocomplete=off onkeypress="enterSubmit(this, event)" value="<%= @remember_me %>"></input>
+  <input placeholder="Secret Password" name='user[password]' type="password" autocomplete=off onkeypress="enterSubmit(this, event)"></input>
+  <button sign-in class="zing-sang"> <%= t "Sign in" %></button>
+</form>
+
+<div class="free-account">
+  <%= t :no_tienes_cuenta %><br>
+  <%= link_to t(:registrate_gratis), signup_path %>
+  <!-- <a href="/hot-muffins">Sign up for free!</a> -->
+</div>
+
+<%= session.keys %>
+<li><%= button_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+</div></div>
+<script>
+  function enterSubmit(field, event) {
+    if(event.which==13){ field.form.submit(); }
+  }
+
+  function clearRememberMe() {
+    document.getElementById('screenname').value = ''
+    document.getElementById('clear-remember-me').remove()
+    document.cookie = 'remember_me='
+    // $('input[name=screenname]').val('')
+  }
+
+  // $(function() {
+  //   $('.clear-remember-me').click(clearRememberMe);
+  // })
+</script>
+
+<script type='text/javascript' src='assets/cljs/hello.js'></script>

@@ -1,0 +1,94 @@
+
+<HEAD>
+  <%= yield :head %>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <link href='https://fonts.googleapis.com/css?family=Dancing+Script'
+  rel='stylesheet' type='text/css'>
+
+  <%= stylesheet do %>
+    body {
+      background-color: #86d7d2;
+      background-image: url(dots.png);
+      text-align: center;
+    }
+
+    .newstime-love {
+      font-family: 'Dosis';
+      font-weight: 200;
+      font-size: 72;
+      color: black;
+      margin: 50pt;
+    }
+
+    #sign-in {
+      text-align: center;
+      margin-top: 100pt;
+    }
+
+    input {
+      border-radius: 7pt;
+      border: 2pt solid white;
+      outline: none;
+      padding: 7pt 10pt;
+      text-align: center;
+      opacity: .7;
+      margin: 0 0 5px;
+
+      font-size: 22pt;
+      font-weight: 100;
+    }
+
+    input {
+      border: 2pt solid white;
+      outline: none;
+      padding: 7pt 10pt;
+      text-align: center;
+      opacity: .7;
+
+      font-size: 27pt;
+      font-weight: 100;
+      font-family: 'Dancing Script', cursive;
+    }
+
+
+    .zing-sang {
+      color: #B8E9EF;
+      background-color: #A05BDE;
+      background: linear-gradient(to bottom, #A05BDE 0%, #A156AD 100%);
+      border-radius: 14pt;
+      padding: 11px 17px;
+      border-color: #D3ADE2;
+      border-style: solid;
+      border-width: 2px 4px 4px 2px;
+      cursor: pointer;
+      font-weight: 500;
+      font-family: 'Dancing Script', cursive;
+      font-size: 22pt;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+      transition: border-width .2s, margin .2s;
+      height: 77px;
+    }
+
+    .zing-sang:active, .zing-sang:focus {
+      /*background: linear-gradient(to bottom, #A156AD 0%, #A05BDE 100%);*/
+      border-width: 2px;
+      margin: 2px 0 0 2px;
+      outline: none;
+    }
+
+    .zing-sang:active {
+    }
+
+    .field_with_errors  input {
+      border: 2px solid blue;
+    }
+
+  <% end %>
+
+</HEAD>
+
+<BODY>
+  <%= yield %>
+</BODY>

@@ -1,7 +1,11 @@
 
+Sign-ups:
+  [ ] Improve new user signup experience
+  - Break out sign ups into controller
+
 Dash:
-  [x] Show gaps for months with no sign ups.
   [ ] Show current month day over day in signups
+  [x] Show gaps for months with no sign ups.
 
 ---
 
