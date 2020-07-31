@@ -100,8 +100,7 @@ module ApplicationHelper
   end
 
   def markdown(&block)
-    Markdown
-    capture(&block)
+    Markdown.parse capture(&block)
   end
 
 end
