@@ -3,10 +3,10 @@ body { margin: 19vh 0; text-align: center;
     font-family: 'Dancing Script', cursive;
     background: var(--body-background);
     color: var(--body-color);
-    /* --body-background: var(--orange);
+    --body-background: var(--orange);
     --body-color: var(--green);
     --green: lime;
-    --orange: orange; */
+    --orange: orange;
  }
 img.logo { margin: 8vh auto; display: block; }
 form { margin: 5vh 0; }
