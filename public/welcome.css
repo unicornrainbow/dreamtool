@@ -2,7 +2,8 @@ body { margin: 19vh 0; text-align: center;
     font-size: 19pt;
     font-family: 'Dancing Script', cursive;
  }
-img { display: block; margin: 8vh auto; }
+/* img { display: block; } */
+/* img.logo { margin: 8vh auto; } */
 form { margin: 5vh 0; }
 .free-account { margin: 6vh 0; }
 input { margin: 2pt; }
