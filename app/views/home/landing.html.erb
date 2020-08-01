@@ -18,7 +18,7 @@
   <!-- <a href="/hot-muffins">Sign up for free!</a> -->
 </div>
 
-<% capture do %>
+<% if false %>
   <%= session.keys %>
   <li><%= button_to "Sign Out", destroy_user_session_path, method: :delete %></li>
 <% end %>

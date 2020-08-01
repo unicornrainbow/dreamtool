@@ -1,4 +1,4 @@
-body { margin: 19vh 0; text-align: center;
+body { margin: 14vh 0; text-align: center;
     font-size: 19pt;
     font-family: 'Dancing Script', cursive;
     /* background: var(--body-background);
@@ -8,7 +8,8 @@ body { margin: 19vh 0; text-align: center;
     --green: lime;
     --orange: orange; */
  }
-img.logo { margin: 8vh auto; display: block; }
+img.logo { margin: 8vh auto; display: block;
+  height: 77px; }
 form { margin: 5vh 0; }
 .free-account { margin: 6vh 0; }
 input { margin: 2pt; }
