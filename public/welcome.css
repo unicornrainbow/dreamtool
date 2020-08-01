@@ -1,6 +1,8 @@
 body { margin: 19vh 0; text-align: center;
     font-size: 19pt;
     font-family: 'Dancing Script', cursive;
+    background: inherit;
+    color: inherit;
  }
 img.logo { margin: 8vh auto; display: block; }
 form { margin: 5vh 0; }
