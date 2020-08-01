@@ -18,8 +18,11 @@
   <!-- <a href="/hot-muffins">Sign up for free!</a> -->
 </div>
 
-<%= session.keys %>
-<li><%= button_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+<% capture do %>
+  <%= session.keys %>
+  <li><%= button_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+<% end %>
+
 </div></div>
 <script>
   function enterSubmit(field, event) {
