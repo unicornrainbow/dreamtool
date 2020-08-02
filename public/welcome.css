@@ -5,7 +5,7 @@ body { margin: 14vh 0; text-align: center;
     color: var(--body-color);
     --body-background: var(--orange);
     --body-color: var(--green);
-    --red: ;  --green: ; --blue: ;
+    --red: #F00;  --green: #0F0; --blue: #00F;
     --yellow: ;  --orange: ; --lime: ;
     --gray: ;
     --pink: ;
