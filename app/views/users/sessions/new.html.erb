@@ -6,22 +6,15 @@
 
   <style media="screen">
      .alert { margin-bottom: -1.4em; }
-     .alert .col {font-size: 1.4em;
+     .alert .col {font-size: 1.2em;
 color: dodgerblue;}
   </style>
 <% end %>
 
-
-
-<br><br><br>
 <%= link_to root_url do %>
   <%= img "logo.svg", class: "logo" %>
 <% end %>
-
-
-<br><br><br>
 <%= render "flash" %>
-<br><br><br>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.text_field @authentication_key, autofocus: true, placeholder: t("Screenname") %>
