@@ -18,6 +18,7 @@ body { margin: 14vh 0; text-align: center;
     --vanilla: vanilla; --chocqlate: chocolate;
 
  }
+body a { color: var(--purplesky); }
 img.logo { margin: 8vh auto; display: block;
   height: 77px; }
 form { margin: 5vh 0; }
