@@ -12,7 +12,7 @@ body { margin: 14vh 0; text-align: center;
     --gray: #888; --dark-gray: #444; --light-gray: #CCC;
     --pink: #F0F; --purple: #808; --fushia: foshia;
     /* --lightpink: ; --hotpink: ; --purplepink; */
-    --fluffy-cloud:; --cottoncandy: FAF; yummy;
+    --fluffy-cloud; --cottoncandy: #FAF; yummy: #FFA;
     --flower; --purplesky; --froopy;
     --gold: gold; --orcha: orcha; --bugandy: burgandy;
     --vanilla: vanilla; --chocqlate: chocolate;
