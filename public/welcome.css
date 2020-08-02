@@ -28,11 +28,8 @@ a.🍄 {
   margin: 8vh auto;
   width: 225px;
 }
-img.🍄 {
-  margin: 8vh auto;
-  display: block;}
-a.🍄 img,
-img.🍄 {  height: 77px; }
+img.🍄 { margin: 8vh auto; display: block;}
+img.🍄, a.🍄 img {  height: 77px; }
 form { margin: 5vh 0; }
 .free-account { margin: 6vh 0; }
 input { margin: 2pt; }
