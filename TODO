@@ -1,4 +1,14 @@
 
+- translations
+- validations
+- turbolinks
+- password confirm
+- sign-up copy
+- emails
+- welcome email
+- password reset
+- fsv
+
 Sign-ups:
   [ ] Improve new user signup experience
   - Break out sign ups into controller
