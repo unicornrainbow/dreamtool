@@ -53,10 +53,10 @@ An account let's you:
 
 <%= form_for @user, url: signup_path do |f| %>
   <%= f.text_field :screenname, placeholder: (t "Screenname") %>
-  <%= f.text_field :email, placeholder: (t "Email") %>
-  <%= f.password_field :password, placeholder: (t "Password") %>
+  <%= f.text_field :email, placeholder: ("Email") %>
+  <%= f.password_field :password, placeholder: (t "Secret Password") %>
   <br><br>
-  <%= f.submit (t "Make my Fabulous Account") %>
+  <%= f.submit ("Make my Fabulous Account") %>
 <% end %>
 
 <br>
