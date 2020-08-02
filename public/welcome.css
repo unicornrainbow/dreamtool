@@ -22,8 +22,13 @@ body { margin: 14vh 0; text-align: center;
 body a {
   color: var(--purplesky);
   color: var(--carnivál); }
-img.logo { margin: 8vh auto; display: block;
-  height: 77px; }
+a.🍄 {
+  display: block;
+  outline: none;
+  margin: 8vh auto;
+  width: 225px;
+}
+a.🍄 img {  height: 77px; }
 form { margin: 5vh 0; }
 .free-account { margin: 6vh 0; }
 input { margin: 2pt; }
