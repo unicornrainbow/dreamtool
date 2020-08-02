@@ -11,8 +11,8 @@ body { margin: 14vh 0; text-align: center;
     --yellow: #8F0;  --orange: #FF0; --lime: lime;
     --gray: #888; --dark-gray: #444; --light-gray: #CCC;
     --pink: #F0F; --purple: #808; --fushia: foshia;
-    /* --lightpink: ; --hotpink: ; --purplepink; */
-    --fluffy-cloud; --cottoncandy: #FAF; yummy: #FFA;
+    --lightpink: ; --hotpink: ; --purplepink;
+    --fluffy-cloud; --cottoncandy: #FAF; --yummy: #FFA;
     --flower; --purplesky; --froopy;
     --gold: gold; --orcha: orcha; --bugandy: burgandy;
     --vanilla: vanilla; --chocqlate: chocolate;
