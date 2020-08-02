@@ -32,7 +32,7 @@ a.🍄 {
   margin: 8vh auto;
   width: 225px; }
 a.🍄 img.logo {
-  margin: inherit;
+  margin: initial;
   display:initial; }
 form { margin: 5vh 0; }
 .free-account { margin: 6vh 0; }
