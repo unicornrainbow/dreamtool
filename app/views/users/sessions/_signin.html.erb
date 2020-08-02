@@ -1,7 +1,7 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.text_field @authentication_key, autofocus: true, placeholder: t("Screenname") %>
+    <%= f.text_field :screenname, autofocus: true, placeholder: t("Screenname") %>
   </div>
 
   <div class="field">
