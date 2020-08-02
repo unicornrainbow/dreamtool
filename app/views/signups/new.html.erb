@@ -4,7 +4,9 @@
   <link href="/welcome.css" rel="stylesheet">
 <% end %>
 
-<%= img "logo.svg", class: "logo" %>
+<%= link_to root_url do %>
+  <%= img "logo.svg", class: "logo" %>
+<% end %>
 <% markdown do %>
 ## Dreamtool is currently invite only in beta.
 
