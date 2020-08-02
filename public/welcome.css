@@ -5,8 +5,20 @@ body { margin: 14vh 0; text-align: center;
     color: var(--body-color);
     --body-background: var(--orange);
     --body-color: var(--green);
-    --green: lime;
-    --orange: orange; */
+    --red: ;  --green: ; --blue: ;
+    --yellow: ;  --orange: ; --lime: ;
+    --gray: ;
+    --pink: ;
+    --purple: ;
+    --fushia: ;
+    --gold: ;
+    --orcha: ;
+    --bugandy: ;
+    --menalla: ;
+    --vinalla: ;
+    --chocqlate: ;
+
+    */
  }
 img.logo { margin: 8vh auto; display: block;
   height: 77px; }
