@@ -1,20 +1,22 @@
 body { margin: 14vh 0; text-align: center;
     font-size: 19pt;
     font-family: 'Dancing Script', cursive;
-    /* background: var(--body-background);
+    background: var(--body-background);
     color: var(--body-color);
+
     --body-background: var(--cottoncandy);
     --body-color: var(--yummy);
+
     --red: #F00;  --green: #0F0; --blue: #00F;
     --yellow: #8F0;  --orange: #FF0; --lime: lime;
     --gray: #888; --dark-gray: #444; --light-gray: #CCC;
     --pink: #F0F; --purple: #808; --fushia: foshia;
     --lightpink: ; --hotpink: ; --purplepink;
     --fluffy-cloud; --cottoncandy; yummy;
-    --flower;
+    --flower; --purplesky; --froopy;
     --gold: gold; --orcha: orcha; --bugandy: burgandy;
     --menalla: menalla; --vinalla: vinalla; --chocqlate: chocolate;
-    */
+   
  }
 img.logo { margin: 8vh auto; display: block;
   height: 77px; }
