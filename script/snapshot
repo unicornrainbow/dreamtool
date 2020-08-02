@@ -1,9 +1,9 @@
 
 # If there are no staged changes
 if [ -z "$(git diff --cached)" ]; then
-         
+
   git add .
-  
+
   # Staged changes?
   if [ -n "$(git diff --cached)" ]; then
     # Make a git commit with "snapshot" if we found any.
