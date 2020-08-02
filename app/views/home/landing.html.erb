@@ -8,7 +8,7 @@
 
 <%= img "logo.svg", class: 'logo' %>
 <%= render "flash" %>
-<%= render "users/sessions/signin", resource: User.new, resource_name: "user" %>
+<%= render "users/sessions/signin", resource: :user, resource_name: :user %>
 
 <div class="free-account">
   <%= t :no_tienes_cuenta %><br>
