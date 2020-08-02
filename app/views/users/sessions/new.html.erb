@@ -12,19 +12,8 @@
   <%= img "logo.svg", class: "logo" %>
 <% end %>
 <%= render "flash" %>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.text_field @authentication_key, autofocus: true, placeholder: t("Screenname") %>
-  </div>
 
-  <div class="field">
-    <%= f.password_field :password, autocomplete: "current-password", placeholder: t("Secret Password") %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit t("Sign in"), class: 'zing-sang' %>
-  </div>
-<% end %>
 
 <div class="free-account">
   <%= t :no_tienes_cuenta %><br>
