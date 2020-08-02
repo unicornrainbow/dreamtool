@@ -6,6 +6,7 @@ body { margin: 14vh 0; text-align: center;
 
     --body-background: var(--cottoncandy);
     --body-color: var(--yummy);
+    /* --body-background: var(--red); */
 
     --red: #F00;  --green: #0F0; --blue: #00F;
     --yellow: #8F0;  --orange: #FF0; --lime: lime;
@@ -15,8 +16,8 @@ body { margin: 14vh 0; text-align: center;
     --fluffy-cloud; --cottoncandy; yummy;
     --flower; --purplesky; --froopy;
     --gold: gold; --orcha: orcha; --bugandy: burgandy;
-    --menalla: menalla; --vinalla: vinalla; --chocqlate: chocolate;
-   
+    --vinalla: vinalla; --chocqlate: chocolate;
+
  }
 img.logo { margin: 8vh auto; display: block;
   height: 77px; }
