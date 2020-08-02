@@ -17,7 +17,7 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  def create
-
-  end
+  # def create
+  #
+  # end
 end
