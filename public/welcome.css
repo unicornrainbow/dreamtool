@@ -14,11 +14,14 @@ body { margin: 14vh 0; text-align: center;
     --lightpink: ; --hotpink: ; --purplepink;
     --fluffy-cloud; --cottoncandy: #FAF; --yummy: #FFA;
     --flower; --purplesky: #D3F; --froopy;
+    --carnivál: #D1F;
     --gold: gold; --orcha: orcha; --bugandy: burgandy;
     --vanilla: vanilla; --chocqlate: chocolate;
 
  }
-body a { color: var(--purplesky); }
+body a {
+  color: var(--purplesky);
+  color: var(--carniál); }
 img.logo { margin: 8vh auto; display: block;
   height: 77px; }
 form { margin: 5vh 0; }
