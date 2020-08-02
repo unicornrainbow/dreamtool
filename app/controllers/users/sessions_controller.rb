@@ -12,6 +12,11 @@ class Users::SessionsController < Devise::SessionsController
   #   respond_with(resource, serialize_options(resource))
   # end
 
+  def new
+    request.env["devise.mapping"] = Devise.mappings[:user]
+    super
+  end
+
   def create
 
   end
