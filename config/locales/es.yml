@@ -3,6 +3,8 @@ es:
   Sign in: Iniciar sesión
   registrate_gratis: "¡Registrate gratis!"
   no_tienes_cuenta: No tienes cuenta?
+  Screenname: "Yo Tango"
+  Password: "Secreto Contraseña"
   mongoid:
     models:
       user: Usario
