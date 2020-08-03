@@ -3,7 +3,7 @@
 <% end %>
 <%= request.path %>
 <% if request.path == "" %>
-  <%= link_to root_url, class: "🍄", &i %>
+  <%= link_to root_url, class: "🍄", &capture(&i) %>
 <% else %>
-  <% capture &i %>
+  <%= capture &i %>
 <%end%>
