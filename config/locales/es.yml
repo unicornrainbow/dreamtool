@@ -4,7 +4,7 @@ es:
   registrate_gratis: "¡Registrate gratis!"
   no_tienes_cuenta: No tienes cuenta?
   Screenname: "Yo Tango"
-  Screenname: "Screenname"
+  Screenname: "Screennómbra"
   Secret Password: "Secreto Contraseña"
   mongoid:
     models:
