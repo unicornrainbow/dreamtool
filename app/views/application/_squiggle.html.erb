@@ -1,9 +1,8 @@
 <% i = proc do %>
   <%= img "logo.svg", class: "logo" %>
 <% end %>
-<%= request.path %>
-<% if request.path == "" %>
-  <%= link_to root_url, class: "🍄", &capture(&i) %>
+<% unless request.path == "/" %>
+  <%= link_to root_url, class: "🍄", &i %>
 <% else %>
   <%= capture &i %>
 <%end%>
