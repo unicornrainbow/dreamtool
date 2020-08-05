@@ -38,15 +38,7 @@ An account let's you:
 
 <% end %>
 <% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2>Oops, there was <%= pluralize(@user.errors.count, "error") %>:</h2>
-
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
+  <h2>Oops, <%= @user.errors.full_messages.first %></h2>
 <% end %>
 
 <%= form_for @user, url: signup_path do |f| %>
