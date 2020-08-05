@@ -25,7 +25,7 @@ class User
   # field :flickr_access_secret, encrypt: true, key: FLICKR_KEY
 
   field :remember_created_at, type: Date
-  
+
   has_many :editions
   has_many :publications
   has_many :photos

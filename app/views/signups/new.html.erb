@@ -4,39 +4,39 @@
   <link href="/welcome.css" rel="stylesheet">
 <% end %>
 
-<%= render "logo" %>
+<%= render "lama" %>
 <% markdown do %>
-## Dreamtool is currently invite only in beta.
+  ## Dreamtool is currently invite only in beta.
 
-Please check back soon. Thank You!
+  Please check back soon. Thank You!
 
- Try Dreamtool in your browser today and all
-you need is a free account.
+   Try Dreamtool in your browser today and all
+  you need is a free account.
 
-<!-- <%#= markdown do %>
-An account let's you:
-- Create and publish custom publication
-- Save your work online
-<%# end %> -->
+  <!-- <%#= markdown do %>
+  An account let's you:
+  - Create and publish custom publication
+  - Save your work online
+  <%# end %> -->
 
-<p>
-  Dreamtool lets you interactively create new content for the web directly from
-  your mobile device or personal computer.
-</p>
+  <p>
+    Dreamtool lets you interactively create new content for the web directly from
+    your mobile device or personal computer.
+  </p>
 
-<h2>Sign up today and gain access to these powerful features:</h2>
+  <h2>Sign up today and gain access to these powerful features:</h2>
 
-<ul>
-  <li>Interactive layout and editing tools that let you build and design websites and webpages with ease or publish a blog.</li>
-  <li>Create and publish a magazine, newsletter or newspaper online.</li>
-  <li>Explore and discover fresh new content being created by
-    users on Dreamtool and published daily.</li>
-</ul>
+  <ul>
+    <li>Interactive layout and editing tools that let you build and design websites and webpages with ease or publish a blog.</li>
+    <li>Create and publish a magazine, newsletter or newspaper online.</li>
+    <li>Explore and discover fresh new content being created by
+      users on Dreamtool and published daily.</li>
+  </ul>
 
-<p>So what are you waiting for?<br>
-  Sign up for your free account today.</p>
+  <p>So what are you waiting for?<br>
+    Sign up for your free account today.</p>
+  <% end %>
 
-<% end %>
 <% if @user.errors.any? %>
   <h2>Oops, <%= @user.errors.full_messages.first %></h2>
 <% end %>
