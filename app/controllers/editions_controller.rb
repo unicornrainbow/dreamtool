@@ -1,7 +1,7 @@
 class EditionsController < ApplicationController
   wrap_parameters include: [*Edition.attribute_names, :sections_attributes, :pages_attributes, :content_items_attributes, :groups_attributes, :colors_attributes, :masthead_artwork_attributes]
 
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :find_edition, only: [:compose, :preview, :compile, :download, :edit, :update, :show, :wip, :tearout]
   before_action :detect_mobile, only: :compose
 
