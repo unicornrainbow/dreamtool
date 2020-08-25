@@ -18,6 +18,13 @@ class ApplicationController < ActionController::Base
    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first if request.env['HTTP_ACCEPT_LANGUAGE']
  end
 
+  before_action do
+    # Redirect .herokuapp.com to .tk
+    if request.domain == "dreamtool.herokuapp.com"
+      redirect_to request.original_url.sub(".herokuapp.com", ".tk")
+    end
+  end
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
