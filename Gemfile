@@ -71,6 +71,7 @@ gem 'gibberish'
 
           gem 'kaminari-mongoid'
           gem 'cancancan'
+          gem 'cancancan-mongoid'
 
 group :development, :test do
   gem 'byebug'
