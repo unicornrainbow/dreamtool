@@ -1,11 +1,12 @@
 source 'https://rubygems.org'
-ruby '2.6.5'
+#ruby '2.6.5'
 
 gem 'rails'
  gem 'sass-rails', '~> 5'
 #gem 'sass-rails', '~> 4.0.5'
  # gem 'sass', '~> 3.2.19', git: "http://github.com/unicornrainbow/sass", branch: "multi-prop"
- gem 'sass', '~> 3.3.13'
+ #gem 'sass', '~> 3.3.13'
+ gem 'sass', '~> 3.3.13', path: "../sass"
 # gem "sass"
 #gem 'sass',  git: "http://github.com/unicornrainbow/sass", branch: "multi-prop"
 gem 'bootstrap-sass', '~> 3.1.1.1'
@@ -16,8 +17,8 @@ gem 'state_machine'
 gem 'sidekiq'
 gem 'sprockets'
 gem 'sprockets-rails'
- gem 'angular-rails-templates',  github: 'luckyjazzbo/angular-rails-templates' # Including for support in templates, should not have to be loaded up here.
-gem 'slim', '3'
+# gem 'angular-rails-templates',  github: 'luckyjazzbo/angular-rails-templates' # Including for support in templates, should not have to be loaded up here.
+gem 'slim', '>= 3'
 
 gem 'jquery-rails'
 gem 'rabl'
@@ -62,6 +63,13 @@ gem 'gibberish'
                 # \; 'nosb'  meg
 
                                       gem 'treetop'
+
+
+                      gem    'rails_admin',  '~>   2.0'
+                      gem   'haml', '~> 5.1.1'
+
+          gem 'kaminari-mongoid'
+          gem 'cancancan'
 
 group :development, :test do
   gem 'byebug'

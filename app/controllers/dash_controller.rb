@@ -2,6 +2,7 @@
 class DashController < ApplicationController
 
   skip_before_action :track_hit, only: 'index'
+
   def index
     # group by created_at in Mongo
     # see: https://stackoverflow.com/a/34677100
@@ -74,4 +75,27 @@ class DashController < ApplicationController
 
     render layout: false
   end
+
+  def index2
+    # How many signups this month?
+    # User.where()
+
+    # The ten most recent signups.
+    # x = User.order_by(:created_at => :desc)
+
+    x = User.queryable
+    # x = User.queryable
+
+    x = x.order_by(:created_at => :desc)
+
+    # render plain: x.first.screenname, layout: false
+    # render plain: x, layout: false
+    # render plain: User.methods, layout: false
+    # render json: x.last(10).to_json, layout: false
+    render json: x.take(10).pluck(:screenname, :email, :first_name).to_json, layout: false
+    # render json: x.take(10).to_json, layout: false
+
+  end
+
+
 end

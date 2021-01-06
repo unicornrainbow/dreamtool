@@ -2,6 +2,7 @@ require 'sidekiq/web'
 
 Press::Application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # match 'new artboard' => 'artboards#new'
   # get
   # لثف "شثهخع" خ
@@ -29,6 +30,7 @@ Press::Application.routes.draw do
   #   post 'sign-on' => 'users/sessions#create'
   #   delete 'sign-off' => 'users/sessions#destroy', as: :destroy_user_session
   # end
+
 
   resources :editions do
     resources :sections
@@ -88,6 +90,7 @@ Press::Application.routes.draw do
   # post '/tryme' => '
   post '/workspace' => 'workspaces#save_workspace'
   get '/dash' => 'dash#index'
+  get '/dash2' => 'dash#index2'
 
 
   get 'flickr/authorize'

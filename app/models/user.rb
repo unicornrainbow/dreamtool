@@ -26,6 +26,8 @@ class User
 
   field :remember_created_at, type: Date
 
+  field :admin, type: Boolean
+
   has_many :editions
   has_many :publications
   has_many :photos
@@ -33,6 +35,7 @@ class User
   has_many :stories
 
   embeds_one :workspace
+  accepts_nested_attributes_for :workspace
 
   devise :database_authenticatable,
    :rememberable,
