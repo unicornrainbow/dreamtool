@@ -2,10 +2,6 @@ require 'sidekiq/web'
 
 Press::Application.routes.draw do
 
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  # match 'new artboard' => 'artboards#new'
-  # get
-  # لثف "شثهخع" خ
   match 'editions/import', via: [:get, :post]
 
   get 'pub/:name',
