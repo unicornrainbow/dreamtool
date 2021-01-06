@@ -1,5 +1,7 @@
-PATH
-  remote: ../sass
+GIT
+  remote: http://github.com/unicornrainbow/sass
+  revision: cc7ccd72ba347856e95400526b8e3583c8239215
+  branch: multi-prop
   specs:
     sass (3.3.13)
 
