@@ -8,7 +8,7 @@ class EditionsController < ApplicationController
   skip_before_action :track_hit, only: [:wip]
   skip_before_action :verify_authenticity_token, only: :import
 
-  # respond_to :html, :json
+  respond_to :html, :json
 
   def index
     @editions = Edition.where(owner: screenname)

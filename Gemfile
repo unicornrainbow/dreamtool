@@ -5,6 +5,7 @@ gem 'rails'
  gem 'sass-rails', '~> 5'
   gem 'sass', '~> 3.3.13', git: "http://github.com/unicornrainbow/sass", branch: "multi-prop"
 
+gem 'responders'
 gem 'route_downcaser'
 gem 'bootstrap-sass', '~> 3.1.1.1'
 gem 'coffee-rails'
