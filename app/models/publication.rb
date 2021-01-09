@@ -7,6 +7,7 @@ class Publication
   field :website_url, type: String
   field :store_url, type: String
   field :default_price, type: Float
+  field :owner
 
   # Example:
   #
@@ -21,7 +22,8 @@ class Publication
   field :default_section_attributes, type: String, default: '[{ "name": "Main",  "path": "main.html", "sequence": 10,  "letter": "A", "pages_attributes": [ { "number": 1 } ] }]'
 
   has_many :editions, inverse_of: :publication
-  belongs_to :user
+  # belongs_to :user
+
   belongs_to :organization
 
   def build_edition

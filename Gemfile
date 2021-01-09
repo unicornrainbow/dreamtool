@@ -5,6 +5,7 @@ gem 'rails'
  gem 'sass-rails', '~> 5'
   gem 'sass', '~> 3.3.13', git: "http://github.com/unicornrainbow/sass", branch: "multi-prop"
 
+gem 'route_downcaser'
 gem 'bootstrap-sass', '~> 3.1.1.1'
 gem 'coffee-rails'
 gem "nokogiri"
@@ -28,7 +29,6 @@ gem 'simple_form'
 gem 'binding_of_caller'
 gem "paperclip"
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
-gem "devise"
 gem "liquid"
 gem "tilt"
 # gem "simple-form-datepicker"  #, "~> 0.1.3"

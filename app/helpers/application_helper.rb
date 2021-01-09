@@ -76,11 +76,6 @@ module ApplicationHelper
     date.localtime.try(:strftime, "%D %l:%M%P")
   end
 
-  def screenname
-    # @screenname ||= session[:screenname]
-    @screenname ||= current_user.try :screenname
-  end
-
   def google_fonts(fonts)
     if fonts.is_a? String
       fonts = [fonts]

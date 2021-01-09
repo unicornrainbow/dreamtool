@@ -12,22 +12,6 @@ Press::Application.routes.draw do
 
   get  :composer, controller: :editions
 
-  # devise_for :users, controllers: { sessions: "devise/sessions" },
-  devise_for :users, controllers: { sessions: "users/sessions" },
-    path_names: { sign_in: 'sign-on', sign_out: 'sign-off' }
-  # resources :sessions
-
-  # devise_scope :user do
-  #   # get 'sign-on' => 'devise/sessions#new', as: :user_session
-  #   # post 'sign-on' => 'devise/sessions#create'
-  #   # delete 'sign-off' => 'devise/sessions#destroy', as: :destroy_user_session
-  #
-  #   get 'sign-on' => 'users/sessions#new', as: :user_session
-  #   post 'sign-on' => 'users/sessions#create'
-  #   delete 'sign-off' => 'users/sessions#destroy', as: :destroy_user_session
-  # end
-
-
   resources :editions do
     resources :sections
     resources :content_items
@@ -77,8 +61,17 @@ Press::Application.routes.draw do
     end
   end
 
-  # post '/' => 'home#sign_in', as: 'signin'
+  post '/' => 'home#sign_in', as: 'signin'
+  post "/sign out" => 'home#sign_out'
+  get '/sign(*q)' => 'home#sign_out'
+
   get '/sign-out' => 'home#sign_out'
+  get '/sign-in' => 'home#sign_in'
+  get '/log(*q)' => 'home#sign'
+  get '/sign out' => 'home#sign_out'
+  # get '/sign off' => 'home#sign_out'
+  get '/sign in' => 'home#sign_in'
+
   get '/hot-muffins' => 'home#hot_muffins'
   post '/hot-muffins' => 'home#hot_muffins'
   get '/sign-up' => 'signups#new', as: 'signup'

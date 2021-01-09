@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 
   before_action :set_locale
 
+  helper_method :screenname
+
  def set_locale
    [params[:locale], cookies[:locale], extract_locale, I18n.default_locale].each do |l|
      if l && I18n.available_locales.index(l.to_sym)
@@ -76,6 +78,10 @@ class ApplicationController < ActionController::Base
   end
 
 protected
+
+  def screenname
+    @screenname ||= session[:screenname]
+  end
 
   def force_trailing_slash
     redirect_to request.original_url + '/' unless request.original_url.match(/\/$/)

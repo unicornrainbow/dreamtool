@@ -37,10 +37,6 @@ class User
   embeds_one :workspace
   accepts_nested_attributes_for :workspace
 
-  devise :database_authenticatable,
-   :rememberable,
-   :authentication_keys => [:screenname]
-
   # Validations
   validates :screenname, presence: true
 

@@ -8,24 +8,15 @@ class EditionsController < ApplicationController
   skip_before_action :track_hit, only: [:wip]
   skip_before_action :verify_authenticity_token, only: :import
 
-  respond_to :html, :json
+  # respond_to :html, :json
 
   def index
-    if current_user
-      @editions = current_user.editions.desc(:updated_at)
-    else
-      @editions =
-        Edition.nouser
-          .desc(:updated_at)
-    end
+    @editions = Edition.where(owner: screenname)
+        .desc(:updated_at)
   end
 
   def new
-    if current_user
-      @publications = current_user.publications
-    else
-      @publications = Publication.where(user: nil)
-    end
+    @publications = Publication.where(owner: screenname)
     @publication = params[:publication_id] ? Publication.find(params[:publication_id]) : Publication.first
     @publication = Publication.new
     @edition = @publication.build_edition
@@ -64,16 +55,16 @@ class EditionsController < ApplicationController
     edition_title = params.dig :edition, :title
 
     if pub_name
-      @publication = current_user.publications.where(name: pub_name).first
+      @publication = Publication.where(owner: screenname, name: pub_name).first
       unless @publication
         @publication = Publication.create(
-          user: current_user,
+          owner: screenname,
           name: pub_name
         )
       end
 
       @edition = @publication.editions.new(
-        user: current_user,
+        owner: screenname,
         name: edition_title,
         layout_name: 'default',
         has_sections: false
@@ -154,7 +145,7 @@ class EditionsController < ApplicationController
     # Sets config values which are avialable client-side at `Newstime.config`.
     set_client_config
 
-    set_workspace
+    # set_workspace
 
     render 'compose', layout: 'layout_module'
   end

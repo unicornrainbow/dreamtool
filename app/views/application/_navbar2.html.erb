@@ -12,10 +12,12 @@
         <%= navbar_li "Videos", '/videos', active_path: '/videos'  %> -->
       </ul>
       <ul class="pull-right">
+        <% if session["screenname"] %>
         <li class="screenname"><a><%= screenname %></a></li>
-        <!-- <li><a class="sign-out" title="Sign Out" href="/sign-out"><i class="fa fa-sign-out"></i></a></li> -->
-        <li><%= button_to destroy_user_session_path, method: :delete do %><i class="fa fa-sign-out"></i><% end %></li>
-        <%# <li><a class="sign-out" title="Sign Out" href="/sign-out"><i class="fa fa-sign-out"></i></a></li> %>
+        <li><%= link_to "/sign%20out", class: "sign-out", title: "Sign Out", method: :post do %><i class="fa fa-sign-out"></i><% end %></li>
+        <% else %>
+        <li><a href="/">Sign in</a></li>
+        <% end %>
       </ul>
     </nav>
   </div>

@@ -8,6 +8,7 @@ class Edition
   ## Attributes
   field :title
   field :publication_name
+  field :owner
 
   field :name
   field :page_title,       type: String
@@ -62,11 +63,11 @@ class Edition
 
 
   #belongs_to :organization
-  belongs_to :user
+  # belongs_to :user
   belongs_to :publication, inverse_of: :editions
 
 
-  scope :nouser, -> { where(user: nil) }
+  # scope :nouser, -> { where(user: nil) }
 
   # Methods
 
