@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
 
   before_action :set_locale
 
-  helper_method :screenname
+  helper_method :screenname,
+    :signed_in?
+
 
  def set_locale
    [params[:locale], cookies[:locale], extract_locale, I18n.default_locale].each do |l|
@@ -81,6 +83,12 @@ protected
 
   def screenname
     @screenname ||= session[:screenname]
+  end
+
+  def signed_in?
+    if screenname
+      !screenname.empty?
+    end
   end
 
   def force_trailing_slash

@@ -39,6 +39,9 @@ module Press
     config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
 
     config.action_controller.include_all_helpers = false
-    
+
+    config.session_store :cookie_store,
+       key: 'dream\sesh'
+       
   end
 end

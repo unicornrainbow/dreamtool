@@ -57,10 +57,15 @@
     </tr>
   </table> -->
   <BR>
-  <button class='btn' onclick='window.location="<%= new_edition_path %>"'>Start New Edition</button>
-
-        <%= button_to "Create New Blog Post", new_edition_path %>
-        <%= button_to "New Webpage", new_edition_path %>
+    <button class='btn' onclick='window.location="<%= new_edition_path %>"'>Start New Edition</button>
+    <% if false %>
+    <br><br>
+    <%= button_to "Create New Blog Post",
+          new_edition_path, class: 'btn' %>
+    <br><br>
+    <%= button_to "New Webpage",
+          new_edition_path, class: 'btn' %>
+    <% end %>
   <BR><BR>
   <div class="main-gallery">
     <% @editions.each do |edition| %>
