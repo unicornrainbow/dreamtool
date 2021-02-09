@@ -19,13 +19,19 @@ class HomeController < ApplicationController #ActionController::Base
   end
 
   def sign_in
-    session[:screenname] = params[:screenname]
+    # screenname = params[:screenname]
+    # SignIn.create(screenname: screenname,
+      # time:, date:, ip:,  )
+    # cookies[:screenname] = screename
+    # copy-keys params cookies 'screenname
+    cookies[:screenname] = params[:screenname]
     redirect_to '/'
   end
 
   def sign_out
     if request.method == 'POST'
-      session.delete :screenname
+      # session.delete :screenname
+      cookies.delete :screenname
       redirect_to '/' and return
     end
 

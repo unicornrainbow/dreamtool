@@ -82,7 +82,8 @@ class ApplicationController < ActionController::Base
 protected
 
   def screenname
-    @screenname ||= session[:screenname]
+    # @screenname ||= session[:screenname]
+    @screenname ||= cookies[:screenname]
   end
 
   def signed_in?

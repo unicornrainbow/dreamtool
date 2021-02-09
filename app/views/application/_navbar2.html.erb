@@ -12,7 +12,7 @@
         <%= navbar_li "Videos", '/videos', active_path: '/videos'  %> -->
       </ul>
       <ul class="pull-right">
-        <% if session["screenname"] %>
+        <% if screenname %>
         <li class="screenname"><a><%= screenname %></a></li>
         <li><%= link_to "/sign%20out", class: "sign-out", title: "Sign Out", method: :post do %><i class="fa fa-sign-out"></i><% end %></li>
         <% else %>
