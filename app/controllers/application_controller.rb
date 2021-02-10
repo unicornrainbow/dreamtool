@@ -51,17 +51,6 @@ class ApplicationController < ActionController::Base
     render layout: false
   end
 
-  # def current_user
-  #   if @current_user
-  #     @current_user
-  #   else
-  #     @screenname = session[:screenname]
-  #     if @screenname
-  #       @current_user = User.find_by(screenname: @screenname)
-  #     end
-  #   end
-  # end
-
   def track_hit
     # request[]
     # render text: request.ip + request.fullpath
@@ -84,6 +73,16 @@ protected
   def screenname
     # @screenname ||= session[:screenname]
     @screenname ||= cookies[:screenname]
+  end
+
+  def current_user
+    if @current_user
+      @current_user
+    else
+      if screenname
+        @current_user = User.find_by(screenname: screenname)
+      end
+    end
   end
 
   def signed_in?
