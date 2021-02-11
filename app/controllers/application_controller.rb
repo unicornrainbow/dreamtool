@@ -71,7 +71,6 @@ class ApplicationController < ActionController::Base
 protected
 
   def screenname
-    # @screenname ||= session[:screenname]
     @screenname ||= cookies[:screenname]
   end
 
@@ -86,9 +85,7 @@ protected
   end
 
   def signed_in?
-    if screenname
-      !screenname.empty?
-    end
+    screenname && !screenname.empty?
   end
 
   def force_trailing_slash
