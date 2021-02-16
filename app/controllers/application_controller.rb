@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
 
   helper_method :screenname,
-    :signed_in?
+    :signed_in?, :secure?,
+    :https?, :http?
 
 
  def set_locale
@@ -86,6 +87,21 @@ protected
 
   def signed_in?
     screenname && !screenname.empty?
+  end
+
+  # Is true if the request was transmitted over https,
+  # and should therefore be responded to with https, in
+  # ensence meaning the connection is secure.
+  def secure?
+    request.ssl?
+  end
+
+  def https?
+    request.protocol == 'https://' 
+  end
+
+  def http?
+    request.protocol == 'http://' 
   end
 
   def force_trailing_slash
