@@ -71,22 +71,17 @@ class ApplicationController < ActionController::Base
 
 protected
 
-  def screenname
-    @screenname ||= cookies[:screenname]
-  end
+  def
+    # Lipstick, manicure, pedi, wax.
+  current_user # #  #   #    #     #      #
+             @current_user  ||=
+         d  =  session[  :user_id   ]   &&
+              User  .      find(d)
+  end # #  #    #        #               #
 
-  def current_user
-    if @current_user
-      @current_user
-    else
-      if screenname
-        @current_user = User.find_by(screenname: screenname)
-      end
-    end
-  end
-
-  def signed_in?
-    screenname && !screenname.empty?
+  def
+  screenname
+    current_user.screenname if current_user
   end
 
   # Is true if the request was transmitted over https,
@@ -97,11 +92,11 @@ protected
   end
 
   def https?
-    request.protocol == 'https://' 
+    request.protocol == 'https://'
   end
 
   def http?
-    request.protocol == 'http://' 
+    request.protocol == 'http://'
   end
 
   def force_trailing_slash

@@ -38,7 +38,8 @@ gem 'cljs-rails'
 gem 'redis-namespace'
 # gem 'sinatra'
 gem 'faye'
-gem 'thin', require: false
+#gem 'thin', require: false
+gem 'puma'
 gem 'curb'
 gem 'eco'
 gem 'foreman'
@@ -46,6 +47,7 @@ gem 'rails_12factor', group: :production
 gem 'flickraw'
 gem 'mongoid-encrypted-fields'
 gem 'gibberish'
+gem 'bcrypt'
 
     gem 'compass-rails'
 

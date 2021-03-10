@@ -6,96 +6,10 @@
 <!-- <link href="stylesheets/fonts/Dancing+Script.css" rel="stylesheet"> -->
 <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
 
+<%= render 'lama' %>
+<%= render 'flash' %>
+
 <style>
-.domain {
-  --line: orange;
-  --line: hotpink;
-  display: inline-block;
-  /* border: 1px solid var(--line); */
-  /* background: var(--line); */
-  border-radius: 2px;
-  /* max-width: 97px; */
-  /* width: 93px; */
-  /* max-width: 40px; */
-  /* text-overflow: ellipsis; */
-  /* text-overflow: '…com'; */
-  overflow-x: hidden;
-  white-space: nowrap;
-  vertical-align: bottom;
-  transition: width .3s ease-in-out;
-  /* padding: 0 2px; */
-}
-/*.domain:hover {
-  max-width: none;
-  width: 230px;
-}*/
-.address-bar {
-  display: inline-block;
-  border: 1px solid hotpink;
-  border-radius: 2px;
-  padding: 4px 10px;
-  overflow: hidden;
-}
-
-.base-url {
-  display: inline-block;
-  margin-left: -270px;
-  /* position: relative;
-  left: -100px; */
-  vertical-align: bottom;
-  transition: margin-left .3s ease-in-out;
-}
-
-.base-url:hover {
-  margin-left: 0;
-}
-.site-label {
-  --line: orange;
-  --line: hotpink;
-  display: inline-block;
-  vertical-align: bottom;
-  background: var(--line);
-  padding: 0 5px;
-  border-radius: 2px;
-  overflow: hidden;
-}
-.site-label .protocol {
-  margin-left: -77px;
-  display: inline-block;
-  vertical-align: bottom;
-  overflow: hidden;
-  transition: margin-left .3s ease-in-out,
-     margin-right .3s ease-in-out;
-  padding: 0 2px; 
-  margin-right: 7px;
-}
-.site-label:hover .protocol {
-  margin-left: 0;
-  margin-right: -2px;
-}
-.site-label .tld {
-  width: 0px;
-  display: inline-block;
-  vertical-align: bottom;
-  overflow: hidden;
-  transition: width .3s ease-in-out,
-    margin-left .3s ease-in-out;
-  margin-left: 7px;
-}
-.site-label:hover .tld {
-  width: 135px;
-  margin-left: 0px;
-}
-</style>
-<div class="address-bar">
-<span class="base-url">https://<span class="domain">dreamtool.herokuapp.com</span></span>/
-</div>
-<div class="address-bar">
-<span class='site-label'><span class="protocol">https://</span>dreamtool<span class="tld">.herokuapp.com</span></span>/
-</div>
-<%= render "lama" %>
-<%= render "flash" %>
-<style> 
   .new-post {
     /*border: 1px solid yellow; */
     /* background: snow; */
@@ -106,23 +20,14 @@
     color: hotpink;
   }
 </style>
-<% if https?  %>
-  We're on HTTPS
-  <%= render "sign_in"  %>
-<% elsif http? %>
-  We're on HTTP
-<% end %>
+<%= render 'sign_in' %>
 
-<div class='new-post'><%= render 'welcome' %></div>
-
-<% if false %>
 <div class="free-account">
   <%= t :no_tienes_cuenta %><br>
   <%= link_to t(:registrate_gratis), signup_path %>
 </div>
 <%= link_to "Spanish", locale: "es" %>
 <%= link_to "English", locale: "en" %>
-<% end %>
 
 <script>
   function enterSubmit(field, event) {
@@ -142,3 +47,5 @@
 </script>
 
 <script type='text/javascript' src='assets/cljs/hello.js'></script>
+
+<div class='new-post'></div>

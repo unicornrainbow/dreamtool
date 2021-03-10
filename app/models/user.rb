@@ -1,9 +1,12 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
+  include ActiveModel::SecurePassword
 
   field :screenname,         type: String, default: ""
   field :encrypted_password, type: String, default: ""
+
+  field :password_digest 
   field :email
 
   # field :screenname_casing,  type: Integer, default: 0 # Bitmask applied to screenname to get user desired casing.
@@ -42,8 +45,11 @@ class User
 
   index({ screenname: 1 }, { unique: true, name: "screenname_index" })
 
+  has_secure_password
+
   def has_password?
-    !encrypted_password.empty?
+    #!encrypted_password.empty?
+    !password_digest.empty?
   end
 
   # Applies int bitmask to screenname for casing.

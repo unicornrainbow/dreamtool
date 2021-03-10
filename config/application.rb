@@ -42,6 +42,6 @@ module Press
 
     config.session_store :cookie_store,
        key: 'dream\sesh'
-       
+
   end
 end

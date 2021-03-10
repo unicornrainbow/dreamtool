@@ -1,6 +1,16 @@
 module ApplicationHelper
   include NavbarHelper
 
+  # def secure_sign_in_url
+  #   sign_in_url(protocol: 'https')
+  # end
+  def secure_url
+    "https://dreamtool.herokuapp.com"
+  end
+  def secure_sign_in_url
+    secure_url + sign_in_path
+  end
+
   # TODO: add documentation.
   def parent_layout(layout)
     @view_flow.set(:layout,output_buffer)

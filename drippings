@@ -1,0 +1,5 @@
+
+<%= form_tag sign_in_url(protocol: 'https'),
+    method: 'POST' do %>
+<%= form_tag "https://dreamtool.herokuapp.com/#{sign_in_path}",
+    method: 'POST' do %>

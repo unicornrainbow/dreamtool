@@ -3,7 +3,7 @@ class HomeController < ApplicationController #ActionController::Base
   skip_before_action :verify_authenticity_token, only: [:hot_muffins]
 
   def index
-    if signed_in?
+    if current_user # signed_in?
       redirect_to '/editions' and return
     end
 
@@ -27,6 +27,16 @@ class HomeController < ApplicationController #ActionController::Base
     cookies[:screenname] = params[:screenname]
     redirect_to '/'
   end
+
+  #a__password___secure
+  #__security!
+  #Pink
+
+
+  def sign______in
+
+  end
+
 
   def sign_out
     if request.method == 'POST'

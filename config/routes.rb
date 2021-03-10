@@ -2,6 +2,11 @@ require 'sidekiq/web'
 
 Press::Application.routes.draw do
 
+  resources :sessions
+  get  '/sign-in'  => 'sessions#new', as: :sign_in
+  get  '/sign-out' => 'sessions#index', as: :sign_out
+  # resources :farfanugens
+
   match 'editions/import', via: [:get, :post]
 
   get 'pub/:name',
@@ -60,17 +65,6 @@ Press::Application.routes.draw do
       end
     end
   end
-
-  post '/' => 'home#sign_in', as: 'signin'
-  post "/sign out" => 'home#sign_out'
-  get '/sign(*q)' => 'home#sign_out'
-
-  get '/sign-out' => 'home#sign_out'
-  get '/sign-in' => 'home#sign_in'
-  get '/log(*q)' => 'home#sign'
-  get '/sign out' => 'home#sign_out'
-  # get '/sign off' => 'home#sign_out'
-  get '/sign in' => 'home#sign_in'
 
   get '/hot-muffins' => 'home#hot_muffins'
   post '/hot-muffins' => 'home#hot_muffins'
