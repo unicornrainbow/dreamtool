@@ -1,0 +1,1 @@
+../../../assets/javascripts/composer/views/content_item_outline_view.js.coffee

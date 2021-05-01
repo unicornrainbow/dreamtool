@@ -1,0 +1,26 @@
+<div class="grid grid24 video-index four-up">
+  <div class="row">
+    <div class="col">
+      <ul class="action-menu pull-right">
+        <li>
+          <%= link_to "New Video", new_video_path %>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <% @videos.each_slice(4) do |videos| %>
+    <div class="row">
+      <% videos.each do |video| %>
+        <div class="col span6">
+          <div class="video four-up-cell">
+            <%= link_to video do %>
+              <%= image_tag video.cover_image.url(:original) %>
+            <% end -%>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+    <br>
+  <% end %>
+</div>

@@ -1,0 +1,9 @@
+<%= simple_form_for content_region do |f| %>
+  <%= f.input :page_id, as: :hidden %>
+  <%= f.input :row_sequence, as: :hidden %>
+  <label>Span </label>
+  <br>
+  <%= f.collection_radio_buttons :column_width, [[24, 'Full'], [18, '3/4'], [16, '2/3'], [15, '5/8'], [12, 'Half'], [9, '3/8'], [8, '1/3'], [6, '1/4'], [4, '1/6'], [3, '1/8'], [2, '1/12']], :first, :last %>
+  <br>
+  <%= f.button :submit, class: 'btn-default' %>
+<% end %>

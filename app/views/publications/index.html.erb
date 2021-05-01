@@ -1,0 +1,25 @@
+<div class="grid grid24">
+  <div class="row">
+    <div class="col">
+      <ul class="action-menu">
+        <li>
+          <%= link_to "New Publication", new_publication_path %>
+        </li>
+      </ul>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <% @publications.each do |publication| %>
+          <tr>
+            <td><%= link_to publication.name, publication %></td>
+            <td><%= link_to "Delete", publication_path(publication), method: 'delete', confirm: "Please confirm to delete publication." %></td>
+          <tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

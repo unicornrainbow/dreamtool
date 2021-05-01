@@ -1,0 +1,11 @@
+.rollup {
+  .resize-scrub, .dismiss {
+    display: none;
+  }
+
+  &.rolledUp {
+    transition: top .07s ease-in-out;
+  }
+
+  &.unhooked .title-bar {  }
+}

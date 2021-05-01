@@ -1,0 +1,9 @@
+#! /usr/bin/env bash
+
+# Stops the newstime.love service
+#
+# To use:
+#
+#   > script/stop
+
+kill -QUIT $(cat tmp/pids/unicorn.pid)

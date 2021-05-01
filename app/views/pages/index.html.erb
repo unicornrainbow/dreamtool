@@ -1,0 +1,21 @@
+<div class="container">
+  <h3>Page</h3>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <% @pages.each do |page| %>
+      <tr>
+        <td><%= link_to page.name, page %></td>
+        <td><%= link_to "Edit", edit_page_path(page) %> /
+          <%= link_to "Delete", page, method: :delete, confirm: "Are you sure?" %></td>
+      <tr>
+    <% end %>
+  </table>
+
+  <%= link_to 'New', new_page_path %>
+</div>

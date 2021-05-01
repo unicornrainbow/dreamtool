@@ -1,0 +1,131 @@
+/* Copyright © 2013 Blake Taylor All rights reserved */
+
+
+
+.entry-list {
+  border-bottom: 1px solid #efefef;
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.entry .edit {
+  font-size: 12px;
+  opacity: .5;
+  font-weight: normal;
+}
+
+.entry .edit:hover {
+  opacity: 1;
+}
+
+.entry-topics {
+  list-style: none;
+  li.active {
+    font-weight: bold;
+  }
+}
+
+.entries-log {
+
+}
+
+.entries-log-entry {
+  width: 800px;
+  h5 {
+    padding: 10px 0;
+    border-bottom: 1px solid #efefef;
+  }
+
+  pre {
+    border: none;
+    background-color: white;
+    border-radius: 0;
+    padding-left: 0;
+  }
+
+  .line-added {
+    background-color: #ddffdd;
+    width: 100%;
+    display: block;
+  }
+
+  .line-removed {
+    background-color: #ffdddd;
+    width: 100%;
+    display: block;
+  }
+
+}
+
+.entries-list {
+
+  .entry {
+    padding: 2pt;
+    margin: 1em 0;
+    width: 600pt;
+    position: relative;
+    input[type='checkbox'] {
+      margin-right: 2px;
+    }
+
+    .highlight {
+      background-color: #ffff00;
+      white-space: nowrap;
+    }
+
+    img {
+      max-width: 500px;
+      border-radius: 4px;
+    }
+  }
+
+}
+
+.entry-show {
+
+  .entry {
+    margin: 1em 0;
+    width: 600pt;
+    position: relative;
+    input[type='checkbox'] {
+      margin-right: 2px;
+    }
+
+    .highlight {
+      background-color: #ffff00;
+      white-space: nowrap;
+    }
+
+    img {
+      max-width: 500px;
+      border-radius: 4px;
+    }
+  }
+
+  .foot-links a {
+    color: gray;
+  }
+
+}
+
+.entry-edit {
+
+  .title-area {
+    /*display: none;*/
+    h3 {
+      /*float: left;*/
+    }
+  }
+
+  #editor {
+    height: 500pt;
+    /*top: 60px;*/
+    /*width: 595pt;*/
+    /*bottom: 0;*/
+  }
+
+  .editor-container {
+    border: 1px solid #ddd;
+  }
+}

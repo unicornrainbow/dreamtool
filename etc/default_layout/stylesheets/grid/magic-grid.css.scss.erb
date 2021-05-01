@@ -1,0 +1,178 @@
+
+/* Grille Magique */
+
+
+/*
+
+  the magic grid allows the user to set a
+  width in pixels and a number of columns
+  and gutter size. It computes the column
+  width.
+
+  The user can like define more grids using
+  the column and gutter already defined by
+  requesting them.
+
+  Switchy Mclayout choose which grid to use.
+
+*/
+
+
+<% columns = edition.columns %>
+
+
+$page-width: <%= edition.page_width %>;
+$columns: <%= columns %>;
+$gutter-width: <%= edition.gutter_width %>;
+
+
+// $column-width: 34px;
+$column-width: ($page-width - $gutter-width * ($columns - 1))/$columns;
+// $columns: 36;
+
+// Offset a column by a certain number of columns.
+//
+// Example:
+//
+//     left: column-offset(1/12)
+//
+@function column-offset($ratio, $columns) {
+  @return ($columns * $ratio) * ($column-width + $gutter-width);
+}
+
+// Returns with of a column expressed as a ratio of entire grid.
+@function column-width($ratio, $columns) {
+  @return column-offset($ratio, $columns) - $gutter-width;
+}
+
+// Column-widths in a function, in ems
+@mixin width ($cols:1) {
+  width: column-width($cols, $columns);
+}
+
+@mixin gutter {
+  margin: 0 $gutter-margin;
+}
+
+$gutter-margin: $gutter-width/2;
+
+
+<% (1..edition.columns).each do |i|  %>
+  <%= "$cols#{i}: column-width(#{i}/$columns, $columns);" %>
+<% end %>
+
+
+magic-grid {
+  page-width: $page-width;
+  columns: $columns;
+  gutter-width: $gutter-width;
+}
+// $page-width: 1200;
+
+// $gutter-width: 10px
+// $columns: 24;
+//
+//
+// edition {
+//   x: edition(1px);
+// }; //.grid.width
+
+.grid {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.col {
+  padding: 0;
+  margin: 0 $gutter-margin;
+}
+
+.row {
+  margin: 0;
+}
+
+.row .row {
+  // Counteract col margin for nested rows. Enables infinite nesting.
+  margin: 0 (-$gutter-width/2);
+}
+
+.row:before, .row:after {
+  content: "";
+  display: table;
+}
+
+.row:after {
+  clear: both;
+}
+
+@media only screen {
+  .col {
+    float: left;
+    width: 100%;
+
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+}
+
+/* Spans */
+<% (1..edition.columns).each do |i|  %>
+  <%= ".span#{i}  { width: $cols#{i}; }" %>
+<% end %>
+
+<% (1..edition.columns).each do |i|  %>
+  <%= ".offset#{i}  { margin-left: $cols#{i} + ($gutter-width * 1.5); }" %>
+<% end %>
+
+// $columns: 24;
+// $page-width: $cols24;
+<%= ".grid#{columns}" %> { display: block; }
+
+
+.grid { width: $page-width + $gutter-width; }
+
+// Setting amx width allows a col to skip includes a width and will fill
+// full width with proper gutters.
+.col { max-width: $page-width; }
+
+.span-full      { width: column-width(1,     $columns) }
+.span-half      { width: column-width(1/2,   $columns) }
+.span-third     { width: column-width(1/3,   $columns) }
+.span-2thirds   { width: column-width(1/3*2, $columns) }
+.span-quarter   { width: column-width(1/4,   $columns) }
+.span-2quarters { width: column-width(1/4*2, $columns) }
+.span-3quarters { width: column-width(1/4*3, $columns) }
+.span-sixth     { width: column-width(1/6,   $columns) }
+.span-2sixths   { width: column-width(1/6*2, $columns) }
+.span-3sixths   { width: column-width(1/6*3, $columns) }
+.span-4sixths   { width: column-width(1/6*4, $columns) }
+.span-5sixths   { width: column-width(1/6*5, $columns) }
+
+
+<% edition.extra_grids.each do |grid|  %>
+  <%= ".grid#{grid}" %> {
+    $columns: <%= grid %>;
+    $page-width: <%= "#{grid} * $column-width + $gutter-width * (#{grid} - 1)" %>;
+    display: block;
+    width: $page-width + $gutter-width;
+
+    // Setting amx width allows a col to skip includes a width and will fill
+    // full width with proper gutters.
+    .col { max-width: $page-width; }
+
+    .span-full      { width: column-width(1,     $columns) }
+    .span-half      { width: column-width(1/2,   $columns) }
+    .span-third     { width: column-width(1/3,   $columns) }
+    .span-2thirds   { width: column-width(1/3*2, $columns) }
+    .span-quarter   { width: column-width(1/4,   $columns) }
+    .span-2quarters { width: column-width(1/4*2, $columns) }
+    .span-3quarters { width: column-width(1/4*3, $columns) }
+    .span-sixth     { width: column-width(1/6,   $columns) }
+    .span-2sixths   { width: column-width(1/6*2, $columns) }
+    .span-3sixths   { width: column-width(1/6*3, $columns) }
+    .span-4sixths   { width: column-width(1/6*4, $columns) }
+    .span-5sixths   { width: column-width(1/6*5, $columns) }
+  }
+<% end %>

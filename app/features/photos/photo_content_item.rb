@@ -1,0 +1,1 @@
+../../models/photo_content_item.rb

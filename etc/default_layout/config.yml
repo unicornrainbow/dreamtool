@@ -1,0 +1,9 @@
+---
+headline_font_weights: [100, 200, 300, 400, 500, 700, 800, 900]
+story_text_line_height: '28px'
+
+export_colors:
+  page-color: 'Page Color'
+  ink-color: 'Ink Color'
+  line-color: 'Line Color'
+  selection-color: 'Selection Color'

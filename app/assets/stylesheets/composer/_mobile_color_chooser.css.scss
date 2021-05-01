@@ -1,0 +1,32 @@
+.mobile-color-chooser {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 9999;
+  input {
+    height: 2.5em;
+  }
+
+  width: 250px;
+  padding : 1em;
+  margin-bottom: 1em;
+  // background: $background-color;
+
+
+}
+
+
+.console {
+  display: none;
+  background-color: pink;
+  // opacity: .3;
+  // color: red;
+  position: fixed;
+  top, left, bottom: 0;
+  width: 300px;
+  z-index: 1000;
+  // overflow: wrap;
+  white-space: pre-wrap;
+  word-break:break-all;
+  // overflow: scroll;
+}

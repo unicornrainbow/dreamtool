@@ -1,0 +1,26 @@
+<div class="grid grid24 photo-index four-up">
+  <div class="row">
+    <div class="col">
+      <ul class="action-menu pull-right">
+        <li>
+          <%= link_to "New Photo", new_photo_path %>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <% @photos.each_slice(4) do |photos| %>
+    <div class="row">
+      <% photos.each do |photo| %>
+        <div class="col span6">
+          <div class="photo four-up-cell">
+            <%= link_to photo do %>
+              <%= image_tag photo.attachment.url(:original) %>
+            <% end -%>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+    <br>
+  <% end %>
+</div>

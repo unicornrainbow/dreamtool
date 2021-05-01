@@ -1,0 +1,24 @@
+.account-options {
+  padding: 2px 7px;
+  position: absolute;
+  background: white;
+  top: 50px;
+  font-size: 12pt;
+  border-radius: 5px;
+  box-shadow: 0px 0px 7px 7px white;
+  opacity: 0;
+  transition: opacity .2s;
+
+  a {
+    /*color: white;*/
+  }
+
+}
+
+.pull-right:hover {
+  .account-options {
+    opacity: 1;
+  }
+
+
+}

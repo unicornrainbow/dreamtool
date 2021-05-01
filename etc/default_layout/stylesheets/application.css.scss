@@ -1,0 +1,239 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require font_faces
+ *= require base
+ *= require grid/grid
+ *= require grid/grid_overlay
+ *= require broadsheet
+ *= require stories
+ *= require_tree ./components
+ */
+
+@import 'variables';
+@import 'grid/config';
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: "Exo", sans-serif;
+  font-weight: 500;
+  line-height: 1;
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+
+.sections-nav {
+  span {
+    &:after {
+      content: ' \2022';
+    }
+    &:last-child:after {
+      content: '' !important;
+    }
+  }
+}
+
+.text-column {
+  margin-right: 16px;
+  float: left;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.add-section {
+  background-color: #ddd;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 10pt;
+  height: 18px;
+  line-height: 18px;
+  padding-top: 0;
+  text-align: center;
+  width: 18px;
+  text-shadow: 1px 1px 1px #ccc;
+  padding: 2px 5px;
+  display: inline;
+
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+
+  &:hover {
+    text-shadow: 1px 1px 1px #bbb;
+  }
+  &:active {
+    text-shadow: none;
+  }
+
+}
+
+.mini-mast {
+  width: 1184px;
+  position: relative;
+  margin: 0 auto;
+
+  .masthead-artwork {
+    height: 50px;
+    margin: 0;
+    width: 100px;
+  }
+  svg {
+    /*height: 30px;*/
+    /*margin-top: 10px;*/
+    display: block;
+    width: 300px;
+    margin: 1px 427px;
+    position: relative;
+    top: 10px;
+  }
+}
+
+.gray-box {
+  position: relative;
+  /*background-color: #ddd;*/
+  &:after {
+    content: ' ';
+    border: 1px dashed $line-color - #222;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+}
+
+.blue-box {
+  background-color: teal;
+}
+
+.darkgray-box {
+  background-color: #444;
+}
+
+/* Set heights according to specific increments */
+.i1 { height: 1in; }
+.i2 { height: 2in; }
+.i3 { height: 3in; }
+.i4 { height: 4in; }
+.i5 { height: 5in; }
+.i6 { height: 6in; }
+.i7 { height: 7in; }
+.i8 { height: 8in; }
+.i9 { height: 9in; }
+.cm { height: 1cm; }
+
+body {
+  background-color: $body-bg-color;
+  color: $k;
+  font-family: 'Trykker', serif;
+  padding-bottom: 3em;
+}
+
+.outline {
+  border: 1px solid gray;
+}
+
+.headline-style1 {
+  font-size: 19.5pt;
+  margin: 10pt 0;
+  padding: 0;
+  text-align: center;
+  font-family: 'Oranienbaum', serif;
+  font-family: 'PT Serif', serif;
+  font-family: 'Libre Baskerville', serif;
+  font-family: 'EB Garamond', serif;
+  font-weight: 600;
+  /*font-family: 'Old Standard TT', serif;*/
+  /*font-family: 'Alike', serif;*/
+  /*font-family: 'Crimson Text', serif;*/
+  /*font-family: 'Arapey', serif;*/
+  /*font-family: 'Libre Baskerville', serif;*/
+  /*text-align: center;*/
+  /*font-style: italic;*/
+}
+
+p .line {
+  white-space: nowrap;
+  &:after {
+    content: ' ';
+    white-space: normal;
+  }
+}
+
+
+.cover-image {
+  background-image: url('articles/curiosity_rover2.jpg');
+  height: 300px;
+  background-size: cover;
+  margin-bottom: 2pt;
+  border: 2pt solid $line-color;
+
+  &.hilliary {
+    height: 700px;
+  }
+}
+
+.publish-date {
+}
+
+.grid6 {
+  .sfrecord {
+    font-size: 22pt;
+  }
+}
+
+
+.by-line {
+  font-family: 'PT Serif', serif;
+  font-weight: 600;
+  margin: 14px 0 11px;
+  display: block;
+  text-align: center;
+  .author {
+    text-transform: uppercase;
+  }
+}
+
+a:focus {
+  outline: 0 !important;
+}
+
+a.anchor{
+  display: block;
+  position: relative;
+  top: -2px;
+  visibility: hidden;
+}
+
+body.mini-mast-showing {
+  a.anchor {
+    top: -51px;
+  }
+}
+
+
+.add-page-btn {
+  background: #f2f2d6;
+  color: #484c55;
+
+  &:hover, &.hovered {
+    background: #e3e3ca;
+  }
+
+  &:active {
+    background: #e1e1be;
+  }
+}

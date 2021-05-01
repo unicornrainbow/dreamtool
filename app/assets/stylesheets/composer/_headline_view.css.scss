@@ -1,0 +1,23 @@
+.headline-view.edit-mode {
+  span.cursor {
+    // animation: blink-cursor 2s;
+    border-right: 2px solid deeppurple;
+    border-right: 2px solid chocolate;
+    // border-right: 2px solid var(--ink);
+    margin-right: -2px;
+    animation: blink 2.3s step-start .01s infinite;
+  }
+}
+
+
+// @keyframes blink {
+//   50% { visibility: hidden; }
+// }
+
+@keyframes blink {
+  0% { visibility: show; }
+  22% { visibility: hidden; }
+  24% { visibility: show; }
+  26% { visibility: hidden; }
+  30% { visibility: show; }
+}

@@ -1,0 +1,84 @@
+/* Styles specific for mobile, hopefully there won't be a need for too many */
+
+@import "compass/css3/images";
+@import "compass/css3/transition";
+
+.masthead {
+  margin-bottom: .5em;
+}
+
+
+.click4more {
+  position: relative;
+  overflow: hidden;
+  @include transition(height 2s);
+
+  &:after {
+    content: ' ';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4em;
+    @include background(linear-gradient(top, rgba(255, 255, 255, 0), #fff));
+    @include transition(opacity 1s);
+  }
+
+  &.open {
+    @include transition(height 1s);
+    &:after {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+}
+
+.click4more-column {
+  height: 5.5in;
+  margin-bottom: 3em;
+}
+
+
+#clash-of-goals {
+  @extend .click4more-column;
+
+  &.open {
+    height: 14in;
+  }
+
+  .cover-image {
+    height: 2in;
+  }
+}
+
+
+#healthcare {
+  @extend .click4more-column;
+
+  &.open {
+    height: 10in;
+  }
+}
+
+
+#twitter-ipo {
+  @extend .click4more-column;
+
+  &.open {
+    height: 24in;
+  }
+}
+
+
+
+#hollyword-clinton {
+  @extend .click4more-column;
+
+  .cover-image {
+    height: 2in;
+  }
+
+  &.open {
+    height: 18in;
+  }
+}

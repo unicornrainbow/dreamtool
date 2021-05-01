@@ -1,0 +1,15 @@
+#! /usr/bin/env bash
+#
+# Script to ssh to a git-deploy remote and switch to project directory.
+
+if [ -z "$1" ]; then
+  echo "Git remote name must be passed as first parameter.";
+  exit 1;
+fi
+
+remote=$(git remote show -n $1 | grep Fetch | cut -d : -f 2,3 | tr -d ' ');
+
+host=$(echo $remote | cut -d : -f 1);
+path=$(echo $remote | cut -d : -f 2);
+
+ssh -t $host "cd $path; bash"

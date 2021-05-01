@@ -1,0 +1,40 @@
+.content-region-control-view {
+  position: relative;
+  .content-region-toolbar {
+    a {
+      cursor: pointer;
+    }
+    opacity: 0;
+    transition: .2s opacity;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &:hover {
+    .content-region-toolbar {
+      opacity: 1;
+      transition: .2s opacity;
+    }
+  }
+
+  .content-region-settings {
+    opacity: 0.2;
+    border-top: 1px solid #ccc;
+    background-color: #484c55;
+    border-radius: 0 0 3px 3px;
+    padding: 2px 5px;
+    margin-right: 5px;
+    display: block;
+    color: #ccc;
+    transition: .2s opacity;
+    width: 22px; height: 24px;
+
+    &:hover {
+      color: #eee;
+      transition: .2s opacity;
+      opacity: 1;
+    }
+  }
+
+}

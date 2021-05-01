@@ -1,0 +1,30 @@
+
+body {
+  /*font-family: 'Oranienbaum', serif;*/
+  /*font-family: 'PT Serif', serif;*/
+  /*font-family: 'Libre Baskerville', serif;*/
+  /*font-family: 'EB Garamond', serif;*/
+  /*font-weight: 600;*/
+  /*font-family: 'Old Standard TT', serif;*/
+  /*font-family: 'Alike', serif;*/
+  /*font-family: 'Crimson Text', serif;*/
+  /*font-family: 'Arapey', serif;*/
+  /*font-family: 'Libre Baskerville', serif;*/
+  /*text-align: center;*/
+  /*font-style: italic;*/
+}
+
+
+h2.strip-name{
+  font-family: 'Arapey', serif;
+  text-transform: uppercase;
+  margin-bottom: 0;
+
+  .author {
+    font-family: 'Crimson Text', serif;
+    font-size: .6em;
+    display: inline;
+    padding-left: .5em;
+    text-transform: none;
+  }
+}

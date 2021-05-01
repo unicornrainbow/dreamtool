@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<HEAD>
+  <%= google_fonts 'Raleway:100,300,400,700' %>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+
+  <%= stylesheet_link_tag "dash", media: "all" %>
+</HEAD>
+
+
+<BODY>
+
+
+<div class='today' style='background-color: #bafffd;'>
+  <h3 class='header'>Today</h3>
+
+  <div class='guage'
+       style='background-color: aqua;'>
+    <label>Visitors</label>
+    <i><%=@visits.count%></i>
+  </div>
+
+  <div class='guage'
+       style='background-color: aqua;'>
+    <label>Sign-ups</label>
+    <i><%=@signups.count%></i>
+  </div>
+
+  <div class='guage'
+       style='background-color: aqua;'>
+    <label>Hits</label>
+    <i><%=@hits.count%></i>
+  </div>
+
+</div>
+
+<chart name=new-users>
+  <h2>New Users <a class='ht'>#bymonth</a></h2>
+</chart>
+
+
+<div class='guage'
+    style="color: darkturquoise; bg-color: aquamarine; "
+    color="darkturquoise/aquamarine">
+  <label>Total Users</label>
+  <i><%= @total_users %></i>
+</div>
+
+<script>
+
+  // Polyfill @name query selector shorthand.
+  //   @bob becomes [name=bob]
+  //   div@jan becomes div[name=jan]
+  (function() {
+
+
+    var _select = d3.select;
+    d3.select = function(selector) {
+      // expand @name
+      selector = selector.replace(/(.*)@(.+)/, '$1[name=$2]' )
+
+      return _select(selector);
+    }
+  }());
+
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+  ];
+
+  var newUsers = <%= raw @new_users.to_json %>;
+
+  var chart = d3.select('chart@new-users')
+
+  var x = d3.scaleLinear()
+      .domain([0, d3.max(newUsers, function(d) {return d.value})])
+      .range([0, 420]);
+
+  chart.selectAll("div")
+    .data(newUsers)
+  .enter().append("div")
+    .style("height", function(d) { return x(d.value) + "px"; })
+    .text(function(d) { return d.value + " signup / " +
+                              monthNames[d._id.month-1] + " " + d._id.year; });
+
+</script>
+
+</BODY>
+
+<!--
+References:
+
+Let’s Make a Bar Chart, https://bost.ocks.org/mike/bar/
+  November 5, 2013, Mike Bostock
+  See also: https://bost.ocks.org/mike/bar/2/
+-->

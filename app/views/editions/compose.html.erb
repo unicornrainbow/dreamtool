@@ -1,0 +1,27 @@
+<% wrap_with "sections/#{template_name}" -%>
+
+<% @pages.each do |page| %>
+  <%= render "page", page: page %>
+<% end -%>
+
+<% if composing? %>
+  <% content_for :composer_variables do %>
+    <%= csrf_meta_tags %>
+    <script type="text/javascript" charset="utf-8">
+      var Newstime = Newstime || {};
+      Newstime.config = <%= raw(@client_config.to_json) %>;
+      var composer = Newstime.config;
+      var editionJSON = <%= raw render(template: "editions/show.json") %>;
+      var workspaceJSON = <%= raw(@workspace.to_json) %>;
+    </script>
+  <% end %>
+  <%# content_for :toolbar do %>
+    <%#= render 'toolbar' %>
+  <%# end -%>
+
+  <% content_for :metatags do %>
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <% end -%>
+
+<% end -%>

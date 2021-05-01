@@ -1,0 +1,22 @@
+#! /usr/bin/env bash
+
+# Backs up newstime.love data
+
+
+REMOTE=$1
+APP_PATH=/var/www/newstime.love
+BACKUP_PATH=backup/$REMOTE
+
+ssh $REMOTE "cd $APP_PATH; mongodump" # Dump the data base to dump folder
+
+mkdir -p $BACKUP_PATH
+
+# Copy database dump.
+rsync -avz $REMOTE:$APP_PATH/dump $BACKUP_PATH
+
+# Copy down photos and masthead_artwork, which are stored in the system
+# directory of public by paperclip.
+rsync -avz $REMOTE:$APP_PATH/public/system $BACKUP_PATH/public
+
+# Copy the compiled editions, which are stored in share
+rsync -avz $REMOTE:$APP_PATH/share $BACKUP_PATH

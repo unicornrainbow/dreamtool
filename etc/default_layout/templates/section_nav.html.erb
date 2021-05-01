@@ -1,0 +1,15 @@
+<% if edition.has_sections %>
+<!-- Section Nav -->
+<div class="row">
+  <div class="col">
+    <div id="section-nav" class="sections-nav text-center">
+      <% edition.sections.each do |section| %>
+        <span><%= link_to section.name, section.path %></span>
+      <% end %>
+      <% if composing? %>
+        <span class="add-section">&#10010;</span>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end -%>

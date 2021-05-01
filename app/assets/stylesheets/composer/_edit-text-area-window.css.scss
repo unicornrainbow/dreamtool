@@ -1,0 +1,47 @@
+.edit-text-area-window {
+
+  opacity: 0.8;
+  transition: opacity 0.7s;
+
+  &.hovered {
+    opacity: 1;
+  }
+
+  textarea {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 14pt;
+    resize: none;
+    outline: none;
+    color: #444;
+    background-color: transparent;
+    padding: 7px 14px;
+    border: 0;
+    vertical-align: bottom; /* Removes extra padding/space at bottom of textarea http://stackoverflow.com/a/13155658 */
+    max-width: 700px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .palette-body {
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .buttons-wrap {
+    background-color: #501d7d;
+  }
+  .buttons {
+    button {
+      margin: 0;
+      border: none;
+      background-color: transparent;
+      outline: none;
+      color: #dddbdb;
+      font-weight: 100;
+    }
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+}

@@ -1,0 +1,2 @@
+# Boot the application into a seperate unicorn process.
+kill -USR2 $(cat tmp/pids/unicorn.pid)

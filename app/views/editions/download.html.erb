@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Press</title>
+  <%= composer_stylesheet  %>
+  <%= csrf_meta_tags %>
+
+  <style>
+  ol.horizontal-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  ol.horizontal-list li {
+    display: inline;
+    float: left;
+    margin: 0 5px;
+  }
+
+  ol#download-progress-bar li.current-step {
+    font-weight: 700;
+
+  }
+  </style>
+
+</head>
+<body>
+  <%= render 'flash' %>
+
+  <% if @edition.initial? %>
+    <ol id="download-progress-bar" class="horizontal-list">
+      <li class="current-step">
+        Print
+      </li>
+      <li>
+        Sign
+      </li>
+      <li>
+        Publish
+      </li>
+    </ol>
+
+    <br>
+    <p class="lead">
+      Here you can print a virtual copy of your edition. Once printed, it can be
+      signed and distributed to your readers.
+    </p>
+    <p class="lead">
+      <strong>All set to print?</strong>
+      <br>
+      Press the print button to kick things off &amp; continue now.
+    </p>
+
+    <%= button_to "Print Edition", edition_path(@edition, edition: { state_event: :print_start }), :class => "", :method => :put %>
+  <% end -%>
+
+  <% if @edition.printing? %>
+    <ol id="download-progress-bar" class="horizontal-list">
+      <li class="current-step">
+        Print
+      </li>
+      <li>
+        Sign
+      </li>
+      <li>
+        Publish
+      </li>
+    </ol>
+    <br>
+    Printing<span class="one">.</span><span class="two">.</span><span class="three">.</span>
+    <style type="text/css" media="screen">
+      .one {
+        opacity: 0;
+        -webkit-animation: dot 1.3s infinite;
+        -webkit-animation-delay: 0.0s;
+      }
+
+      .two {
+        opacity: 0;
+        -webkit-animation: dot 1.3s infinite;
+        -webkit-animation-delay: 0.2s;
+      }
+
+      .three {
+        opacity: 0;
+        -webkit-animation: dot 1.3s infinite;
+        -webkit-animation-delay: 0.3s;
+      }
+
+      @-webkit-keyframes dot {
+          0% { opacity: 0; }
+         50% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+    </style>
+  <% end -%>
+
+  <% if @edition.printed? %>
+    <ol id="download-progress-bar" class="horizontal-list">
+      <li>
+        Print
+      </li>
+      <li class="current-step">
+        Sign
+      </li>
+      <li>
+        Publish
+      </li>
+    </ol>
+    <br>
+    Printed
+    <%= button_to "Sign Edition", edition_path(@edition, edition: { state_event: :sign }), :class => "", :method => :put %>
+  <% end -%>
+
+  <% if @edition.signed? %>
+    <ol id="download-progress-bar" class="horizontal-list">
+      <li>
+        Print
+      </li>
+      <li>
+        Sign
+      </li>
+      <li class="current-step">
+        Publish
+      </li>
+    </ol>
+    <br>
+    Signed
+    <%= button_to "Publish Edition", edition_path(@edition, edition: { state_event: :publish }), :class => "", :method => :put %>
+  <% end -%>
+
+
+  <% if @edition.published? %>
+    <ol id="download-progress-bar" class="horizontal-list">
+      <li>
+        Print
+      </li>
+      <li>
+        Sign
+      </li>
+      <li>
+        Publish
+      </li>
+    </ol>
+    <br>
+    Published!
+
+    <%= button_to "Reset", edition_path(@edition, edition: { state_event: :reset }), :class => "", :method => :put %>
+  <% end -%>
+
+
+  <script type="text/javascript" charset="utf-8">
+    $(function() {
+      var faye = new Faye.Client('<%= FAYE_URL %>');
+      faye.subscribe('/editions/<%= @edition.id.to_s %>', function (data) {
+        location.reload();
+      });
+    });
+  </script>
+
+</body>
+</html>

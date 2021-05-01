@@ -1,0 +1,42 @@
+<tr>
+  <td>
+    <% if print.print_complete? %>
+      <%= link_to show_edition_print_path(edition.to_param, print.version, path: 'main.html') do %>
+        <%= image_tag show_edition_print_path(edition.to_param, print.version, path: 'cover.png'), width: 300, title: format_date_and_time(print.created_at), class: "covershot" %>
+      <% end -%>
+    <% end -%>
+  </td>
+  <td>
+    <%= format_date_and_time(print.created_at)%>
+  </td>
+  <td><%= print.version %></td>
+  <td>
+    <% case print.state %>
+    <% when 'printing' then %>
+      printing<span class="one">.</span><span class="two">.</span><span class="three">.</span>
+    <% else %>
+      <%= print.state %>
+    <% end %>
+  </td>
+  <td>
+    <%= print.file_size %>
+  </td>
+  <td>
+    <% if print.initial? %>
+    <% elsif print.printing? %>
+    <% elsif false #print.printed? %>
+      <%= link_to "Download", download_print_path(print) %> |
+      <%= form_for print, html: { class: 'attach-signature' } do |f| %>
+        <%= f.file_field :signature, value: "Attach Signature"%>
+      <% end %>
+    <% elsif print.printed? %>
+      <%= link_to "Download", download_print_path(print) %> |
+      <%= link_to "Publish", print_path(print.to_param, print: { state_event: :publish }), :class => "", :method => :put, confirm: "Please confirm you wish to publish this print." %>
+    <% elsif print.published? %>
+      <%= link_to "Download", download_print_path(print) %> |
+      <%= link_to "View in Store", edition.store_link %> |
+      <%= link_to "Push", publish_print_path(print.to_param), :method => :put, confirm: "Please confirm you wish to publish this print." %>
+      <%#= link_to "View Dashboard", "" %>
+    <% end %>
+  </td>
+</tr>

@@ -1,0 +1,81 @@
+<% content_for :head do %>
+  <%= google_fonts 'Sacramento' %>
+  <style type='text/css'>
+
+    body {
+      background: #ffd7ee;
+    }
+
+    .screenname {
+      background: #ffd7ee !important;
+      font-family: 'Sacramento';
+      font-size: 22pt;
+
+    }
+    .compose-toolbar a {
+      color: #fd44ec !important;
+    }
+
+    .btn {
+      background-color: aqua;
+      width: 100%;
+      font-size:      16pt;
+      height: 60px;
+    }
+  </style>
+<% end %>
+
+<%= stylesheet_link_tag    "/flickity.css" %>
+<%#= javascript_include_tag "/flickity.pkgd.min.js" %>
+
+<script>
+////////// https://css-tricks.com/creating-responsive-touch-friendly-carousels-with-flickity/
+  require(['/flickity.pkgd.min.js'], function(Flickity) {
+    // console.log(Flickity);
+    var flkty = new Flickity('.main-gallery', {
+      prevNextButtons: false,
+      // pageDots: false
+    });
+    // $(function(){
+    //   $('.main-gallery').flickety()
+    // })
+  });
+
+</script>
+
+<meta name="viewport"
+  content="width=device-width, initial-scale=1.0, user-scalable=no">
+<div class="editions-index">
+  <!-- <table class="table">
+    <tr>
+      <td>
+        <%= link_to "Start New Edition", new_edition_path %>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
+  </table> -->
+  <BR>
+    <button class='btn' onclick='window.location="<%= new_edition_path %>"'>Start New Edition</button>
+    <% if false %>
+    <br><br>
+    <%= button_to "Create New Blog Post",
+          new_edition_path, class: 'btn' %>
+    <br><br>
+    <%= button_to "New Webpage",
+          new_edition_path, class: 'btn' %>
+    <% end %>
+  <BR><BR>
+  <div class="main-gallery">
+    <% @editions.each do |edition| %>
+      <div class="edition">
+        <%= link_to compose_edition_path(edition) do %>
+          <span class="edition-name"><%= edition.title || edition.name %></span>
+          <%= image_tag "#{wip_edition_path(edition, 'png')}" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+</div>

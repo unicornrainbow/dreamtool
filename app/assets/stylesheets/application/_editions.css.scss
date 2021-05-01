@@ -1,0 +1,46 @@
+@import 'variables';
+
+.editions-index {
+  margin: 0 40px;
+
+  .edition-name {
+    font-size: 13pt;
+    display: block;
+    color: $rose-pink;
+
+    position: absolute;
+    width: 100%;
+    padding: 16px;
+    background: #0005;
+
+  }
+
+
+  .edition  {
+    position: relative;
+    margin: 0 20px 40px 0;
+    float: left;
+    width: 400px;
+    height: 450px;
+
+    img {
+      width: 400px;
+      height: 450px;
+    }
+
+    /*&:nth-child(3n+1) {*/
+      /*clear: left;*/
+    /*}*/
+
+  }
+
+}
+
+
+
+
+.editions-new {
+  margin: 0 25px 25px;
+
+
+}

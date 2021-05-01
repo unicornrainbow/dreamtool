@@ -1,0 +1,257 @@
+
+<style>
+  h {display: block;font-size: 1.2em}
+  div h {font-size: 1.5em; }
+  div div h { font-size: 1.2em; }
+h, h2, h3 {margin:-2px -10px 5pt -2px;; color: f6e; border-bottom: 0.25pt solid #f6e;
+font-weight: normal; text-indent: 2pt; background: #f3d1; padding: 2pt;}
+
+div {
+  float: left;
+  border-style: solid; border-width: 0.01in; border-color: #f6e;
+padding: 2px 10px 2px 2px;
+border-radius: .05in;
+min-height: 2cm;
+margin-bottom: 5pt;
+margin-left: 12pt;
+min-width: 2cm;}
+
+div.collaspe {
+  min-height: 0;
+  min-width:0;
+height: 20pt; overflow:hidden;
+}
+div.collaspe a,
+div.collaspe div,
+div.collaspe pre{ display: none; }
+div.scroll { max-height: 200pt; overflow-y: scroll; position: relative;}
+div.scroll h { position: fixed; width: 172pt; margin-top: -25pt; }
+div.scroll { padding-top: 25pt; overflow-x: hidden; }
+ </style>
+
+<a href="file:///Users/rashiki/projext/dreamtool/app/assets/javascripts/composer/views/panel_view.js.coffee">
+Panel View
+</a>
+
+<a href="file:///Users/rashiki/projext/dreamtool/public/assets/composer/views/panel_view.js">
+[js]
+</a>
+
+
+<BR>
+
+<a href="file:///Users/rashiki/projext/dreamtool/app/assets/javascripts/composer/views/properties_panel_view.js.coffee">
+Properties Panel View
+</a><BR>
+<a href="file:///Users/rashiki/projext/dreamtool/CHANGELOG">
+CHANGELOG
+</a><BR>
+<a href="file:///Users/rashiki/projext/dreamtool/TODO">
+TODO
+</a>
+<a href="file://todos.txt"></a>
+<a href="file:///Users/rashiki/projext/dreamtool/"></a>
+<br>
+<BR>
+  <div>
+  <h onclick="this.parentNode.classList.toggle('collaspe');">App</h>
+  <div>
+  <h onclick="this.parentNode.classList.toggle('collaspe');">Config</h>
+  <a href="/dev/tree/config/routes.rb">
+  Routes
+  </a>
+  </div>
+  <div class="collaspe"><h onclick="this.parentNode.classList.toggle('collaspe');">Models</h>
+
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/admin_user.rb">admin_user.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/asset_recorder.rb">asset_recorder.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/attachment.rb">attachment.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/bookmark.rb">bookmark.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/box_content_item.rb">box_content_item.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/color.rb">color.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/concerns">concerns</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/content_item.rb">content_item.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/content_region.rb">content_region.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/divider_content_item.rb">divider_content_item.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/edition.rb">edition.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/edition_compiler.rb">edition_compiler.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/edition_renderer.rb">edition_renderer.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/edition_story_typesetter.rb">edition_story_typesetter.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/font_profile.rb">font_profile.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/font_profile2.rb">font_profile2.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/grid_composition.rb">grid_composition.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/grid_composition_row.rb">grid_composition_row.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/group.rb">group.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/headline_content_item.rb">headline_content_item.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/hit.rb">hit.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/horizontal_rule_content_item.rb">horizontal_rule_content_item.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/html_content_item.rb">html_content_item.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/html_typesetter.rb">html_typesetter.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/image.rb">image.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/inlet.rb">inlet.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/javascript.rb">javascript.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/layout.rb">layout.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/layout_module">layout_module</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/layout_module.rb">layout_module.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/line_streamer.rb">line_streamer.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/linear_measure.rb">linear_measure.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/masthead.rb">masthead.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/masthead_artwork.rb">masthead_artwork.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/masthead_renderer.rb">masthead_renderer.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/note.rb">note.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/notebox">notebox</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/notebox.rb">notebox.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/organization.rb">organization.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/page.rb">page.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/page_renderer.rb">page_renderer.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/paragraph_line_printer.rb">paragraph_line_printer.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/partial.rb">partial.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/photo.rb">photo.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/photo_content_item.rb">photo_content_item.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/print.rb">print.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/publication.rb">publication.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/recursion_control.rb">recursion_control.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/section.rb">section.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/section_compiler.rb">section_compiler.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/section_renderer.rb">section_renderer.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/story.rb">story.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/story_text_content_item.rb">story_text_content_item.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/stylesheet.rb">stylesheet.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/text_area_content_item.rb">text_area_content_item.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/text_area_typesetter.rb">text_area_typesetter.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/user.rb">user.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/video.rb">video.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/video_content_item.rb">video_content_item.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/webpage.rb">webpage.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/wiki_parser.rb">wiki_parser.rb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/models/workspace.rb">workspace.rb</a><br>
+
+</div>
+  <div><h onclick="this.parentNode.classList.toggle('collaspe');">Views</h>
+
+    <a href="file:///Users/rashiki/projext/dreamtool/app/views/admin">admin</a><br>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/views/application">application</a><br>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/views/backups">backups</a><br>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/views/content_items">content_items</a><br>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/views/content_regions">content_regions</a><br>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/views/dev">dev</a><br>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/views/edition_masthead_artworks">edition_masthead_artworks</a><br>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/views/editions">editions</a><br>
+  <div> <h  onclick="this.parentNode.classList.toggle('collaspe');">home</h>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/views/home/dash.html.erb">dash.html.erb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/views/home/hot_muffins.html.erb">hot_muffins.html.erb</a><br>
+    <a href="file:///Users/rashiki/projext/dreamtool/app/views/home/index.html.erb">index.html.erb</a><br>
+  </div>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/views/inlets">inlets</a><br>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/views/javascripts">javascripts</a><br>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/views/layouts">layouts</a><br>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/views/mastheads">mastheads</a><br>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/views/pages">pages</a><br>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/views/partials">partials</a><br>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/views/photos">photos</a><br>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/views/prints">prints</a><br>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/views/publications">publications</a><br>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/views/sections">sections</a><br>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/views/stories">stories</a><br>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/views/stylesheets">stylesheets</a><br>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/views/videos">videos</a><br>
+  <a href="file:///Users/rashiki/projext/dreamtool/app/views/webpages">webpages</a><br>
+
+</div>
+  <div><h onclick="this.parentNode.classList.toggle('collaspe');">Controllers</h>
+    <% @controllers.each do |filename, filepath| %>
+      <%= link_to  filename, "/dev/tree/" + filepath %><BR>
+    <% end %>
+</div>
+<div><h onclick="this.parentNode.classList.toggle('collaspe');">Helpers</h>
+    <% @helpers.each do |filename, filepath| %>
+      <%= link_to  filename, "/dev/tree/" + filepath %><BR>
+    <% end %>
+
+</div>
+</div>
+
+  </div>
+
+
+
+
+<div><h onclick="this.parentNode.classList.toggle('collaspe');">Composer</h>
+
+<a href="http://localhost:9494/dev/tree/app/assets/javascripts/composer.js.coffee">
+composer.js.coffee
+</a>
+<a href="file:///Users/rashiki/projext/dreamtool/app/assets/javascripts/composer.js.coffee.html">
+ [html]
+</a><BR>
+<a href="file:///Users/rashiki/projext/dreamtool/app/assets/javascripts/mobile-composer.js.coffee">
+mobile-composer.js.coffee
+</a><BR>
+
+<div>
+<h2  onclick="this.parentNode.classList.toggle('collaspe');">Views</h2>
+<div>
+<h3  onclick="this.parentNode.classList.toggle('collaspe');">Panels</h3>
+<a href="/dev/tree/app/assets/javascripts/composer/views/panel_view.js.coffee">
+Panel View
+</a>
+<a href="file:///Users/rashiki/projext/dreamtool/public/assets/composer/views/panel_view.js">
+[js]
+</a>
+<BR>
+<a href="file:///Users/rashiki/projext/dreamtool/app/assets/javascripts/composer/views/properties_panel_view.js.coffee">
+Properties Panel View
+</a>
+  </div>
+</div>
+
+<div><h   onclick="this.parentNode.classList.toggle('collaspe');">Layers</h>
+  <a href="/dev/tree/app/assets/javascripts/composer/views/capture_layer_view.js.coffee">
+    Capture Layer</a><BR>
+  <a href="/dev/tree/app/assets/javascripts/composer/views/menu_layer_view.js.coffee">
+    Menu Layer</a><BR>
+  <a href="/dev/tree/app/assets/javascripts/composer/views/panel_layer_view.js.coffee">
+    Panel Layer</a><BR>
+  <a href="/dev/tree/app/assets/javascripts/composer/views/canvas_view.js.coffee">
+    Canvas Layer</a><BR>
+
+
+  </div>
+
+  [CSS]
+
+<BR>
+  <div>
+    <h>🐩</h>
+    <pre>
+      <a id="@canvasLayerView">@canvasLayerView</a> = new <a href="file:///Users/rashiki/projext/dreamtool/app/assets/javascripts/composer/views/canvas_view.js.coffee">Dreamtool.CanvasLayerView</a>
+        el: @canvas
+        topOffset: @topOffset + @menuHeight
+        edition: @edition
+        toolbox: @toolbox
+        toolsSpinner: @toolsSpinner
+        contentItemViews: @contentItemViews
+        groupViews: @groupViews
+        pageViews: @pageViews
+      @$body.append(@canvasLayerView.el)
+
+      # Layers of app, in order from top to bottom
+      @layers = [
+        @textEditor
+        @menuLayerView
+        @sideMenu # Only on mobile
+        @panelLayerView
+        <a href="#@canvasLayerView">@canvasLayerView</a>
+      ]
+      </pre>
+      </div>
+</div>
+
+<!-- some awk cmds for grabbing listing
+ls app/models | awk ' { print "<a href=\"file:///Users/rashiki/projext/dreamtool/app/models/"$0"\">"$0"</a><br>" }' | pbcopy
+ls app/views | awk ' { print "<a href=\"file:///Users/rashiki/projext/dreamtool/app/views/"$0"\">"$0"</a><br>" }' | pbcopy
+ls app/controllers | awk ' { print "<a href=\"file:///Users/rashiki/projext/dreamtool/app/controllers/"$0"\">"$0"</a><br>" }' | pbcopy
+ls app/helpers | awk ' { print "<a href=\"file:///Users/rashiki/projext/dreamtool/app/helpers/"$0"\">"$0"</a><br>" }' | pbcopy
+-->
+ <a href="file:///Users/rashiki/projext/dreamtool/.gitignore">
+   .gitignore</a><BR>

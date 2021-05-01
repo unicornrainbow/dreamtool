@@ -1,0 +1,168 @@
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>Line Break Service Demo</title>
+  <%= javascript_include_tag "jquery" %>
+  <script type="text/javascript" charset="utf-8">
+    $(function() {
+      var form = $("#lbs_test_form"),
+          resultsDiv = $("#results");
+          overflowHtmlTextarea = $("#overflow_html");
+
+      form.submit(function(e) {
+        e.preventDefault();
+        var postData = form.serializeArray(),
+            width    = $('#width').val(),
+            height    = $('#height').val(),
+            lineHeight    = $('#line_height').val(),
+            formURL  = form.attr("action");
+
+        $.ajax({
+          url: formURL,
+          type: "POST",
+          dataType: 'jsonp',
+          data: postData,
+          success:function(data, textStatus, jqXHR) {
+            //data: return data from server
+            resultsDiv.html(data["html"]);
+            resultsDiv.css({width: width, height: height, 'line-height': lineHeight});
+            overflowHtmlTextarea.val(data["overflow_html"]);
+            if(data["overflowed"] == true) {
+              resultsDiv.append('<p class="text-center"><em><a href="">Continued on Page B4</a></em></p>'); // Example continuation
+            }
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+            //if fails
+            console.log("failed");
+          }
+        });
+
+        return false;
+      });
+
+    });
+  </script>
+
+  <style type="text/css" media="screen">
+    body {
+      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      font-weight: 300;
+    }
+
+    #lbs_test_form {
+      width: 750px;
+      float: left;
+    }
+
+    #results {
+      float: left;
+    }
+
+    #results .typeset {
+      font-size: 16px;
+      color: #484c55;
+      text-align: justify;
+      text-indent: 40px;
+    }
+
+    #results .typeset.continued  {
+      text-indent: 0;
+    }
+
+    #results p {
+      font-family: "Minion Pro", Gentium, "Gentium Basic", "Hoefler Text", Constantia, "Palatino Linotype", Georgia, serif;
+      margin: 0;
+      word-spacing: -1px;
+    }
+
+    #results p.text-center {
+      text-align: center;
+    }
+
+    #results a {
+      color: #428bca;
+      text-decoration: none;
+    }
+
+    #results p.broken:after {
+      content: " __________________________________________________________";
+      line-height: 0;
+      font-size: 1px;
+      visibility: hidden
+    }
+
+
+    #results p .line {
+      white-space: nowrap;
+    }
+
+    #results p .line:after {
+      content: ' ';
+      white-space: normal;
+    }
+    #resultsWrapper {
+      padding: 10px;
+      background-color: #eee;
+      float: left;
+    }
+  </style>
+
+</head>
+
+<body>
+<h1 id="line_break_service_demo">Line Break Service Demo</h1>
+
+<form id="lbs_test_form" action="http://localhost:9000" method="get" accept-charset="utf-8">
+  <label for="width">Width</label><input type="text/submit/hidden/button" name="width" value="284" id="width">
+  <label for="height">Height</label><input type="text/submit/hidden/button" name="height" value="200" id="height">
+  <label for="line_height">Line Height</label><input type="text/submit/hidden/button" name="line_height" value="20px" id="line_height"><br>
+  <label for="overflow_reserve">Overflow Reserve</label><input type="text/submit/hidden/button" name="overflow_reserve" value="20" id="overflow_reserve">
+  <input type="submit" value="Continue →"> <br>
+  <label for="html">Html</label>
+  <textarea name="html" rows="25" cols="100">
+<p class="continued">
+  Four score and seven years ago our fathers brought forth on this continent, a
+  new nation, conceived in Liberty, and dedicated to the proposition that all
+  men are created equal.
+</p>
+<p>
+  Now we are engaged in a great civil war, testing whether that nation, or any
+  nation so conceived and so dedicated, can long endure. We are met on a great
+  battle-field of that war. We have come to dedicate a portion of that field, as a
+  final resting place for those who here gave their lives that that nation might
+  live. It is altogether fitting and proper that we should do this.
+</p>
+<p>
+  But, in a larger sense, we can not dedicate -- we can not consecrate -- we can
+  not hallow -- this ground. The brave men, living and dead, who struggled here,
+  have consecrated it, far above our poor power to add or detract. The world will
+  little note, nor long remember what we say here, but it can never forget what
+  they did here. It is for us the living, rather, to be dedicated here to the
+  unfinished work which they who fought here have thus far so nobly advanced. It
+  is rather for us to be here dedicated to the great task remaining before us --
+  that from these honored dead we take increased devotion to that cause for which
+  they gave the last full measure of devotion -- that we here highly resolve that
+  these dead shall not have died in vain -- that this nation, under God, shall
+  have a new birth of freedom -- and that government of the people, by the people,
+  for the people, shall not perish from the earth.
+</p>
+  </textarea>
+
+</form>
+
+<div id="resultsWrapper">
+  <div id="results">
+
+  </div>
+</div>
+<br>
+<div style="clear: both; display: block;">
+  <label for="overflow_html">Overflow Html</label><br>
+<textarea id="overflow_html" rows="20" cols="75">
+</textarea>
+</div>
+
+
+
+</body>
+<html>

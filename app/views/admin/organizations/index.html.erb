@@ -1,0 +1,21 @@
+<div class="container">
+  <h3>Users</h3>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Organization</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <% @organizations.each do |organization| %>
+      <tr>
+        <td><%= organization.name %></td>
+        <td><%= link_to "Edit", edit_admin_organization_path(organization) %></td>
+      <tr>
+    <% end %>
+  </table>
+
+  <%= link_to 'New', new_admin_organization_path %>
+
+</div>

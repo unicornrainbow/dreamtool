@@ -1,0 +1,9 @@
+## Known Issues ##
+
+- Photos are not cropped correctly in Safari. The cropping works fine in Chrome,
+  which supports the object-fit: cover css style. Ideally we could support the
+  newer, more convient standard while still falling back to support the older
+  browser. A more advanced photo view, which cropping and panning would likely
+  overcome this issue. Additonally, and with support for cropping an panning,
+  the compiler should adjudicate the images, cropping and sizing the
+  specifically as needed for the final "print out".

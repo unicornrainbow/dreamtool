@@ -1,0 +1,8 @@
+<% wrap_with 'tearout' %>
+<div style="width: <%=@width%>px; margin: 122px auto; position: relative;">
+<% if @group -%>
+    <%= render "content/group", group: @group, left: 0, top: 0 %>
+<% else -%>
+    <%= raw render_content_item(@content_item, left: 0, top: 0) %>
+<% end -%>
+</div>

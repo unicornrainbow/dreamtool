@@ -1,0 +1,47 @@
+.newstime-palette-view.newstime-color-palatte {
+  margin: 0;
+
+  .palette-body {
+    padding: 0;
+  }
+
+  ul {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 5px 10px 5px 87px;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+    cursor: default;
+    text-overflow: ellipsis;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    &:hover {
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+  }
+
+  .swatch {
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    height: 24px;
+    width: 77px;
+  }
+
+  .page-color,
+  .ink-color {
+    &.active {
+      swatch {
+        box-shadow: 0 0 5px #46c2f6;
+      }
+    }
+  }
+
+}

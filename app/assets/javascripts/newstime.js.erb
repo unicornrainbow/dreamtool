@@ -1,0 +1,18 @@
+<%
+env = Sprockets::Environment.new
+env.append_path File.join(Rails.root, "app/assets/javascripts")
+env.append_path Gem.loaded_specs['angularjs-rails'].full_gem_path + "/vendor/assets/javascripts"
+env.append_path Gem.loaded_specs['jquery-rails'].full_gem_path + "/vendor/assets/javascripts"
+%>
+Newstime = {
+  BigBadWolf: 7
+};
+
+
+(function () {
+  with (this) {
+    <%= env['apple-test'] %>
+  }
+}).call(Newstime)
+
+module.exports = Newstime

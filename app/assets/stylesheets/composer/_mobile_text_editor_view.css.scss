@@ -1,0 +1,34 @@
+.mobile-text-editor-view {
+    z-index: 7000;
+    position: fixed;
+    top: 61px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    textarea {
+      width: 100%;
+      height: 60%;
+      outline: none;
+      background: transparent;
+      border: none;
+
+      font-weight: 300;
+      font-size: 14pt;
+      padding: 1.7em 1.2em;
+    }
+
+    button {
+      border: 1px solid inherit;
+      border-radius: 7px;
+
+      background: transparent;
+      margin: 10px auto;
+      padding: .5em 1em;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      font-size: 14pt;
+      width: 120px;
+      display: block;
+    }
+}

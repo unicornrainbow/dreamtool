@@ -1,0 +1,24 @@
+
+<div class="compose-toolbar">
+  <div class="container">
+    <div class="dreamtool-logo">
+      <a href="/"><%= img "logo.svg" %></a>
+    </div>
+    <nav>
+      <ul>
+        <!-- <%= navbar_li "Editions", editions_path, active_path: editions_path  %>
+        <%= navbar_li "Stories", stories_path, active_path: stories_path  %>
+        <%= navbar_li "Photos", photos_path, active_path: photos_path  %>
+        <%= navbar_li "Videos", '/videos', active_path: '/videos'  %> -->
+      </ul>
+      <ul class="pull-right">
+        <% if screenname %>
+        <li class="screenname"><a><%= screenname %></a></li>
+        <li><%= link_to "/sign%20out", class: "sign-out", title: "Sign Out", method: :post do %><i class="fa fa-sign-out"></i><% end %></li>
+        <% else %>
+        <li><a href="/">Sign in</a></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</div>

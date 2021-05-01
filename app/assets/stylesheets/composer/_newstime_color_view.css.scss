@@ -1,0 +1,60 @@
+.newstime-color-view {
+
+  button {
+    margin: 7px 0 7px 30px;
+  }
+
+  .color-preview {
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    position: absolute;
+    margin: 40px 30px;
+  }
+
+  .color-well {
+    width: 25px;
+    height: 25px;
+    background-color: hsl(0, 50, 50);
+    position: absolute;
+    border-radius: 50%;
+    top: 0px;
+    left: 105px;
+    cursor: pointer;
+  }
+
+  .carousel {
+    position: absolute;
+    top: 0;
+    width: 235px;
+    height: 235px;
+    margin: 10px auto;
+    padding: 30px;
+  }
+
+  .carousel-touch {
+    display: none;
+    position: absolute;
+    top: 0;
+    width: 235px;
+    height: 235px;
+    margin: 10px auto;
+    padding: 30px;
+    cursor: pointer;
+  }
+
+  .color-dial {
+    position: relative;
+    margin: 10px auto;
+    width: 235px;
+    height: 235px;
+  }
+
+  input[type=range] {
+    margin: 10px 0 10px 25px;
+    width: 200px;
+  }
+
+}

@@ -1,0 +1,61 @@
+<div id="edition-toolbar" class="compose-toolbar">
+  <div class="container">
+    <div class="newstime-logo">
+      <a href="/"><%= render 'newstime_pendulum_logo' %></a>
+    </div>
+    <nav>
+    <ul>
+      <li id="edition-tab">
+        <a>Edition</a>
+      </li>
+      <li id="section-tab">
+        <a>Section</a>
+      </li>
+    </ul>
+    </nav>
+
+    <nav>
+    <ul>
+      <li>
+        <%= link_to "Preview", "#{preview_edition_path(@edition)}/#{@section.path}" %>
+      </li>
+      <li>
+        <%= link_to "Prints", edition_prints_path(@edition) %>
+      </li>
+    </ul>
+    </nav>
+    <nav class="pull-right">
+      <% if current_user %>
+        <ul>
+          <li>
+            <span><%= current_user.username %></span>
+          </li>
+          <li>
+            <%= link_to('Sign Out', destroy_user_session_path, :method => :delete) %>
+          </li>
+        </ul>
+      <% else %>
+        <ul>
+          <li>
+            <%= link_to('Sign In', new_user_session_path) %>
+          </li>
+        </ul>
+      <% end %>
+    </nav>
+  </div>
+  <div class="compose-toolbar-panel" id="edition-tab-panel">
+    <div class="container">
+      <%= render 'editions/form' %>
+    </div>
+  </div>
+  <div class="compose-toolbar-panel" id="section-tab-panel">
+    <div class="container">
+      <%= render 'sections/form', section: @section %>
+    </div>
+  </div>
+  <div class="compose-toolbar-panel" id="prints-tab-panel">
+    <div class="container">
+      <%= render 'prints_panel', edition: @edition, prints: @edition.prints %>
+    </div>
+  </div>
+</div>

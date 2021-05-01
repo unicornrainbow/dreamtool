@@ -1,0 +1,17 @@
+
+es:
+  Sign in: Iniciar sesión
+  registrate_gratis: "¡Registrate gratis!"
+  no_tienes_cuenta: No tienes cuenta?
+  Screenname: "Yo Tango"
+  # Screenname: "Handle"
+  Secret Password: "Secreto Contraseña"
+  mongoid:
+    models:
+      user: Usario
+    attributes:
+      user:
+        screenname: "Yo Tango"
+        password: "Secreto Contraseña"
+        login: "Handle"
+      # will translate User attribute "login" as "Handle"

@@ -1,0 +1,15 @@
+<div class="text-column" style="width: <%= width %>px;">
+  <% if render_by_line %>
+    <span class="by-line">By <strong><%= author %></strong></span>
+  <% end -%>
+  <% if render_precedent_link %>
+    <p class="text-center" style="margin: 0;"><em><a href="<%= precedent_path %>"><%= precedent_text %></a></em></p>
+  <% end -%>
+  <%= content %>
+  <% if render_continuation %>
+    <p class="text-center" style="margin: 0;"><em><a href="<%= continuation_path %>"><%= continuation_text %></a></em></p>
+  <% end -%>
+  <% if has_text_overrun %>
+    <p class="text-center" style="color: red;"><em>Text Overrun</em></p>
+  <% end -%>
+</div>

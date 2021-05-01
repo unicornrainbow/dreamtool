@@ -1,0 +1,56 @@
+<title>Dreamtool</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="tagline" content="Create your online publication with Dreamtool.">
+
+<link href="/welcome.css" rel="stylesheet">
+<!-- <link href="stylesheets/fonts/Dancing+Script.css" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+
+<%= render 'lama' %>
+<%= render 'flash' %>
+
+<style>
+  .new-post {
+    /*border: 1px solid yellow; */
+    /* background: snow; */
+    width: 420px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 3px;
+    color: hotpink;
+  }
+</style>
+<% if https? %>
+<%= render 'sign_in' %>
+
+<div class="free-account">
+  <%= t :no_tienes_cuenta %><br>
+  <%= link_to t(:registrate_gratis), signup_path %>
+</div>
+
+<%= link_to "Spanish", locale: "es" %>
+<%= link_to "English", locale: "en" %>
+
+<script>
+  function enterSubmit(field, event) {
+    if(event.which==13){ field.form.submit(); }
+  }
+
+  function clearRememberMe() {
+    document.getElementById('screenname').value = ''
+    document.getElementById('clear-remember-me').remove()
+    document.cookie = 'remember_me='
+    // $('input[name=screenname]').val('')
+  }
+
+  // $(function() {
+  //   $('.clear-remember-me').click(clearRememberMe);
+  // })
+</script>
+
+<script type='text/javascript' src='assets/cljs/hello.js'></script>
+
+<div class='new-post'></div>
+<% else %>
+  <a href="/chat">Chat with Us</a>
+<% end %>

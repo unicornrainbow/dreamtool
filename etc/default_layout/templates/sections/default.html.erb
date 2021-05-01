@@ -1,0 +1,6 @@
+<% wrap_with 'layout' %>
+<div class="page broadsheet" id="cover" style="top: 0px;">
+  <div class="grid <%= edition.grid_size || "grid12" %>" <%= "pages" if composing? %>>
+    <%= yield %>
+  </div>
+</div>

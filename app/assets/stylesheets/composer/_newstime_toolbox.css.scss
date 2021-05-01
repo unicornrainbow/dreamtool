@@ -1,0 +1,134 @@
+.newstime-toolbox { /* palette */
+  width: 157px;
+  white-space: nowrap;
+  left: 10px;
+  top: 20px;
+  transition: opacity .2s;
+  background-color: #dc1efc;
+  color: #eee;
+  position: absolute;
+  font-family: 'Raleway', sans-serif;
+  font-size: 10pt;
+  padding: 0;
+  border-radius: 9px 4px 4px 76px;
+  z-index: 777;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+  -webkit-user-select: none;
+  user-select: none;
+
+  &.hovered {
+    .title-bar {
+      background-color: #ee44d6;
+    }
+  }
+
+  .dismiss {
+    display: none;
+    float: right;
+    padding: 0px;
+    cursor: default;
+
+    &:before {
+      content: "";
+      width: 13px; height: 13px;
+      background-image: asset-url('palette_dismiss.png');
+      background-position: left;
+      background-repeat: no-repeat;
+      background-size: 39px 13px;
+      display: block;
+    }
+    &:hover {
+      &:before {
+        background-position: center;
+      }
+    }
+
+    &:active {
+      &:before {
+        background-position: right;
+      }
+    }
+  }
+
+  .palette-body {
+    padding: 2px;
+    height: 73px;
+  }
+
+  .title-bar {
+    padding: 5px;
+    height: 73px;
+    width: 22px;
+    right: 0;
+    position: absolute;
+    border-radius: 0 4px 4px 0;
+    background-color: #ff00db;
+    cursor: -webkit-grab;
+  }
+
+  .title-bar.grabbing {
+    cursor: -webkit-grabbing;
+  }
+
+  button {
+    color: #2e3137;
+  }
+
+  .toolbox-button {
+    &.hovered {
+      border-color: #f42ce2;
+    }
+    &.selected {
+      margin-left: 1px;
+      margin-top: 1px;
+      border-color: lightblue;
+      -moz-box-shadow:    inset 0 0 10px lightpink;
+      -webkit-box-shadow: inset 0 0 10px lightpink;
+      box-shadow:         inset 0 0 10px lightpink;
+    }
+    transition: border .2s;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #de7fda;
+    border-width: 1px 2px 2px 1px;
+    border-radius: 32%;
+    /*float: left;*/
+    position: absolute;
+    margin: 1px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 11px;
+  }
+
+  .select-tool {
+    background-image: asset-url('select_tool.png');
+  }
+
+  .type-tool {
+    background-image: asset-url('type_tool.gif');
+    background-size: 16px;
+  }
+
+  .headline-tool {
+    background-image: asset-url('headline_tool.png');
+  }
+
+  .photo-tool {
+    background-image: asset-url('photo_tool.png');
+    background-size: 16px;
+  }
+
+  .video-tool {
+    background-image: asset-url('video_tool.png');
+    background-size: 16px;
+  }
+
+  .divider-tool {
+    background-image: asset-url('divider_tool.gif');
+    background-size: 16px;
+  }
+
+  .html-tool {
+  }
+
+}

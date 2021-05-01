@@ -1,0 +1,1 @@
+../../../assets/javascripts/composer/views/panel_layer_view.js.coffee

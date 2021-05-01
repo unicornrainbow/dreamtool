@@ -1,0 +1,1 @@
+../../controllers/photos_controller.rb

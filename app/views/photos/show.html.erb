@@ -1,0 +1,8 @@
+<div class="photo-show grid grid24">
+  <h3><a href="/photos">Photos</a> &gt; <%= @photo.name %></h3>
+  <%#= @photo.attachment.url %>
+  <hr>
+  <div class="photo">
+    <%= image_tag @photo.attachment.url %>
+  </div>
+</div>

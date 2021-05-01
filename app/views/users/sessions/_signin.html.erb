@@ -1,0 +1,31 @@
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.text_field :screenname, autofocus: true, placeholder: t("Screenname") %>
+  </div>
+
+  <div class="field">
+    <%= f.password_field :password, autocomplete: "current-password", placeholder: t("Secret Password") %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t("Sign in"), class: 'zing-sang' %>
+  </div>
+<% end %>
+
+<% if false %>
+    <form id="sign-in" method="POST" action="<%= user_session_path %>">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%if @remember_me.present? %>
+      <div id='clear-remember-me'>
+        <span onclick='clearRememberMe()'>＋</span>
+      </div>
+      <% end %>
+      <input id='screenname' placeholder="Screenname" name='user[screenname]' type="text" autocomplete=off onkeypress="enterSubmit(this, event)" value="<%= @remember_me %>"></input>
+      <br>
+      <input placeholder="Secret Password" name='user[password]' type="password" autocomplete=off onkeypress="enterSubmit(this, event)"></input>
+      <br>
+
+      <button sign-in class="zing-sang"> <%= t "Sign in" %> </button>
+    </form>
+<% end %>

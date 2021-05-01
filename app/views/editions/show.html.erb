@@ -1,0 +1,20 @@
+<div class="container">
+  <%= render 'editions_navbar' %>
+  <h1>Edition Name: <%= @edition.name %></h1>
+
+  <h4>Sections</h4>
+  <ol>
+    <% @sections.each do |section| %>
+      <li><%= link_to section.name, section %> (<%= link_to "edit", edit_section_path(section) %> | <%= link_to "delete", section_path(section), method: :delete, confirm: "Are you sure?" %>)</li>
+    <% end %>
+  </ol>
+  <%= link_to "Add Section", new_edition_section_path(@edition) %>
+
+  <br><br>
+
+  <%= link_to "Edit", edit_edition_path(@edition) %>
+  |
+  <%= link_to "Compose", compose_edition_path(@edition) %>
+  |
+  <%= link_to "Preview", preview_edition_path(@edition) %>
+</div>

@@ -1,0 +1,65 @@
+@import 'compass/css3/transition';
+
+.video-feature {
+  position: relative;
+  .video-cover {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    cursor: pointer;
+  }
+  &.active {
+    .video-cover {
+      display: none;
+    }
+
+    .play-button-overlay {
+      opacity: 0 !important;
+    }
+    video {
+      display: block;
+    }
+  }
+
+  video {
+    display: none;
+  }
+
+  .video-caption {
+    position: absolute;
+    font-style: italic;
+    font-size: .9em;
+    text-align: center;
+    display: block;
+    width: 100%;
+    padding: 2px 0;
+  }
+
+  .play-button-overlay {
+    opacity: 0;
+    @include transition(opacity .5s);
+    background-color: rgba(0,0,0, .8);
+    background-image: url("../images/play_video.png");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    background-size: 200px;
+    bottom: 0;
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 11;
+  }
+
+  &:hover {
+    .play-button-overlay {
+      opacity: .3;
+    }
+  }
+
+}

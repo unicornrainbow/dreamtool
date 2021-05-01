@@ -1,0 +1,17 @@
+<div id="edition-toolbar" class="compose-toolbar">
+  <div class="container">
+    <div class="newstime-logo">
+      <a href="/"><%= render 'newstime_pendulum_logo' %></a>
+    </div>
+    <nav>
+    <ul>
+      <li>
+        <%= link_to "Edition", compose_edition_path(edition) %>
+      </li>
+      <li class="active">
+        <%= link_to "Prints", edition_prints_path(@edition) %>
+      </li>
+    </ul>
+    </nav>
+  </div>
+</div>

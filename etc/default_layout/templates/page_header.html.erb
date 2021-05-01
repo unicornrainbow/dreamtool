@@ -1,0 +1,10 @@
+<a class="anchor" id="page-<%= page.number %>"></a>
+<div class="row">
+  <div class="col span24">
+    <div class="sticky-header">
+      <div class="page-header">
+        <strong><%= section.letter %><%= page.number %> &bull; <%= edition.try(:publish_date).try(:strftime, "%A, %B %d, %Y") %> </strong>
+      </div>
+    </div>
+  </div>
+</div>

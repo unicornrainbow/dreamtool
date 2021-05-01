@@ -1,0 +1,28 @@
+<ul class='menu'>
+  <li>
+      <label class='edition-settings'>Edition Settings</label>
+      <ul class="edition-settings">
+        <li>
+          Page Width
+          <ul class="page-width">
+            <li><label><input type='checkbox'>240px</input></label></li>
+            <li><label><input type='checkbox'>480px</input></label></li>
+            <li><label><input type='checkbox'>960px</input></label></li>
+            <li><label><input type='checkbox'>1080px</input></label></li>
+          </ul>
+        </li>
+        <li>
+          Colors
+          <ul>
+            <li action='set-bg'>Set Background</li>
+            <li action='set-fg'>Set Foreground</li>
+            <li>Set Links</li>
+            <li>Set Visited</li>
+            <li>Set Highlight</li>
+          </ul>
+        </li>
+      </ul>
+      <film></film>
+  </li>
+</ul>
+<overlay></overlay>

@@ -1,0 +1,22 @@
+<% @authentication_key = User.authentication_keys.first %>
+<% content_for :head do %>
+  <title></title>
+  <%# stylesheet_link_tag "home" %>
+  <link rel="stylesheet" href="/welcome.css">
+
+  <style media="screen">
+  </style>
+<% end %>
+
+<%#= logo %>
+<%= render "flash" %>
+<%= render "signin" %>
+
+
+<div class="free-account">
+  <%= t :no_tienes_cuenta %><br>
+  <%= link_to t(:registrate_gratis), signup_path %>
+  <!-- <a href="/hot-muffins">Sign up for free!</a> -->
+</div>
+
+<%= render "devise/shared/links" %>

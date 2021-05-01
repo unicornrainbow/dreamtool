@@ -1,0 +1,1 @@
+../../../assets/javascripts/composer/views/photo_picker_panel_view.js.coffee

@@ -1,0 +1,2 @@
+module EditionAssetsHelper
+end

@@ -1,0 +1,16 @@
+@import 'variables';
+@import 'grid/config';
+
+.mini-mast {
+  .sfrecord a{
+    text-decoration: none;
+    color: #484c55;
+  }
+
+  .buy-or-subscribe {
+    position: absolute;
+    top: 9px; right: 0;
+    padding: 5px 10px;
+    border: 1px solid $line-color;
+  }
+}

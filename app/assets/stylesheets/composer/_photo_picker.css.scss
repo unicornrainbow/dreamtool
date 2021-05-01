@@ -1,0 +1,36 @@
+.photo-picker {
+  text-align: center;
+  overflow-y: scroll;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  img {
+    margin: 2px;
+  }
+
+  .photo-thumbnail {
+    height: 50px;
+    width: 70px;
+    margin: 0 3px;
+    border: 1px solid transparent;
+
+    background-size: cover;
+    display: inline-block;
+
+    &:hover {
+      border-color: pink;
+      cursor: pointer;
+
+    }
+  }
+}
+
+.photo-picker-window-view {
+  .palette-body {
+    padding: 0;
+  }
+}

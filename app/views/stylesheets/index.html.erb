@@ -1,0 +1,21 @@
+<div class="container">
+  <h3>Styleshseets</h3>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Path</th>
+        <th></th>
+      </tr>
+    </thead>
+    <% @stylesheets.each do |stylesheet| %>
+      <tr>
+        <td><%= link_to stylesheet.name, stylesheet %></td>
+        <td><%= link_to "Edit", edit_stylesheet_path(stylesheet) %> /
+          <%= link_to "Delete", stylesheet, method: :delete, confirm: "Are you sure?" %></td>
+      <tr>
+    <% end %>
+  </table>
+
+  <%= link_to 'New', new_stylesheet_path %>
+</div>

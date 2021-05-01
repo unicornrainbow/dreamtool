@@ -1,0 +1,1 @@
+../../../assets/javascripts/composer/views/photo_view.js.coffee

@@ -1,0 +1,19 @@
+<% wrap_with "mastheads/default" -%>
+<!-- Masthead -->
+<div class="row">
+  <div class="col span24">
+    <div class="masthead">
+      <%= render 'logo' -%>
+
+      <a class="home" href="http://sfrecord.com">www.sfrecord.com</a>
+
+
+      <div class="masthead-foot">
+        <p class="volume pull-left"><%= edition.volume_label %></p>
+        <p class="price pull-right"><%= edition.fmt_price %></p>
+        <p class="publish-date"><%= edition.try(:publish_date).try(:strftime, "%A, %B %d, %Y") %></p>
+      </div>
+    </div>
+
+  </div>
+</div>

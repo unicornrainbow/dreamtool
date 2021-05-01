@@ -1,0 +1,8 @@
+<div class="container">
+  <%= @content_region.name %>
+  <br>
+  <pre><%= @content_region.source %></pre>
+  <br>
+  <%= link_to "Edit", edit_content_region_path(@content_region) %> |
+  <%= link_to "Preview", preview_content_region_path(@content_region) %>
+</div>

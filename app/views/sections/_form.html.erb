@@ -1,0 +1,15 @@
+<%= simple_form_for section, url: edition_section_url(edition, section) do |f| %>
+  <%#= f.input :edition_id, as: :hidden %>
+  <%= f.input :name, hint: "Name of section." %>
+  <%= f.input :page_title, hint: "Title will take prescedence over edition title." %>
+  <%= f.input :path, hint: "Path the section will be available at from route of edition." %>
+  <%= f.input :sequence, hint: "Order in which section appears relative to others." %>
+  <%= f.input :template_name, hint: "Name of the template from the layout module to use for rendering the section." %>
+  <%= f.input :letter, hint: "Letter code for section to appear in page number." %>
+  <%= f.button :submit, class: 'btn-default btn-primary' %>
+  &nbsp;
+  <% if section.persisted? %>
+    <%= link_to "Cancel", section_path(section), class: 'cancel' %>
+    <%= link_to "Delete", section_path(section), class: 'pull-right', method: 'delete', confirm: "Please confirm to delete section." %>
+  <% end %>
+<% end %>

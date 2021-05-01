@@ -1,0 +1,20 @@
+@import 'grid/config';
+
+.grid-overlay {
+  pointer-events:none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  opacity: .5;
+
+  .grid, .row, .col {
+    height: 100%;
+  }
+  .col {
+    border-right: 1px dashed gray;
+    border-left: 1px dashed gray;
+  }
+}

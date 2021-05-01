@@ -1,0 +1,7 @@
+<div class="col span<%= content_region.column_width %>"
+  <%= "content-region-control data-content-region-id=#{content_region.id}" if composing? %>>
+  <%= render_content_items content_region %>
+  <% if composing? %>
+    <input class="add-content-btn" type="button" value="Add Content" data-content-region-id="<%= content_region.id %>"></input>
+  <% end -%>
+</div>

@@ -1,0 +1,35 @@
+/* Styles specific for current, hopefully there won't be a need for too many */
+
+@import "grid/config";
+@import "compass/css3/columns";
+
+/*#clash-of-goals {*/
+  /*.news-column {*/
+    /*@include column-gap($gutter-width);*/
+    /*@include column-count(2);*/
+  /*}*/
+/*}*/
+
+#A2,  {
+  /*display: none;*/
+  /*visibility: hidden;*/
+}
+
+#cover {
+  .broadsheet {
+  }
+}
+
+.page {
+  margin-bottom: 4in;
+}
+
+.sticky-header {
+  position: relative;
+}
+
+
+#A2, #A3 {
+  position: relative;
+  top: -46px;
+}

@@ -1,0 +1,77 @@
+.pages-panel {
+  margin: 0;
+  font-size: 11pt;
+  font-weight: 100;
+
+  .palette-body {
+    padding: 0;
+    overflow-y: scroll;
+  }
+
+  ol {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    margin: 0;
+    padding: 5px 10px 5px 30px;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+    cursor: default;
+    text-overflow: ellipsis;
+    width: 100%;
+    overflow: hidden;
+
+    &:hover {
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+  }
+
+  .indent-level-1 {
+    padding-left: 35px;
+  }
+
+  .indent-level-2 {
+    padding-left: 45px;
+  }
+
+  .indent-level-3 {
+    padding-left: 55px;
+  }
+
+  .indent-level-4 {
+    padding-left: 65px;
+  }
+
+  li.selected {
+    font-weight: 500;
+  }
+
+  .pages-panel-group {
+    background-image: asset-url('down_caret.png');
+    background-repeat: no-repeat;
+    background-position: 13px 10px;
+    background-size: 10px;
+
+    &.collasped {
+      background-image: asset-url('right_caret.png');
+      background-position: 16px 7px;
+      background-size: 5px;
+    }
+  }
+
+  .pages-panel-page {
+    background-image: asset-url('down_caret.png');
+    background-repeat: no-repeat;
+    background-position: 13px 12px;
+    background-size: 10px;
+
+    &.collasped {
+      background-image: asset-url('right_caret.png');
+      background-position: 16px 10px;
+      background-size: 5px;
+    }
+  }
+
+}

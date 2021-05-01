@@ -1,0 +1,131 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require base
+ *= require grid/grid
+ *= require dropdown_submenu
+ *= require entries
+
+ *= require_tree ./application
+ */
+
+ @import 'variables';
+
+body {
+  font-family: 'Raleway', sans-serif;
+  margin-top: 100px;
+  min-width: 400px;
+  background-color: $rose-pink;
+}
+
+
+a {
+  outline: none !important; // Just to get rid of the bootstrap outline for now.
+}
+
+
+a:focus {
+  text-decoration: none;
+}
+
+.compose-toolbar {
+  margin-bottom: 20px;
+}
+
+.compose-toolbar {
+  margin: 20px;
+  border-radius: 7px;
+  // box-shadow: aqua 0px 2px 7px -3pt;
+}
+
+ul.action-menu {
+  line-height: normal;
+  margin: 0; padding: 0;
+  float: right;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
+  line-height: 2em;
+  text-align: right;
+  width: 100%;
+  li {
+    display: inline;
+    line-height: normal;
+    margin: 0; padding: 0;
+    width: auto;
+    a {
+      padding: 7px 10px;
+    }
+  }
+}
+
+.alert-flash {
+  margin-top: -20px;
+  border-top: none;
+  border-radius: 0;
+  .col {
+    padding: 0 20px;
+  }
+}
+
+.story-new {
+  textarea {
+    height: 300px;
+  }
+}
+
+.btn-base {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 0;
+  white-space: nowrap;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.add-page-btn {
+  @extend .btn-base;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #ddd;
+  width: 100%;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+
+.photo-show {
+  .photo img {
+    width: 100%;
+  }
+}
+
+.video-show {
+  .video img {
+    width: 100%;
+  }
+}
+
+.dreamtool-logo {
+  float: left;
+}

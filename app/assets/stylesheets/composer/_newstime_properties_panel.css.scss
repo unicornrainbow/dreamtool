@@ -1,0 +1,60 @@
+.newstime-properties-panel {
+  font-size: 11pt;
+  font-weight: 100;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    //max-height: 200px;
+    overflow: hidden;
+  }
+
+  .palette-body {
+    margin: 0;
+    padding: 0;
+    // overflow: hidden;
+  }
+
+  li {
+    margin: 0;
+    padding: 4px 10px 2px;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+
+    /*&:last-child{*/
+      /*border-bottom-width: 2px;*/
+    /*}*/
+  }
+
+  select {
+    opacity: .5;
+    font-family: 'Lucida Grande';
+    font-size: 11px;
+    color: black;
+  }
+
+
+  .selector-button {
+    text-align: left;
+  }
+
+
+  label {
+    font-weight: 100;
+    width: 100px;
+    margin-right: 7px;
+    margin-top: 1px;
+    text-align: right;
+    vertical-align: top;
+
+  }
+
+  input, textarea {
+    width: 50px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,.1);
+    padding: 2px 5px;
+    outline: none;
+  }
+
+}

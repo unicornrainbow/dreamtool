@@ -1,0 +1,7 @@
+<%= simple_form_for page do |f| %>
+  <%= f.input :section_id, as: :hidden %>
+  <%= f.input :name %>
+  <%= f.input :source, as: :text %>
+  <%= f.input :layout_id, collection: Layout.all, as: :select %>
+  <%= f.button :submit, class: 'btn-default' %>
+<% end %>

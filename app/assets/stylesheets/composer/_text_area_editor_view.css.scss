@@ -1,0 +1,33 @@
+.text-area-editor {
+  display: none;
+  position: fixed;
+  top: 25px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: rgba(255, 255, 255, .8);
+  z-index: 3000;
+  overflow: scroll;
+
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+}
+
+.basic-textarea {
+  font-size: 12pt;
+  border: 1px solid #eee;
+  width: 800px;
+  min-height: 600px;
+  display: block;
+  margin: 20px auto;
+  outline: none;
+  padding: 1em;
+  /*background: transparent;*/
+  background: white;
+
+
+}

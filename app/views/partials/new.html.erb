@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8 story-new">
+      <h2>New Partial</h2>
+      <%= simple_form_for @partial do |f| %>
+        <%= f.input :name %>
+        <%= f.button :submit, class: 'btn-default' %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<%= simple_form_for @layout do |f| %>
+  <%= f.input :name %>
+  <%= f.input :source, as: :text %>
+  <%#= f.input :parent_layout_id, collection: Layout.all, as: :select %>
+  <%= f.button :submit, class: 'btn-default' %>
+<% end %>

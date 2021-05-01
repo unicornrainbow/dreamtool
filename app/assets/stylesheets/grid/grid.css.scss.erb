@@ -1,0 +1,128 @@
+/*
+ * San Francisco Record Grid (c) Blake Taylor 2013
+ * Inspired by Frameless and Dead simple grid.
+ */
+
+@import 'grid/config';
+
+.grid {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.col {
+  padding: 0;
+  margin: 0 $gutter-margin;
+}
+
+.row {
+  margin: 0;
+}
+
+.row .row {
+  // Counteract col margin for nested rows. Enables infinite nesting.
+  margin: 0 (-$gutter-width/2);
+}
+
+.row:before, .row:after {
+  content: "";
+  display: table;
+}
+
+.row:after {
+  clear: both;
+}
+
+@media only screen {
+  .col {
+    float: left;
+    width: 100%;
+
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+}
+
+/* Spans */
+<% (1..36).each do |i|  %>
+  <%= ".span#{i}  { width: $cols#{i}; }" %>
+<% end %> /*> Fixes my vim syntax highlighting. */
+
+<% (1..36).each do |i|  %>
+  <%= ".offset#{i}  { margin-left: $cols#{i} + ($gutter-width * 1.5); }" %>
+<% end %> /*> Fixes my vim syntax highlighting. */
+
+
+$columns: 24;
+$page-width: $cols24;
+.grid24{ display: block; }
+
+.grid { width: $page-width + $gutter-width; }
+
+// Setting amx width allows a col to skip includes a width and will fill
+// full width with proper gutters.
+.col { max-width: $page-width; }
+
+.span-full      { width: column-width(1,     $columns) }
+.span-half      { width: column-width(1/2,   $columns) }
+.span-third     { width: column-width(1/3,   $columns) }
+.span-2thirds   { width: column-width(1/3*2, $columns) }
+.span-quarter   { width: column-width(1/4,   $columns) }
+.span-2quarters { width: column-width(1/4*2, $columns) }
+.span-3quarters { width: column-width(1/4*3, $columns) }
+.span-sixth     { width: column-width(1/6,   $columns) }
+.span-2sixths   { width: column-width(1/6*2, $columns) }
+.span-3sixths   { width: column-width(1/6*3, $columns) }
+.span-4sixths   { width: column-width(1/6*4, $columns) }
+.span-5sixths   { width: column-width(1/6*5, $columns) }
+
+.grid6 {
+  $columns: 6;
+  $page-width: $cols6;
+  display: block;
+  width: $page-width + $gutter-width;
+
+  // Setting amx width allows a col to skip includes a width and will fill
+  // full width with proper gutters.
+  .col { max-width: $page-width; }
+
+  .span-full      { width: column-width(1,     $columns) }
+  .span-half      { width: column-width(1/2,   $columns) }
+  .span-third     { width: column-width(1/3,   $columns) }
+  .span-2thirds   { width: column-width(1/3*2, $columns) }
+  .span-quarter   { width: column-width(1/4,   $columns) }
+  .span-2quarters { width: column-width(1/4*2, $columns) }
+  .span-3quarters { width: column-width(1/4*3, $columns) }
+  .span-sixth     { width: column-width(1/6,   $columns) }
+  .span-2sixths   { width: column-width(1/6*2, $columns) }
+  .span-3sixths   { width: column-width(1/6*3, $columns) }
+  .span-4sixths   { width: column-width(1/6*4, $columns) }
+  .span-5sixths   { width: column-width(1/6*5, $columns) }
+}
+
+
+.grid36 {
+  $columns: 36;
+  $page-width: $cols36;
+  display: block;
+  width: $page-width + $gutter-width;
+
+  // Setting amx width allows a col to skip includes a width and will fill
+  // full width with proper gutters.
+  .col { max-width: $page-width; }
+
+  .span-full      { width: column-width(1,     $columns) }
+  .span-half      { width: column-width(1/2,   $columns) }
+  .span-third     { width: column-width(1/3,   $columns) }
+  .span-2thirds   { width: column-width(1/3*2, $columns) }
+  .span-quarter   { width: column-width(1/4,   $columns) }
+  .span-2quarters { width: column-width(1/4*2, $columns) }
+  .span-3quarters { width: column-width(1/4*3, $columns) }
+  .span-sixth     { width: column-width(1/6,   $columns) }
+  .span-2sixths   { width: column-width(1/6*2, $columns) }
+  .span-3sixths   { width: column-width(1/6*3, $columns) }
+  .span-4sixths   { width: column-width(1/6*4, $columns) }
+  .span-5sixths   { width: column-width(1/6*5, $columns) }
+}

@@ -1,0 +1,15 @@
+<%= simple_form_for publication do |f| %>
+  <%= f.input :name, hint: "The name of the publication, to refer to in the UI.", autofocus: true %>
+  <%= f.input :default_layout_name, hint: "The default layout to be prepopulate for editions of this publication." %>
+  <%= f.input :store_url, hint: "URL to newstime store, or other compatible publishing platform." %>
+  <%= f.input :website_url, hint: "The URL or the newspapers's website." %>
+  <%= f.input :default_price, hint: "Default price for edition." %>
+  <%= f.input :default_section_attributes, hint: "Defaults used to populate edition sections.", as: :text, input_html: { rows: 5 } %>
+
+  <%= f.button :submit, class: 'btn-default' %>
+  &nbsp;
+  <% if publication.persisted? %>
+    <%= link_to "Cancel", publication_path(@publication), class: 'cancel' %>
+    <%= link_to "Delete", publication_path(@publication), class: 'pull-right', method: 'delete', confirm: "Please confirm to delete publication." %>
+  <% end -%>
+<% end %>

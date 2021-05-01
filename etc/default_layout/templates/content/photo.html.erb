@@ -1,0 +1,9 @@
+<div class="photo"
+  <%= "photo-control data-content-item-id=#{id}" if composing? %>
+  style="<%= "top: #{top}px; left: #{left}px; z-index: #{z_index}; clip-path: #{clip_path}" %> "
+  height="<%= height %>" width="<%= width %>">
+  <img src="<%= photo_url %>" height="<%= photo_height %>" width="<%= photo_width %>" />
+  <% if show_caption || composing? %>
+    <div class="photo-caption" <%= 'style="display: none;"' unless show_caption %>><%= caption %></div>
+  <% end %>
+</div>

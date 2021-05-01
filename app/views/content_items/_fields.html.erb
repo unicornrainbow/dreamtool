@@ -1,0 +1,18 @@
+<% case content_item %>
+<% when HeadlineContentItem then %>
+  <%= f.input :text %>
+<% when StoryTextContentItem then %>
+  <%= f.input :story_id, collection: Story.all, as: :select %>
+  <%= f.input :height, hint: "Height of column" %>
+  <%= f.input :columns, hint: "Number of columns to render" %>
+<% when PhotoContentItem then %>
+  <%= f.input :photo_id, collection: Photo.all, as: :select %>
+  <%= f.input :caption, hint: "Caption for photo" %>
+<% when VideoContentItem then %>
+  <%= f.input :video_id, collection: Video.all, as: :select %>
+  <%= f.input :caption, hint: "Caption for video" %>
+<% when HorizontalRuleContentItem then %>
+  <%= f.input :style_class, collection: ['short-hr', 'news-column-double-rule'], as: :select %>
+<% else %>
+  Please choose a content item type.<br><br>
+<% end %>

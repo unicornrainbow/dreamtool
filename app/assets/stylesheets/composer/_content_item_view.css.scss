@@ -1,0 +1,9 @@
+.content-item-view {
+  position: absolute;
+
+  transition: border-color .5s;
+}
+
+.cursor-position {
+  border-right: 1px solid gray !important;
+}

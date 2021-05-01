@@ -1,0 +1,7 @@
+<%= simple_form_for story do |f| %>
+  <%= f.input :title %>
+  <%= f.input :author %>
+  <%= f.input :body, as: :text, label: "Story", input_html: { rows: 40 } %>
+  <%= f.input :source %>
+  <%= f.button :submit, value: "Save", class: 'btn-default' %>
+<% end %>

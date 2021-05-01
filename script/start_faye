@@ -1,0 +1,2 @@
+# Starts the faye server
+bundle exec rackup faye.ru -s thin -E production

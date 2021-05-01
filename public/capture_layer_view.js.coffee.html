@@ -1,0 +1,56 @@
+
+
+
+                          <style>
+                            body {color: #F5E }
+                            h {display:block}
+                            h1 {text-align: center}
+                            bubble{width:300px;display:block;margin: 0 auto;}
+                            glam{text-align: right;font-size:1.2em;background:white;display:block}
+                        </style>
+<h1>Capture Layer View</h1>
+<bubble>
+<glam>initialize</glam>
+<pre style="text-align:center" contenteditable=false>
+@$el.addClass "capture-layer-view"
+
+@mc = new Hammer(@el,
+  inputClass: Hammer.TouchInput
+)
+@mc.on 'tap', @tap
+@mc.on 'doubletap', @doubletap
+@mc.on 'press', @press
+
+@topOffset = options.topOffset # Apply top offset (Allows room for menu)
+@composer = options.composer
+
+# Capture mouseups that happen off screen http://stackoverflow.com/a/5419564/32384
+$(window).mouseup @mouseup
+$(document).mouseout @documentMouseout
+
+# document.body.addEventListener 'touchmove', null, false;
+
+document.body.addEventListener 'touchmove',
+  (e)->e.preventDefault(),
+  {passive: false};
+
+@$el.css top: "#{@topOffset}px"
+</pre>
+</bubble>
+
+create 3 elements
+document.createElement
+
+  (elements/create "button")
+<button></button>
+<button></button>
+<button></button>
+
+<style>
+  playlist-cover {width:200px;height:200px;background:red;background:#ff00cb;display:block;}
+</style>
+
+<a href="https://www.youtube.com/playlist?list=PLjgxWPJD3AdYZnH2n-YplPnBacrTmx-gc"
+   target="_new">
+<playlist-cover/>
+</a>

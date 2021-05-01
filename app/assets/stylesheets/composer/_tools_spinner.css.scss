@@ -1,0 +1,71 @@
+.tools-spinner {
+
+  width: 195px;
+  height: 195px;
+  border-radius: 50%;
+  position: absolute;
+  // left: -79px;
+  // top: 150px;
+
+  background-color: rgba(217, 39, 246, .4);
+  // background-color: rgba(222, 148, 235, .4);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+
+  .center-dot {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #ff00db;
+    background-color: rgba(255, 0, 219, .6);
+    margin: 62.5px auto;
+  }
+
+  button.tool {
+    position: absolute;
+    width: 50px; height: 50px;
+    border: 1px solid #d03de2;
+    // border: none;
+    border-width: 1px 3px 3px 1px;
+    border-radius: 42%;
+    // background: rgba(55, 15, 225, .3);
+    // background: rgba(255, 255, 255, .3);
+    // background-color: #dc1efc;
+    background: transparent;
+
+    // top: 10px;
+    // left: 75px;
+
+    background-image: url(/icons.png);
+    background-repeat: no-repeat;
+    background-color: #f267ff;
+
+    transition: border .1s, margin .1s;
+
+    &.pressed {
+      border-width: 1px;
+      margin: 2px 0 0 2px;
+
+    }
+
+    &.headline-tool {
+      background-size: 106px;
+      background-position: -58px -64px;
+    }
+
+    &.story-tool {
+      background-size: 97px;
+      background-position: 6px -56px;
+    }
+
+    &.photo-tool {
+      background-size: 94px;
+      background-position: 4px 4px;
+    }
+
+
+  }
+
+
+
+
+}

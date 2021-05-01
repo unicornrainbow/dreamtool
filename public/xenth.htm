@@ -1,0 +1,266 @@
+<body class='plum'>
+
+
+<br>
+<br>
+<div>
+define style
+  yield
+</div>
+<br>
+<br>
+<br>
+<div>
+<h1>define style</h1>
+  # testing <br>
+  yield
+</div>
+<br>
+<br>
+<br>
+
+<pre class='ra'>
+
+<pre class="ra"><h1>def google_fonts(fonts)</h1>
+    <pre><h1>if fonts.is_a? String</h1>
+      fonts = [fonts]
+      <end>end</end></pre>
+    fonts = fonts.map { |fonts| fonts.gsub ' ', '+' }
+    fonts = fonts.join '|'
+    url = "https://fonts.googleapis.com/css"
+    tag 'link', href: "#{url}?family=#{fonts}", rel: "stylesheet"
+  <end>end</end></pre>
+
+
+require 'treetop'
+
+
+base_path = File.expand_path(File.dirname(__FILE__))
+
+require File.join(base_path, 'node_extensions.rb')
+
+<h1>class Parser</h1>
+Treetop.load(File.join(base_path, 'sexp_parser.treetop'))
+@@parser = SexpParser.new
+
+<pre><h1>define self.parse(data)</h1>
+tree = @@parser.parse(data)
+
+<pre><h1>if(tree.nil?)</h1>raise Exception, "Parse error at offset: #{@@parser.index}"
+<end>end</end></pre>
+
+return tree
+<end>end</end></pre>
+<h1>end</h1>
+</pre>
+
+<style>
+body {
+  --background: aqua;
+  --ink: purple;
+  --ink: lime;
+  --ink: aquamarine;
+  --ink: yellow;
+  background: var(--background);
+  text-align: center;
+  color: var(--ink);
+}
+  .green {
+    --background: #08ff00;
+    --ink: green;
+  }
+  .fruit {
+    --background: #fff6af;
+    --ink: #ff00e3;
+    --lines: #30ff12a6;
+  }
+  .plum {
+    --background: #f451ea;
+    --ink: #00ffcf;
+    --lines: #9f12ffa6;
+  }
+div, pre pre {
+  border: 1px solid lime;
+  border: 1px solid var(--lines);
+  text-align: center;
+  /* width: auto; */
+  padding: .5em 1em;
+  display: inline-block;
+  /* display: block; */
+  border-radius: .5em;
+}
+h1 {
+  font-size: 1.7em;
+  padding: 0;
+  margin: 0;
+}
+pre pre h1 {
+  text-align: center;
+
+  font-size: 1.1em;
+  background: fill;
+  background: fill blanco;
+  background: ;
+  background: purple;
+  background: inherit;
+  /* display: inline-block; */
+  padding-top: 0;
+  background: pink;
+  width: max-content;
+  padding: 0 .2em 0 .5em;
+  margin: -.9em auto 0;
+  background: var(--background);
+
+ }
+ pre pre pre h1 {
+   margin-top: -1em;
+   margin-right: -1em;
+ }
+ .la { text-align: left; }
+ .ra, .ra pre{ text-align: right;
+   padding-right: 2em;
+        /* direction: rtl;  */ }
+ .ra pre h1 { margin-right: 0; }
+ .ra pre h1 { margin-right: -1em; }
+ end {
+   display: block;
+   margin-bottom: -1em;
+   background: var(--background);
+   width: max-content;
+   padding: 0 .3em;
+ }
+ .ra end {
+   margin-left: auto;
+   margin-right: -1em;
+ }
+ textarea {
+   width: 573px;
+   height: 318px;
+   text-align: right;
+   background: #fff2;
+   color: var(--ink);
+   border: 1px solid aliceblue;
+   padding: 0.5em;
+ }
+</style>
+<button name="flip" onclick="flip()">🍄</button>
+<br>
+<textarea id='t'>define style yield</textarea>
+<textarea></textarea>
+<script>
+  //add spaces to right until first char
+  t = document.getElementById('t');
+   t.onkeydown = function(c) {
+    // t.value += c.key; //1;
+     // t.value += t.selectionStart
+     // t.selectionStart = 117;
+     // t.selectionEnd = 117;
+     // console.log(getLine(t.value, t.selectionStart));
+     // if line is just spaces
+     if (c.key == " ") {
+       line = getLine(t.value, t.selectionStart)
+       if (line.trim() == "") {
+         // insert space to right
+         let s = t.selectionStart
+         t.value = [t.value.substring(0, t.selectionStart),
+         " ",
+         t.value.substring(t.selectionStart, t.length)].join("");
+         t.selectionStart = s;
+         t.selectionEnd = s;
+         return false;
+       }
+     }
+     if (c.key == "Enter") {
+       line = getLine(t.value, t.selectionStart)
+       let l = line.length
+       let p = line.trimRight().length
+       console.log(p,l)
+       let leader = line.substring(p, l);
+
+       let s = t.selectionStart + leader.length
+       t.value = [t.value.substring(0, s),
+       "\n", leader,
+       t.value.substring(s, t.length)].join("");
+       s++;
+       t.selectionStart = s;
+       t.selectionEnd = s;
+       return false;
+
+     }
+     // console.log(c);
+     console.log(5)
+   }
+   function getToEndOfLine(text, position) {
+     // Returns remainder of line from cursor position
+     d=position;
+     l=text.length
+     while(text[d]!="\n") {
+       if (d>=l)
+         break;
+       d++;
+     }
+
+     return text.substring(position, d);
+   }
+   function getLine(text, position) {
+     // Returns text of the current line based on
+     // cursor position.
+
+     b=position-1;
+     while(text[b]!="\n") {
+       if (b<=0)
+         break;
+       b--;
+     }
+     d=position-1;
+     l=text.length
+
+     while(text[d]!="\n") {
+       if (d>=l)
+         break;
+       d++;
+     }
+
+     return text.substring(b, d);
+   }
+
+   function flip() {
+     let n = t.value.split("\n");
+     let i = 0
+     while(n[i]!=undefined) {
+       let r = n[i];
+       let x = r.length - r.trimRight().length
+       let y;
+       if(x<r.length)
+         y = r.length - r.trimLeft().length
+       else
+         y=0
+
+       n[i] = " ".repeat(x) + r.trim() + " ".repeat(y)
+       console.log(i);
+       i++;
+       // let m = r.match(/^( *)(.*\w)( *)$/)
+     }
+
+     let s = t.selectionStart;
+     let e = t.selectionEnd;
+     t.value = n.join("\n");
+    if (t.style.textAlign == "left") {
+      t.style.textAlign = "right";
+    } else {
+      t.style.textAlign = "left";
+    }
+    t.selectionStart = s;
+      t.selectionEnd = e;
+     console.log("love")
+     t.focus();
+
+   }
+
+</script>
+
+<script type="text/bubblescript">
+  console.log "Hello"
+</script>
+
+</body>

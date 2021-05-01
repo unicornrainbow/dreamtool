@@ -1,0 +1,21 @@
+
+let s = (shape
+  0 0, 2 2, 5 5, 8 8)
+
+let width be 250
+let gutter be 20
+let columns be 2
+
+(w-(g*(c-1)))
+(-> (- c 1) (* g) (- w)  w (- g) (* ))
+columns-1, gutter*?
+
+(- width (* gutter))
+
+
+How wide is the column (known)
+crop shape to column
+How wide is each line in the column (compute)
+
+
+let width b 120

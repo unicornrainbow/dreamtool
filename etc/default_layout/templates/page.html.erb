@@ -1,0 +1,16 @@
+<div class="broadsheet-page" <%= "data-page-id=#{page.id}" if composing? %> style="height: <%= page.pixel_height %>px">
+  <a class="anchor" id="<%= page.page_ref %>"></a>
+  <% if page.number == 1 %>
+    <%= render "mastheads/#{template_name}" %>
+  <% else -%>
+    <%= render 'page_header', page: page %>
+  <% end %>
+
+  <% page.groups.each do |group| %>
+    <%= render "content/group", group: group %>
+  <% end -%>
+
+  <% page.content_items.reject(&:group).each do |content_item| %>
+    <%= render_content_item content_item %>
+  <% end -%>
+</div>

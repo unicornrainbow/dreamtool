@@ -1,0 +1,3 @@
+<div class="container">
+  <%- JST["composer/templates/dreamtool_logo"]() %>
+</div>

@@ -1,0 +1,41 @@
+### Media Modules ###
+
+Media modules define the over all layout, the templates for headlines, text
+areas, photos and other content items, styles, and scripts as well as other
+parameters. Layout modules are useful for additional flexability and
+customization of output.
+
+A default media module is include, which is useful for getting started, and
+may cover all of your needs. This is located at etc/default_layout.
+
+Note: Media modules may be refered to as layout modules, layouts or templates.
+Not to be confused with other templates or layouts, such as those which are a
+part of rails.
+
+To add a media module, update or create the config/media_modules.yml file with
+the name you will use to identify it, and path attribute which points to it's
+location on disk.
+
+For example
+
+    # File: config/media_modules.yml
+    ---
+    vanilla:
+      path: ../layouts/vanilla
+
+This would indicate that there is a media module located at ../layouts/vanilla
+(relative to the root of the project), and that it should be refered to as
+vanilla.
+
+Media modules follow a basic structure.
+
+    config.yml    # Attributes which are passed to Newstime
+    fonts/        # Fonts which are used in the media module
+    images/       # Images provided by the media module
+    javascripts/  # Javascript which can use coffee or other preprocessing
+    stylesheets/  # Css style sheets, may use css or scss
+    templates/    # Html templates which use erb or other templateing languages
+
+
+To get an idea of what is in a media module and the flexablity it provides,
+check out the default one at etc/default_layout.

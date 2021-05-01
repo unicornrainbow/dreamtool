@@ -1,0 +1,64 @@
+@import 'variables';
+
+// Offset a column by a certain number of columns.
+//
+// Example:
+//
+//     left: column-offset(1/12)
+//
+@function column-offset($ratio, $columns) {
+  @return ($columns * $ratio) * ($column-width + $gutter-width);
+}
+
+// Returns with of a column expressed as a ratio of entire grid.
+@function column-width($ratio, $columns) {
+  @return column-offset($ratio, $columns) - $gutter-width;
+}
+
+// Column-widths in a function, in ems
+@mixin width ($cols:1) {
+  width: column-width($cols, 36);
+}
+
+@mixin gutter {
+  margin: 0 $gutter-margin;
+}
+
+$gutter-margin: $gutter-width/2;
+
+ $cols1: column-width(1/36, 36);
+ $cols2: column-width(2/36, 36);
+ $cols3: column-width(3/36, 36);
+ $cols4: column-width(4/36, 36);
+ $cols5: column-width(5/36, 36);
+ $cols6: column-width(6/36, 36);
+ $cols7: column-width(7/36, 36);
+ $cols8: column-width(8/36, 36);
+ $cols9: column-width(9/36, 36);
+$cols10: column-width(10/36, 36);
+$cols11: column-width(11/36, 36);
+$cols12: column-width(12/36, 36);
+$cols13: column-width(13/36, 36);
+$cols14: column-width(14/36, 36);
+$cols15: column-width(15/36, 36);
+$cols16: column-width(16/36, 36);
+$cols17: column-width(17/36, 36);
+$cols18: column-width(18/36, 36);
+$cols19: column-width(19/36, 36);
+$cols20: column-width(20/36, 36);
+$cols21: column-width(21/36, 36);
+$cols22: column-width(22/36, 36);
+$cols23: column-width(23/36, 36);
+$cols24: column-width(24/36, 36);
+$cols25: column-width(25/36, 36);
+$cols26: column-width(26/36, 36);
+$cols27: column-width(27/36, 36);
+$cols28: column-width(28/36, 36);
+$cols29: column-width(29/36, 36);
+$cols30: column-width(30/36, 36);
+$cols31: column-width(31/36, 36);
+$cols32: column-width(32/36, 36);
+$cols33: column-width(33/36, 36);
+$cols34: column-width(34/36, 36);
+$cols35: column-width(35/36, 36);
+$cols36: column-width(36/36, 36);

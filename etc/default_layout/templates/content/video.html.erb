@@ -1,0 +1,13 @@
+<div class="video-feature"
+  <%= "video-control data-content-item-id=#{id}" if composing? %>
+  style="<%= "top: #{top}px; left: #{left}px; width: #{width}px; height: #{height}px; position: absolute;" %>">
+  <div class="video-cover" style="background-image: url('<%= video_thumbnail %>');
+    background-size: cover;" style="width: 100%" ng-click="beginVideo()"></div>
+  <video controls style="width: 100%">
+    <source src="<%= video_url %>" type="video/mp4">
+  </video>
+  <span class="play-button-overlay"></span>
+  <% if show_caption || composing? %>
+    <div class="video-caption" <%= 'style="display: none;"' unless show_caption %> style="bottom: -<%= caption_height %>px;"  ><%= caption %></div>
+  <% end %>
+</div>

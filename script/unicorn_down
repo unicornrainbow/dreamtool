@@ -1,0 +1,3 @@
+# Tears down old unicron process
+kill -WINCH $(cat tmp/pids/unicorn.pid.oldbin)
+kill -QUIT $(cat tmp/pids/unicorn.pid.oldbin)

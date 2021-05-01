@@ -1,0 +1,18 @@
+@import 'variables';
+@import 'grid/config';
+
+.slidein-nav {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  width: 100%;
+  background-color: $body-bg-color;
+  border-bottom: 1px solid $line-color;
+
+  h1 {
+    margin: 0;
+    line-height: 1.5em;
+    text-align: left;
+    font-size: 24pt;
+  }
+}

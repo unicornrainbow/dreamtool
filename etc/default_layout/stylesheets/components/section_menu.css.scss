@@ -1,0 +1,71 @@
+@import 'variables';
+@import 'compass/css3/transition';
+@import "compass/css3/images";
+
+
+
+.section-menu {
+
+  &.menu-open {
+    .section-menu-button {
+      left: 200px;
+    }
+    .section-menu-body {
+      left: 0;
+      border-right: 1px solid #EFEFEF;
+      @include transition(left .5s, opacity .5s);
+      opacity: 1;
+
+    }
+  }
+
+
+}
+
+.section-menu-button {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-size: 18pt;
+  width: 48px; height: 48px;
+  text-align: center;
+  line-height: 48px;
+  @include transition(left .5s);
+  &:hover {
+    background-color: #F6F6F6;
+    cursor: pointer;
+  }
+}
+
+.section-menu-body {
+  position: absolute;
+  left: -200px;
+  bottom: 0;
+  top: 0;
+  background-color: white;
+  width: 200px;
+  @include transition(left .5s, opacity .2s);
+  opacity: 0;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    height: 1000px; // HACK
+  }
+  li {
+    a {
+      color: $k;
+      display: block;
+      text-decoration: none;
+      width: 100%;
+      font-size: 14pt;
+      padding: 11px 23px;
+      /*@include transition(background-color 1s);*/
+      &:hover, &.hover {
+        background-color: #eee;
+      }
+    }
+  }
+}

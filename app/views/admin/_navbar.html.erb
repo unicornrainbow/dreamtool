@@ -1,0 +1,26 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to 'Newstime Press Admin', root_url, class: 'navbar-brand' %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <%= navbar_li "Users", admin_users_path, active_path: admin_users_path  %>
+        <%= navbar_li "Organizations", admin_organizations_path, active_path: admin_organizations_path  %>
+
+        <%#= dropdown_menu "More <b class=\"caret\"></b>" do %>
+          <%#= navbar_li "Mastheads", '/mastheads' %>
+        <%# end %>
+      </ul>
+      <%= render 'navbar_right' %>
+    </div>
+  </div>
+</nav>

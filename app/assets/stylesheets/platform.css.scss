@@ -1,0 +1,54 @@
+//= require ./composer/_font_faces
+//= require ./composer/_compose_toolbar
+//= require ./composer/_compose_toolbar_panel
+//= require ./composer/_section_nav_input
+
+.btn-base {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 0;
+  white-space: nowrap;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.add-page-btn {
+  @extend .btn-base;
+  font-family: 'Raleway', sans-serif;
+  background: #ccc;
+  font-size: 12pt;
+  color: #484c55;
+  width: 100%;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.compose-toolbar {
+  nav.pull-right {
+    li {
+      margin-top: 11px;
+      font-size: 10pt;
+      a, span {
+        padding: 11px 0 0 20px;
+        height: 40px;
+      }
+      span {
+        color: white;
+      }
+    }
+  }
+}

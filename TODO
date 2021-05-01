@@ -1,0 +1,35 @@
+
+- translations
+- validations
+- turbolinks
+- password confirm
+- sign-up copy
+- emails
+- welcome email
+- password reset
+- fsv
+
+Sign-ups:
+  [ ] Improve new user signup experience
+  - Break out sign ups into controller
+
+Dash:
+  [ ] Show current month day over day in signups
+  [x] Show gaps for months with no sign ups.
+
+---
+
+- [FiX] Firefox scrollbar pushing panels right on hover when panels
+   are positioned right.
+
+- Auto resize panel view to a max height when
+  the content overflows and requires scroll on hover.
+
+- HTML Text editor
+- Font size for text area
+- Fix Timestamps for Groups, ContentItems, Editions Etc.
+- Book creation
+- Change page size
+- Change number of columns
+- Isolation editing for groups
+- Default_layout -> Newspaper

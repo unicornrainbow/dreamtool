@@ -1,0 +1,25 @@
+
+.soft-keys {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  text-align: right;
+  z-index: 2220;
+  margin: 10px;
+  outline: none;
+
+
+
+  button {
+    font-family: 'raleway';
+    font-weight: 100;
+    border: 1px solid aqua;
+    border-radius: 27px;
+    font-size: 24px;
+    margin: 10px 4px;
+    padding: 5px 15px;
+    background: rgba(140, 35, 170, .2);
+    // opacity: .7;
+  }
+
+}

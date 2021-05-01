@@ -1,0 +1,20 @@
+<div class="container">
+  <h3>Javascripts</h3>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>javascripts</th>
+        <th>actions</th>
+      </tr>
+    </thead>
+    <% @javascripts.each do |javascript| %>
+      <tr>
+        <td><%= link_to javascript.name, javascript %></td>
+
+        <td><%= link_to "Edit", edit_javascript_path(javascript) %> /
+        <%= link_to "Delete", javascript, method: :delete, confirm: "Are you sure?" %></td>
+      <tr>
+    <% end %>
+  </table>
+  <%= link_to 'New', new_javascript_path %>
+</div>

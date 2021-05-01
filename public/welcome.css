@@ -1,0 +1,69 @@
+body { margin: 14vh 0; text-align: center;
+    font-size: 19pt;
+    font-family: 'Dancing Script', cursive;
+    background: var(--body-background);
+    color: var(--body-color);
+
+    --body-background: var(--cottoncandy);
+    --body-color: var(--yummy);
+
+    --red: #F00;  --green: #0F0; --blue: #00F;
+    --yellow: #8F0;  --orange: #FF0; --lime: lime;
+    --gray: #888; --dark-gray: #444; --light-gray: #CCC;
+    --pink: #F0F; --purple: #808; --fushia: fuchia;
+    --lightpink: ; --hotpink: ; --purplepink;
+    --fluffy-cloud; --cottoncandy: #FAF; --yummy: #FFA;
+    --flower; --purplesky: #D3F; --froopy;
+    --carnivál: #F1E;
+    --gold: gold; --orcha: orcha; --bugandy: burgandy;
+    --vanilla: vanilla; --chocqlate: chocolate;
+
+ }
+body a {
+  color: var(--purplesky);
+  color: var(--carnivál); }
+
+img.logo { margin: 8vh auto;
+  display: block; height: 77px; }
+
+a.🍄 {
+  display: block;
+  outline: none;
+  margin: 8vh auto;
+  width: 225px; }
+a.🍄 img.logo {
+  margin: initial;
+  display:initial; }
+form { margin: 5vh 0; }
+.free-account { margin: 6vh 0; }
+input { margin: 2pt; }
+
+input, button {
+  margin: .2em;
+  color: #b914e3;
+  border: 2pt solid white;
+  font-size: 1em;
+  padding: .4em .7em;
+  border-radius: .4em;
+  outline: none;
+  text-align: center;
+  opacity: .7;
+  font-weight: 100;
+  font-family: 'Dancing Script', cursive; */
+  /* border-radius: 7pt;
+  outline: none;
+  padding: 7pt 10pt;
+  text-align: center;
+  opacity: .7;
+  margin-bottom: .5em;
+
+  font-size: 27pt;
+  font-size: 2em;
+  font-weight: 100;
+  font-family: 'Dancing Script', cursive; */
+}
+
+input {
+  border: 3pt solid #a6ffac;
+}
+

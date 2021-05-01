@@ -1,0 +1,36 @@
+<%= simple_form_for edition do |f| %>
+  <% if local_assigns[:new] %>
+    <%= f.input :publication_id, collection: current_user.publications, as: :select, hint: "The publication of the edition." %>
+    <hr>
+  <% end -%>
+  <%= f.input :name, autofocus: true %>
+  <%# f.input :page_title, hint: "The title to show at the top of the edition." %>
+  <%# f.input :publish_date, hint: "The date of publication.", placeholder: 'YYYY-MM-DD' %>
+  <%# f.input :layout_name, hint: "The name of the layout module to use." %>
+  <%# f.input :store_link, hint: "Link to where paper is on sale in store." %>
+  <%# f.input :default_section_template_name, hint: "Default value inherited by the section when template name isn't set there." %>
+  <%# f.input :price,     hint: "The price of the edition in dollars." %>
+  <%# f.input :fmt_price, hint: "Formmatted price. i.e. 25¢" %>
+  <%# f.input :volume_label, hint: "The volume label for the edition." %>
+  <%# f.input :grid_size, hint: "grid8 grid12 grid24 grid36" %>
+  <%# f.input :page_color %>
+  <%# f.input :ink_color %>
+  <%# f.input :has_sections, as: :boolean, inline_label: "Will this edition have more than one section?" %>
+  <%= f.button :submit, class: 'btn-default' %>
+  &nbsp;
+  <% if edition.persisted? %>
+    <%= link_to "Cancel", edition_path(@edition), class: 'cancel' %>
+    <%= link_to "Delete", edition_path(@edition), class: 'pull-right', method: 'delete', confirm: "Please confirm to delete edition." %>
+  <% end -%>
+<% end %>
+
+<% if local_assigns[:new] %>
+  <script>
+    // Quick hack to enable selecting difference publications on the new page.
+    $(function(){
+      $("#edition_publication_id").change(function(value){
+        $(location).attr("search", "publication_id=" + $(this).val())
+      });
+    });
+  </script>
+<% end -%>

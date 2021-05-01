@@ -1,0 +1,14 @@
+<div <%= "data-group-id=#{group.id}" if composing? %>
+  style="<%= "height: #{group.height}px; width: #{group.width}px; position: absolute; top: #{top rescue group.top}px; left: #{left rescue group.left}px;"%>"
+  class="<%= "group-left-border" if group.left_border %> <%= "anchor-#{group.page.page_ref}-#{group.story_title}" if group.story_title %>">
+  <a class="anchor" id="<%= "#{group.page.page_ref}/#{group.story_title}" %>"></a>
+
+  <% group.content_items.each do |content_item| %>
+    <%= render_content_item content_item %>
+  <% end -%>
+
+  <% group.groups.each do |group| %>
+    <%= render "content/group", group %>
+  <% end -%>
+
+</div>

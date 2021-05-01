@@ -1,0 +1,6 @@
+<div <%= "text-area-control data-content-item-id=#{id}" if composing? %>
+  style="<%= "height: #{height}px; width: #{width}px; top: #{top}px; left: #{left}px; position: absolute; z-index: #{z_index}; clip-path: #{shape};" %>"
+  class="<%= "anchor-#{anchor.gsub('/', '-')}" if anchor %>">
+  <a class="anchor" id="<%= anchor %>"></a>
+  <%= rendered_html %>
+</div>

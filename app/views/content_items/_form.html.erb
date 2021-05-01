@@ -1,0 +1,6 @@
+<%= simple_form_for content_item, as: :content_item, url: content_items_path do |f| %>
+  <%= f.input :content_region_id, as: :hidden, input_html: { class: 'content-region-id' } %>
+  <%= f.input :_type, label: "Type", collection: ContentItem::TYPE_COLLECTION, as: :select, input_html: { class: 'type-selector' } %>
+  <%= render 'content_items/fields', content_item: content_item, f: f %>
+  <%= f.button :submit, class: 'btn-default' %>
+<% end %>

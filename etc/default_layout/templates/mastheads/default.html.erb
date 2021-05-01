@@ -1,0 +1,17 @@
+<% wrap_with "mastheads/base" -%>
+<!-- Masthead -->
+<div class="row">
+  <div class="col span24">
+    <div class="masthead">
+      <%= render 'logo' -%>
+
+      <!-- Uncomment next line to include a link to your homepage. -->
+      <!-- <a class="home" href=""></a> -->
+
+      <div class="masthead-foot">
+        <p class="publish-date"><%= edition.try(:publish_date).try(:strftime, "%A, %B %d, %Y") %></p>
+      </div>
+    </div>
+
+  </div>
+</div>

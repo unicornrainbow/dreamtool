@@ -1,0 +1,19 @@
+.section-nav-input {
+  color: #428bca;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  height: 27px;
+  margin: 1px 0;
+  padding: 0 0;
+  width: 15px;
+}
+
+.section-nav-input-span {
+  // Makes invisible for grabbing size info.
+  &.for-sizing {
+    visibility: hidden;
+    position: absolute;
+  }
+}

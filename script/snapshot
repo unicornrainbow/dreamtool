@@ -1,0 +1,21 @@
+
+# If there are no staged changes
+if [ -z "$(git diff --cached)" ]; then
+
+  git add .
+
+  # Staged changes?
+  if [ -n "$(git diff --cached)" ]; then
+    # Make a git commit with "snapshot" if we found any.
+    if [ -z "$1" ]; then
+      git commit -m "snapshot"
+    else
+      git commit -m "$1"
+    fi
+  fi
+fi
+
+# Bash key
+# -z compare for zero length string
+# -n compare for non-zero length string
+# see also: ` man bash`

@@ -1,0 +1,77 @@
+<% content_for :head do %>
+<style type="text/css" media="screen">
+  .one {
+    opacity: 0;
+    -webkit-animation: dot 1.3s infinite;
+    -webkit-animation-delay: 0.0s;
+  }
+
+  .two {
+    opacity: 0;
+    -webkit-animation: dot 1.3s infinite;
+    -webkit-animation-delay: 0.2s;
+  }
+
+  .three {
+    opacity: 0;
+    -webkit-animation: dot 1.3s infinite;
+    -webkit-animation-delay: 0.3s;
+  }
+
+  @-webkit-keyframes dot {
+      0% { opacity: 0; }
+     50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  .covershot {
+    box-shadow: 1px 1px 1px #aaa;
+  }
+</style>
+<% end %>
+
+
+<div class="grid grid24">
+  <div class="row">
+    <div class="col">
+      <ul class="action-menu">
+        <li>
+          <%= link_to "New Print", edition_prints_path, method: 'post' %>
+        </li>
+      </ul>
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="300"></th>
+            <th>Printed At</th>
+            <th>Print No.</th>
+            <th>Status</th>
+            <th>File Size</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <% @prints.each do |print| %>
+          <%= render 'print_detail', print: print, edition: @edition %>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<%= javascript_include_tag 'faye' %>
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    var faye = new Faye.Client('<%= FAYE_URL %>');
+    faye.subscribe('/editions/<%= @edition.id.to_s %>', function (data) {
+      location.reload();
+    });
+
+    $('.attach-signature').each(function(i, el) {
+      $('#print_signature', el).change(function() {
+        el.submit()
+      });
+    });
+
+  });
+</script>

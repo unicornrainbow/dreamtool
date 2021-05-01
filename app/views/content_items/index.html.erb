@@ -1,0 +1,21 @@
+<div class="container">
+  <h3>ContentItem</h3>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <% @content_items.each do |content_item| %>
+      <tr>
+        <td><%= link_to content_item.name, content_item %></td>
+        <td><%= link_to "Edit", edit_content_item_path(content_item) %> /
+          <%= link_to "Delete", content_item, method: :delete, confirm: "Are you sure?" %></td>
+      <tr>
+    <% end %>
+  </table>
+
+  <%= link_to 'New', new_content_item_path %>
+</div>

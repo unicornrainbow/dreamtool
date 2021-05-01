@@ -1,0 +1,1 @@
+../../../assets/javascripts/composer/models/video_content_item.js.coffee

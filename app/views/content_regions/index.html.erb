@@ -1,0 +1,21 @@
+<div class="container">
+  <h3>ContentRegion</h3>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <% @content_regions.each do |content_region| %>
+      <tr>
+        <td><%= link_to content_region.name, content_region %></td>
+        <td><%= link_to "Edit", edit_content_region_path(content_region) %> /
+          <%= link_to "Delete", content_region, method: :delete, confirm: "Are you sure?" %></td>
+      <tr>
+    <% end %>
+  </table>
+
+  <%= link_to 'New', new_content_region_path %>
+</div>

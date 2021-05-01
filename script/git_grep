@@ -1,0 +1,5 @@
+#! /usr/bin/env bash
+# Runs a git grep on the target directory
+
+cd $1
+git grep -i "$2"

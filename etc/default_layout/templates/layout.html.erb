@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <title><%= title %></title>
+  <%= composer_stylesheet if composing? -%>
+  <%= stylesheet_link_tag "stylesheets/application", media: "all" %>
+  <meta charset="utf-8">
+  <%= content_for :metatags %>
+  <meta name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+  <%= content_for :head %>
+
+  <color pink="default"
+         lightpink="default"
+         purplepink="purple + pink"
+         blue="default">
+
+  <style id="edition-colors">
+    body {
+      background-color: <%= resolve_color(edition.page_color) %>;
+      color: <%= resolve_color(edition.ink_color) %>;
+    }
+
+    hr.divider {
+      border-color: <%= resolve_color(edition.ink_color) %>;
+    }
+    .masthead-foot {
+      border-top-color: <%= resolve_color(edition.ink_color) %>;
+      border-bottom-color: <%= resolve_color(edition.ink_color) %>;
+    }
+
+    a {
+      color: <%= resolve_color(edition.links_color) %>;
+    }
+
+    .edit-text-area-window textarea,
+    .mobile-text-editor-view textarea {
+      color: <%= resolve_color(edition.ink_color) %>;
+    }
+    .edit-text-area-window .palette-body,
+    .mobile-text-editor-view {
+      background-color: <%= resolve_color(edition.page_color) %>;
+    }
+    .mobile-text-editor-view button {
+      border-color: <%= resolve_color(edition.ink_color) %>;
+    }
+  </style>
+</head>
+<body ng-app="app">
+  <%= yield %>
+
+  <%#= render 'grid_overlay' %>
+  <%= composer_javascript if composing? -%>
+  <%= javascript_include_tag "javascripts/application" %>
+  <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+</body>
+</html>

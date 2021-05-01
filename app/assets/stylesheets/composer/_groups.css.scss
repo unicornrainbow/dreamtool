@@ -1,0 +1,9 @@
+.groups {
+  transform-origin: top;
+  position: absolute;
+  z-index: 1;
+
+  // Ensure nothing can be highlighted with a user drag (Which breaks the
+  // solidness of the ui)
+  -webkit-user-select: none;
+}

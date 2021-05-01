@@ -1,0 +1,113 @@
+@import 'variables';
+
+.compose-toolbar {
+  min-width: 400px;
+  // background-color: $rose-pink;
+  // border-bottom: 1px solid #555;
+  z-index: 2010;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+
+  > .container {
+    height: 60px;
+  }
+
+  .container {
+    margin: 0 auto;
+    color: white;
+  }
+
+  .newstime-logo {
+    float: left;
+    height: 53px;
+    width: 165px;
+    margin: -10px 22px 0;
+    position: absolute;
+    svg {
+      height: 82px;
+      fill: #F5DB38;
+    }
+  }
+  nav {
+    margin-left:200px;
+
+
+    .pull-right {
+
+      li.screenname {
+        position: relative;
+        left: 50px;
+        background-color: #f96eb5;
+        transition: left .2s;
+      }
+
+      &:hover {
+        li.screenname {
+          left: 20px;
+        }
+
+      }
+    }
+
+
+    ul {
+      font-family: 'Raleway', sans-serif;
+      font-size: 15pt;
+      float: left;
+      display: block;
+      padding: 0; margin: 0;
+
+      li {
+        display: inline;
+        float: left;
+
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        &.active {
+          background-color: #467Eff;
+        }
+        a {
+          padding: 15px 20px;
+          color: #F7EEEF;
+          font-weight: 200;
+          font-style: normal;
+          height: 60px;
+          float: left;
+          cursor: pointer;
+        }
+
+        span {
+          padding: 15px 20px;
+          color: #ccc;
+          font-weight: 100;
+          font-style: normal;
+          height: 60px;
+          float: left;
+        }
+        a:hover  {
+          text-decoration: none;
+          cursor: pointer;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+.compose-toolbar-spacer { // Take space left by fixed position header
+  height: 60px;
+}
+
+@media only screen and (max-width: 820px) {
+  .compose-toolbar {
+    nav ul:first-child { display: none;}
+  }
+
+}

@@ -1,0 +1,4 @@
+.flickity-page-dots
+.dot.is-selected {
+  color: pinkasaurusrex
+}

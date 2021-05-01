@@ -1,0 +1,38 @@
+#! /usr/bin/env bash
+
+# Deploys newstime.love to the server.
+
+# To use:
+#
+#    > script/deploy newstime.love
+#
+# The above will initialize the deploy from the client.
+#
+# Once the code has been pushed, the script will ssh, and call itself with
+# -cycle as the first parameter. The will run the server end of the deploy,
+# primarily consisting of stop and starting the service and compiling assets.
+#
+#    > script/deploy -cycle
+
+APP_PATH=/var/www/newstime.love
+
+if [ $1 = "-cycle" ]; then
+
+  export RAILS_ENV=production
+  script/stop
+  kill $(cat tmp/pids/sidekiq)
+  bundle exec rake assets:precompile
+  script/start
+  bundle exec sidekiq -d -L log/sidekiq.log -P tmp/pids/sidekiq
+
+else
+
+  REMOTE=$1
+
+  rsync -avz --exclude .git \
+             --exclude-from .gitignore \
+             . $REMOTE:$APP_PATH
+
+  ssh newstime.love "cd $APP_PATH; script/deploy -cycle"
+
+fi

@@ -1,0 +1,31 @@
+.newstime-story-properties { /* palette */
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+
+  .story-delete {
+    cursor: pointer;
+  }
+
+  .palette-body {
+    padding: 7px;
+  }
+
+  span {
+    cursor: pointer;
+  }
+
+  .control-btn {
+    padding: 2px 10px;
+  }
+
+  .nt-control {
+    background: transparent;
+    color: #eee;
+    border: none;
+    text-align: center;
+    width: 50px;
+  }
+
+}

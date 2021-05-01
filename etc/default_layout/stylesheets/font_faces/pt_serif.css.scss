@@ -1,0 +1,25 @@
+/* PT Serif */
+@font-face {
+  font-family: 'PT Serif';
+  font-style: normal;
+  font-weight: 400;
+  src: local('PT Serif'), local('PTSerif-Regular'), url(../fonts/pt_serif/PT_Serif-Web-Regular.woff) format('woff');
+}
+@font-face {
+  font-family: 'PT Serif';
+  font-style: normal;
+  font-weight: 700;
+  src: local('PT Serif Bold'), local('PTSerif-Bold'), url(../fonts/pt_serif/PT_Serif-Web-Bold.woff) format('woff');
+}
+@font-face {
+  font-family: 'PT Serif';
+  font-style: italic;
+  font-weight: 400;
+  src: local('PT Serif Italic'), local('PTSerif-Italic'), url(../fonts/pt_serif/PT_Serif-Web-Italic.woff) format('woff');
+}
+@font-face {
+  font-family: 'PT Serif';
+  font-style: italic;
+  font-weight: 700;
+  src: local('PT Serif Bold Italic'), local('PTSerif-BoldItalic'), url(../fonts/pt_serif/PT_Serif-Web-BoldItalic.woff) format('woff');
+}

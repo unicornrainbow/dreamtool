@@ -1,0 +1,40 @@
+#! /usr/bin/env ruby
+
+# For every file under the current directory.
+#
+# Add a line to the manifest file with path and sha1 hash
+
+# Create and/or open webpub.manifest
+#
+# Usage:
+#   Just run in to root of the, filewise, you need the manifest for.
+#
+# Example:
+#
+#    create_manifest http://localhost:3000/2013/10/24
+#
+
+require 'digest/sha1'
+
+begin
+  manifest = File.new("webpub.manifest", "w")
+
+  manifest.puts ARGV[0] # Needs to be passed
+  manifest.puts ""
+
+  Dir["**/*"].select(&File.method(:file?)).each do |f|
+
+    # Ignore webpub manifest and signature files
+    next if f == "webpub.manifest"
+    next if f == "webpub.signature"
+
+    sha1 = Digest::SHA1.hexdigest File.read(f)
+    manifest.puts "#{sha1}\t#{f}"
+    # Make sure it's not the manifest file.
+    # Get the content hash
+    # Add a line to the file.
+  end
+
+ensure
+  manifest.close
+end

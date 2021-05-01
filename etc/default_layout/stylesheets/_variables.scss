@@ -1,0 +1,30 @@
+$font-size: 16;
+$line-height: 24;
+$em: $font-size*1em;
+$column-width: 34px;
+$gutter-width: 16px;
+$columns: 36;
+
+/*$body-bg-color: #fff;*/
+/*$line-color: #ebebeb;*/
+
+/* Newspaper Color Scheme */
+// $page-color: ???;
+// $ink-color: #484c55;
+
+$page-color: hotpink;
+ $ink-color: ivory;
+
+$body-bg-color: $page-color;
+$line-color: $ink-color;
+$k: $ink-color;
+
+/*$bg-color: #c3b9ab;*/
+/*$line-color: #3c3732;*/
+/*$k: #14100f;*/
+$selection-color: orange;
+
+/* A purple verson */
+/*$body-bg-color: #e3bcff;*/
+/*$line-color: #664ab4;*/
+/*$k: #664ab4;*/
