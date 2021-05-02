@@ -13,6 +13,12 @@ class UserTest < ActiveSupport::TestCase
     assert_equal user.email, "123@xyz.hi"
     assert_nil user.password
 
+    assert user.has_password?
     assert user.authenticate("12341234")
+  end
+
+  test "User can have no password" do
+    user = User.create(screenname: "Plastic")
+    refute user.has_password?
   end
 end
