@@ -1,14 +1,14 @@
 module ApplicationHelper
   include NavbarHelper
 
-  # def secure_sign_in_url
-  #   sign_in_url(protocol: 'https')
-  # end
   def secure_url
     "https://dreamtool.herokuapp.com"
   end
   def secure_sign_in_url
     secure_url + sign_in_path
+  end
+  def secure_sign_in_url
+    sign_in_url(protocol: 'https')
   end
 
   # TODO: add documentation.
