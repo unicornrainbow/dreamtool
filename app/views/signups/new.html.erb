@@ -38,7 +38,7 @@
   <% end %>
 
 <% if @user.errors.any? %>
-  <h2>Oops, <%= @user.errors.full_messages.first %></h2>
+  <h3><%= @user.errors.full_messages.first %>.</h3>
 <% end %>
 
 <%= form_for @user, url: signup_path do |f| %>
@@ -56,3 +56,11 @@
     if(event.which==13){ field.form.submit(); }
   }
 </script>
+
+
+<style>
+  h3 {
+    font-weight: 100;
+    color: aquamarine;
+  }
+  </style>
