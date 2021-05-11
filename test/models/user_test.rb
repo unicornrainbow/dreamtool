@@ -7,14 +7,21 @@ class UserTest < ActiveSupport::TestCase
                 email: "123@xyz.hi",
                 password: "12341234"})
 
+    # Reload the user (Otherwise password will not be nil)
     user = User.find(user)
 
     assert_equal user.screenname, "Plastic"
     assert_equal user.email, "123@xyz.hi"
+
+    # Ensure user password in nil (not accessible)
     assert_nil user.password
 
+    # Ensure reports that user has password.
     assert user.has_password?
+    # Ensure password can be authenticated.
     assert user.authenticate("12341234")
+    # Ensure authenticate returns false for wrong password.
+    assert_not user.authenticate("43214321")
   end
 
   test "Find user by email" do
@@ -28,5 +35,5 @@ class UserTest < ActiveSupport::TestCase
     assert_equal user.email, "123@xyz.net"
 
   end
-  
+
 end
