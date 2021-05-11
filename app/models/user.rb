@@ -6,7 +6,7 @@ class User
   field :screenname,         type: String, default: ""
   field :encrypted_password, type: String, default: ""
 
-  field :password_digest 
+  field :password_digest
   field :email
 
   # field :screenname_casing,  type: Integer, default: 0 # Bitmask applied to screenname to get user desired casing.
@@ -48,7 +48,7 @@ class User
   has_secure_password
 
   def has_password?
-    !password_digest.empty?
+    !!password_digest
   end
 
   # Applies int bitmask to screenname for casing.
