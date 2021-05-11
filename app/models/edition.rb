@@ -147,6 +147,3 @@ class Edition
     # end
   end
 end
-
-class EditionBackup < Edition
-end
