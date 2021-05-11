@@ -33,7 +33,7 @@ class SignupsController < ApplicationController
 private
 
   def user_params
-    params.require(:user).permit(:screenname)
+    params.require(:user).permit(:screenname, :password)
   end
 
 end
