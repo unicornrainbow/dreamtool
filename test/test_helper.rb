@@ -3,6 +3,9 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
 class ActiveSupport::TestCase
+  include Mongoid::FixtureSet::TestHelper
+  self.fixture_path = "#{Rails.root}/test/fixtures"
+
   # ActiveRecord::Migration.check_pending!
 
   # Clear out the test database before every run.

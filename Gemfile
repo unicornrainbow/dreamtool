@@ -23,6 +23,7 @@ gem 'oj'
 gem 'dotenv-rails', group: [:test, :development, :production]
 gem "redcarpet"
 gem 'mongoid'
+gem 'mongoid-fixture_set', github: 'vanboom/mongoid-fixture_set', branch: 'master'
 gem "angularjs-rails"
 gem 'unicorn'
 gem 'simple_form'

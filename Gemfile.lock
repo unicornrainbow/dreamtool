@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/vanboom/mongoid-fixture_set.git
+  revision: 11a3f20e69629054353adda1f5635ef8cab27389
+  branch: master
+  specs:
+    mongoid-fixture_set (1.6.2)
+      activesupport (> 4.0)
+      mongoid (> 4.0)
+
+GIT
   remote: http://github.com/unicornrainbow/sass
   revision: cc7ccd72ba347856e95400526b8e3583c8239215
   branch: multi-prop
@@ -323,6 +332,7 @@ DEPENDENCIES
   listen
   mongoid
   mongoid-encrypted-fields
+  mongoid-fixture_set!
   mongoid-paperclip
   nokogiri
   nprogress-rails
