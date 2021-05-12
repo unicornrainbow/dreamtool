@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  screenname: qwerty
+  email: Qball@example.net
+  password: password
+
+two:
+  screenname: Exodus
+  email: cash@example.net 
+  password: cash1234

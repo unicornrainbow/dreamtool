@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
     session[:user_id] = user
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
+      session[:screenname] = user.screenname
       redirect_to root_url, notice: "Signed in!"
     else
       flash.now.alert = "Email or password is invalid."
