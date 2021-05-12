@@ -64,4 +64,9 @@ class SessionsController < ApplicationController
       redirect_to '/' # retry
   end
 
+  def destroy
+    session.delete(:screenname)
+    session.delete(:user_id)
+  end
+
 end

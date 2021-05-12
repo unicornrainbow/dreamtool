@@ -1,8 +1,10 @@
 require 'test_helper'
 
-class SessionsControllerTest < ActionDispatch::IntegrationTest
+#class SessionsControllerTest < ActionDispatch::IntegrationTest
+class SessionsControllerTest < ActionController::TestCase
+
   setup do
-    # @session = sessions(:one)
+    @user = users(:candi)
   end
 
   test "should create session" do 
@@ -11,7 +13,8 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
        password: "123456",
        email: "lalala@yaya.ca")
 
-    post sessions_url, params: { 
+    #post sessions_url, params: { 
+    post :create, params: { 
         screenname: "Marvel",
         password: "123456" } 
 
@@ -21,19 +24,23 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy session" do
-    user = users(:one)
-    sign_in_as(user)
+    user = users(:candi)
+    #sign_in_as(user)
      
+     
+    session["user_id"] = user.id
     assert_equal user.id, session["user_id"] 
+    session['screenname'] = user.screenname
     assert_equal user.screenname, session['screenname']
     
 
     session['screenname'] = 'value'
     session['user_id'] = 'value'
-    delete session_url(@session)
+    #delete session_url(@session)
+    delete :destroy
 
-    assert_equal nil, session['user_id']
-    assert_equal nil, session['screenname']
+    assert_nil session['user_id']
+    assert_nil session['screenname']
 
     #assert_redirected_to sessions_url
   end
