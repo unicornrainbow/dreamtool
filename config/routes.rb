@@ -4,9 +4,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resource :session
-  get  '/sign-in'  => 'sessions#new', as: :sign_in
-  get  '/sign-out' => 'sessions#index', as: :sign_out
-  # resources :farfanugens
+  get '/signup' => 'signups#new', as: 'signup'
+  post '/signup' => 'signups#create'
 
   match 'editions/import', via: [:get, :post]
 
@@ -70,8 +69,6 @@ Rails.application.routes.draw do
 
   get '/hot-muffins' => 'home#hot_muffins'
   post '/hot-muffins' => 'home#hot_muffins'
-  get '/sign-up' => 'signups#new', as: 'signup'
-  post '/sign-up' => 'signups#create'
   # post '/tryme' => '
   post '/workspace' => 'workspaces#save_workspace'
   get '/dash' => 'dash#index'
