@@ -59,8 +59,9 @@ gem 'webpacker', '~> 4.x'
 
                 # \; 'nosb'  meg
 
-  gem 'treetop'
 
+gem 'minitest', group: :test
+gem 'minitest-reporters', group: :test
 
 group :development, :test do
   gem 'byebug'
