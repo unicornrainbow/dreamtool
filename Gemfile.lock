@@ -204,7 +204,6 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
-    polyglot (0.3.5)
     public_suffix (4.0.4)
     puma (5.2.1)
       nio4r (~> 2.0)
@@ -297,8 +296,6 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    treetop (1.6.10)
-      polyglot (~> 0.3)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     unicorn (5.5.4)
@@ -365,7 +362,6 @@ DEPENDENCIES
   sprockets-rails
   state_machine
   tilt
-  treetop
   unicorn
   webpacker (~> 4.x)
 
