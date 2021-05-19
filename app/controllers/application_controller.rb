@@ -72,12 +72,15 @@ class ApplicationController < ActionController::Base
 protected
 
   def
-    # Lipstick, manicure, pedi, wax.
-  current_user # #  #   #    #     #      #
-             @current_user  ||=
-         d  =  session[  :user_id   ]   &&
-              User  .      find(d)
-  end # #  #    #        #               #
+  current_user
+    if @current_user
+      @current_user
+    else
+      if session[:user_id]
+        @current_user = User.find(session[:user_id])
+      end
+    end
+  end
 
   def
   screenname
