@@ -30,6 +30,8 @@ module Press
     # the framework and any gems in your application.
 
 
+    config.autoloader = :classic
+
     config.autoload_paths += %W(#{config.root}/app/models/notebox)
 
     # http://stackoverflow.com/questions/20361428/rails-i18n-validation-deprecation-warning
