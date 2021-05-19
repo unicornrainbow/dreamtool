@@ -9,7 +9,7 @@ module ApplicationHelper
   end
   def secure_sign_in_url
     #sign_in_url(protocol: 'https')
-    new_session_url(protocol: 'https')
+    session_url(protocol: 'https')
   end
 
   # TODO: add documentation.
