@@ -24,6 +24,10 @@ class SignupsControllerTest < ActionController::TestCase
 
      assert_equal Date.today, user.signup_date 
 
+     # Assert signed in credentials.
+     assert_equal user.id, session["user_id"]
+     assert_equal user.screenname, session['screenname']
+
   end
 
 end

@@ -10,7 +10,8 @@ class SignupsController < ApplicationController
     @user = User.new(user_params)
     @user.signup_date = Date.today 
     if @user.save
-      # session[:screenname] = user.screenname
+      session[:screenname] = @user.screenname
+      session[:user_id] = @user.id
       # cookies[:remember_me] = user.screenname
       # redirect_to :signup_success
       redirect_to '/editions'
