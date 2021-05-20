@@ -14,6 +14,8 @@
 //= require bootstrap
 //= require lib/waterfall
 //  require nprogress
+//= require jquery
+//= require jquery_ujs
 
 // NProgress.configure({
 //   showSpinner: false,
