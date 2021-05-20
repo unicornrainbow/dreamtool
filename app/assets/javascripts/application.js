@@ -10,12 +10,12 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require jquery_ujs
 //= require require
 //= require bootstrap
 //= require lib/waterfall
 //  require nprogress
-//= require jquery
-//= require jquery_ujs
 
 // NProgress.configure({
 //   showSpinner: false,
