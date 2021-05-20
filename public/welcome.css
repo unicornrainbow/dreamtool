@@ -67,3 +67,38 @@ input {
   border: 3pt solid #a6ffac;
 }
 
+/*.alert.alert-info.alert-flash */
+.flash.flash-notice {
+  border: 1px solid #ec1fc2;
+  margin: 40px;
+  padding: 10px;
+  background: #f7273b2e;
+  border-radius: 5px;
+  color: #bc24f2;
+
+  border: 1px solid #ec1fc247;
+  margin: 40px;
+  padding: 10px 70px;
+  background: #ffe2f02e;
+  border-radius: 5px;
+  color: #f42b80f7;
+  width: max-content;
+  margin: auto;
+
+  --ansi1: #F00;
+  --ansi9: #F88;
+  --ansi950: #F888;
+
+  --ansi3: #FF0;
+  --ansi11: #FF8;
+  --ansi1150: #FF88;
+
+  --ansi3: #A80;
+  --ansi3: #C19C00;
+  --ansi3: #C90;
+
+  color: var(--ansi3);
+  border: 1px solid var(--ansi11);
+  background-color: var(--ansi1150)
+}
+

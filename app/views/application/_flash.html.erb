@@ -1,4 +1,4 @@
-<% if notice %>
+<% if false %>
   <div class="alert alert-info alert-flash">
     <div class="grid grid24">
       <div class="row">
@@ -7,6 +7,11 @@
         </div>
       </div>
     </div>
+  </div>
+<% end %>
+<% if notice %>
+  <div class="flash flash-notice">
+    <%= notice %>
   </div>
 <% end %>
 <% if alert %>

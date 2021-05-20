@@ -1,22 +1,31 @@
 class SessionsController < ApplicationController
 
+  attr_reader :user
+
 
   def create
     screenname = params[:screenname]
 
-    user = User.find_by(screenname: screenname)
+    @user = User.find_by(screenname: screenname)
 
-    unless user
-      user = User.find_by(email: screenname)
+    unless @user
+      @user = User.find_by(email: screenname)
     end
 
-    session[:user_id] = user
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      session[:screenname] = user.screenname
+    session[:user_id] = @user
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      session[:screenname] = @user.screenname
       redirect_to root_url, notice: "Signed in!"
     else
-      flash.now.alert = "Email or password is invalid."
+      #flash.now.alert = "Email or password is invalid."
+      #flash.notice = "Screenname or password incorrect."
+      #flash.notice = "The screenname or even perhaps the \
+      #          password you provided was so incorrect."
+      #flash.notice = "The screenname and password provided did not match."
+      #flash.notice = "Screenname and password didn't match."
+      flash.now.notice = "Screenname and password didn't match."
+      render :new, layout: false
     end
   end
 

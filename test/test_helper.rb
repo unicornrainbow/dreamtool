@@ -44,3 +44,4 @@ class TestReporter < Minitest::Reporters::DefaultReporter
 
 end
 Minitest::Reporters.use! [TestReporter.new]
+

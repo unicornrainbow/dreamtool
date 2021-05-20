@@ -14,7 +14,7 @@
       <ul class="pull-right">
         <% if screenname %>
         <li class="screenname"><a><%= screenname %></a></li>
-        <li><%= link_to "/session", class: "sign-out", title: "Sign Out", method: :delete do %><i class="fa fa-sign-out"></i><% end %></li>
+        <li><%= link_to "/session", class: "sign-out", title: "Sign Out", method: :delete, style: "padding-top: 20px" do %><i class="fa fa-sign-out"></i><% end %></li>
         <% else %>
         <li><a href="/">Sign in</a></li>
         <% end %>

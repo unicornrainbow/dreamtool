@@ -20,9 +20,24 @@
 
 body {
   font-family: 'Raleway', sans-serif;
-  margin-top: 100px;
   min-width: 400px;
   background-color: $rose-pink;
+
+
+  /* # ANSI Colors
+  --black:  #000;   --ansi-8:  ;
+  --red:    #F00;   --ansi-9: ;
+  --green:  #0F0;   --ansi-10: ;
+  --yellow: #FF0;   --ansi-11: ;
+  --blue:   #00F;   --ansi-12: ;
+  --purple: #F0F;   --ansi-13: ;
+  --pink:   #F8F;   --ansi-14: ;
+  --white:  #FFF;   --ansi-15: ;
+
+  --font-family-san-serif: ;
+  --font-family-serif: ;
+  --font-family-body: ;
+  */
 }
 
 
@@ -37,6 +52,7 @@ a:focus {
 
 .compose-toolbar {
   margin-bottom: 20px;
+  position: inherit;
 }
 
 .compose-toolbar {
@@ -67,11 +83,19 @@ ul.action-menu {
 }
 
 .alert-flash {
-  margin-top: -20px;
-  border-top: none;
-  border-radius: 0;
+  margin: 40px;
   .col {
     padding: 0 20px;
+  }
+}
+.alert.alert-info.alert-flash {
+  .col {
+    border: 1px solid #ec1fc2;
+    margin: 40px;
+    padding: 10px;
+    background: #f7273b2e;
+    border-radius: 5px;
+    color: #bc24f2;
   }
 }
 

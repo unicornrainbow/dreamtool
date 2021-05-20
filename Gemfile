@@ -62,8 +62,12 @@ gem 'webpacker', '~> 4.x'
                 # \; 'nosb'  meg
 
 
-gem 'minitest', group: :test
-gem 'minitest-reporters', group: :test
+group :test do
+  gem 'minitest'
+  gem 'minitest-reporters'
+  gem 'rails-controller-testing'
+end
+
 
 group :development, :test do
   gem 'byebug'
