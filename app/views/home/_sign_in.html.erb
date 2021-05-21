@@ -2,7 +2,7 @@
     method: 'POST' do %>
   <%= hidden_field_tag  :authenticity_token,
       form_authenticity_token %>
-  <input name="screenname" value="<%= @user.try(:screenname) %>"><br>
+  <input name="screenname" value="<%= params[:screenname] %>"><br>
   <input name="password" type="password"><br>
   <input type="submit"
         value="Sign in">

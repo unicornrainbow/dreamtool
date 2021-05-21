@@ -1,7 +1,17 @@
 class SessionsController < ApplicationController
 
   attr_reader :user
+  helper_method :user
 
+  layout 'welcome'
+
+  def show
+    if current_user
+      redirect_to :root
+    else
+      redirect_to :new_session
+    end
+  end
 
   def create
     screenname = params[:screenname]
@@ -25,7 +35,7 @@ class SessionsController < ApplicationController
       #flash.notice = "The screenname and password provided did not match."
       #flash.notice = "Screenname and password didn't match."
       flash.now.notice = "Screenname and password didn't match."
-      render :new, layout: false
+      render :new, layout: 'welcome'
     end
   end
 

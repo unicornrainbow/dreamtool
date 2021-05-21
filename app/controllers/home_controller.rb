@@ -15,7 +15,7 @@ class HomeController < ApplicationController #ActionController::Base
     @remember_me = cookies[:remember_me]
 
     # render layout: false
-    render "landing", layout: false
+    render "landing", layout: 'welcome'
   end
 
   def sign_in

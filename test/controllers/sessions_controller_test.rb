@@ -7,19 +7,41 @@ class SessionsControllerTest < ActionController::TestCase
     @user = users(:candi)
   end
 
-  test "should create session" do 
+  test "#new should render signin form" do
+    get :new
+    assert_response :success
+    assert_select 'input[name=screenname]'
+    assert_template :new
+    assert_template layout: :welcome
+  end
+
+  # describe "#show" do
+  #   describe "not signed in" do
+  #     it "should redirect to #new" do
+  test "#show should redirect to new if not signed in" do
+    get :show
+    assert_redirected_to :new_session
+  end
+
+  test "if signed, show should redirect to root url" do
+    session[:user_id] = @user.id
+    get :show
+    assert_redirected_to :root
+  end
+
+  test "should create session" do
     user = User.create(
        screenname: "Marvel",
        password: "123456",
        email: "lalala@yaya.ca")
 
-    #post sessions_url, params: { 
-    post :create, params: { 
+    #post sessions_url, params: {
+    post :create, params: {
         screenname: "Marvel",
-        password: "123456" } 
+        password: "123456" }
 
      # We should have something in the session.
-     assert_equal user.id, session["user_id"] 
+     assert_equal user.id, session["user_id"]
      assert_equal user.screenname, session['screenname']
   end
 
@@ -35,42 +57,40 @@ class SessionsControllerTest < ActionController::TestCase
     #assert_false user.authenticate("dinosaur")
     # assert_not_password user, "dinosaur"
 
-    post :create, params: { 
+    post :create, params: {
         screenname: user.screenname,
-        password: "654321" } 
+        password: "654321" }
 
+    #assert_redirected_to :back
     assert_response :success
     assert_template :new
-    assert_template layout: false 
-    #assert_equal "Screenname or password incorrect.", flash[:notice]
-    #assert_equal "Screenname and password didn't match.", flash[:notice]
-    assert_equal "Screenname and password didn't match.", flash[:notice]
 
-    # HaCk: Ensure notice set in flash.now by 
+    assert_template layout: :welcome
+
+    assert_equal "Screenname and password didn't match.", flash.now[:notice]
+
+    # HaCk: Ensure notice set in flash.now by
     #   sweeping flash and checking for nil
     @controller.flash.sweep
     assert_nil flash[:notice]
 
-    #should set_flash.now[:notice].to("Screenname and password didn't match.")
-
     assert_equal user.screenname, @controller.user.screenname
-    
-    #assert_select "input[name=screenname]"
+
     assert_select "input[name=screenname][value=#{user.screenname}]"
     assert_select "input[type=password]"
 
-  end 
+  end
 
   test "should destroy session" do
     user = users(:candi)
     #sign_in_as(user)
-     
-     
+
+
     session["user_id"] = user.id
-    assert_equal user.id, session["user_id"] 
+    assert_equal user.id, session["user_id"]
     session['screenname'] = user.screenname
     assert_equal user.screenname, session['screenname']
-    
+
 
     session['screenname'] = 'value'
     session['user_id'] = 'value'
