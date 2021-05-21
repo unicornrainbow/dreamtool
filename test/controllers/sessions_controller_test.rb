@@ -31,13 +31,13 @@ class SessionsControllerTest < ActionController::TestCase
 
   test "should create session" do
     user = User.create(
-       screenname: "Marvel",
+       screenname: "Marvelous",
        password: "123456",
        email: "lalala@yaya.ca")
 
     #post sessions_url, params: {
     post :create, params: {
-        screenname: "Marvel",
+        screenname: "Marvelous",
         password: "123456" }
 
      # We should have something in the session.
