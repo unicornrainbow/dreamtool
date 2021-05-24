@@ -116,7 +116,7 @@ GEM
       eco-source
       execjs
     eco-source (1.1.0.rc.1)
-    em-http-request (1.1.5)
+    em-http-request (1.1.7)
       addressable (>= 2.3.4)
       cookiejar (!= 0.3.1)
       em-socksify (>= 0.3)
@@ -167,7 +167,9 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.1009)
-    mimemagic (0.3.4)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.1)
@@ -194,7 +196,7 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     polyglot (0.3.5)
-    public_suffix (4.0.4)
+    public_suffix (4.0.6)
     puma (5.2.1)
       nio4r (~> 2.0)
     rabl (0.14.2)
