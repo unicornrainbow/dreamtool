@@ -17,6 +17,7 @@ gem 'sprockets'
 gem 'sprockets-rails'
 # gem 'angular-rails-templates',  github: 'luckyjazzbo/angular-rails-templates' # Including for support in templates, should not have to be loaded up here.
 gem 'slim', '>= 3'
+gem 'haml'
 gem 'jquery-rails'
 
 
