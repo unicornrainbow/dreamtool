@@ -83,6 +83,16 @@
                               monthNames[d._id.month-1] + " " + d._id.year; });
 
 </script>
+<%#= table [:screenname], @signups %>
+<%#= display_standard_table [:screenname, :email, :first_name], @signups %>
+<%#= table @signups, *%i[has_password? first_name last_name password screenname email first_name] %>
+<h3> Today's Signups</h3>
+<%#= tabluize @signups, :screenname, :email %>
+<%#= collection_table @signups %>
+<%#= @signups.attribute_names %>
+
+
+
 
 </BODY>
 

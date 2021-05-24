@@ -4,8 +4,6 @@ class User
   include ActiveModel::SecurePassword
 
   field :screenname,         type: String, default: ""
-  field :encrypted_password, type: String, default: ""
-
   field :password_digest
   field :email
 
@@ -41,7 +39,11 @@ class User
   accepts_nested_attributes_for :workspace
 
   # Validations
-  validates :screenname, presence: true
+  validates :screenname, presence: true, uniqueness: true
+  validates :email, presence: true
+
+  # validates_confirmation_of :password
+  # validates :password, confirmation: true
 
   index({ screenname: 1 }, { unique: true, name: "screenname_index" })
 

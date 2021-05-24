@@ -4,49 +4,26 @@
   <link href="/welcome.css" rel="stylesheet">
 <% end %>
 
-<%= render "lama" %>
-<% markdown do %>
-  ## Dreamtool is currently invite only in beta.
-
-  Please check back soon. Thank You!
-
-   Try Dreamtool in your browser today and all
-  you need is a free account.
-
-  <!-- <%#= markdown do %>
-  An account let's you:
-  - Create and publish custom publication
-  - Save your work online
-  <%# end %> -->
-
-  <p>
-    Dreamtool lets you interactively create new content for the web directly from
-    your mobile device or personal computer.
-  </p>
-
-  <h2>Sign up today and gain access to these powerful features:</h2>
-
-  <ul>
-    <li>Interactive layout and editing tools that let you build and design websites and webpages with ease or publish a blog.</li>
-    <li>Create and publish a magazine, newsletter or newspaper online.</li>
-    <li>Explore and discover fresh new content being created by
-      users on Dreamtool and published daily.</li>
-  </ul>
-
-  <p>So what are you waiting for?<br>
-    Sign up for your free account today.</p>
-  <% end %>
-
-<% if @user.errors.any? %>
-  <h3><%= @user.errors.full_messages.first %>.</h3>
-<% end %>
+<%= render_logo %>
+<%= render_flash %>
 
 <%= form_for @user, url: signup_path do |f| %>
+  <label>
+  First Name
+  <%= f.text_field :first_name %>
+  </label>
+<br>
+  <label>
+  Last Name
+  <%= f.text_field :last_name %>
+  </label>
   <%= f.text_field :screenname, placeholder: (t "Screenname") %>
   <%= f.text_field :email, placeholder: ("Email") %>
   <%= f.password_field :password, placeholder: (t "Secret Password") %>
+  <%= f.label :password_confirmation %>
+  <%# = f.password_field :password_confirmation %>
   <br><br>
-  <%= f.submit ("Make my Fabulous Account") %>
+  <%= f.submit ("Do it") %>
 <% end %>
 
 <br>

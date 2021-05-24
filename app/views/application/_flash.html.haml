@@ -1,0 +1,3 @@
+- %i[success notice info error alert].each do |key|
+  - if flash[key]
+    .flash{class: "flash-#{key}"}= flash[key]

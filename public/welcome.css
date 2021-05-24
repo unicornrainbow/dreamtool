@@ -68,6 +68,8 @@ input {
 }
 
 /*.alert.alert-info.alert-flash */
+.flash,
+.flash.flash-info,
 .flash.flash-notice {
   border: 1px solid #ec1fc2;
   margin: 40px;
@@ -100,5 +102,12 @@ input {
   color: var(--ansi3);
   border: 1px solid var(--ansi11);
   background-color: var(--ansi1150)
+}
+
+.flash.flash-alert,
+.flash.flash-error {
+  color: var(--ansi1);
+  border: 1px solid var(--ansi9);
+  background-color: var(--ansi950)
 }
 

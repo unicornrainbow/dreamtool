@@ -66,7 +66,8 @@ class DashController < ApplicationController
     # @hits = Hit.get("Hits: #{Today.date}") || 0
     todays_date = Today.date
     @hits = Hit.where(date: todays_date)
-    @signups = User.where(signup_date: todays_date)
+    #@signups = User.where(signup_date: todays_date)
+    @signups = User.where(signup_date: Date.today)
 
     # ("Hits: #{Today.date}") || 0
     @visits = @hits.distinct(:ip)

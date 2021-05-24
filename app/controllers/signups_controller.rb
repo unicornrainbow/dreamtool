@@ -8,7 +8,7 @@ class SignupsController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.signup_date = Date.today 
+    @user.signup_date = Date.today
     if @user.save
       session[:screenname] = @user.screenname
       session[:user_id] = @user.id
@@ -16,6 +16,7 @@ class SignupsController < ApplicationController
       # redirect_to :signup_success
       redirect_to '/editions'
     else
+      flash.now[:alert] = @user.errors.full_messages.first + "."
       render :new
     end
   end
@@ -37,7 +38,9 @@ class SignupsController < ApplicationController
 private
 
   def user_params
-    params.require(:user).permit(:screenname, :password, :email)
+    params.require(:user).permit(:first_name, :last_name,
+      :screenname, :email, :password, :password_confirmation,
+      :prefix, :suffix)
   end
 
 end
