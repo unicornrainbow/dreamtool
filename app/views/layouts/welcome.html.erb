@@ -1,9 +1,16 @@
-<title>Dreamtool</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<meta name="tagline" content="Create your online publication with Dreamtool.">
-
-<link href="/welcome.css" rel="stylesheet">
-<!-- <link href="stylesheets/fonts/Dancing+Script.css" rel="stylesheet"> -->
-<link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
-
-<%= yield %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dreamtool</title>
+  <%= render 'welcome_meta' %>
+  <%= stylesheet_link_tag "welcome", media: "all" %>
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+  <%= csrf_meta_tags %>
+  <%= content_for :head %>
+</head>
+<body>
+  <%= render_logo %>
+  <%= render 'flash' %>
+  <%= yield %>
+</body>
+</html>

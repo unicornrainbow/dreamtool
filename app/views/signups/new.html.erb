@@ -1,11 +1,7 @@
 
 <% content_for :head do %>
   <title>Signup for your totally awesome and cool dreamtool user account.</title>
-  <link href="/welcome.css" rel="stylesheet">
 <% end %>
-
-<%= render_logo %>
-<%= render_flash %>
 
 <%= form_for @user, url: signup_path do |f| %>
   <label>

@@ -22,7 +22,6 @@ class SessionsController < ApplicationController
       @user = User.find_by(email: screenname)
     end
 
-    session[:user_id] = @user
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       session[:screenname] = @user.screenname

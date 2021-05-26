@@ -1,5 +1,7 @@
 class SignupsController < ApplicationController
 
+  layout 'welcome'
+
   def new
     # @signup = Signup.new
     @user = User.new

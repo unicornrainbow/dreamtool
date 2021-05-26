@@ -1,0 +1,31 @@
+/*.alert.alert-info.alert-flash */
+.flash,
+.flash.flash-info,
+.flash.flash-notice {
+  border: 1px solid #ec1fc2;
+  margin: 40px;
+  padding: 10px;
+  background: #f7273b2e;
+  border-radius: 5px;
+  color: #bc24f2;
+
+  border: 1px solid #ec1fc247;
+  margin: 40px;
+  padding: 10px 70px;
+  background: #ffe2f02e;
+  border-radius: 5px;
+  color: #f42b80f7;
+  width: max-content;
+  margin: auto;
+
+
+  color: var(--ansi3);
+  border: 1px solid var(--ansi11);
+  background-color: var(--ansi1150)
+}
+
+.flash.flash-alert,
+.flash.flash-error {
+  color: var(--ansi1);
+  border: 1px solid var(--ansi9);
+  background-color: var(--ansi950)

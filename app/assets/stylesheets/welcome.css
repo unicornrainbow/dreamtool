@@ -1,4 +1,11 @@
-body { margin: 14vh 0; text-align: center;
+/*
+ *= require application/_colors
+ *= require application/_flash
+ *= require_self
+ */
+
+body {
+    margin: 14vh 0; text-align: center;
     font-size: 19pt;
     font-family: 'Dancing Script', cursive;
     background: var(--body-background);
@@ -23,8 +30,13 @@ body a {
   color: var(--purplesky);
   color: var(--carnivál); }
 
-img.logo { margin: 8vh auto;
-  display: block; height: 77px; }
+.logo { margin: 8vh auto;
+   display: block; height: 77px; }
+
+.logo a {
+  display: block;
+  margin: auto;
+  width: 250px; }
 
 a.🍄 {
   display: block;
@@ -91,13 +103,33 @@ input {
   --ansi9: #F88;
   --ansi950: #F888;
 
+  --ansi1: #00F;
+  --ansi9: #88F;
+  --ansi950: #88F8;
+
+  --ansi1: #0037DA;
+  --ansi9: #3B78FF;
+  --ansi950: #3B78FF88;
+
+  --ansi1: #03D;
+  --ansi9: #37F;
+  --ansi950: #37F8;
+
   --ansi3: #FF0;
   --ansi11: #FF8;
   --ansi1150: #FF88;
 
-  --ansi3: #A80;
-  --ansi3: #C19C00;
-  --ansi3: #C90;
+  --ansi3: #a80;
+  --ansi3: #c19c00;
+  --ansi3: #c90;
+
+  --ansi3: #90c;
+  --ansi11: #F8F;
+  --ansi1150: #F8F8;
+
+  --ansi3: #0c9;
+  --ansi11: #8FF;
+  --ansi1150: #8FF8;
 
   color: var(--ansi3);
   border: 1px solid var(--ansi11);
