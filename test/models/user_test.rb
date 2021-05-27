@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
+
   # test "authenticates password" do
   test "create user" do
     user = User.create({screenname: "Plastic",
@@ -22,6 +23,9 @@ class UserTest < ActiveSupport::TestCase
     assert user.authenticate("12341234")
     # Ensure authenticate returns false for wrong password.
     assert_not user.authenticate("43214321")
+
+  ensure
+    user.delete
   end
 
   test "Find user by email" do
@@ -34,6 +38,8 @@ class UserTest < ActiveSupport::TestCase
     user = User.find_by(email: "123@xyz.net")
     assert_equal user.email, "123@xyz.net"
 
+  ensure
+    user.delete
   end
 
 end
