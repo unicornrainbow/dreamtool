@@ -44,7 +44,8 @@
 
     .drag-handle {
       border: 1px solid rgba(128, 128, 128, .7);
-      width, height: $bubble-size;
+      // width, height: $bubble-size;
+      width: $bubble-size; height: $bubble-size;
       border-radius: 50%;
       position: absolute;
       background-color: rgba(255, 255, 255, .3);
@@ -68,7 +69,8 @@
       }
 
       &.top {
-        top, margin-left: -$bubble-size/2;
+        // top, margin-left: -$bubble-size/2;
+        top: -$bubble-size/2; margin-left: -$bubble-size/2;
         left: 50%;
       }
 
@@ -91,11 +93,13 @@
       }
 
       &.top-left {
-        top, left: -$bubble-size/2;
+        // top, left: -$bubble-size/2;
+        top: -$bubble-size/2; left: -$bubble-size/2;
       }
 
       &.top-right {
-        top, right: -$bubble-size/2;
+        // top, right: -$bubble-size/2;
+        top: -$bubble-size/2; right: -$bubble-size/2;
       }
 
       &.bottom-left {

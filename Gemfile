@@ -2,14 +2,12 @@ source 'https://rubygems.org'
 ruby '2.6.6'
 
 gem 'rails'
-# gem 'sass-rails', '~> 5'
-# gem 'sass', '~> 3.3.13', git: "http://github.com/unicornrainbow/sass", branch: "multi-prop"
-gem 'sass-rails'
-gem 'sass'
+gem 'sassc-rails'
+gem 'sassc'
 
 gem 'responders'
 gem 'route_downcaser'
-gem 'bootstrap-sass', '~> 3.1.1.1'
+gem 'bootstrap-sass'
 gem 'coffee-rails'
 gem "nokogiri"
 gem "dalli"

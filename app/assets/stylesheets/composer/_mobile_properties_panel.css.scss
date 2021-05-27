@@ -1,7 +1,9 @@
 .mobile-properties-panel {
   position: fixed;
-  top, left: 78px, 200px;
-  width, height: 150px, 250px;
+  // top, left: 78px, 200px;
+  top: 78px; left: 200px;
+  // width, height: 150px, 250px;
+  width: 150px; height: 250px;
   background-color: #ef43ec;
   z-index: 7777;
   border-radius: 9px;
