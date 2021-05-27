@@ -18,14 +18,16 @@ body {
     --yellow: #8F0;  --orange: #FF0; --lime: lime;
     --gray: #888; --dark-gray: #444; --light-gray: #CCC;
     --pink: #F0F; --purple: #808; --fushia: fuchia;
+    /*
     --lightpink: ; --hotpink: ; --purplepink;
     --fluffy-cloud; --cottoncandy: #FAF; --yummy: #FFA;
     --flower; --purplesky: #D3F; --froopy;
     --carnivál: #F1E;
     --gold: gold; --orcha: orcha; --bugandy: burgandy;
     --vanilla: vanilla; --chocqlate: chocolate;
+    */
+}
 
- }
 body a {
   color: var(--purplesky);
   color: var(--carnivál); }
@@ -61,7 +63,7 @@ input, button {
   text-align: center;
   opacity: .7;
   font-weight: 100;
-  font-family: 'Dancing Script', cursive; */
+  font-family: 'Dancing Script', cursive;
   /* border-radius: 7pt;
   outline: none;
   padding: 7pt 10pt;
