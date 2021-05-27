@@ -1,0 +1,19 @@
+Date: Thursday, May 27, 2021
+Reported By: Bambi
+---
+
+When starting up the Rails environment the following
+warning message is printed out.
+
+    Unsupported rails environment for compass
+
+Ideal Conditon:
+  No warning message to be printed. More so, no warning
+condition to exist. If there is a warning condition, than
+it is good we are being warned. SO why are we being warned?
+How is this an unsupported compass environment. Is compass
+still active in the project?
+
+  [ ] Address warning message.
+
+

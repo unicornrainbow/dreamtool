@@ -1,81 +1,107 @@
-source 'https://rubygems.org'
-ruby '2.6.6'
+                            source 'https://rubygems.org'
+                                             ruby '2.6.6'
 
-gem 'rails'
-gem 'sassc-rails'
-gem 'sassc'
-
-gem 'responders'
-gem 'route_downcaser'
-gem 'bootstrap-sass'
-gem 'coffee-rails'
-gem "nokogiri"
-gem "dalli"
-gem 'state_machine'
-gem 'sidekiq'
-gem 'sprockets'
-gem 'sprockets-rails'
-# gem 'angular-rails-templates',  github: 'luckyjazzbo/angular-rails-templates' # Including for support in templates, should not have to be loaded up here.
-gem 'slim', '>= 3'
-gem 'haml'
-gem 'jquery-rails'
+           gem 'rails'
 
 
-gem 'rabl'
-gem 'oj'
-gem 'dotenv-rails', group: [:test, :development, :production]
-gem "redcarpet"
-gem 'mongoid'
-gem 'mongoid-fixture_set', github: 'vanboom/mongoid-fixture_set', branch: 'master'
-gem "angularjs-rails"
-gem 'unicorn'
-gem 'simple_form'
-gem 'binding_of_caller'
-gem "paperclip"
-gem "mongoid-paperclip", :require => "mongoid_paperclip"
-gem "liquid"
-gem "tilt"
-# gem "simple-form-datepicker"  #, "~> 0.1.3"
-#gem "crawdad", git: "https://github.com/blakefrost/crawdad.git", branch: "newstime"
-gem 'cljs-rails'
-gem 'redis-namespace'
-# gem 'sinatra'
-gem 'faye'
-#gem 'thin', require: false
-gem 'puma'
-gem 'curb'
-gem 'eco'
-gem 'foreman'
-gem 'rails_12factor', group: :production
-gem 'flickraw'
-gem 'mongoid-encrypted-fields'
-gem 'gibberish'
-gem 'bcrypt'
-gem 'webpacker', '~> 4.x'
+       gem 'sprockets'
+       gem 'sprockets-rails'
 
-    gem 'compass-rails'
+       gem 'webpacker', '~> 4.x'
 
-         gem    'bson'
+          gem 'sassc'
+          gem 'sassc-rails'
+
+          gem 'bootstrap-sass'
+          gem 'jquery-rails'
+          gem 'coffee-rails'
+
+      # View templating
+      gem 'slim', '>= 3'
+      gem 'haml'
+      gem 'rabl'
+      gem "liquid"
+      gem "tilt"
+
+
+      gem "redcarpet"
+
+  # Bridge to the JavaScript Eco compiler.
+  # https://rubygems.org/gems/eco
+  gem 'eco'
+
+  # Compass integration for Rails.
+  gem 'compass-rails'
+
+  # A set of Rails responders to dry things up.
+  gem 'responders'
+
+  # Route Downcaser 1.2.3
+  # This gem hooks into the Rack middleware of Rails. This way all paths
+  # are downcased before dispatching to Rails' routing mechanism.
+  # Querystring parameters are not changed in any way.
+  #
+  # https://github.com/carstengehling/route_downcaser
+  # https://rubygems.org/gems/route_downcaser
+
+    gem 'route_downcaser'
+
+
+   gem "nokogiri"
+    gem "dalli"
+     gem 'state_machine'
+       gem 'sidekiq'
+         gem 'oj'
+           gem 'dotenv-rails', group: [:test, :development, :production]
+            gem 'mongoid'
+
+             # Add fixture support to mongoid.
+             gem 'mongoid-fixture_set',
+                github: 'vanboom/mongoid-fixture_set',
+                branch: 'master'
+
+         gem "angularjs-rails"
+       gem 'unicorn'
+     gem 'simple_form'
+   gem 'binding_of_caller'
+  gem "paperclip"
+  gem "mongoid-paperclip", :require => "mongoid_paperclip"
+   gem 'redis-namespace'
+     gem 'puma'
+       gem 'curb'
+        gem 'foreman'
+        gem 'rails_12factor', group: :production
+       gem 'flickraw'
+
+            gem 'mongoid-encrypted-fields'
+          gem 'gibberish'
+        gem 'bcrypt'
+
+
+      gem    'bson'
        gem   'bson_ext'
-       gem   'nprogress-rails'
-         gem   'listen'
+        gem   'nprogress-rails'
+          gem   'listen'
 
-                # \; 'nosb'  meg
-
-
-group :test do
-  gem 'minitest'
-  gem 'minitest-reporters'
-  gem 'rails-controller-testing'
-end
+            # \; 'nosb'  meg
 
 
-group :development, :test do
-  gem 'byebug'
-  # gem 'better_errors'
-end
+
+
+     group :development, :test do
+       gem 'byebug'
+     end
+
+  group :test do
+    gem 'minitest'
+    gem 'minitest-reporters'
+    gem 'rails-controller-testing'
+  end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+
+
+# gem 'angular-rails-templates',  github: 'luckyjazzbo/angular-rails-templates' # Including for support in templates, should not have to be loaded up here.
