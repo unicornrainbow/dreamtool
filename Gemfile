@@ -4,17 +4,24 @@
            gem 'rails'
 
 
-       gem 'sprockets'
+       gem 'sprockets', '~> 4.0.2'
        gem 'sprockets-rails'
 
        gem 'webpacker', '~> 4.x'
 
-          gem 'sassc'
-          gem 'sassc-rails'
+       ### Sass integration for rails/sprockets ###
 
-          gem 'bootstrap-sass'
-          gem 'jquery-rails'
-          gem 'coffee-rails'
+         gem 'sass'
+         gem 'sass-rails', '~> 5.1.0',
+              github: 'unicornrainbow/sass-rails',
+              branch: 'syrupticious'
+
+         # gem 'sassc'
+         # gem 'sassc-rails'
+
+
+      gem 'jquery-rails'
+      gem 'coffee-rails'
 
       # View templating
       gem 'slim', '>= 3'
@@ -31,7 +38,7 @@
   gem 'eco'
 
   # Compass integration for Rails.
-  gem 'compass-rails'
+  # gem 'compass-rails'
 
   # A set of Rails responders to dry things up.
   gem 'responders'

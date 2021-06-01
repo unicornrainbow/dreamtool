@@ -1,0 +1,9 @@
+Getting the following deprecation warning when running `rails test`
+
+    DEPRECATION WARNING: Single arity template handlers are deprecated. Template handlers must
+    now accept two parameters, the view object and the source for the view object.
+    Change:
+      >> #<MarkdownTemplateHandler:0x000055ed8fa63128>.call(template)
+    To:
+      >> #<MarkdownTemplateHandler:0x000055ed8fa63128>.call(template, source)
+     (called from <top (required)> at /home/bambi/pRoJeXtS/Dreamtool2/config/initializers/markdown.rb:4)

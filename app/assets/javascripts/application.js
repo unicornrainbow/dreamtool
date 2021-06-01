@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require require
-//= require bootstrap
 //= require lib/waterfall
 //  require nprogress
 
