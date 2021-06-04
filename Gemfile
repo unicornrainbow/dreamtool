@@ -30,6 +30,10 @@
       gem "liquid"
       gem "tilt"
 
+      gem "bootstrap-sass" do
+        drop_dependency 'sassc'
+      end
+
 
       gem "redcarpet"
 
