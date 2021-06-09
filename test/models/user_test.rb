@@ -42,4 +42,14 @@ class UserTest < ActiveSupport::TestCase
     user.delete
   end
 
+  test "email is not required" do
+    user = User.create(screenname: "Plastic",
+                       password: "12341234")
+
+    user = User.last
+    assert_equal "Plastic", user.screenname
+  ensure
+    user.delete
+  end
+
 end
