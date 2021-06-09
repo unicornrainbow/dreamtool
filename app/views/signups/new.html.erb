@@ -4,21 +4,17 @@
 <% end %>
 
 <%= form_for @user, url: signup_path do |f| %>
-  <label>
-  First Name
-  <%= f.text_field :first_name %>
-  </label>
-<br>
-  <label>
-  Last Name
-  <%= f.text_field :last_name %>
-  </label>
-  <%= f.text_field :screenname, placeholder: (t "Screenname") %>
-  <%= f.text_field :email, placeholder: ("Email") %>
-  <%= f.password_field :password, placeholder: (t "Secret Password") %>
-  <%= f.label :password_confirmation %>
-  <%# = f.password_field :password_confirmation %>
-  <br><br>
+  <input type="text"
+     name="user[screenname]"
+     value="<%= @user.screenname %>"
+     placeholder="<%= (t "Screenname") %>"></input>
+  <input type="password" name="user[password]" placeholder="<%= (t "Secret Password") %>"></input><br>
+  <br>
+  <input type="text"
+     name="user[email]"
+     value="<%= @user.email %>"
+     placeholder="<%=t "email"%>"></input><br>
+  <br>
   <%= f.submit ("Do it") %>
 <% end %>
 
@@ -32,6 +28,8 @@
 
 
 <style>
+
+  .
   h3 {
     font-weight: 100;
     color: aquamarine;

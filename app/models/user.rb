@@ -40,7 +40,6 @@ class User
 
   # Validations
   validates :screenname, presence: true, uniqueness: true
-  validates :email, presence: true
 
   # validates_confirmation_of :password
   # validates :password, confirmation: true

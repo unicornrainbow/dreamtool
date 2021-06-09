@@ -6,6 +6,7 @@ es:
   Screenname: "Yo Tango"
   # Screenname: "Handle"
   Secret Password: "Secreto Contraseña"
+  email: Email
   mongoid:
     models:
       user: Usario
