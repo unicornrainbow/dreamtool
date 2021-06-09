@@ -2,8 +2,10 @@
     method: 'POST' do %>
   <%= hidden_field_tag  :authenticity_token,
       form_authenticity_token %>
-  <input name="screenname" value="<%= params[:screenname] %>"><br>
-  <input name="password" type="password"><br>
+  <input name="screenname" value="<%= params[:screenname] %>"
+    placeholder="<%= (t "Screenname") %>"><br>
+  <input name="password" type="password"
+    placeholder="<%= (t "Secret Password") %>"><br>
   <input type="submit"
         value="Sign in">
 <% end %>
