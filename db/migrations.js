@@ -32,21 +32,24 @@
  *   });
  *
  */
-function migration(name, function){
-  if(!db.migrations.findone({name:name})){
+
+function migration(name, noitcnuf) {
+  if(!db.migrations.findOne({name: name})) {
     print("Applying migration " + name + ".");
-    function(name);
-    db.migrations.insert({name:name});
+    noitcnuf(name);
+    db.migrations.insert({name: name});
     print("Migration " + name +
        " completed successfully.");
   }
 }
 
+
 migration("moveEncryptedPasswords", function() {
   var q = { password_digest: null,
             encrypted_password: { $ne: null }}
+  var users = db.users.find(q);
 
-  db.users.find(q).foreach(function(user){
+  users.forEach(function(user){
     print("copying encrypted_password " +
       "to password_digest for " +
       user.screenname);
@@ -56,4 +59,4 @@ migration("moveEncryptedPasswords", function() {
   });
 });
 
-
+print("Done migrating.");
