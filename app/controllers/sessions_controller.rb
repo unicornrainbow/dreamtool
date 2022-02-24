@@ -16,26 +16,47 @@ class SessionsController < ApplicationController
   def create
     screenname = params[:screenname]
 
+    if screenname.empty?
+      # flash.notice = "Please provide your screenname"
+      # redirect_to "/" and return
+      flash.now.notice = "Please provide your screenname"
+      render :new, layout: 'welcome'
+      return
+    end
+
     @user = User.find_by(screenname: screenname)
 
     unless @user
       @user = User.find_by(email: screenname)
     end
 
-    if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
-      session[:screenname] = @user.screenname
-      redirect_to root_url, notice: "Signed in!"
+    if @user
+      unless @user.has_password?
+        if params[:password].presence
+          flash.now.notice = "Screenname and password didn't match."
+          render :new, layout: 'welcome'
+          return
+        end
+
+        session[:user_id] = @user.id
+        session[:screenname] = @user.screenname
+        redirect_to root_url, notice: "Signed in!"
+        return
+      else
+        if @user.authenticate(params[:password])
+          session[:user_id] = @user.id
+          session[:screenname] = @user.screenname
+          redirect_to root_url, notice: "Signed in!"
+        else
+          flash.now.notice = "Screenname and password didn't match."
+          render :new, layout: 'welcome'
+        end
+      end
     else
-      #flash.now.alert = "Email or password is invalid."
-      #flash.notice = "Screenname or password incorrect."
-      #flash.notice = "The screenname or even perhaps the \
-      #          password you provided was so incorrect."
-      #flash.notice = "The screenname and password provided did not match."
-      #flash.notice = "Screenname and password didn't match."
       flash.now.notice = "Screenname and password didn't match."
       render :new, layout: 'welcome'
     end
+
   end
 
 

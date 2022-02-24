@@ -12,9 +12,15 @@
        ### Sass integration for rails/sprockets ###
 
          gem 'sass'
+
          gem 'sass-rails', '~> 5.1.0',
               github: 'unicornrainbow/sass-rails',
               branch: 'syrupticious'
+
+         # gem 'sass-rails', '~> 5.1.0', do
+         #   change_dependency "sprockets", ""
+         #   change_dependency "sprockets-rails, ""
+         # end
 
          # gem 'sassc'
          # gem 'sassc-rails'
